@@ -117,3 +117,13 @@ A durable close journal replays into ledger and factual rule-based loss reviews
 (`data/cache/paper-chat-state.json`), published with the structured-rule checklist.
 Historical simulations never create fake live closes or checklist rules.
 Runner flock prevents a duplicate runner in THIS repository only.
+
+## Position-first display — November 7, 2026 ET
+The open-position panel sits directly above the 3D floor, before marketing and
+the calendar, on desktop and phone. It reads `paper_account.positions`, shows
+NEW during the first hour, size, entry and exact ET open time, tier, calculated
+stop/target prices, ET time-stop deadline and DexScreener. Empty state includes
+the next cycle's ET clock. Team trades counts open positions and closed ledger
+trades separately. Chat renders newest first: latest 24 expanded, older messages
+collapsible. Historical vote/entry text stays intact; current card uses the
+current account exit policy. Display only: no paper/trade/schedule changes.
