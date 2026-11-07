@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Trenchfloor · Design Preview</title>
-<meta name="description" content="Design preview of the Trenchfloor research floor. Mock data only. Six agents, one desk. Simulation and research only.">
+<title>Trenchfloor · Meme Research Floor</title>
+<meta name="description" content="Six paper-trading research agents, one team, one shared paper P&amp;L, on a Solana meme-coin floor. Simulation and research only. No wallet. No real trades.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <meta name="theme-color" content="#0b1114">
 <meta name="color-scheme" content="dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -239,21 +241,66 @@ footer span:last-child{text-align:right;color:#e4a578}
   .team-card{margin:10px 10px 0}
 }
 @media(max-width:360px){.day .p{font-size:7px;letter-spacing:-.4px}}
+/* live */
+.notice{position:sticky;top:0;z-index:8;margin:0;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:#1a120b;color:#ffb56a;border-bottom:1px solid #4a2c16;font:500 12px/1.45 var(--mono);text-align:center}
+.goal-line{padding:12px 16px;border-bottom:1px solid var(--line);background:#140d08;font-size:12px;color:#d8c2b0;line-height:1.5}
+.goal-line b{color:#ffb56a}
+.goal-line small{display:block;color:#8d7768;font-size:11px}
+.goal-bar{height:6px;border-radius:4px;background:#2a1a10;margin:8px 0 4px;overflow:hidden}
+.goal-bar span{display:block;height:100%;background:#ff7a18;min-width:2px}
+.empty{padding:16px;color:var(--muted);font-size:13px;margin:0}
+.strategy{padding:14px 16px}
+.strategy h3{margin:0 0 4px;font:600 16px var(--display);word-break:break-all}
+.strategy p{margin:6px 0 0;color:var(--muted);font-size:12px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.sgrid div{border:1px solid var(--line);border-radius:4px;padding:8px;background:#0e171a}
+.sgrid span{display:block;font:8px var(--mono);color:var(--muted);letter-spacing:.6px}
+.sgrid strong{font:600 15px var(--display)}
+.shift-card .st{font:9px var(--mono);letter-spacing:.5px;margin-left:auto;padding:2px 6px;border-radius:3px;border:1px solid var(--line);color:#9fb0ae}
+.shift-card .st.working{color:#4ade80;border-color:#1f7a45}
+.shift-card .st.error,.shift-card .st.stale{color:var(--red);border-color:#6a3a34}
+.shift-card time{display:block;margin-top:6px;font:10px var(--mono);color:#6e8184}
+.token{padding:12px 16px;border-bottom:1px solid #202c30}
+.token small{display:block;color:var(--muted);font-size:11px;margin-top:4px;word-break:break-word}
+.token .trade-links{margin-top:8px;grid-template-columns:1fr 1fr 1fr}
+.tag-ok{color:#4ade80}.tag-bad{color:var(--red)}
+.feed-item{padding:10px 16px;border-bottom:1px solid #202c30}
+.feed-item.err{background:#160f0e}
+.feed-item .fh{display:flex;justify-content:space-between;gap:8px;font:10px var(--mono);color:#9fb0ae}
+.feed-item .fh b{color:#ffb56a}
+.feed-item p{margin:4px 0 0;font-size:12px;color:#c9d6d3;word-break:break-word}
+.feed-item .trade{padding:8px 0 0}
+.feed-item.is-new{animation:flash 1.6s ease}
+@keyframes flash{from{background:#2a160a}to{background:transparent}}
+.feed{max-height:720px;overflow:auto}
+.lesson{padding:10px 16px;border-bottom:1px solid #202c30;font-size:12px}
+.lesson small{display:block;color:var(--muted);font:10px var(--mono);margin-top:3px}
+.ops{padding:12px 16px;font:11px/1.5 var(--mono);color:#8b9a9e;word-break:break-word}
+.pulse{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0 0;padding:12px 16px;border:1px solid var(--line);border-radius:5px;background:var(--surface);font:11px var(--mono);color:#9fb0ae}
+.pulse b{font:600 20px var(--display);color:#ffb56a}
+.vote-why{margin:0 0 10px;font-size:11px;color:#9fb0ae}
+.vote-why summary{cursor:pointer;color:#ffb56a;font-family:var(--mono)}
+.vote-why ul{margin:6px 0 0;padding-left:16px}
+.vote-why li{margin:2px 0}
+.shift-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.shift-card{min-width:0;overflow-wrap:anywhere}
+@media(max-width:750px){.shift-grid{grid-template-columns:1fr}}
+.ok-dot{background:#4ade80!important}.bad-dot{background:var(--red)!important;box-shadow:0 0 10px #ff8d7d88!important}
 </style>
 </head>
 <body>
 <div id="app">
-  <p class="preview-banner">DESIGN PREVIEW — mock data, no real trades, simulation and research only</p>
+  <p class="notice">PAPER TRADING · simulation and research only · no real trades · no wallet</p>
   <header class="top">
-    <a class="brand" href="#top" aria-label="Trenchfloor design preview">
+    <a class="brand" href="./" aria-label="Trenchfloor home">
       <span class="brand-mark">T<span>F</span></span>
       <span>TRENCHFLOOR<small>MEME RESEARCH FLOOR</small></span>
     </a>
     <div class="header-status">
-      <span class="live-dot" aria-hidden="true"></span>
-      <span>PREVIEW</span>
+      <span class="live-dot" id="liveDot" aria-hidden="true"></span>
+      <span id="systemState">CONNECTING</span>
       <span class="divider" aria-hidden="true"></span>
-      <span class="research-badge">MOCK DATA</span>
+      <span class="research-badge">PAPER ONLY</span>
     </div>
   </header>
   <main id="top">
@@ -262,11 +309,11 @@ footer span:last-child{text-align:right;color:#e4a578}
         <div class="eyebrow">ONE TEAM <span>/ 06 SEATS / ONE P&amp;L</span></div>
         <h1>Better filters.<br><span>Sharper entries.</span></h1>
       </div>
-      <p>Six agents. One team. One shared P&amp;L. One market: <strong>Solana meme coins.</strong><br>Every paper trade is proposed by one agent and <strong>voted on by all six</strong>. Buys dips. Never top-ticks.</p>
+      <p>Six agents. One team. One shared paper P&amp;L. One market: <strong>Solana meme coins.</strong><br>Every paper trade is proposed by one agent and <strong>voted on by all six</strong>. Buys dips. Never top-ticks. Free public data only.</p>
     </section>
-    <a class="best-link" href="#calendar">
-      <span>★ TEAM P&amp;L CALENDAR</span>
-      <b>Mock dollars only. Tap a day. No wallet, no orders, no live fills.</b>
+    <a class="best-link" href="./BEST_STRATEGY.md">
+      <span>★ BEST STRATEGY</span>
+      <b id="bestLinkText">Waiting for the first cycle</b>
       <i aria-hidden="true">→</i>
     </a>
     <section class="floor-card" aria-label="Rotatable 3D view of the research floor">
@@ -291,53 +338,90 @@ footer span:last-child{text-align:right;color:#e4a578}
       <ul class="roster" id="roster" aria-label="Agents at the desk, left to right"></ul>
       <div class="scene-foot">
         <span>DRAG TO ROTATE <span>·</span> PINCH / SCROLL TO ZOOM <span>·</span> TWO-FINGER PAN</span>
-        <span class="desk-id"><b>TF–06</b> <span>SIMULATED ENVIRONMENT</span></span>
+        <span class="desk-id"><b>TF–06</b> <span>PAPER / SIMULATED</span></span>
       </div>
     </section>
-    <section class="metrics" aria-label="Mock team statistics">
-      <article><span>TEAM P&amp;L</span><strong id="netPnl">—</strong><small>ONE SHARED LEDGER · MOCK</small></article>
-      <article><span>TEAM TRADES</span><strong id="fillCount">—</strong><small>OCT–NOV 2026 · FAKE TOKENS</small></article>
+    <section class="pulse" aria-label="Research pulse">
+      <span id="lastCycle">Waiting for the first cycle</span>
+      <span>NEXT CYCLE <b id="countdown">--:--</b></span>
+    </section>
+    <section class="metrics" aria-label="Team statistics">
+      <article><span>TEAM P&amp;L</span><strong id="netPnl">—</strong><small>ONE SHARED PAPER LEDGER</small></article>
+      <article><span>TEAM TRADES</span><strong id="fillCount">—</strong><small id="fillSub">SIMULATED FILLS</small></article>
       <article><span>WIN RATE</span><strong id="winRate">—</strong><small>PAPER LEDGER ONLY</small></article>
-      <article class="teal-metric"><span>AVG TEAM VOTE</span><strong id="avgVote">—</strong><small>APPROVALS PER TAKEN TRADE</small></article>
+      <article class="teal-metric"><span>AVG TEAM VOTE</span><strong id="avgVote">—</strong><small>APPROVALS ON VOTED TRADES</small></article>
+    </section>
+    <section class="panel" aria-labelledby="stratHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">02</span><h2 id="stratHeading">GOAL &amp; BEST STRATEGY</h2></div>
+        <span class="pill">OUT OF SAMPLE ONLY</span>
+      </div>
+      <div id="goalLine" class="goal-line">Standing goal: $3,000–$5,000/mo extra · no projection yet</div>
+      <div id="strategy"><p class="empty">Waiting for a real cycle. No numbers are filled in until one finishes.</p></div>
     </section>
     <section class="panel" aria-labelledby="shiftHeading">
       <div class="panel-heading">
-        <div><span class="section-num">02</span><h2 id="shiftHeading">THE TEAM</h2></div>
-        <span class="pill" id="shiftCount">6 / 6 SEATED</span>
+        <div><span class="section-num">03</span><h2 id="shiftHeading">THE TEAM</h2></div>
+        <span class="pill" id="shiftCount">— / 6 ONLINE</span>
       </div>
-      <div class="team-card"><b>One team, one P&amp;L.</b> Each trade is proposed by one agent. All six vote before it is taken. Majority wins, but a <b>Risk Manager</b> or <b>Bubble Map Analyst</b> reject is a veto. The X Scout abstains when it has no X data.</div>
+      <div class="team-card" id="teamNote"><b>One team, one P&amp;L.</b> Each trade is proposed by one agent. All six vote before it is taken. Majority of voting agents wins, but a <b>Risk Manager</b> or <b>Bubble Map Analyst</b> reject is a veto. The X Scout abstains while it has no X data.</div>
       <div class="shift-grid" id="shift"></div>
     </section>
     <section class="panel" id="calendar" aria-labelledby="calHeading">
       <div class="panel-heading">
-        <div><span class="section-num">03</span><h2 id="calHeading">TEAM P&amp;L CALENDAR</h2></div>
+        <div><span class="section-num">04</span><h2 id="calHeading">TEAM P&amp;L CALENDAR</h2></div>
         <div class="cal-nav"><button type="button" id="calPrev" aria-label="Previous month">←</button><button type="button" id="calNext" aria-label="Next month">→</button></div>
       </div>
       <div class="cal-wrap">
-        <div class="cal-sum"><span id="calMeta">NOVEMBER 2026 · ET · MOCK</span><b id="calTotal"></b></div>
+        <div class="cal-sum"><span id="calMeta">—</span><b id="calTotal"></b></div>
         <div class="dow" aria-hidden="true"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
-        <div class="cal-grid" id="cal" role="grid" aria-label="Mock daily team paper P and L"></div>
+        <div class="cal-grid" id="cal" role="grid" aria-label="Daily team paper P and L, America/New_York"></div>
         <div class="legend">
           <span><i class="sw pos"></i><b class="positive">Team profit day</b></span>
           <span><i class="sw neg"></i><b class="negative">Team loss day</b></span>
-          <span><i class="sw today"></i>Today · Nov 6</span>
+          <span><i class="sw today"></i><span id="todayLabel">Today</span></span>
         </div>
       </div>
-      <div class="equity"><small>TEAM EQUITY CURVE · MOCK · OCT 1 → NOV 6</small><svg id="equity" viewBox="0 0 300 64" preserveAspectRatio="none" aria-label="Mock cumulative team P and L"></svg></div>
-      <p class="method-note">Tap a day for that session’s mock team trades: token, symbol, entry and exit in ET, dollar P&amp;L, who proposed it, the team vote, and placeholder DexScreener / GMGN links. Dollars are paper, not bankable.</p>
+      <div class="equity"><small id="equityLabel">TEAM EQUITY CURVE · PAPER</small><svg id="equity" viewBox="0 0 300 64" preserveAspectRatio="none" aria-label="Cumulative team paper P and L"></svg></div>
+      <p class="method-note">Days are America/New_York exit dates from <span class="mono">data/ledger/</span>. Tap a day for its paper trades: token, symbol, entry and exit in ET, dollar P&amp;L, who proposed it, the team vote, and DexScreener / GMGN links.</p>
+    </section>
+    <section class="panel" aria-labelledby="ledgerHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">05</span><h2 id="ledgerHeading">TEAM PAPER LEDGER</h2></div>
+        <span class="small-muted" id="tradeCount">PAPER / SIMULATED</span>
+      </div>
+      <div class="trade-list" id="ledger"><p class="empty">No paper trades yet.</p></div>
+      <p class="method-note">GMGN is a link only, never a filter. Every row is a simulated fill on free GeckoTerminal candles; nothing here is a position.</p>
+    </section>
+    <section class="panel" aria-labelledby="watchHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">06</span><h2 id="watchHeading">RANKED WATCHLIST</h2></div>
+        <span class="small-muted">LINKS · NOT BUYS</span>
+      </div>
+      <div id="watchlist"><p class="empty">Waiting for a cycle.</p></div>
+      <div id="rejected"></div>
     </section>
     <section class="panel" id="feedSection" aria-labelledby="feedHeading">
       <div class="panel-heading">
-        <div><span class="section-num">04</span><h2 id="feedHeading">FLOOR TRANSMISSIONS</h2></div>
-        <span class="small-muted">TEAM VOTES · NEWEST FIRST · MOCK</span>
+        <div><span class="section-num">07</span><h2 id="feedHeading">FLOOR TRANSMISSIONS</h2></div>
+        <span class="small-muted" id="feedUpdated">LIVE</span>
       </div>
-      <div id="vetoes"></div>
-      <div class="trade-list" id="feed"></div>
-      <p class="method-note">Each link is a placeholder: <span class="mono">dexscreener.com/solana/&lt;mint&gt;</span> and <span class="mono">gmgn.ai/sol/token/&lt;mint&gt;</span>. GMGN is a link only, never a filter. Mints start with FAKE. Nothing here is a position.</p>
+      <div class="feed" id="feed"><p class="empty">Waiting for the feed…</p></div>
+    </section>
+    <section class="panel" aria-labelledby="lessonHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">08</span><h2 id="lessonHeading">LEARNING LOG</h2></div>
+        <a class="small-muted" href="./LESSONS.md">LESSONS.md →</a>
+      </div>
+      <div id="lessons"><p class="empty">No lessons yet.</p></div>
+    </section>
+    <section class="panel" aria-labelledby="opsHeading">
+      <div class="panel-heading"><div><span class="section-num">09</span><h2 id="opsHeading">SOURCES &amp; HEALTH</h2></div></div>
+      <p class="ops" id="opsText">Honest errors only. A failed source stays failed.</p>
     </section>
     <footer>
-      <span><strong>TRENCHFLOOR</strong> · A design preview of the meme-coin research floor. One team, six seats, one paper ledger. <a href="/trenchfloor/floor/" style="color:#e4a578">Live research floor →</a></span>
-      <span>DESIGN PREVIEW — mock data, no real trades, simulation and research only</span>
+      <span><strong>TRENCHFLOOR</strong> · Paper trading / research only. No wallet. No real trades. Not financial advice. <a href="./BEST_STRATEGY.md" style="color:#e4a578">BEST_STRATEGY.md</a> · <a href="./LESSONS.md" style="color:#e4a578">LESSONS.md</a> · <a href="./preview/" style="color:#e4a578">Design mockup</a></span>
+      <span>GitHub Pages can take about a minute to show a new push.</span>
     </footer>
   </main>
 </div>
@@ -347,7 +431,7 @@ footer span:last-child{text-align:right;color:#e4a578}
     <div class="sheet-handle" aria-hidden="true"></div>
     <div class="sheet-head">
       <div>
-        <div class="eyebrow">TEAM SESSION <span>/ MOCK</span></div>
+        <div class="eyebrow">TEAM SESSION <span>/ PAPER</span></div>
         <h3 id="sheetTitle">Day</h3>
         <p class="sheet-sub" id="sheetSub"></p>
       </div>
@@ -358,215 +442,265 @@ footer span:last-child{text-align:right;color:#e4a578}
 </div>
 <script>
 const AGENTS = [
-  { initials:'RM', role:'Risk Manager', short:'RISK MGR', roleLine:'RUGS · VETO', readout:['MINT AUTH OFF','FREEZE OFF'], task:'Rug-pull research and tokenomics. Votes on every trade and can veto it.', color:'#ed8d80' },
-  { initials:'BM', role:'Bubble Map Analyst', short:'BUBBLE', roleLine:'CLUSTERS · VETO', readout:['MAX HOLDER 2.8%','FAILS ABOVE 3.5%'], task:'Maps holder clusters. Any wallet above 3.5% is an automatic veto.', color:'#a798f3' },
-  { initials:'XS', role:'X/Twitter Scout', short:'X SCOUT', roleLine:'TWITTER / X', readout:['64 MENTIONS','NO CABAL FLAG'], task:'Reads X chatter. Abstains from the vote when it has no X data.', color:'#e6cf77' },
-  { initials:'DS', role:'Data Scout', short:'DATA', roleLine:'DEX · FILTERS', readout:['LIQ $86k','5m VOL $12k'], task:'DexScreener filters: liquidity, volume, pair age. Proposes dip entries.', color:'#75cfee' },
-  { initials:'BT', role:'Backtester', short:'LEDGER', roleLine:'TEAM LEDGER · ET', readout:['ONE TEAM P&L','TIMES IN ET'], task:'Keeps the one shared paper ledger with entry and exit times in ET.', color:'#e3ab70' },
-  { initials:'ST', role:'Strategist', short:'STRAT', roleLine:'DIPS ONLY', readout:['NOT A TOP-TICK','BEST_STRATEGY'], task:'Buys dips, never top-ticks. Proposes trades from the best strategy.', color:'#74dfb0' }
+  { initials:'RM', role:'Risk Manager', short:'RISK MGR', roleLine:'RUGS · VETO', color:'#ed8d80' },
+  { initials:'BM', role:'Bubble Map Analyst', short:'BUBBLE', roleLine:'CLUSTERS · VETO', color:'#a798f3' },
+  { initials:'XS', role:'X/Twitter Scout', short:'X SCOUT', roleLine:'TWITTER / X', color:'#e6cf77' },
+  { initials:'DS', role:'Data Scout', short:'DATA', roleLine:'DEX · FILTERS', color:'#75cfee' },
+  { initials:'BT', role:'Backtester', short:'LEDGER', roleLine:'TEAM LEDGER · ET', color:'#e3ab70' },
+  { initials:'ST', role:'Strategist', short:'STRAT', roleLine:'DIPS ONLY', color:'#74dfb0' }
 ];
+AGENTS.forEach(a => { a.readout = ['WAITING', 'FOR DATA']; });
 window.FLOOR_AGENTS = AGENTS;
-const TODAY = '2026-11-06';
-const NAMES = [['Moonbork','MBORK'],['GigaWagmi','GWAG'],['SolSnort','SNORT'],['PaperPepe','PPEPE'],['DipDonkey','DIPD'],['NeonNoodle','NOOD'],['ChartChonk','CHONK'],['FakeBonk','FBONK'],['TrenchToad','TTOAD'],['WenLambo','WENL'],['CopeCat','COPE'],['MockMoose','MOOSE'],['PixelPug','PPUG'],['DegenDuck','DDUCK'],['HodlHippo','HIPPO'],['SnackShiba','SNACK']];
-const PROPOSERS = [3,5,3,5,3,5,2,4,1,0];
-function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
-function buildTrades(){
-  const r = rng(20261106), out = [];
-  const end = Date.UTC(2026,10,6);
-  for(let d = Date.UTC(2026,9,1); d <= end; d += 86400000){
-    const iso = new Date(d).toISOString().slice(0,10);
-    const n = r() < 0.16 ? 0 : 1 + Math.floor(r()*3);
-    for(let k = 0; k < n; k++){
-      const [token, symbol] = NAMES[Math.floor(r()*NAMES.length)];
-      const start = 8*60 + Math.floor(r()*11*60);
-      const hold = 7 + Math.floor(r()*150);
-      const pnl = Math.round((r() - 0.43) * 520);
-      const votes = ['y','y', r() < 0.7 ? 'a' : 'y', r() < 0.12 ? 'n' : 'y', r() < 0.18 ? 'n' : 'y', r() < 0.1 ? 'n' : 'y'];
-      while(approvals(votes)*2 <= votes.filter(v=>v!=='a').length){votes[votes.indexOf('n')]='y'}
-      out.push({ token, symbol, mint:('FAKE'+token.toLowerCase()).padEnd(40,'1'), date:iso, entry:hhmm(start), exit:hhmm(Math.min(start+hold, 23*60+59)), pnl, by:PROPOSERS[Math.floor(r()*PROPOSERS.length)], votes });
-    }
-  }
-  return out;
-}
-const TRADES = buildTrades();
-const VETOES = [
-  { token:'WhaleWobble', symbol:'WWOB', mint:'FAKEwhalewobble'.padEnd(40,'1'), date:TODAY, entry:'18:42', by:3, votes:['y','n','a','y','y','y'], why:'Vetoed by Bubble Map Analyst: one wallet holds 4.7% (fail line is 3.5%).' },
-  { token:'MintyMcMint', symbol:'MINTY', mint:'FAKEmintymcmint'.padEnd(40,'1'), date:TODAY, entry:'16:05', by:5, votes:['n','y','a','y','n','y'], why:'Vetoed by Risk Manager: mint authority still active.' }
-];
+const ROLE_INDEX = Object.fromEntries(AGENTS.map((a, i) => [a.role, i]));
+const $ = (id) => document.getElementById(id);
+const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const money = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
+const moneyShort = (v) => { const n = Number(v); const a = Math.abs(n); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + (a >= 1000 ? (a / 1000).toFixed(1) + 'k' : a >= 100 ? Math.round(a) : a.toFixed(2)); };
+const price = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return '$' + n.toLocaleString('en-US', { maximumFractionDigits: Math.abs(n) >= 1 ? 4 : Math.abs(n) >= 0.01 ? 6 : 8 }); };
+const ET_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+const et = (v) => { if (!v) return '—'; const d = new Date(v); return Number.isNaN(d.getTime()) ? '—' : ET_FMT.format(d) + ' ET'; };
+const todayET = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const LONG_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-function money(n){return (n<0?'−':'+')+'$'+Math.abs(n).toLocaleString('en-US')}
-function parts(iso){const [y,m,d]=iso.split('-').map(Number);return {y,m,d,dow:new Date(Date.UTC(y,m-1,d)).getUTCDay()}}
-function longDate(iso){const p=parts(iso);return WEEKDAYS[p.dow]+', '+MONTHS[p.m-1]+' '+p.d+', '+p.y}
-function shortWhen(t){const p=parts(t.date);return MONTHS[p.m-1]+' '+p.d+', '+p.y+' · '+t.entry+' ET → '+t.exit+' ET'}
-function approvals(v){return v.filter(x=>x==='y').length}
+function parts(iso){ const [y, m, d] = iso.split('-').map(Number); return { y, m, d, dow: new Date(Date.UTC(y, m - 1, d)).getUTCDay() }; }
+function longDate(iso){ const p = parts(iso); return WEEKDAYS[p.dow] + ', ' + MONTHS[p.m - 1] + ' ' + p.d + ', ' + p.y; }
+async function loadJSON(path){ const r = await fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); if (!r.ok) { const e = new Error(path + ' HTTP ' + r.status); e.status = r.status; throw e; } return r.json(); }
 
-function voteRow(t, rejected){
-  const row=document.createElement('div');
-  row.className='vote-row';
-  const by=document.createElement('span');
-  by.innerHTML='Proposed by <b></b>';
-  by.querySelector('b').textContent=AGENTS[t.by].role;
-  const tally=document.createElement('span');
-  tally.className='tally'+(rejected?' no':'');
-  tally.textContent=(rejected?'✕ ':'✓ ')+approvals(t.votes)+'/6 approve';
-  const dots=document.createElement('span');
-  dots.className='dots';
-  t.votes.forEach((v,i)=>{const d=document.createElement('i');d.className=v;d.style.background=AGENTS[i].color;d.style.borderColor=AGENTS[i].color;d.title=AGENTS[i].role+': '+(v==='y'?'approve':v==='n'?'reject':'abstain');dots.appendChild(d)});
-  row.append(by,tally,dots);
-  return row;
+let state = null, ledgerDays = [], calMonths = [], calIndex = 0, seenFeed = null;
+
+function voteDots(team){
+  const dots = document.createElement('span'); dots.className = 'dots';
+  const byAgent = {}; (team.votes || []).forEach(v => { byAgent[v.agent] = v.vote; });
+  AGENTS.forEach(a => { const v = byAgent[a.role]; const i = document.createElement('i'); i.className = v === 'approve' ? 'y' : v === 'reject' ? 'n' : 'a'; i.style.background = a.color; i.style.borderColor = a.color; i.title = a.role + ': ' + (v || 'no vote'); dots.appendChild(i); });
+  return dots;
+}
+function teamBlock(t){
+  const frag = document.createDocumentFragment();
+  const row = document.createElement('div'); row.className = 'vote-row';
+  if (!t.team) { row.innerHTML = '<span>Logged before the team vote started</span>'; frag.appendChild(row); return frag; }
+  const by = document.createElement('span'); by.innerHTML = 'Proposed by <b></b>'; by.querySelector('b').textContent = t.proposed_by || '—';
+  const tally = document.createElement('span'); tally.className = 'tally' + (t.team.approved === false ? ' no' : ''); tally.textContent = (t.team.approved === false ? '✕ ' : '✓ ') + (t.team.tally || '');
+  row.append(by, tally, voteDots(t.team)); frag.appendChild(row);
+  const det = document.createElement('details'); det.className = 'vote-why';
+  det.innerHTML = '<summary></summary><ul></ul>'; det.querySelector('summary').textContent = 'Team vote · ' + (t.team.rule || '');
+  (t.team.votes || []).forEach(v => { const li = document.createElement('li'); li.innerHTML = '<b></b> <span></span>'; li.querySelector('b').textContent = v.agent + ' ' + v.vote; li.querySelector('span').textContent = '— ' + v.reason; det.querySelector('ul').appendChild(li); });
+  frag.appendChild(det);
+  return frag;
 }
 function tradeCard(t){
-  const art=document.createElement('article');
-  art.className='trade';
-  const dex='https://dexscreener.com/solana/'+t.mint;
-  const gmgn='https://gmgn.ai/sol/token/'+t.mint;
-  art.innerHTML='<div class="trade-top"><div class="trade-id"><strong></strong><span class="sym"></span></div><b class="pnl"></b></div><p class="trade-when"></p><p class="mint"></p><div class="trade-links"><a target="_blank" rel="noopener noreferrer">DexScreener</a><a target="_blank" rel="noopener noreferrer">GMGN</a></div>';
-  art.querySelector('strong').textContent=t.token;
-  art.querySelector('.sym').textContent=t.symbol;
-  const pnl=art.querySelector('.pnl');
-  pnl.textContent=money(t.pnl);
-  pnl.classList.add(t.pnl<0?'negative':'positive');
-  art.querySelector('.trade-when').textContent=shortWhen(t);
-  const mint=art.querySelector('.mint');
-  mint.textContent=t.mint;
-  mint.after(voteRow(t,false));
-  const links=art.querySelectorAll('a');
-  links[0].href=dex;
-  links[1].href=gmgn;
-  links[0].setAttribute('aria-label','DexScreener placeholder for '+t.token);
-  links[1].setAttribute('aria-label','GMGN placeholder for '+t.token);
+  const art = document.createElement('article'); art.className = 'trade';
+  art.innerHTML = '<div class="trade-top"><div class="trade-id"><strong></strong><span class="sym"></span></div><b class="pnl"></b></div><p class="trade-when"></p><p class="mint"></p><div class="trade-links"><a target="_blank" rel="noopener noreferrer">DexScreener</a><a target="_blank" rel="noopener noreferrer">GMGN</a></div>';
+  art.querySelector('strong').textContent = t.name || t.symbol || 'Token';
+  art.querySelector('.sym').textContent = t.symbol || '?';
+  const pnl = art.querySelector('.pnl'); pnl.textContent = money(t.pnl_usd); pnl.classList.add(Number(t.pnl_usd) < 0 ? 'negative' : 'positive');
+  art.querySelector('.trade-when').textContent = 'Entry ' + et(t.entry_time) + ' @ ' + price(t.entry_price) + ' → Exit ' + et(t.exit_time) + ' @ ' + price(t.exit_price);
+  art.querySelector('.mint').textContent = (t.strategy_id ? t.strategy_id + ' · ' : '') + (t.mint || '');
+  art.querySelector('.mint').after(teamBlock(t));
+  const links = art.querySelectorAll('a');
+  links[0].href = t.dex_url || ('https://dexscreener.com/solana/' + t.mint);
+  links[1].href = t.gmgn_url || ('https://gmgn.ai/sol/token/' + t.mint);
   return art;
 }
-function vetoCard(t){
-  const art=document.createElement('article');
-  art.className='veto';
-  art.innerHTML='<div class="trade-top"><div class="trade-id"><strong></strong><span class="sym"></span></div><span class="pill">NOT TAKEN</span></div><p></p>';
-  art.querySelector('strong').textContent=t.token;
-  art.querySelector('.sym').textContent=t.symbol;
-  art.querySelector('p').textContent=MONTHS[parts(t.date).m-1]+' '+parts(t.date).d+' · '+t.entry+' ET · '+t.why+' Not in the team P&L.';
-  art.appendChild(voteRow(t,true));
+function tokenCard(tk, failed){
+  const s = tk.safety || {};
+  const art = document.createElement('article'); art.className = 'token';
+  const zone = tk.in_entry_zone == null ? 'ATH not measured' : tk.in_entry_zone ? 'in the 20–45% zone now' : 'outside the buy zone now';
+  art.innerHTML = '<div class="trade-top"><div class="trade-id"><strong></strong><span class="sym"></span></div><span class="pill"></span></div><small class="m"></small><small class="s"></small><div class="trade-links"><a target="_blank" rel="noopener">DexScreener</a><a target="_blank" rel="noopener">GMGN</a><a target="_blank" rel="noopener">Bubblemaps</a></div>';
+  art.querySelector('strong').textContent = tk.symbol || 'TOKEN';
+  art.querySelector('.sym').textContent = tk.name || '';
+  const pill = art.querySelector('.pill'); pill.textContent = failed ? 'NOT ELIGIBLE' : 'ELIGIBLE'; pill.classList.add(failed ? 'tag-bad' : 'tag-ok');
+  art.querySelector('.m').textContent = 'Liq ' + (tk.liquidity_usd == null ? '—' : '$' + Math.round(tk.liquidity_usd).toLocaleString()) + ' · MCap ' + (tk.market_cap_usd == null ? '—' : '$' + Math.round(tk.market_cap_usd).toLocaleString()) + ' · ' + zone;
+  art.querySelector('.s').textContent = failed ? (tk.filter_reason || s.summary || 'not eligible') : (s.summary || 'eligible');
+  const a = art.querySelectorAll('a'); a[0].href = tk.dex_url || '#'; a[1].href = tk.gmgn_url || '#'; a[2].href = tk.bubble_url || '#';
   return art;
+}
+function empty(text){ const p = document.createElement('p'); p.className = 'empty'; p.textContent = text; return p; }
+
+function renderGoal(goal){
+  const el = $('goalLine');
+  if (!goal) { el.textContent = 'Standing goal: $3,000–$5,000/mo extra · no projection yet (waiting for a cycle that writes one).'; return; }
+  const head = 'GOAL $' + Number(goal.monthly_goal_low_usd).toLocaleString() + '–$' + Number(goal.monthly_goal_high_usd).toLocaleString() + '/MO';
+  const b = goal.best;
+  if (!b) { el.innerHTML = '<b>' + esc(head) + '</b> · ' + esc(goal.status_line || 'No version qualifies yet.'); return; }
+  const pct = Math.max(0, Math.min(100, goal.progress_pct_of_low || 0));
+  el.innerHTML = '<b>' + esc(head) + '</b> · ' + esc(b.id) + ' projects <b>' + money(b.monthly_usd) + '/mo</b> at $' + Math.round(goal.notional_usd) + ' paper tickets · needs ~$' + Number(b.ticket_for_low_usd).toLocaleString() + '–$' + Number(b.ticket_for_high_usd).toLocaleString() + ' tickets<div class="goal-bar"><span style="width:' + pct + '%"></span></div><small>' + pct.toFixed(2) + '% of the low goal at current tickets · paper projection only</small>';
+}
+function renderStrategy(d){
+  const host = $('strategy'); const best = d.best;
+  if (!best) { host.replaceChildren(empty('No strategy record yet.')); return; }
+  const o = best.oos;
+  host.innerHTML = '<div class="strategy"><h3></h3><p class="n"></p><div class="sgrid"><div><span>OOS TRADES</span><strong>' + (o ? esc(o.trades) : '—') + '</strong></div><div><span>OOS $/TRADE</span><strong>' + (o ? money(o.expectancy_usd) : '—') + '</strong></div><div><span>WIN RATE</span><strong>' + (o && o.win_rate != null ? Math.round(o.win_rate * 100) + '%' : '—') + '</strong></div></div><p class="sn"></p><p class="rn"></p></div>';
+  host.querySelector('h3').textContent = best.id || 'No champion yet';
+  host.querySelector('.n').textContent = best.name || '';
+  host.querySelector('.sn').textContent = d.strategist_note || '';
+  host.querySelector('.rn').textContent = d.risk_note ? 'Risk · ' + d.risk_note : '';
+  $('bestLinkText').textContent = best.id ? best.id + ' · out-of-sample champion' : 'No out-of-sample champion yet';
+}
+function renderTeam(d){
+  const list = d.agents || [];
+  const shift = $('shift'); shift.replaceChildren();
+  let online = 0;
+  AGENTS.forEach(a => {
+    const ag = list.find(x => x.role === a.role) || {};
+    const stale = !ag.heartbeat || Date.now() - new Date(ag.heartbeat).getTime() > 20 * 60 * 1000;
+    const st = !ag.heartbeat ? 'no data' : stale ? 'stale' : (ag.status || '—');
+    if (ag.heartbeat && !stale && ag.status !== 'error') online++;
+    const card = document.createElement('article'); card.className = 'shift-card';
+    card.innerHTML = '<div class="shift-top"><span class="shift-ico"></span><strong></strong><span class="st"></span></div><p></p><time></time>';
+    const ico = card.querySelector('.shift-ico'); ico.textContent = a.initials; ico.style.color = a.color; ico.style.borderColor = a.color + '66'; ico.style.background = a.color + '18';
+    card.querySelector('strong').textContent = a.role;
+    const s = card.querySelector('.st'); s.textContent = st.toUpperCase(); s.classList.add(st);
+    card.querySelector('p').textContent = ag.task || 'No status reported yet.';
+    card.querySelector('time').textContent = (ag.heartbeat ? 'Heartbeat ' + et(ag.heartbeat) : 'No heartbeat') + (ag.latest_action ? ' · ' + ag.latest_action.slice(0, 120) : '');
+    shift.appendChild(card);
+    a.readout = [st.toUpperCase(), (ag.latest_action || ag.task || '').replace(/https?:\S+/g, '').slice(0, 26).toUpperCase() || '—'];
+  });
+  $('shiftCount').textContent = online + ' / 6 ONLINE';
+  if (d.team && d.team.model) $('teamNote').innerHTML = '<b>One team, one P&amp;L.</b> ' + esc(d.team.model) + ' Last cycle: ' + esc(d.team.last_cycle_taken) + ' taken, ' + esc(d.team.last_cycle_rejected) + ' turned down.';
+  if (window.setAgentReadouts) window.setAgentReadouts(AGENTS);
+}
+function votedTrades(d){ return (d.recent_trades || []).filter(t => t.team); }
+function renderMetrics(d){
+  const L = d.ledger || {};
+  const net = $('netPnl');
+  if (L.total_pnl_usd == null) { net.textContent = '—'; } else { net.textContent = money(L.total_pnl_usd); net.className = Number(L.total_pnl_usd) < 0 ? 'negative' : 'positive'; }
+  $('fillCount').textContent = L.trade_count == null ? '—' : String(L.trade_count);
+  const days = L.days || [];
+  const w = days.reduce((s, x) => s + (x.wins || 0), 0), l = days.reduce((s, x) => s + (x.losses || 0), 0);
+  $('winRate').textContent = w + l ? Math.round(w / (w + l) * 100) + '%' : '—';
+  const v = votedTrades(d);
+  $('avgVote').textContent = v.length ? (v.reduce((s, t) => s + (t.team.approve || 0), 0) / v.length).toFixed(1) + ' / 6' : '—';
+  $('fillSub').textContent = (days.length ? days.length + ' DAYS · ' : '') + 'SIMULATED FILLS';
+}
+function renderLedger(d){
+  const host = $('ledger'); const trades = d.recent_trades || [];
+  host.replaceChildren(...(trades.length ? trades.map(tradeCard) : [empty('No paper trades yet. The ledger only records simulated fills.')]));
+  $('tradeCount').textContent = ((d.ledger || {}).trade_count ?? 0) + ' TEAM PAPER TRADES · NEWEST FIRST';
+}
+function renderWatch(d){
+  const w = d.watchlist || [];
+  $('watchlist').replaceChildren(...(w.length ? w.map(t => tokenCard(t, false)) : [empty('No token passed safety and the lessons this cycle. Nothing was invented to fill the board.')]));
+  const rej = [...(d.rejected_review || []), ...(d.filter_rejects_sample || [])];
+  $('rejected').replaceChildren(...rej.slice(0, 10).map(t => tokenCard(t, true)));
+}
+function renderLessons(d){
+  const L = d.lessons_preview || {}; const host = $('lessons'); const nodes = [];
+  (L.rules || []).slice().reverse().forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<b></b><small></small>'; a.querySelector('b').textContent = r.rule; a.querySelector('small').textContent = et(r.time_et || r.time) + ' · ' + (r.source || '') + (r.evidence ? ' · ' + r.evidence : ''); nodes.push(a); });
+  (L.observations || []).slice(0, 8).forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<span></span><small></small>'; a.querySelector('span').textContent = r.text; a.querySelector('small').textContent = et(r.time_et || r.time) + ' · ' + (r.source || ''); nodes.push(a); });
+  host.replaceChildren(...(nodes.length ? nodes : [empty('No lessons yet.')]));
+}
+function renderOps(d){
+  const h = d.health || {}; const src = d.sources || {};
+  const bits = Object.entries(src).map(([k, v]) => k + ': ' + (v && v.ok ? 'ok' : 'down') + (v && v.detail ? ' — ' + (typeof v.detail === 'string' ? v.detail : JSON.stringify(v.detail)) : ''));
+  $('opsText').textContent = (d.health ? 'Local ' + (h.local ? 'up' : 'down') + '. Pages ' + (h.site_reachable ? 'up' : 'not confirmed') + '. ' : '') + (bits.join(' | ') || 'No source status yet.');
+}
+function renderState(d){
+  state = d;
+  const stale = d.health && d.health.stale_agents && d.health.stale_agents.length;
+  $('systemState').textContent = d.ok ? (stale ? 'STALE AGENT' : 'FLOOR ONLINE') : 'ATTENTION';
+  $('liveDot').className = 'live-dot ' + (d.ok && !stale ? 'ok-dot' : 'bad-dot');
+  $('lastCycle').textContent = d.last_cycle ? 'Last cycle ' + et(d.last_cycle) + ' · ' + (d.data_status || '') : 'Waiting for the first cycle';
+  $('sceneStatus').textContent = d.ok ? 'AGENTS SEATED · LIVE' : 'CHECK ERRORS';
+  renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
+  ledgerDays = (d.ledger && d.ledger.days) || ledgerDays;
+  buildMonths(); renderCalendar(); renderEquity();
 }
 
-const byDay={};
-TRADES.forEach(t=>{(byDay[t.date]||=[]).push(t)});
-const CAL_MONTHS=['2026-10','2026-11'];
-let calIndex=1;
+function buildMonths(){
+  const now = todayET().slice(0, 7);
+  const first = ledgerDays.length ? ledgerDays.map(x => x.date).sort()[0].slice(0, 7) : now;
+  const out = []; let [y, m] = first.split('-').map(Number);
+  while (true) { const ym = y + '-' + String(m).padStart(2, '0'); out.push(ym); if (ym >= now || out.length > 36) break; m++; if (m > 12) { m = 1; y++; } }
+  const keep = calMonths[calIndex];
+  calMonths = out;
+  calIndex = keep && out.includes(keep) ? out.indexOf(keep) : out.length - 1;
+}
 function renderCalendar(){
-  const ym=CAL_MONTHS[calIndex];
-  const [y,m]=ym.split('-').map(Number);
-  const cal=document.getElementById('cal');
-  cal.replaceChildren();
-  const first=new Date(Date.UTC(y,m-1,1)).getUTCDay();
-  const days=new Date(Date.UTC(y,m,0)).getUTCDate();
-  let total=0,count=0;
-  for(let i=0;i<first;i++){const pad=document.createElement('div');pad.className='day pad';pad.setAttribute('aria-hidden','true');cal.appendChild(pad)}
-  for(let d=1;d<=days;d++){
-    const iso=ym+'-'+String(d).padStart(2,'0');
-    const list=byDay[iso]||[];
-    const sum=list.reduce((s,t)=>s+t.pnl,0);
-    total+=sum;count+=list.length;
-    const btn=document.createElement('button');
-    btn.type='button';
-    btn.className='day'+(list.length?(sum<0?' neg':' pos'):'')+(iso===TODAY?' today':'');
-    btn.dataset.date=iso;
-    btn.setAttribute('role','gridcell');
-    btn.setAttribute('aria-label',list.length?longDate(iso)+', team paper P and L '+money(sum)+', '+list.length+' trade'+(list.length>1?'s':''):longDate(iso)+(iso>TODAY?', upcoming':', no mock trades'));
-    if(iso>TODAY)btn.style.opacity='.45';
-    const n=document.createElement('span');n.className='n';n.textContent=String(d);btn.appendChild(n);
-    if(list.length){const p=document.createElement('span');p.className='p';p.textContent=money(sum);btn.appendChild(p)}
-    cal.appendChild(btn);
+  const ym = calMonths[calIndex]; if (!ym) return;
+  const [y, m] = ym.split('-').map(Number);
+  const by = {}; ledgerDays.forEach(x => { by[x.date] = x; });
+  const cal = $('cal'); cal.replaceChildren();
+  const first = new Date(Date.UTC(y, m - 1, 1)).getUTCDay(), days = new Date(Date.UTC(y, m, 0)).getUTCDate(), today = todayET();
+  let total = 0, count = 0;
+  const pad = () => { const p = document.createElement('div'); p.className = 'day pad'; p.setAttribute('aria-hidden', 'true'); return p; };
+  for (let i = 0; i < first; i++) cal.appendChild(pad());
+  for (let d = 1; d <= days; d++) {
+    const iso = ym + '-' + String(d).padStart(2, '0'); const row = by[iso]; const n = row ? row.trade_count || 0 : 0; const sum = row ? Number(row.pnl_usd) || 0 : 0;
+    total += sum; count += n;
+    const b = document.createElement('button'); b.type = 'button'; b.dataset.date = iso; b.setAttribute('role', 'gridcell');
+    b.className = 'day' + (n ? (sum < 0 ? ' neg' : ' pos') : '') + (iso === today ? ' today' : '');
+    if (iso > today) b.style.opacity = '.45';
+    b.setAttribute('aria-label', longDate(iso) + (n ? ', team paper P and L ' + money(sum) + ', ' + n + ' trades' : ', no paper trades'));
+    const s = document.createElement('span'); s.className = 'n'; s.textContent = String(d); b.appendChild(s);
+    if (n) { const p = document.createElement('span'); p.className = 'p'; p.textContent = moneyShort(sum); b.appendChild(p); }
+    cal.appendChild(b);
   }
-  const tail=(7-(first+days)%7)%7;
-  for(let i=0;i<tail;i++){const pad=document.createElement('div');pad.className='day pad';pad.setAttribute('aria-hidden','true');cal.appendChild(pad)}
-  document.getElementById('calMeta').textContent=LONG_MONTHS[m-1].toUpperCase()+' '+y+' · ET · MOCK';
-  const tot=document.getElementById('calTotal');
-  tot.textContent='TEAM '+money(total)+' · '+count+' TRADES';
-  tot.className=total<0?'negative':'positive';
-  document.getElementById('calPrev').disabled=calIndex===0;
-  document.getElementById('calNext').disabled=calIndex===CAL_MONTHS.length-1;
+  for (let i = 0; i < (7 - (first + days) % 7) % 7; i++) cal.appendChild(pad());
+  $('calMeta').textContent = LONG_MONTHS[m - 1].toUpperCase() + ' ' + y + ' · ET · PAPER';
+  const t = $('calTotal'); t.textContent = count ? 'TEAM ' + money(total) + ' · ' + count + ' TRADES' : 'NO TRADES THIS MONTH'; t.className = count ? (total < 0 ? 'negative' : 'positive') : '';
+  $('calPrev').disabled = calIndex <= 0; $('calNext').disabled = calIndex >= calMonths.length - 1;
+  const tp = parts(today); $('todayLabel').textContent = 'Today · ' + MONTHS[tp.m - 1] + ' ' + tp.d;
 }
 function renderEquity(){
-  const dates=Object.keys(byDay).sort();
-  let run=0;const pts=dates.map(d=>{run+=byDay[d].reduce((s,t)=>s+t.pnl,0);return run});
-  pts.unshift(0);
-  const lo=Math.min(0,...pts),hi=Math.max(0,...pts),span=(hi-lo)||1;
-  const xy=pts.map((v,i)=>[(i/(pts.length-1))*300,60-((v-lo)/span)*56]);
-  const line=xy.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
-  const zeroY=(60-((0-lo)/span)*56).toFixed(1);
-  const color=run<0?'#ff8d7d':'#4ade80';
-  document.getElementById('equity').innerHTML='<line x1="0" x2="300" y1="'+zeroY+'" y2="'+zeroY+'" stroke="#2b3a3f" stroke-dasharray="3 3"/><path d="'+line+' L300 '+zeroY+' L0 '+zeroY+' Z" fill="'+color+'22"/><path d="'+line+'" fill="none" stroke="'+color+'" stroke-width="1.6" vector-effect="non-scaling-stroke"/>';
-}
-function renderBoard(){
-  const net=TRADES.reduce((s,t)=>s+t.pnl,0);
-  const wins=TRADES.filter(t=>t.pnl>0).length;
-  const netEl=document.getElementById('netPnl');
-  netEl.textContent=money(net);
-  netEl.classList.add(net<0?'negative':'positive');
-  document.getElementById('fillCount').textContent=String(TRADES.length);
-  document.getElementById('winRate').textContent=Math.round(wins/TRADES.length*100)+'%';
-  document.getElementById('avgVote').textContent=(TRADES.reduce((s,t)=>s+approvals(t.votes),0)/TRADES.length).toFixed(1)+' / 6';
-  const roster=document.getElementById('roster');
-  const shift=document.getElementById('shift');
-  AGENTS.forEach(a=>{
-    const li=document.createElement('li');
-    const sw=document.createElement('i');sw.style.background=a.color;
-    const name=document.createElement('span');name.textContent=a.role;
-    li.append(sw,name);roster.appendChild(li);
-    const card=document.createElement('article');
-    card.className='shift-card';
-    card.innerHTML='<div class="shift-top"><span class="shift-ico"></span><strong></strong></div><p></p>';
-    const ico=card.querySelector('.shift-ico');
-    ico.textContent=a.initials;ico.style.color=a.color;ico.style.borderColor=a.color+'66';ico.style.background=a.color+'18';
-    card.querySelector('strong').textContent=a.role;
-    card.querySelector('p').textContent=a.task;
-    shift.appendChild(card);
-  });
-  renderCalendar();
-  renderEquity();
-  const vetoes=document.getElementById('vetoes');
-  VETOES.forEach(v=>vetoes.appendChild(vetoCard(v)));
-  const feed=document.getElementById('feed');
-  [...TRADES].sort((a,b)=>(b.date+b.entry).localeCompare(a.date+a.entry)).slice(0,10).forEach(t=>feed.appendChild(tradeCard(t)));
+  const svg = $('equity');
+  const days = ledgerDays.filter(x => x.trade_count).slice().sort((a, b) => a.date.localeCompare(b.date));
+  if (!days.length) { svg.innerHTML = '<text x="150" y="36" text-anchor="middle" fill="#6e8184" font-size="10" font-family="monospace">No closed paper trades yet</text>'; $('equityLabel').textContent = 'TEAM EQUITY CURVE · PAPER'; return; }
+  let run = 0; const pts = [0, ...days.map(x => (run += Number(x.pnl_usd) || 0))];
+  const lo = Math.min(0, ...pts), hi = Math.max(0, ...pts), span = (hi - lo) || 1;
+  const xy = pts.map((v, i) => [pts.length > 1 ? (i / (pts.length - 1)) * 300 : 0, 60 - ((v - lo) / span) * 56]);
+  const line = xy.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+  const zy = (60 - ((0 - lo) / span) * 56).toFixed(1); const c = run < 0 ? '#ff8d7d' : '#4ade80';
+  svg.innerHTML = '<line x1="0" x2="300" y1="' + zy + '" y2="' + zy + '" stroke="#2b3a3f" stroke-dasharray="3 3"/><path d="' + line + ' L300 ' + zy + ' L0 ' + zy + ' Z" fill="' + c + '22"/><path d="' + line + '" fill="none" stroke="' + c + '" stroke-width="1.6" vector-effect="non-scaling-stroke"/>';
+  const f = parts(days[0].date), l = parts(days[days.length - 1].date);
+  $('equityLabel').textContent = 'TEAM EQUITY CURVE · PAPER · ' + MONTHS[f.m - 1].toUpperCase() + ' ' + f.d + ' → ' + MONTHS[l.m - 1].toUpperCase() + ' ' + l.d + ' · ' + money(run);
 }
 
-const sheet=document.getElementById('sheet');
-let lastFocus=null;
-function openDay(iso){
-  const trades=(byDay[iso]||[]).slice().sort((a,b)=>a.entry.localeCompare(b.entry));
-  const total=trades.reduce((s,t)=>s+t.pnl,0);
-  document.getElementById('sheetTitle').textContent=longDate(iso);
-  const sub=document.getElementById('sheetSub');
-  sub.className='sheet-sub';
-  if(!trades.length){sub.textContent=iso>TODAY?'Upcoming day':'No mock trades'}
-  else{sub.textContent='Team · '+trades.length+' paper trade'+(trades.length>1?'s':'')+' · '+money(total);sub.classList.add(total<0?'negative':'positive')}
-  const body=document.getElementById('sheetBody');
-  body.replaceChildren();
-  if(!trades.length){const p=document.createElement('p');p.className='muted empty-day';p.textContent=iso>TODAY?'This day has not happened yet.':'No mock trades on this day. The team passed on everything.';body.appendChild(p)}
-  else trades.forEach(t=>body.appendChild(tradeCard(t)));
-  lastFocus=document.activeElement;
-  sheet.hidden=false;
-  document.getElementById('app').setAttribute('inert','');
-  document.body.style.overflow='hidden';
-  document.getElementById('sheetClose').focus();
+const sheet = $('sheet'); let lastFocus = null;
+async function openDay(iso){
+  $('sheetTitle').textContent = longDate(iso);
+  const sub = $('sheetSub'); sub.className = 'sheet-sub'; sub.textContent = 'Loading…';
+  const body = $('sheetBody'); body.replaceChildren();
+  lastFocus = document.activeElement; sheet.hidden = false; $('app').setAttribute('inert', ''); document.body.style.overflow = 'hidden'; $('sheetClose').focus();
+  try {
+    const doc = await loadJSON('data/ledger/' + iso + '.json');
+    const trades = doc.trades || []; const total = Number(doc.pnl_usd) || 0;
+    sub.textContent = 'Team · ' + trades.length + ' paper trade' + (trades.length === 1 ? '' : 's') + ' · ' + money(total); sub.classList.add(total < 0 ? 'negative' : 'positive');
+    body.replaceChildren(...(trades.length ? trades.slice().reverse().map(tradeCard) : [empty('No simulated trades closed this day.')]));
+  } catch (e) {
+    if (e.status === 404) { sub.textContent = 'No paper trades'; body.replaceChildren(empty(iso > todayET() ? 'This day has not happened yet.' : 'No simulated trades closed this day.')); }
+    else { sub.textContent = 'Could not load'; body.replaceChildren(empty('Could not load ' + iso + ': ' + e.message + '. No trades were invented.')); }
+  }
 }
-function closeSheet(){
-  if(sheet.hidden)return;
-  sheet.hidden=true;
-  document.getElementById('app').removeAttribute('inert');
-  document.body.style.overflow='';
-  if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus();
+function closeSheet(){ if (sheet.hidden) return; sheet.hidden = true; $('app').removeAttribute('inert'); document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+$('cal').addEventListener('click', e => { const b = e.target.closest('button[data-date]'); if (b) openDay(b.dataset.date); });
+$('calPrev').addEventListener('click', () => { if (calIndex > 0) { calIndex--; renderCalendar(); } });
+$('calNext').addEventListener('click', () => { if (calIndex < calMonths.length - 1) { calIndex++; renderCalendar(); } });
+$('sheetClose').addEventListener('click', closeSheet); $('sheetBackdrop').addEventListener('click', closeSheet);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+function renderFeed(feed){
+  const events = feed.events || []; const first = seenFeed == null;
+  if (first) seenFeed = new Set(events.map(e => e.id));
+  const host = $('feed');
+  host.replaceChildren(...(events.length ? events.slice(0, 120).map(ev => {
+    const a = document.createElement('article'); a.className = 'feed-item' + (ev.type === 'error' ? ' err' : '') + (!first && !seenFeed.has(ev.id) ? ' is-new' : '');
+    a.innerHTML = '<div class="fh"><b></b><time></time></div>'; a.querySelector('b').textContent = ev.agent; a.querySelector('time').textContent = et(ev.time);
+    if (ev.trade) a.appendChild(tradeCard(ev.trade)); else { const p = document.createElement('p'); p.textContent = ev.text; a.appendChild(p); }
+    return a;
+  }) : [empty('Waiting for the first transmission.')]));
+  events.forEach(e => seenFeed.add(e.id));
+  $('feedUpdated').textContent = feed.updated ? 'UPDATED ' + et(feed.updated).toUpperCase() : 'WAITING';
 }
-document.getElementById('cal').addEventListener('click',e=>{const btn=e.target.closest('button[data-date]');if(btn)openDay(btn.dataset.date)});
-document.getElementById('calPrev').addEventListener('click',()=>{if(calIndex>0){calIndex--;renderCalendar()}});
-document.getElementById('calNext').addEventListener('click',()=>{if(calIndex<CAL_MONTHS.length-1){calIndex++;renderCalendar()}});
-document.getElementById('sheetClose').addEventListener('click',closeSheet);
-document.getElementById('sheetBackdrop').addEventListener('click',closeSheet);
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
-renderBoard();
+function renderRoster(){ const r = $('roster'); AGENTS.forEach(a => { const li = document.createElement('li'); const i = document.createElement('i'); i.style.background = a.color; const s = document.createElement('span'); s.textContent = a.role; li.append(i, s); r.appendChild(li); }); }
+async function loadState(){ try { renderState(await loadJSON('data/research.json')); } catch (e) { $('systemState').textContent = 'DATA UNREADABLE'; $('strategy').replaceChildren(empty(e.message + '. Retrying. No numbers were substituted.')); } }
+async function loadFeed(){ try { renderFeed(await loadJSON('data/feed.json')); } catch (e) { $('feed').replaceChildren(empty('Feed unavailable: ' + e.message)); } }
+function tick(){ if (!state || !state.next_cycle) return; const left = Math.max(0, Math.floor((new Date(state.next_cycle) - Date.now()) / 1000)); $('countdown').textContent = String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0'); }
+renderRoster(); buildMonths(); renderCalendar(); renderEquity();
+loadState(); loadFeed();
+setInterval(loadState, 20000); setInterval(loadFeed, 12000); setInterval(tick, 1000);
+// No service worker: retire any old one so a stale copy is never served.
+if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => { if (/\/trenchfloor\/(floor\/)?$/.test(new URL(r.scope).pathname)) r.unregister(); })).catch(() => {});
 </script>
 <script type="module">
 import * as THREE from 'three';
@@ -945,8 +1079,6 @@ function boot(){
   goTo('desk', true);
   resize();
 
-  const status = document.getElementById('sceneStatus');
-  if(status) status.textContent = 'AGENTS SEATED';
   document.querySelector('.scene-loading')?.remove();
 
   const tmp = new THREE.Vector3();
@@ -991,6 +1123,12 @@ function boot(){
     return out;
   };
   window.__view = { goTo, camera, controls };
+  window.setAgentReadouts = (agents) => stations.forEach((s, i) => {
+    const a = agents[i]; if (!a) return;
+    const key = (a.readout || []).join('|'); if (s.key === key) return; s.key = key;
+    const old = s.screen.material.map; s.screen.material.map = screenTexture(a, i * 0.9); s.screen.material.needsUpdate = true; if (old) old.dispose();
+  });
+  window.setAgentReadouts(window.FLOOR_AGENTS || []);
   requestAnimationFrame(frame);
 }
 
@@ -1001,7 +1139,7 @@ function boot(){
     boot();
   } catch (err) {
     console.error(err);
-    showSceneError('3D view could not start on this device. The mock ledger below still works.');
+    showSceneError('3D view could not start on this device. The real ledger below still works.');
   }
 })();
 </script>
