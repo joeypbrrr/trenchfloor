@@ -2,12 +2,12 @@
   "name": "Trenchfloor",
   "disclaimer": "Paper trading / research only. No wallet. No real trades. Not financial advice.",
   "scope": "Solana meme-coin paper research",
-  "ok": true,
+  "ok": false,
   "cycle_count": 2,
   "last_cycle": "2026-11-07T01:40:07.220299+00:00",
   "next_cycle": "2026-11-07T02:10:07.220305+00:00",
-  "generated": "2026-11-07T01:40:07.223667+00:00",
-  "data_status": "95 mints \u00b7 6 passed filters \u00b7 3 eligible \u00b7 38 new paper trades",
+  "generated": "2026-11-07T01:43:44.309042+00:00",
+  "data_status": "Starting",
   "errors": [],
   "agents": [
     {
@@ -15,60 +15,60 @@
       "initials": "RM",
       "color": "ff7a00",
       "status": "idle",
-      "task": "Reviewed 4 tokens. Safety fails 1. Incomplete 0. Eligible 3. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "PASS jeff: PASS mint, freeze, extensions, and holder concentration",
-      "heartbeat": "2026-11-07T01:40:07.219032+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T01:43:44.227261+00:00"
     },
     {
       "role": "Bubble Map Analyst",
       "initials": "BA",
       "color": "ffb000",
       "status": "idle",
-      "task": "1 concentration or cluster fails this cycle. Links are https://app.bubblemaps.io/sol/token/<mint>.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "FAIL SI276: FAIL non-LP non-program holder owns 4.74% (limit 3.5%) https://app.bubblemaps.io/sol/token/HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump",
-      "heartbeat": "2026-11-07T01:40:07.219559+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T01:43:44.227282+00:00"
     },
     {
       "role": "X/Twitter Scout",
       "initials": "XS",
       "color": "ff5a1f",
       "status": "idle",
-      "task": "No free X/Twitter API is reachable (HTTP 401). Not inventing tweets.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "56 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacityonx; GATO https://x.com/TheGTA6cat; 4AN9uw https://x.com/Machiave",
-      "heartbeat": "2026-11-07T01:40:07.222068+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T01:43:44.227284+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "95 mints \u00b7 6 passed filters \u00b7 3 eligible \u00b7 38 new paper trades",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "jeff window ATH fraction now is 0.267 (inside the 20\u201345% zone).",
-      "heartbeat": "2026-11-07T01:40:07.220900+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T01:43:44.227286+00:00"
     },
     {
       "role": "Backtester",
       "initials": "BT",
       "color": "ffc266",
       "status": "idle",
-      "task": "Ledger 40 paper trades, net $-97.3861.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "dip_20_40_stop8_tp15_hold16: 19 new paper trades, 9 out of sample, net $-16.0133.",
-      "heartbeat": "2026-11-07T01:40:07.221510+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T01:43:44.227289+00:00"
     },
     {
       "role": "Strategist",
       "initials": "ST",
       "color": "ff6a00",
       "status": "idle",
-      "task": "Living champion dip_20_40_stop8_tp15_hold8. out-of-sample expectancy $0.4082 beat the previous champion Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "Rejected dip_20_40_stop8_tp15_hold16: out-of-sample expectancy $-1.7793 over 9 trades. It will not be retested.",
-      "heartbeat": "2026-11-07T01:40:07.220320+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T01:43:44.227290+00:00"
     }
   ],
   "activity": [
@@ -1724,14 +1724,14 @@
     "ledger_pnl_usd": -97.3861
   },
   "health": {
-    "local": false,
-    "local_error": "HTTP Error 404: File not found",
-    "site_reachable": false,
-    "site_error": "HTTP Error 404: Not Found",
+    "local": true,
+    "local_error": null,
+    "site_reachable": true,
+    "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T01:38:10.677655+00:00",
+    "checked_at": "2026-11-07T01:43:44.309019+00:00",
     "stale_agents": [],
-    "last_published": "2026-11-07T01:40:07.408258+00:00"
+    "last_published": "2026-11-07T01:43:44.523706+00:00"
   },
   "ledger": {
     "timezone": "America/New_York",
