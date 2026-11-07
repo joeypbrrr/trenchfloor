@@ -289,6 +289,7 @@ footer span:last-child{text-align:right;color:#e4a578}
 
 /* Live copy: entire scene fits phone width; no room-navigation tabs. */
 #scene{height:clamp(280px,45vh,560px)}
+@media(max-width:480px){.feed-item p,.lesson{overflow-wrap:anywhere;word-break:normal}.feed-item{font-size:12px}.fh{gap:8px;flex-wrap:wrap}#liveChat{max-height:520px!important}}
 </style>
 </head>
 <body>
@@ -314,7 +315,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       </div>
       <p>Six agents. One team. One shared paper P&amp;L. One market: <strong>Solana meme coins.</strong><br>Every paper trade is proposed by one agent and <strong>voted on by all six</strong>. Buys dips. Never top-ticks. Free public data only.</p>
     </section>
-    <a class="best-link" href="./BEST_STRATEGY.md">
+    <a class="best-link" href="../BEST_STRATEGY.md">
       <span>★ BEST STRATEGY</span>
       <b id="bestLinkText">Waiting for the first cycle</b>
       <i aria-hidden="true">→</i>
@@ -411,7 +412,7 @@ footer span:last-child{text-align:right;color:#e4a578}
     <section class="panel" aria-labelledby="lessonHeading">
       <div class="panel-heading">
         <div><span class="section-num">08</span><h2 id="lessonHeading">LEARNING LOG</h2></div>
-        <a class="small-muted" href="./LESSONS.md">LESSONS.md →</a>
+        <a class="small-muted" href="../LESSONS.md">LESSONS.md →</a>
       </div>
       <div id="lessons"><p class="empty">No lessons yet.</p></div>
     </section>
@@ -420,7 +421,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <p class="ops" id="opsText">Honest errors only. A failed source stays failed.</p>
     </section>
     <footer>
-      <span><strong>TRENCHFLOOR</strong> · Paper trading / research only. No wallet. No real trades. Not financial advice. <a href="./BEST_STRATEGY.md" style="color:#e4a578">BEST_STRATEGY.md</a> · <a href="./LESSONS.md" style="color:#e4a578">LESSONS.md</a> · <a href="https://joeypbrrr.github.io/trenchfloor/preview/" style="color:#e4a578">Design mockup</a></span>
+      <span><strong>TRENCHFLOOR</strong> · Paper trading / research only. No wallet. No real trades. Not financial advice. <a href="../BEST_STRATEGY.md" style="color:#e4a578">BEST_STRATEGY.md</a> · <a href="../LESSONS.md" style="color:#e4a578">LESSONS.md</a> · <a href="https://joeypbrrr.github.io/trenchfloor/preview/" style="color:#e4a578">Design mockup</a></span>
       <span>GitHub Pages can take about a minute to show a new push.</span>
     </footer>
   </main>
@@ -465,7 +466,8 @@ const LONG_MONTHS = ['January','February','March','April','May','June','July','A
 const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 function parts(iso){ const [y, m, d] = iso.split('-').map(Number); return { y, m, d, dow: new Date(Date.UTC(y, m - 1, d)).getUTCDay() }; }
 function longDate(iso){ const p = parts(iso); return WEEKDAYS[p.dow] + ', ' + MONTHS[p.m - 1] + ' ' + p.d + ', ' + p.y; }
-async function loadJSON(path){ const r = await fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); if (!r.ok) { const e = new Error(path + ' HTTP ' + r.status); e.status = r.status; throw e; } return r.json(); }
+const PAGES_HOST=location.hostname.endsWith('github.io');
+async function loadJSON(path){ if(PAGES_HOST&&path.startsWith('data/'))path='../'+path; const r = await fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); if (!r.ok) { const e = new Error(path + ' HTTP ' + r.status); e.status = r.status; throw e; } return r.json(); }
 
 let state = null, ledgerDays = [], calMonths = [], calIndex = 0, seenFeed = null;
 
@@ -701,12 +703,13 @@ renderRoster(); buildMonths(); renderCalendar(); renderEquity();
 document.querySelector('.floor-card').after(document.getElementById('calendar'));
 // Live copy only: no static JSON polling. WebSockets work through quick tunnels;
 // the server also offers local SSE at /events for diagnostics.
-let liveSocket, liveLastId = null, liveHeartbeat = null, liveConnected = false;
+let liveSocket, liveLastId = null, liveHeartbeat = null, liveConnected = false, staticMode = PAGES_HOST, staticTimer = null;
 const liveBubbles = new Map();
 let liveCache=null;
 const liveBadge = document.createElement('div'); liveBadge.style.cssText='padding:8px 12px;color:#ffb04b;font:11px monospace;text-align:center;background:#1a1009';
 liveBadge.textContent='CONNECTING TO LIVE RESEARCH'; document.body.prepend(liveBadge);
 function liveHealth(){
+  if(staticMode){liveBadge.textContent='Preview: updates every few minutes; instant mode runs on the private server';return;}
   const age = liveHeartbeat ? (Date.now()-Date.parse(liveHeartbeat))/1000 : Infinity;
   liveBadge.textContent = !liveConnected ? 'DISCONNECTED — RECONNECTING' : age < 20 ? '● LIVE PUSH · RESEARCH HEARTBEAT '+Math.max(0,Math.round(age))+'s AGO · PAPER ONLY' : 'DASHBOARD CONNECTED · RESEARCH HEARTBEAT MISSING / STALE';
 }
@@ -739,12 +742,32 @@ function liveApply(s){
   checklist.replaceChildren(...(s.checklist.length?s.checklist.map(item=>{const row=document.createElement('div');row.className='lesson';const text=document.createElement('b');text.textContent=item.suggestion;const note=document.createElement('small');note.textContent=item.supporting_losses+' supporting live paper loss(es) · SUGGESTION ONLY — NOT APPLIED';row.append(text,note);return row}):[empty('No forward paper losses have closed since this dashboard started. Historical/backtest rows do not seed reviews. No checklist suggestions yet.')]));
   liveLastId=s.sequence;liveHealth();
 }
+async function loadStaticSnapshot(){
+  try{
+    const [research,feed,chat,checklist,ledger]=await Promise.all([
+      loadJSON('data/research.json'),loadJSON('data/feed.json'),
+      loadJSON('data/live_chat.json').catch(()=>({messages:[]})),
+      loadJSON('data/checklist.json').catch(()=>({items:[]})),
+      loadJSON('data/ledger/index.json')]);
+    research.ledger=ledger;
+    liveApply({research,agents:research.agents||[],ledger,events:(feed.events||[]).slice().reverse().map(e=>({...e,kind:e.kind||e.type||'info'})),chat:chat.messages||[],checklist:checklist.items||[],heartbeat:null,server_time:feed.updated||research.generated,sequence:Date.now()});
+  }catch(err){$('systemState').textContent='PREVIEW DATA UNAVAILABLE';console.error('Static preview data',err);}
+  liveHealth();
+}
+function startStaticPolling(){
+  staticMode=true;liveConnected=false;liveHealth();
+  if(staticTimer)return;
+  loadStaticSnapshot();staticTimer=setInterval(loadStaticSnapshot,60000);
+  if(liveSocket)liveSocket.close();
+}
 function liveConnect(){
+  if(PAGES_HOST||staticMode){startStaticPolling();return;}
   liveSocket=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws');
   liveSocket.onopen=()=>{liveConnected=true;liveHealth()};
   liveSocket.onmessage=e=>{try{liveApply(JSON.parse(e.data))}catch(err){console.error('Live state error',err)}};
-  liveSocket.onclose=()=>{liveConnected=false;liveHealth();setTimeout(liveConnect,2000)};
-  liveSocket.onerror=()=>liveSocket.close();
+  liveSocket.onclose=()=>{liveConnected=false;startStaticPolling()};
+  liveSocket.onerror=()=>startStaticPolling();
+  setTimeout(()=>{if(!liveConnected)startStaticPolling()},5000);
 }
 liveConnect();setInterval(()=>{tick();liveHealth()},1000);
 setInterval(()=>{
@@ -754,7 +777,7 @@ setInterval(()=>{
 // No service worker: retire any old one so a stale copy is never served.
 if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => { if (/\/trenchfloor\/(floor\/)?$/.test(new URL(r.scope).pathname)) r.unregister(); })).catch(() => {});
 </script>
-<script src="/occupancy.js"></script>
+<script src="./occupancy.js"></script>
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -1120,7 +1143,7 @@ function boot(){
   function homeView(){
     const w=host.clientWidth||1,h=host.clientHeight||1,aspect=w/h;
     const fov=52, vf=THREE.MathUtils.degToRad(fov/2),hf=Math.atan(Math.tan(vf)*aspect);
-    const d=18.8/Math.sin(Math.min(vf,hf));
+    const d=(w<760?17.3:18.8)/Math.sin(Math.min(vf,hf));
     const target=new THREE.Vector3(0,0.7,-1.5),el=0.66;
     return {fov,target,pos:new THREE.Vector3(0,target.y+d*Math.sin(el),target.z-d*Math.cos(el))};
   }

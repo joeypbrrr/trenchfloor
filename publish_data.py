@@ -32,6 +32,12 @@ SITE_FILES = [
     "data/feed.json",
     "data/lessons.json",
     "data/ledger/index.json",
+    "live/index.html",
+    "live/occupancy.js",
+    "live/icons/icon-192.png",
+    "live/icons/icon-512.png",
+    "data/live_chat.json",
+    "data/checklist.json",
 ]
 TOKEN_RE = re.compile(r"(https?://)([^/\s@]+)@")
 
@@ -161,7 +167,30 @@ def push_with_retry(work, branch, retries=4):
     raise RuntimeError("push failed after rebase retries: " + last)
 
 
+def live_snapshots(root):
+    """Public read-only snapshots; never publish the private cache or server."""
+    if not (root / "live" / "index.html").exists():
+        return []
+    try:
+        history = json.loads((root / "data/cache/live-chat-state.json").read_text())
+    except (OSError, ValueError):
+        history = {}
+    stamp = datetime.now(timezone.utc).isoformat()
+    messages = [{k: e[k] for k in ("id", "agent", "kind", "text", "time", "trade_id") if k in e}
+                for e in history.get("messages", [])[-200:]]
+    files = {"data/live_chat.json": {"updated": stamp, "messages": messages},
+             "data/checklist.json": {"updated": stamp, "items": history.get("checklist", []), "status": "SUGGESTIONS ONLY — not applied"}}
+    for rel, payload in files.items():
+        path = root / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(payload, indent=2) + "\n")
+        tmp.replace(path)
+    return list(files)
+
+
 def copy_payload(root, dest, feed_only=False):
+    snapshot_files = live_snapshots(root)
     if feed_only:
         src = root / "data" / "feed.json"
         if not src.exists():
@@ -169,7 +198,11 @@ def copy_payload(root, dest, feed_only=False):
         target = dest / "data" / "feed.json"
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, target)
-        return ["data/feed.json"]
+        for rel in snapshot_files:
+            target = dest / rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(root / rel, target)
+        return ["data/feed.json"] + snapshot_files
     copied = []
     for rel in SITE_FILES:
         src = root / rel

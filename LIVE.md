@@ -1,11 +1,16 @@
 # Trenchfloor realtime floor (paper research only)
 
+- Public phone preview: https://joeypbrrr.github.io/trenchfloor/live/
+  Static fallback polls published data every 60 seconds; banner explicitly says
+  updates arrive every few minutes, not instantly. Root, /preview/ and /floor/ are unchanged.
 - Local read-only dashboard: http://127.0.0.1:8796/
 - Private event receiver: http://127.0.0.1:8797/event (loopback only).
 - Original local site (8795), Pages HTML, Pages links and publisher are unchanged.
 - `./live_start.sh` starts auto-restarting dashboard and Cloudflare quick tunnel.
   `./live_start.sh --local-only` starts only the dashboard. `./live_stop.sh` stops both.
   These scripts are independent of research start/stop scripts.
+- Publisher copies only live/ page/assets plus sanitized data/live_chat.json and
+  data/checklist.json snapshots; chat/checklist snapshots update on every publish.
 - Install cloudflared at `/workspace/bin/cloudflared` or set `CLOUDFLARED_BIN`.
   Current tunnel address appears in `logs/live-tunnel-current.log` and changes on
   every tunnel recreation. Quick tunnels have no uptime guarantee.
@@ -25,7 +30,8 @@ Cloudflare quick tunnels explicitly do not support SSE (GET streams are buffered
 so the live page uses WebSockets at `/ws`. `/events` remains an SSE diagnostic for
 local curl clients. The server pushes initial state, then event deltas immediately,
 with full state refreshes and genuine research heartbeat updates every ~5 seconds.
-No browser JSON polling. A bounded background queue in `events.py` POSTs each
+The private server uses no browser JSON polling. On github.io (or WebSocket failure),
+the same page switches to a 60-second static-data fallback. A bounded background queue in `events.py` POSTs each
 telemetry event with a 0.5-second timeout. Failures/drop-on-overflow never break or
 block research; telemetry is best effort, not an audit-grade delivery guarantee.
 Events report when research has news; scanning cadence is not changed.
