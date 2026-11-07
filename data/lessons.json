@@ -1270,38 +1270,6 @@
     "progress_pct_of_low": null,
     "candidates": [
       {
-        "id": "dip_20_40_stop12_tp15_hold16",
-        "role": "candidate",
-        "status": "rejected",
-        "notional_usd": 100.0,
-        "oos_trades": 6,
-        "oos_window_days": 2.62,
-        "trades_per_month": 69.6,
-        "expectancy_usd": -0.7087,
-        "monthly_usd": -49.31,
-        "ticket_for_low_usd": null,
-        "ticket_for_high_usd": null,
-        "goal_low_usd": 3000.0,
-        "goal_high_usd": 5000.0,
-        "qualifies": false
-      },
-      {
-        "id": "dip_20_40_stop12_tp15_hold24",
-        "role": "candidate",
-        "status": "rejected",
-        "notional_usd": 100.0,
-        "oos_trades": 6,
-        "oos_window_days": 2.62,
-        "trades_per_month": 69.6,
-        "expectancy_usd": -0.7087,
-        "monthly_usd": -49.31,
-        "ticket_for_low_usd": null,
-        "ticket_for_high_usd": null,
-        "goal_low_usd": 3000.0,
-        "goal_high_usd": 5000.0,
-        "qualifies": false
-      },
-      {
         "id": "dip_20_40_stop8_tp15_hold8",
         "role": "champion",
         "status": "champion",
@@ -1310,7 +1278,7 @@
         "qualifies": true
       }
     ],
-    "status_line": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). dip_20_40_stop12_tp15_hold16 projects $-49.31/mo (rejected, 6 OOS trades). dip_20_40_stop12_tp15_hold24 projects $-49.31/mo (rejected, 6 OOS trades). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
+    "status_line": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
     "method": "Projected monthly P&L = out-of-sample average $ per trade \u00d7 out-of-sample trades per month (pooled OOS trade count \u00f7 the OOS window length \u00d7 30.44 days). Ticket needed = $100 \u00d7 goal \u00f7 projected monthly. Promotion requires \u22655 OOS trades, a positive average, and a variant that is not rejected; among those, the higher projected monthly P&L wins."
   }
 }

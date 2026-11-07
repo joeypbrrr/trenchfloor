@@ -1,7 +1,98 @@
 {
-  "updated": "2026-11-07T04:00:57.964354+00:00",
-  "next_id": 391,
+  "updated": "2026-11-07T04:01:02.451953+00:00",
+  "next_id": 404,
   "events": [
+    {
+      "id": 403,
+      "time": "2026-11-07T04:01:02.451945+00:00",
+      "agent": "System",
+      "type": "info",
+      "text": "Cycle 8 finished. 96 mints \u00b7 4 passed filters \u00b7 0 eligible \u00b7 0 new paper trades."
+    },
+    {
+      "id": 402,
+      "time": "2026-11-07T04:01:02.441384+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal."
+    },
+    {
+      "id": 401,
+      "time": "2026-11-07T04:01:02.435669+00:00",
+      "agent": "Backtester",
+      "type": "info",
+      "text": "No eligible pool has enough hourly history. Variants were not tested and were not marked tried or rejected."
+    },
+    {
+      "id": 400,
+      "time": "2026-11-07T04:01:02.431112+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "Proposing dip_20_40_stop12_tp25_hold8; dip_20_40_stop12_tp25_hold16. Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both."
+    },
+    {
+      "id": 399,
+      "time": "2026-11-07T04:01:02.426588+00:00",
+      "agent": "Risk Manager",
+      "type": "error",
+      "text": "jeff safety check incomplete: incomplete: Solana RPC disabled for the rest of this cycle after repeated failures. Not treated as a pass."
+    },
+    {
+      "id": 398,
+      "time": "2026-11-07T04:01:02.422447+00:00",
+      "agent": "Risk Manager",
+      "type": "error",
+      "text": "DONNA safety check incomplete: incomplete: Solana RPC disabled for the rest of this cycle after repeated failures. Not treated as a pass."
+    },
+    {
+      "id": 397,
+      "time": "2026-11-07T04:01:02.418275+00:00",
+      "agent": "Risk Manager",
+      "type": "error",
+      "text": "AMD safety check incomplete: incomplete: Solana RPC disabled for the rest of this cycle after repeated failures. Not treated as a pass."
+    },
+    {
+      "id": 396,
+      "time": "2026-11-07T04:01:02.414449+00:00",
+      "agent": "Risk Manager",
+      "type": "error",
+      "text": "FLOAT safety check incomplete: incomplete: Solana RPC disabled for the rest of this cycle after repeated failures. Not treated as a pass."
+    },
+    {
+      "id": 395,
+      "time": "2026-11-07T04:01:02.400242+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs."
+    },
+    {
+      "id": 394,
+      "time": "2026-11-07T04:01:02.394815+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "96 mints discovered, 30 enriched, 4 passed filters, 5 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 10, 'pair younger than minimum age': 5, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 6, 'liquidity unknown': 3, 'liquidity below minimum': 1}."
+    },
+    {
+      "id": 393,
+      "time": "2026-11-07T04:01:02.288176+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "55 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; Ho7n9c https://x.com/Orpofun; FzmSx4 https://x.com/BustedMemeSol"
+    },
+    {
+      "id": 392,
+      "time": "2026-11-07T04:00:59.449162+00:00",
+      "agent": "Data Scout",
+      "type": "error",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
+    },
+    {
+      "id": 391,
+      "time": "2026-11-07T04:00:59.444491+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
+    },
     {
       "id": 390,
       "time": "2026-11-07T04:00:57.964266+00:00",
@@ -7620,97 +7711,6 @@
       "agent": "Bubble Map Analyst",
       "type": "info",
       "text": "DONNA holder check passed. Top non-LP non-program wallet 2.0897%. linked-wallet sample stopped early: getTransaction failed: https://public.rpc.solanavibestation.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://solana-rpc.publicnode.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'} https://app.bubblemaps.io/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump"
-    },
-    {
-      "id": 223,
-      "time": "2026-11-07T02:39:51.972559+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "PASS DONNA: PASS mint, freeze, extensions, and holder concentration"
-    },
-    {
-      "id": 222,
-      "time": "2026-11-07T02:39:51.969447+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "AMD is eligible for a paper dip test."
-    },
-    {
-      "id": 221,
-      "time": "2026-11-07T02:39:51.966460+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "AMD holder check passed. Top non-LP non-program wallet 0.1223%. sampled 3 wallets, up to 8 recent signatures each; not a full funding history https://app.bubblemaps.io/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump"
-    },
-    {
-      "id": 220,
-      "time": "2026-11-07T02:39:50.537203+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "PASS AMD: PASS mint, freeze, extensions, and holder concentration"
-    },
-    {
-      "id": 219,
-      "time": "2026-11-07T02:38:40.536308+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs."
-    },
-    {
-      "id": 218,
-      "time": "2026-11-07T02:38:40.529906+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "97 mints discovered, 30 enriched, 4 passed filters, 5 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 6, 'pair younger than minimum age': 4, 'liquidity unknown': 2, 'liquidity below minimum': 2}."
-    },
-    {
-      "id": 217,
-      "time": "2026-11-07T02:38:40.429802+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "57 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; FzmSx4 https://x.com/BustedMemeSol; 4AN9uw https://x.com/Machiavelli_HQ"
-    },
-    {
-      "id": 216,
-      "time": "2026-11-07T02:38:37.591686+00:00",
-      "agent": "Data Scout",
-      "type": "error",
-      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
-    },
-    {
-      "id": 215,
-      "time": "2026-11-07T02:38:37.585935+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
-    },
-    {
-      "id": 214,
-      "time": "2026-11-07T02:38:36.272268+00:00",
-      "agent": "System",
-      "type": "info",
-      "text": "Cycle 5 started. Read 2 standing rules and 6 variants that will not be retested. Standing goal: $3,000\u2013$5,000/mo extra (paper projection; OOS rules never loosened). Paper trading / research only. No wallet. No real trades. Not financial advice."
-    },
-    {
-      "id": 213,
-      "time": "2026-11-07T02:37:12.929243+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 19 new pools, 2 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 212,
-      "time": "2026-11-07T02:37:11.469766+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. 7FT2kA https://x.com/packbattlegg"
-    },
-    {
-      "id": 211,
-      "time": "2026-11-07T02:32:07.668776+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
     }
   ]
 }
