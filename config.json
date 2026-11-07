@@ -1,0 +1,54 @@
+{
+  "public_url": "https://joeypbrrr.github.io/trenchfloor/",
+  "local_url": "http://127.0.0.1:8789",
+  "cycle_seconds": 1800,
+  "health_seconds": 180,
+  "light_scan_seconds": 300,
+  "full_publish_min_seconds": 600,
+  "feed_publish_min_seconds": 45,
+  "stale_agent_seconds": 1200,
+  "filters": {
+    "min_liquidity_usd": 12000,
+    "min_volume_24h_usd": 8000,
+    "min_pair_age_hours": 6,
+    "max_pair_age_days": 60,
+    "min_market_cap_usd": 25000,
+    "max_market_cap_usd": 20000000
+  },
+  "entry_zone": {
+    "min_frac_of_ath": 0.2,
+    "max_frac_of_ath": 0.45
+  },
+  "paper": {
+    "notional_usd": 100,
+    "fee_bps_per_side": 30,
+    "base_slippage_bps": 80,
+    "slippage_extra_below_25k_bps": 40,
+    "slippage_extra_below_12k_bps": 80,
+    "oos_fraction": 0.3,
+    "min_oos_trades": 5,
+    "min_hourly_bars": 30
+  },
+  "limits": {
+    "enrich_mints": 30,
+    "deep_dives": 4,
+    "ohlcv_tokens": 3,
+    "variants_per_cycle": 2,
+    "hourly_bars": 168,
+    "daily_bars": 90,
+    "rpc_budget": 64,
+    "cluster_tokens": 2,
+    "feed_events": 180,
+    "feed_trades_per_cycle": 40
+  },
+  "rpc_urls": [
+    "https://public.rpc.solanavibestation.com",
+    "https://api.mainnet-beta.solana.com",
+    "https://solana-rpc.publicnode.com"
+  ],
+  "rpc_min_interval_seconds": 1.25,
+  "gecko_min_interval_seconds": 2.05,
+  "dex_min_interval_seconds": 0.35,
+  "holder_fail_pct": 3.5,
+  "negative_cache_hours": 6
+}
