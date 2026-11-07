@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Trenchfloor research loop.
 
-Six paper-trading research agents share one state file. No wallet, no keys,
-no real orders. Public data only. GMGN is a convenience link, never a source.
+Six paper-trading research agents share one state file. No wallet, no signing keys,
+no real orders. Public data only. Optional key-only GMGN discovery; no trading endpoints.
 """
 from __future__ import annotations
 
@@ -18,7 +18,9 @@ from memory import DISCLAIMER, Memory, atomic_json, et_now, now_iso
 from publish_data import publish
 from safety import review_token, sample_links
 from team import review_trades
-from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num
+from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num, ResilientRpcClient
+from candidate_sources import candidates as source_candidates, fee_filter_reason
+from daily_stop import DailyStop, mode_for, close_time, fill_key
 
 ROOT = Path(__file__).resolve().parent
 ROLES = [
@@ -250,6 +252,20 @@ def overlay(dest, src, keys):
 
 
 def discover(config):
+    if config.get("candidate_source", "legacy") != "legacy":
+        update("Data Scout", "working", "Reading the explicitly selected discovery adapter (no DexScreener boost scanning).")
+        rows, report = source_candidates(MARKET, config)
+        queue = []
+        for row in rows:
+            if row["mint"] in SKIP_MINTS:
+                continue
+            if MEMORY.mint_rejection(row["mint"]):
+                report["skipped_rejected"] += 1
+                continue
+            row = {**blank(row["mint"]), **row}
+            queue.append(row)
+        post("Data Scout", report["label"] + ". Real/organic volume is not independently verified. Unknown global fees fail closed unless the separately opted-in PROXY is used.")
+        return queue, report
     report = {"gecko": [], "gecko_errors": [], "list_errors": [], "pair_errors": [], "skipped_rejected": 0, "rows": 0}
     update("X/Twitter Scout", "working", "Checking whether a free X API answers, then reading DexScreener boost and profile links.", action="Checking X API")
     x_status = MARKET.probe_x()
@@ -353,13 +369,17 @@ def _priority(cand):
 
 
 def screen(candidates, config):
-    filters = config["filters"]
+    filters = dict(config["filters"])
+    new_source = config.get("candidate_source", "legacy") != "legacy"
+    if new_source:
+        filters["min_market_cap_usd"] = config.get("new_source_min_market_cap_usd", 6000)
+        filters["strict_market_cap"] = True
     now = time.time()
     passed = []
     rejected = []
     counts = {}
     for cand in candidates:
-        reason = _filter_reason(cand, filters, now)
+        reason = (fee_filter_reason(cand, config) if new_source else None) or _filter_reason(cand, filters, now)
         if reason is None:
             blocks = MEMORY.blocks(cand)
             if blocks:
@@ -411,7 +431,7 @@ def _filter_reason(cand, filters, now):
     if cand["volume_24h_usd"] < float(filters["min_volume_24h_usd"]):
         return "volume below minimum"
     mcap = cand.get("market_cap_usd")
-    if mcap is None and cand.get("fdv_usd") is not None:
+    if mcap is None and not filters.get("strict_market_cap") and cand.get("fdv_usd") is not None:
         cand["market_cap_usd"] = cand["fdv_usd"]
         cand["market_cap_from"] = "fdv"
         mcap = cand["fdv_usd"]
@@ -434,7 +454,7 @@ def review_candidates(candidates, config):
         update("Risk Manager", "working", f"Checking mint and freeze authority and Token-2022 extensions on {label}.", action=f"RPC review {label}")
         update("Bubble Map Analyst", "working", f"Measuring holder concentration on {label}. Fail line is one non-LP, non-program wallet above {holder_limit}%.", action=f"Holders {label}")
         try:
-            safety = review_token(MARKET.rpc, cand["mint"], cand.get("liquidity_base"), holder_limit)
+            safety = review_token(MARKET.rpc, cand["mint"], cand.get("liquidity_base"), holder_limit, require_complete=config.get("candidate_source", "legacy") != "legacy" or config.get("rpc_resilience_enabled", False))
         except Exception as exc:
             note_error("Risk Manager", f"{label} safety review crashed: {exc}")
             log(traceback.format_exc())
@@ -553,6 +573,14 @@ def load_history(token, config):
     return len(hourly_bars) >= int((config.get("paper") or {}).get("min_hourly_bars", 30))
 
 
+def daily_stop_status(config, announce=False):
+    status = DailyStop(ROOT).status(config)
+    STATE["daily_stop"] = status
+    if announce:
+        post("Risk Manager", f"Daily profit stop {'HALTED — no new team votes/entries until ET midnight' if status['halted'] else ('armed' if status['enabled'] else 'OFF')}: ${status['realized_pnl_usd']:.2f} realized in {status['mode']} / ${status['target_usd']:.0f}. {status['basis']}.", publish_feed=False)
+    return status
+
+
 def run_variants(tokens, config):
     paper = config.get("paper") or {}
     limits = config.get("limits") or {}
@@ -593,11 +621,46 @@ def run_variants(tokens, config):
         ins, oos = split_samples(trades)
         ins_m = metrics(ins)
         oos_m = metrics(oos)
+        mode = mode_for(config)
+        if mode != "legacy:backtest":
+            for trade in trades:
+                trade["mode"] = mode
+                trade["id"] = mode + ":" + trade["id"]
         known = MEMORY.known_trade_ids()
         unseen = [t for t in trades if t["id"] not in known]
         update("Risk Manager", "working", f"Team vote on {len(unseen)} proposed paper trades from {variant['id']}.", action=f"Voting {variant['id']}")
-        approved, vetoed = review_trades(unseen, tokens_by_mint, variant, config, x_status, MEMORY.can_test(variant["id"]))
-        fresh = MEMORY.record_trades(approved)
+        # Check BEFORE any team vote, then after each newly realized fill.
+        # No batch of approvals can slip through a newly reached profit stop.
+        daily = daily_stop_status(config)
+        if config.get("daily_stop_enabled", False):
+            fresh, vetoed = [], []
+            economic = set()
+            for path in MEMORY.ledger_dir.glob("????-??-??.json"):
+                for t in json.loads(path.read_text()).get("trades", []):
+                    if t.get("mode", "legacy:backtest") == mode:
+                        economic.add(fill_key(t))
+            def entry_guard(trade):
+                daily = daily_stop_status(config)
+                closed = close_time(trade)
+                if not closed or closed.timestamp() > time.time() or fill_key(trade) in economic:
+                    return False
+                if daily["halted"]:
+                    post("Risk Manager", "DAILY PROFIT HALT: blocked a new paper entry before team vote; resumes at ET midnight.", publish_feed=False)
+                    return False
+                return True
+
+            def record_approved(trade):
+                recorded = MEMORY.record_trades([trade])
+                fresh.extend(recorded)
+                economic.update(fill_key(t) for t in recorded)
+                daily_stop_status(config)
+
+            approved, vetoed = review_trades(unseen, tokens_by_mint, variant, config, x_status,
+                                            MEMORY.can_test(variant["id"]), entry_guard=entry_guard,
+                                            on_approved=record_approved)
+        else:
+            approved, vetoed = review_trades(unseen, tokens_by_mint, variant, config, x_status, MEMORY.can_test(variant["id"]))
+            fresh = MEMORY.record_trades(approved)
         MEMORY.learn_from_losses(fresh)
         team_taken += len(fresh)
         team_rejected += len(vetoed)
@@ -749,6 +812,7 @@ def public_token(cand):
         "age_hours", "metrics_source", "twitter", "dex_url", "gmgn_url", "bubble_url",
         "eligible", "lesson_blocks", "filter_reason", "in_entry_zone", "ath_frac", "window_ath",
         "ath_note", "hourly_bars", "daily_bars", "history_error", "description",
+        "global_fees_sol", "global_fees_basis", "fees_proxy_sol", "fees_proxy_basis", "fee_filter_basis",
     ]
     out = {k: cand.get(k) for k in keys}
     out["safety"] = safety
@@ -768,6 +832,10 @@ def rank_watchlist(reviewed):
 
 
 def cycle(config):
+    started = time.monotonic()
+    if config.get("rpc_resilience_enabled", False):
+        MARKET.rpc = ResilientRpcClient(config.get("rpc_urls") or [], config.get("rpc_min_interval_seconds", 1.25), (config.get("limits") or {}).get("rpc_budget", 64))
+    daily_stop_status(config, announce=True)
     STATE["errors"] = []
     STATE["cycle_count"] = int(STATE.get("cycle_count") or 0) + 1
     log(f"cycle {STATE['cycle_count']} start")
@@ -896,6 +964,8 @@ def cycle(config):
         f"{found.get('discovered', 0)} mints · {len(passed)} passed filters · {len(ranked)} eligible · "
         f"{STATE['summary']['new_paper_trades']} new paper trades"
     )
+    STATE["cycle_duration_seconds"] = round(time.monotonic() - started, 3)
+    daily_stop_status(config)
     STATE["last_cycle"] = now_iso()
     STATE["next_cycle"] = datetime.fromtimestamp(time.time() + int(config.get("cycle_seconds", 1800)), timezone.utc).isoformat()
     update("Strategist", "idle", STATE["strategist_note"], action=AGENTS["Strategist"].get("latest_action") or "No champion change")
@@ -910,6 +980,10 @@ def cycle(config):
 
 
 def light_scan(config):
+    if config.get("candidate_source", "legacy") != "legacy":
+        rows, report = source_candidates(MARKET, config)
+        post("Data Scout", f"Light scan: {report['label']}, {len(rows)} rows; no entries or safety passes on a light scan.")
+        return
     seen_path = ROOT / "data" / "cache" / "seen_mints.json"
     try:
         seen = set(json.loads(seen_path.read_text()))
@@ -1004,15 +1078,41 @@ def cycle_due(config):
 
 
 def main():
-    global NO_PUBLISH
+    global NO_PUBLISH, ROOT, emit
     parser = argparse.ArgumentParser(description="Trenchfloor paper-research loop")
     parser.add_argument("--once", action="store_true", help="run one cycle and exit")
     parser.add_argument("--no-publish", action="store_true", help="do not push gh-pages")
+    parser.add_argument("--dry-run", action="store_true", help="one cycle on an isolated temporary copy of data; no publish")
+    parser.add_argument("--candidate-source", choices=["legacy", "gmgn_substitute", "gmgn"], help="dry-run only")
+    parser.add_argument("--fee-proxy", action="store_true", help="dry-run only: opt into an explicitly labeled, non-global fee proxy")
+    parser.add_argument("--report-json", type=Path, help="dry-run only: destination for summary")
     args = parser.parse_args()
     NO_PUBLISH = args.no_publish or __import__("os").environ.get("TRENCHFLOOR_SKIP_PUBLISH") == "1"
+    if not args.dry_run and (args.candidate_source or args.fee_proxy or args.report_json):
+        parser.error("source/proxy/report overrides require --dry-run")
     config = load_config()
+    sandbox = None
+    if args.dry_run:
+        # Isolate telemetry as well as disk state. Dry cycles are not live floor
+        # activity and must not be sent to the separate local event service.
+        import team
+        emit = lambda *a, **k: None
+        team.emit = emit
+        try:
+            import events
+            events.emit = emit
+        except ModuleNotFoundError:
+            pass
+        import tempfile, shutil
+        sandbox = tempfile.TemporaryDirectory(prefix="trenchfloor-dry-")
+        previous_root = ROOT
+        ROOT = Path(sandbox.name)
+        shutil.copytree(previous_root / "data", ROOT / "data")
+        config.update(candidate_source=args.candidate_source or "gmgn_substitute", daily_stop_enabled=True, rpc_resilience_enabled=True, fee_proxy_enabled=args.fee_proxy)
+        (ROOT / "config.json").write_text(json.dumps(config))
+        NO_PUBLISH = True
     boot(config)
-    if args.once:
+    if args.once or args.dry_run:
         try:
             cycle(config)
         except Exception as exc:
@@ -1020,6 +1120,13 @@ def main():
             log(traceback.format_exc())
             STATE["ok"] = False
             save_state()
+        if args.dry_run:
+            report = {"dry_run": True, "config": {k: config[k] for k in ("candidate_source", "daily_stop_enabled", "fee_proxy_enabled", "rpc_resilience_enabled")}, "cycle_duration_seconds": STATE.get("cycle_duration_seconds"), "daily_stop": STATE.get("daily_stop"), "report": STATE.get("report"), "errors": STATE.get("errors")}
+            if args.report_json:
+                args.report_json.write_text(json.dumps(report, indent=2) + "\n")
+            print(json.dumps(report, indent=2))
+            sandbox.cleanup()
+            return 0 if STATE.get("ok") else 1
         health(config, allow_publish=False)
         (ROOT / "data" / "cycle.requested").unlink(missing_ok=True)
         print(json.dumps(STATE.get("report") or {}, indent=2), flush=True)

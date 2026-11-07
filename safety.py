@@ -290,7 +290,7 @@ def extract_funders(tx, holder):
     return found
 
 
-def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5):
+def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5, require_complete=False):
     """Networked review. Raises SourceError only for unexpected bugs; RPC errors become incomplete."""
     try:
         mint_result = rpc.call("getAccountInfo", [mint, {"encoding": "jsonParsed"}])
@@ -313,6 +313,10 @@ def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5):
         if isinstance(row, dict) and row.get("address"):
             accounts.append(row)
     owners = {}
+    if require_complete:
+        info = (((mint_value or {}).get("data") or {}).get("parsed") or {}).get("info") or {}
+        if not accounts or not all(k in info for k in ("mintAuthority", "freezeAuthority")):
+            return _result("incomplete", ["required mint fields or largest holder accounts missing"], [], [], {"mint": mint})
     if accounts:
         try:
             multi = rpc.call("getMultipleAccounts", [[a["address"] for a in accounts], {"encoding": "jsonParsed"}])
@@ -332,6 +336,8 @@ def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5):
             parsed_rows.append({"address": raw.get("address"), "owner": owner, "amount": amount})
             if owner:
                 owner_ids.append(owner)
+        if require_complete and (len(parsed_rows) != len(accounts) or len(owner_ids) != len(accounts)):
+            return _result("incomplete", ["one or more holder accounts could not be parsed"], [], [], {"mint": mint})
         owner_meta = {owner: {"executable": None} for owner in owner_ids}
         if owner_ids:
             try:
@@ -343,6 +349,8 @@ def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5):
                             owner_meta[owner] = {"executable": bool(value.get("executable"))}
             except SourceError as exc:
                 return _result("incomplete", [f"holder owners unreadable: {exc}"], [], [], {"mint": mint})
+        if require_complete and any(meta["executable"] is None for meta in owner_meta.values()):
+            return _result("incomplete", ["one or more holder owners could not be read"], [], [], {"mint": mint})
         assessed = assess_mint(mint_value, parsed_rows, owner_meta, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct)
     else:
         assessed = assess_mint(mint_value, [], {}, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct)

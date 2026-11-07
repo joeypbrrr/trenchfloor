@@ -146,11 +146,15 @@ def team_review(trade, token, variant, prior, config, x_status, can_test=True):
     return result
 
 
-def review_trades(trades, tokens_by_mint, variant, config, x_status, can_test=True):
+def review_trades(trades, tokens_by_mint, variant, config, x_status, can_test=True, entry_guard=None, on_approved=None):
     """Return (approved, rejected) with team fields attached to each trade."""
     approved, rejected = [], []
     by_pool = {}
     for trade in sorted(trades, key=lambda t: t.get("entry_ts") or 0):
+        # Guard is evaluated before any of the six votes. Exit processing must
+        # remain outside this entry-only gate.
+        if entry_guard is not None and not entry_guard(trade):
+            continue
         token = tokens_by_mint.get(trade.get("mint")) or {}
         history = by_pool.setdefault(trade.get("mint"), [])
         prior = [t for t in history if (t.get("exit_ts") or 0) <= (trade.get("entry_ts") or 0)]
@@ -159,4 +163,6 @@ def review_trades(trades, tokens_by_mint, variant, config, x_status, can_test=Tr
         trade["proposed_by"] = result["proposed_by"]
         trade["team"] = {k: result[k] for k in ("approved", "approve", "reject", "abstain", "tally", "rule", "vetoes", "votes")}
         (approved if result["approved"] else rejected).append(trade)
+        if result["approved"] and on_approved is not None:
+            on_approved(trade)
     return approved, rejected

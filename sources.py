@@ -1,7 +1,7 @@
-"""Free public market-data clients. No API keys. No GMGN. No wallets.
+"""Low-level free public market-data and RPC clients. No wallets.
 
-GMGN is never requested. Callers may format https://gmgn.ai/sol/token/<mint>
-as a convenience link; this module does not know that host.
+Optional GMGN read-only discovery lives in candidate_sources.py; legacy source
+behavior in this module is unchanged.
 """
 from __future__ import annotations
 
@@ -509,3 +509,38 @@ class MarketData:
         parsed["url"] = url
         parsed["timeframe"] = timeframe
         return parsed
+
+
+class ResilientRpcClient(RpcClient):
+    """Opt-in method-aware failover with bounded exponential backoff.
+
+    Unlike legacy rotation, attempts enumerate a stable endpoint list (the old
+    calls+attempt indexing can revisit an endpoint). Reset per cycle so cache,
+    exhausted budgets and the failure latch cannot poison subsequent cycles.
+    """
+    def call(self, method, params):
+        key = method + ':' + json.dumps(params, sort_keys=True, default=str)
+        if key in self.cache:
+            return self.cache[key]
+        errors = []
+        for round_no in range(2):
+            if round_no:
+                time.sleep(2)
+            for url in self.urls:
+                if self.calls >= self.budget:
+                    raise SourceError(f'Solana RPC budget {self.budget} exhausted; safety remains incomplete')
+                self.limiter.wait()
+                self.calls += 1
+                try:
+                    data, _ = http_json(url, {'jsonrpc':'2.0', 'id':1, 'method':method, 'params':params},
+                                        timeout=8, attempts=1)
+                    if not isinstance(data, dict) or data.get('error') or 'result' not in data or data['result'] is None:
+                        raise SourceError(f'{method}: missing result or RPC error {data.get("error") if isinstance(data, dict) else "malformed"}')
+                    if url not in self.used:
+                        self.used.append(url)
+                    self.cache[key] = data['result']
+                    return data['result']
+                except (SourceError, TimeoutError, OSError) as exc:
+                    errors.append(f'{url}: {exc}')
+        self.errors.extend(errors)
+        raise SourceError(f'{method} failed on all public endpoints after backoff: ' + '; '.join(errors))

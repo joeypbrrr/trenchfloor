@@ -2,7 +2,7 @@
 
 Six paper-trading research agents work as **one team** with one memory and **one shared paper P&L**. They study Solana meme coins with free public data and write simulated trades. **Paper trading / research only. No wallet. No real trades. Not financial advice.**
 
-There is no broker, no private key, and no paid API. GMGN is never a filter or a data source. A token page may link to `https://gmgn.ai/sol/token/<mint>` the same way it links to DexScreener.
+There is no broker, no private key, and no paid API. The default `legacy` mode keeps GMGN link-only. Optional discovery adapters are described below; all are read-only and off by default. A GMGN key is optional and is never required for the free substitute.
 
 Live floor (main page): https://joeypbrrr.github.io/trenchfloor/ · Design mockup with mock data: https://joeypbrrr.github.io/trenchfloor/preview/ · `/floor/` redirects to the main page.
 
@@ -121,7 +121,7 @@ Enable Pages once, on the box or in the repo settings: **Settings → Pages → 
 | Public Solana RPC | Mint, supply, largest accounts, a short signature sample | none |
 | Birdeye | Probed without a key. A 401 is recorded and the source is not used | none |
 | X/Twitter | Probed without a key. A 401 is recorded. No tweets are invented | none |
-| GMGN | Not requested | — |
+| GMGN | Legacy: not requested; opt-in read-only API requires an env key; unauthenticated site blocked | See opt-in modes below |
 
 Rate limits are spaced in `config.json`. A failed call stays an error on the site. Missing numbers are left missing.
 
@@ -132,3 +132,142 @@ Rate limits are spaced in `config.json`. A failed call stays an error on the sit
 ## Limits
 
 Window ATH is the highest high in the fetched GeckoTerminal daily (up to 90) and hourly (up to 168) candles, not a guaranteed lifetime high. Holder links use a handful of recent signatures, not a full bubble map. Many meme coins fail the 3.5% wallet rule; they are recorded as fails and are not paper-traded. Out-of-sample bars are the latest 30% of each pool. Simulated P&L is not a prediction.
+
+
+## Opt-in discovery and daily profit stop (disabled by default)
+
+**No trading or cadence settings were enabled by this change.** There is no
+minimum trade count. `cycle_seconds` stays at its existing 1800, light scans at
+300, health checks at 180; the 1-minute request was withdrawn. Publisher behavior
+is unchanged. No broker, wallet, signatures or real orders exist.
+
+Config defaults:
+
+```json
+{
+  "candidate_source": "legacy",
+  "daily_profit_stop_usd": 300,
+  "daily_stop_enabled": false,
+  "rpc_resilience_enabled": false,
+  "fee_proxy_enabled": false,
+  "new_source_min_market_cap_usd": 6000,
+  "new_source_min_global_fees_sol": 1.5
+}
+```
+
+After approval only: select `candidate_source="gmgn_substitute"`, set
+`daily_stop_enabled=true` and `rpc_resilience_enabled=true`. Leave
+`fee_proxy_enabled=false` for the requested strict rule. **This strict substitute
+currently yields NO trades because actual global fees are unavailable.** It is
+not a way around that safety requirement. The baseline legacy filters remain
+unchanged when `candidate_source` is `legacy`.
+
+`candidate_sources.py` supplies:
+
+- `gmgn_substitute`: clearly labeled GeckoTerminal trending/new **Solana** pools;
+  no DexScreener boosted/profile candidate discovery. Reported DEX volume is
+  observed, but cannot prove it is organic rather than wash trading.
+- `gmgn`: optional key-only read access at `openapi.gmgn.ai`, using only
+  `GET /v1/market/rank` and read-only `POST /v1/trenches`; the key comes from
+  `GMGN_API_KEY` in the process environment, never a file, log, command argument
+  or git. Missing key fails closed, with no automatic fallback or website
+  requests. DexScreener may supply pool/quote identifiers for GMGN candidates
+  only. Authentication/request schema follows the published gmgn-cli 1.7.1.
+  This adapter is untested against an authenticated account. The public website
+  was blocked with Cloudflare 403 in the parallel connectivity check; no bypass
+  or load test was attempted. Free API access requires a free-tier key; no paid
+  plan or private/signing key is requested.
+
+### Filters in the new modes
+
+- Verified market cap >= $6,000 and <= $20m; unknown market cap fails, and FDV is
+  **not** silently substituted for market cap.
+- Global cumulative fees >= 1.5 SOL; unknown actual global fees FAIL CLOSED.
+  GMGN `gas_fee` is average gas per transaction, not cumulative SOL global fees.
+  The free docs do not establish units/coverage for raw `total_fee`, so the adapter
+  does not mislabel it as verified SOL fees. GeckoTerminal exposes no such field.
+- Existing liquidity >= $12,000, reported 24h volume >= $8,000, pair age 6 hours
+  to 60 days, SOL/USDC/USDT quote, standing lessons, mint/freeze/Token-2022 checks,
+  and 3.5% single-holder/linked-wallet veto remain. Known wash trading is rejected.
+  Missing essential holder/account data stays incomplete in new modes.
+- Dip rules are not loosened: the standing zone is 20–45% of window ATH; the
+  champion's narrower 20–40% band, green bounce, stop/target/hold rules remain.
+  A new pool appearing in discovery is not an immediate buy. 30 hourly bars are
+  still required. This intentionally excludes very young launches.
+- An **independent experimental flag** `fee_proxy_enabled=true` explicitly
+  replaces missing fees with a labeled proxy: reported 24h volume × assumed
+  0.3% DEX fee / a fresh SOL USD quote. This is **not** network/global cumulative
+  fees, does not prove real volume, and is not equivalent to Joey's strict filter.
+  It is OFF by default and needs separate approval. Missing SOL quote still fails.
+  Proxy and strict results use separate mode namespaces.
+
+### Daily stop semantics and limitations
+
+`daily_stop.py:DailyStop.status` recalculates mode-specific ET-day realized P&L,
+using `exit_time` (candle **close**, not the older `exit_ts` candle open). It
+excludes future exits and deduplicates the same mint/entry/exit/price/notional
+across strategy variants. State is latched in `data/daily_stop.json` per mode and
+ET calendar day, survives restart and later losses, and resets at ET midnight.
+
+`research.py:cycle` checks it every cycle and logs it in the feed. The entry gate
+in `run_variants` is checked **before every team vote**, and approved fills are
+recorded one at a time, so a batch cannot skip over the threshold. `team.py`'s
+optional pre-vote hook preserves the Backtester's earlier-fill history and the
+existing six-agent veto rules. The main page displays OFF / ARMED / HALTED,
+realized P&L, target and mode. Scanning and exit processing are not halted.
+
+**Important:** this repository is a historical backtest ledger, not a forward
+paper position manager. It has no open-position lifecycle to manage. The gate
+limits newly recorded simulation entries and excludes unclosed backtest candles;
+it does not turn backtests into actual forward realized trading income. Any
+future forward-paper execution engine must call this entry gate with its own
+mode-specific closed-fill ledger and keep its exit manager outside the gate.
+It is impossible to guarantee exactly $300, and open positions could subsequently
+reduce P&L. A profit stop does not create a positive trading edge.
+
+### RPC resilience (also opt-in)
+
+`rpc_resilience_enabled=true` creates a fresh bounded RPC client each full cycle,
+resetting stale caches, budgets and failure state. It enumerates each configured
+public endpoint in a stable order, retries once after backoff and never exceeds
+the configured 64-call budget. It uses existing free mainnet/publicnode/vibestation
+fallbacks, no API keys. All three answered a parsed mint read during testing.
+The tested drpc endpoint refused Solana on its free plan, so it was **not** added.
+Partial/failed safety results never become passes in the new modes. The old
+client's rotating index could repeat endpoints within one attempt sequence, and
+its lifetime budget/cache/failure state was never reset between cycles.
+
+### Isolated verification
+
+These commands copy data to a temporary sandbox and never publish, alter live
+ledgers/lessons, change live config, or send live-floor telemetry:
+
+```bash
+python3 research.py --dry-run --candidate-source gmgn_substitute --report-json /workspace/trenchfloor-dry-strict.json
+python3 research.py --dry-run --candidate-source gmgn_substitute --fee-proxy --report-json /workspace/trenchfloor-dry-proxy.json
+python3 -m unittest discover -s tests -v
+```
+
+Tests run November 6, 2026, about 11:07–11:10 PM ET:
+
+- Two strict-fee cycles: each discovered 38 unique mints, capped at 30 rows,
+  skipped one prior rejection, rejected all 29 remaining for unknown global
+  fees, zero eligible/trades. Measured scan duration 2.135s and 2.140s.
+- Labeled-proxy experiment: 38 discovered / 30 rows / 1 known rejection;
+  1 passed filters, 1 safety review, failed holder concentration, zero eligible
+  or trades. 12 RPC requests; measured duration about 18s. A later proxy cycle
+  discovered 39 mints, capped at 30, skipped 2 existing rejections and had zero
+  survivors or trades in 4.180s. This is **not** evidence
+  that a qualifying new-source strategy is profitable.
+- Discovery uses two GeckoTerminal requests per cycle; the optional proxy adds
+  one fresh SOL quote; history adds at most six OHLCV requests. Existing 2.05s
+  spacing stays in force. No attempt was made to find a maximum rate by flooding
+  providers. At unchanged 30-minute full cycles, discovery averages 0.067 req/min,
+  plus unchanged light scans. GMGN public-site polling has no demonstrated safe
+  rate (403); authenticated API capacity was not tested.
+- Legacy champion: only 9 OOS trades, +$0.4082/trade at $100, 44.44% win rate.
+  Last 24h: 4 deduplicated closed champion simulations, -$13.8143, 25% wins.
+  At that tiny measured OOS edge, a **hypothetical** 3 fills/day would imply about
+  $24,498 per ticket to average $300/day; $100 tickets would need ~735 fills/day.
+  Neither is a realistic income forecast in thin coins. There is no minimum
+  trade count, no new-source measured edge, and no promise of $300/day.
