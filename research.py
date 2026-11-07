@@ -17,6 +17,7 @@ from backtest import beats, describe_variant, metrics, simulate, split_samples, 
 from memory import DISCLAIMER, Memory, atomic_json, et_now, now_iso
 from publish_data import publish
 from safety import review_token, sample_links
+from team import review_trades
 from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num
 
 ROOT = Path(__file__).resolve().parent
@@ -575,29 +576,52 @@ def run_variants(tokens, config):
     champion_oos = (champion or {}).get("oos")
     feed_budget = int(limits.get("feed_trades_per_cycle", 40))
     posted = 0
+    team_taken = 0
+    team_rejected = 0
+    tokens_by_mint = {t["mint"]: t for t in tokens}
+    x_status = (MARKET.source_status or {}).get("x_twitter") or {}
     for variant in proposed:
         update("Backtester", "working", f"Simulating {variant['id']} on {len(tokens)} eligible pools.", action=f"Simulating {variant['id']}")
         trades = []
         for token in tokens:
             trades.extend(simulate(token["bars"], variant, token, paper, seed_ath=token.get("seed_ath")))
+        # Variant scoring uses every simulated fill. The shared team ledger
+        # only records fills the six agents approved by vote.
         ins, oos = split_samples(trades)
         ins_m = metrics(ins)
         oos_m = metrics(oos)
-        fresh = MEMORY.record_trades(trades)
+        known = MEMORY.known_trade_ids()
+        unseen = [t for t in trades if t["id"] not in known]
+        update("Risk Manager", "working", f"Team vote on {len(unseen)} proposed paper trades from {variant['id']}.", action=f"Voting {variant['id']}")
+        approved, vetoed = review_trades(unseen, tokens_by_mint, variant, config, x_status, MEMORY.can_test(variant["id"]))
+        fresh = MEMORY.record_trades(approved)
         MEMORY.learn_from_losses(fresh)
+        team_taken += len(fresh)
+        team_rejected += len(vetoed)
         for trade in fresh:
             if posted >= feed_budget:
                 break
+            team = trade.get("team") or {}
             text = (
-                f"PAPER / SIMULATED {trade['symbol']} ({trade['name']}) "
+                f"PAPER / SIMULATED {trade['symbol']} ({trade['name']}) proposed by {trade.get('proposed_by')}, "
+                f"team {team.get('tally')} ({team.get('rule')}). "
                 f"entry {trade['entry_time']} @ {trade['entry_price']} "
                 f"exit {trade['exit_time']} @ {trade['exit_price']} "
                 f"P&L ${trade['pnl_usd']:.2f}. {trade['dex_url']} {trade['gmgn_url']}"
             )
-            post("Backtester", text, "trade", trade)
+            post(trade.get("proposed_by") or "Backtester", text, "trade", trade)
             posted += 1
         if len(fresh) > posted:
-            post("Backtester", f"{len(fresh) - max(posted, 0)} more paper trades from {variant['id']} are in the daily ledger and were not each repeated on the feed.")
+            post("Backtester", f"{len(fresh) - max(posted, 0)} more team-approved paper trades from {variant['id']} are in the daily ledger and were not each repeated on the feed.")
+        if vetoed:
+            why = {}
+            for t in vetoed:
+                r = (t.get("team") or {}).get("rule") or "rejected"
+                why[r] = why.get(r, 0) + 1
+            sample = vetoed[0]
+            no_votes = [v for v in (sample.get("team") or {}).get("votes", []) if v["vote"] == "reject"]
+            reason = f" e.g. {sample['symbol']}: {no_votes[0]['agent']} — {no_votes[0]['reason']}" if no_votes else ""
+            post("Risk Manager", f"Team turned down {len(vetoed)} proposed {variant['id']} paper trades ({'; '.join(f'{k}: {n}' for k, n in why.items())}).{reason}")
         min_oos = int(paper.get("min_oos_trades", 5))
         if oos_m["trades"] < min_oos:
             status = "deferred"
@@ -632,10 +656,10 @@ def run_variants(tokens, config):
             post("Strategist", f"Rejected {variant['id']}: {reason}. It will not be retested.", "error")
         else:
             post("Strategist", f"{variant['id']} is {status}: {reason}")
-        post("Backtester", f"{variant['id']}: {len(fresh)} new paper trades, {oos_m['trades']} out of sample, net ${oos_m['net_usd']}.")
-        results.append({"id": variant["id"], "status": status, "reason": reason, "oos": oos_m, "in_sample": ins_m, "new_trades": len(fresh)})
+        post("Backtester", f"{variant['id']}: {len(fresh)} team-approved paper trades ({len(vetoed)} turned down), {oos_m['trades']} out of sample, net ${oos_m['net_usd']}.")
+        results.append({"id": variant["id"], "status": status, "reason": reason, "oos": oos_m, "in_sample": ins_m, "new_trades": len(fresh), "team_rejected": len(vetoed)})
         log(f"variant {variant['id']} {status} trades {len(fresh)}")
-    return {"proposed": [v["id"] for v in proposed], "results": results}
+    return {"proposed": [v["id"] for v in proposed], "results": results, "team_taken": team_taken, "team_rejected": team_rejected}
 
 
 def public_token(cand):
@@ -767,6 +791,16 @@ def cycle(config):
         "paper_trades_total": ledger.get("trade_count") or 0,
         "paper_pnl_usd": ledger.get("total_pnl_usd") or 0,
         "new_paper_trades": sum(r.get("new_trades") or 0 for r in variant_report.get("results") or []),
+    }
+    STATE["summary"]["team_rejected"] = variant_report.get("team_rejected") or 0
+    STATE["team"] = {
+        "model": "One team, one shared paper P&L. Each trade is proposed by one agent; all six vote. Majority of voting agents approves; a Risk Manager or Bubble Map Analyst reject is a veto. X/Twitter Scout abstains while the X API is unavailable.",
+        "members": ROLE_NAMES,
+        "veto": ["Risk Manager", "Bubble Map Analyst"],
+        "team_pnl_usd": ledger.get("total_pnl_usd") or 0,
+        "team_trades": ledger.get("trade_count") or 0,
+        "last_cycle_taken": variant_report.get("team_taken") or 0,
+        "last_cycle_rejected": variant_report.get("team_rejected") or 0,
     }
     STATE["sources"] = MARKET.source_status
     STATE["sources"]["solana_rpc"] = {

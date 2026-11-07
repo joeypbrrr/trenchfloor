@@ -1,10 +1,10 @@
 # Trenchfloor
 
-Six paper-trading research agents share one desk and one memory. They study Solana meme coins with free public data and write simulated trades. **Paper trading / research only. No wallet. No real trades. Not financial advice.**
+Six paper-trading research agents work as **one team** with one memory and **one shared paper P&L**. They study Solana meme coins with free public data and write simulated trades. **Paper trading / research only. No wallet. No real trades. Not financial advice.**
 
 There is no broker, no private key, and no paid API. GMGN is never a filter or a data source. A token page may link to `https://gmgn.ai/sol/token/<mint>` the same way it links to DexScreener.
 
-Public site (after GitHub Pages is enabled): https://joeypbrrr.github.io/trenchfloor/
+Live floor: https://joeypbrrr.github.io/trenchfloor/floor/ · Design preview (main page): https://joeypbrrr.github.io/trenchfloor/
 
 ## What the agents do
 
@@ -20,6 +20,23 @@ They share `data/research.json`, `data/lessons.json`, and `data/ledger/`.
 | Strategist | Ranks eligible tokens, proposes two untried dip variants each cycle, and replaces `BEST_STRATEGY.md` only when a variant beats the current champion out of sample. |
 
 A full cycle is every 30 minutes. A lighter scan (new pools and new X links, no safety review and no paper trades) runs every 5 minutes. A health check every 3 minutes refreshes heartbeats, flags stale agents, and checks the local site and the Pages URL.
+
+## One team, one P&L
+
+There is no per-agent P&L. Every paper trade goes into one shared team ledger, and the headline P&L and the calendar are team totals.
+
+Each simulated fill is a **proposal**. It is attributed to one agent (`proposed_by`): the Data Scout when it flagged the token inside the 20–45% entry zone this cycle, otherwise the Strategist, whose dip variant triggered the fill. Before the fill is written to the ledger, all six agents vote (`team.py`), each with a one-line reason taken from its own check results:
+
+| Agent | Vote |
+| --- | --- |
+| Risk Manager | Rejects on any chain-safety fail, incomplete review, risky Token-2022 extension, or lesson block. **Veto.** |
+| Bubble Map Analyst | Rejects when one non-LP, non-program wallet holds more than 3.5%, a linked-wallet cluster fails, or concentration was not measured. **Veto.** |
+| X/Twitter Scout | Abstains while the X API is unavailable (it returns 401 without a paid key). It never invents tweets or sentiment. |
+| Data Scout | Rejects when liquidity or 24h volume is under the floor, or the entry is outside the 20–45% of window ATH zone. |
+| Backtester | Looks only at earlier simulated fills on the same pool and variant that closed before this entry. Rejects when there are at least 3 and they net negative. |
+| Strategist | Rejects a variant that is already rejected, or an entry above the variant's dip zone (a top tick). |
+
+The trade is taken only when a strict majority of the agents that voted (abstentions excluded) approve **and** neither the Risk Manager nor the Bubble Map Analyst rejected. Ledger rows and feed events carry `proposed_by` and `team` (`tally` such as `5/6 approve`, `rule`, `vetoes`, and every vote with its reason). Turned-down proposals are counted in the feed and not written to the ledger. Variant scoring for `BEST_STRATEGY.md` still uses every simulated fill so the out-of-sample test is not biased by the vote. Trades logged before the team vote existed have no `team` field and are shown as such.
 
 ## Learning loop
 

@@ -120,7 +120,7 @@ def sync(work, branch):
     dirty = git(work, "status", "--porcelain")
     if dirty.stdout.strip():
         raise RuntimeError("publish worktree is dirty before sync; refusing to rebase over local edits")
-    rebased = git(work, "rebase", f"origin/{branch}")
+    rebased = git(work, "-c", "user.name=joeypbrrr", "-c", "user.email=joeypbrrr@users.noreply.github.com", "rebase", f"origin/{branch}")
     if rebased.returncode != 0:
         git(work, "rebase", "--abort")
         raise RuntimeError("sync rebase failed: " + redact(rebased.stderr or rebased.stdout))
@@ -131,7 +131,7 @@ def rebase_ours(work, branch):
     fetched = git(work, "fetch", "origin", branch, timeout=120)
     if fetched.returncode != 0:
         raise RuntimeError("fetch during retry failed: " + redact(fetched.stderr or fetched.stdout))
-    rebased = git(work, "rebase", "-X", "theirs", f"origin/{branch}")
+    rebased = git(work, "-c", "user.name=joeypbrrr", "-c", "user.email=joeypbrrr@users.noreply.github.com", "rebase", "-X", "theirs", f"origin/{branch}")
     if rebased.returncode == 0:
         return
     # `theirs` during a rebase is the commit being replayed: our new data.

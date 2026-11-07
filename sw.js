@@ -1,4 +1,4 @@
-const CACHE = "trenchfloor-shell-v1";
+const CACHE = "trenchfloor-shell-v2";
 const ROOT = new URL("./", self.location).pathname;
 const SHELL = [ROOT, ROOT + "style.css", ROOT + "app.js", ROOT + "scene.js", ROOT + "three.min.js", ROOT + "manifest.webmanifest", ROOT + "icons/icon-192.png"];
 self.addEventListener("install", (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL))));
