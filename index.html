@@ -498,7 +498,7 @@ function tradeCard(t){
   art.querySelector('.sym').textContent = t.symbol || '?';
   const pnl = art.querySelector('.pnl'); pnl.textContent = money(t.pnl_usd); pnl.classList.add(Number(t.pnl_usd) < 0 ? 'negative' : 'positive');
   art.querySelector('.trade-when').textContent = 'Entry ' + et(t.entry_time) + ' @ ' + price(t.entry_price) + ' → Exit ' + et(t.exit_time) + ' @ ' + price(t.exit_price);
-  art.querySelector('.mint').textContent = (t.strategy_id ? t.strategy_id + ' · ' : '') + (t.mint || '');
+  art.querySelector('.mint').textContent = (t.tier ? t.tier.toUpperCase()+' · ' : '') + (t.strategy_id ? t.strategy_id + ' · ' : '') + (t.mint || '');
   art.querySelector('.mint').after(teamBlock(t));
   const links = art.querySelectorAll('a');
   links[0].href = t.dex_url || ('https://dexscreener.com/solana/' + t.mint);
@@ -539,7 +539,7 @@ function renderStrategy(d){
   host.querySelector('.n').textContent = best.name || '';
   host.querySelector('.sn').textContent = d.strategist_note || '';
   host.querySelector('.rn').textContent = d.risk_note ? 'Risk · ' + d.risk_note : '';
-  $('bestLinkText').textContent = best.id ? best.id + ' · out-of-sample champion' : 'No out-of-sample champion yet';
+  $('bestLinkText').textContent = best.id ? best.id + (best.status==='forward_paper'?' · ACTIVE PAPER TIERS':' · out-of-sample champion') : 'No out-of-sample champion yet';
 }
 function renderTeam(d){
   const list = d.agents || [];
@@ -575,7 +575,7 @@ function renderMetrics(d){
   $('winRate').textContent = w + l ? Math.round(w / (w + l) * 100) + '%' : '—';
   const v = votedTrades(d);
   $('avgVote').textContent = v.length ? (v.reduce((s, t) => s + (t.team.approve || 0), 0) / v.length).toFixed(1) + ' / 6' : '—';
-  if(d.paper_account){const a=d.paper_account;$('accountStatus').textContent='PAPER BALANCE '+money(a.balance_usd)+' · CASH '+money(a.cash_usd)+' · RESERVED '+money(a.reserved_usd)+' · STARTED '+et(a.started)+' · '+a.sizing;}
+  if(d.paper_account){const a=d.paper_account;$('accountStatus').textContent='PAPER BALANCE '+money(a.balance_usd)+' · CASH '+money(a.cash_usd)+' · RESERVED '+money(a.reserved_usd)+' · STARTED '+et(a.started)+' · '+a.sizing+' · REALIZED primary '+money((a.tier_pnl_usd||{}).primary||0)+' / fallback '+money((a.tier_pnl_usd||{}).fallback||0);}
   $('fillSub').textContent = (days.length ? days.length + ' DAYS · ' : '') + 'SIMULATED FILLS';
 }
 function renderLedger(d){

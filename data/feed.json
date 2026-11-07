@@ -1,7 +1,359 @@
 {
-  "updated": "2026-11-07T04:35:20.245833+00:00",
-  "next_id": 15,
+  "updated": "2026-11-07T05:00:09.683242+00:00",
+  "next_id": 50,
   "events": [
+    {
+      "id": 49,
+      "time": "2026-11-07T05:00:09.683237+00:00",
+      "agent": "System",
+      "type": "info",
+      "text": "Cycle 2 finished. 91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry. Next scheduled cycle 2026-11-07 01:00:09 ET; rolling-hour entry cap remains authoritative."
+    },
+    {
+      "id": 48,
+      "time": "2026-11-07T05:00:09.675427+00:00",
+      "agent": "Data Scout",
+      "type": "trade",
+      "text": "PRIMARY FORWARD PAPER entry COGE COIN / COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump) @ 0.01566; size $100.00; score 17.354199; 12% stop / 25% target / 16h time stop. ONE TRADE PER COIN EVER: mint permanently excluded after this entry. https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+      "trade": {
+        "id": "paper-7e3d8a997aff4e5bb3d183dcc3ff7b81",
+        "mode": "forward:paper",
+        "realized": false,
+        "tier": "primary",
+        "selection_score": 17.354199,
+        "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+        "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+        "symbol": "COGE",
+        "name": "COGE COIN",
+        "entry_ts": 1794027609.6664712,
+        "entry_time": "2026-11-07T05:00:09.666471+00:00",
+        "entry_price": 0.01566,
+        "entry_frac_of_ath": 0.7950072772628121,
+        "notional_usd": 100,
+        "slippage_bps_per_side": 80,
+        "cost_rate": 0.011,
+        "entry_liquidity_usd": 334915.41,
+        "entry_volume_usd": 2234503.22,
+        "top_human_pct": 0.8971,
+        "stop_fraction": 0.12,
+        "target_fraction": 0.25,
+        "max_hold_seconds": 57600,
+        "dex_url": "https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+        "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+        "strategy_id": "forward_ranked_primary",
+        "hard_rug_checks": [
+          {
+            "name": "verified_pool_vault",
+            "pass": true,
+            "detail": "RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions"
+          },
+          {
+            "name": "complete_chain_read",
+            "pass": true,
+            "detail": "PASS with warnings: LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+          },
+          {
+            "name": "mint_authority_revoked",
+            "pass": true,
+            "detail": "must be explicitly revoked"
+          },
+          {
+            "name": "freeze_authority_revoked",
+            "pass": true,
+            "detail": "must be explicitly revoked"
+          },
+          {
+            "name": "single_non_pool_holder_20pct",
+            "pass": true,
+            "detail": "top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 0.8971%"
+          },
+          {
+            "name": "LP_locked_or_burned",
+            "pass": true,
+            "detail": "chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject"
+          },
+          {
+            "name": "sellable_not_honeypot",
+            "pass": true,
+            "detail": "canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+          }
+        ],
+        "team": {
+          "approved": true,
+          "approve": 5,
+          "reject": 0,
+          "abstain": 1,
+          "tally": "5/6 approve",
+          "rule": "majority 5/5 of voting agents",
+          "vetoes": [],
+          "votes": [
+            {
+              "agent": "Risk Manager",
+              "vote": "approve",
+              "reason": "Safety pass: mint authority revoked, freeze revoked."
+            },
+            {
+              "agent": "Bubble Map Analyst",
+              "vote": "approve",
+              "reason": "Top non-LP wallet 0.8971% (\u2264 15.0%), no linked-wallet fail."
+            },
+            {
+              "agent": "X/Twitter Scout",
+              "vote": "abstain",
+              "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
+            },
+            {
+              "agent": "Data Scout",
+              "vote": "approve",
+              "reason": "Ranked primary candidate, score 17.354199; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+            },
+            {
+              "agent": "Backtester",
+              "vote": "approve",
+              "reason": "0 earlier simulated fills on this pool; no evidence against."
+            },
+            {
+              "agent": "Strategist",
+              "vote": "approve",
+              "reason": "Dip entry under forward_ranked_primary (stop 12%, target 25%)."
+            }
+          ],
+          "proposed_by": "Data Scout"
+        },
+        "proposed_by": "Data Scout"
+      }
+    },
+    {
+      "id": 47,
+      "time": "2026-11-07T05:00:09.674135+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "PRIMARY PAPER COGE vote approve: Dip entry under forward_ranked_primary (stop 12%, target 25%)."
+    },
+    {
+      "id": 46,
+      "time": "2026-11-07T05:00:09.673065+00:00",
+      "agent": "Backtester",
+      "type": "info",
+      "text": "PRIMARY PAPER COGE vote approve: 0 earlier simulated fills on this pool; no evidence against."
+    },
+    {
+      "id": 45,
+      "time": "2026-11-07T05:00:09.672190+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "PRIMARY PAPER COGE vote approve: Ranked primary candidate, score 17.354199; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+    },
+    {
+      "id": 44,
+      "time": "2026-11-07T05:00:09.671085+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "PRIMARY PAPER COGE vote abstain: X API unavailable (401); token has no X link. No tweets read, abstaining."
+    },
+    {
+      "id": 43,
+      "time": "2026-11-07T05:00:09.669953+00:00",
+      "agent": "Bubble Map Analyst",
+      "type": "info",
+      "text": "PRIMARY PAPER COGE vote approve: Top non-LP wallet 0.8971% (\u2264 15.0%), no linked-wallet fail."
+    },
+    {
+      "id": 42,
+      "time": "2026-11-07T05:00:09.668100+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PRIMARY PAPER COGE vote approve: Safety pass: mint authority revoked, freeze revoked."
+    },
+    {
+      "id": 41,
+      "time": "2026-11-07T05:00:09.664728+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "After hard blocks and entry criteria: primary 3, fallback-eligible 3. Using primary; team ranks by 2*log10(1+liquidity)+log10(1+volume)-topHolder/20."
+    },
+    {
+      "id": 40,
+      "time": "2026-11-07T05:00:07.257676+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HODL: PASS all hard rug blocks; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 39,
+      "time": "2026-11-07T05:00:00.754118+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "GATO: PASS all hard rug blocks; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 8, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 38,
+      "time": "2026-11-07T04:59:54.676590+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "COGE: PASS all hard rug blocks; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 19, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 37,
+      "time": "2026-11-07T04:59:51.005976+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "FLOAT: verified_pool_vault: RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 36,
+      "time": "2026-11-07T04:59:45.672706+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PENGU: LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 35,
+      "time": "2026-11-07T04:59:41.823930+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "ANSEM: complete_chain_read: FAIL non-LP non-program holder owns 49.23% (limit 20%); single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 49.2304%; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 34,
+      "time": "2026-11-07T04:59:37.730942+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "STONK: LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 33,
+      "time": "2026-11-07T04:59:34.060254+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "RAY: Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report; owner lookup not completed"
+    },
+    {
+      "id": 32,
+      "time": "2026-11-07T04:59:33.226450+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "BIRB: Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report; owner lookup not completed"
+    },
+    {
+      "id": 31,
+      "time": "2026-11-07T04:59:32.619174+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PUMP: complete_chain_read: FAIL risky Token-2022 extensions: transferHook; non-LP non-program holder owns 27.83% (limit 20%); single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 27.8254%; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 30,
+      "time": "2026-11-07T04:59:17.492382+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "CARDS: Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report; owner lookup not completed"
+    },
+    {
+      "id": 29,
+      "time": "2026-11-07T04:59:16.394215+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "ZEC: complete_chain_read: FAIL live mint authority; mint_authority_revoked: must be explicitly revoked; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 28,
+      "time": "2026-11-07T04:59:09.326611+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Tier market candidates: primary 27, fallback market pool 33; 0 excluded: already traded (before scoring)."
+    },
+    {
+      "id": 27,
+      "time": "2026-11-07T04:59:09.325314+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks."
+    },
+    {
+      "id": 26,
+      "time": "2026-11-07T04:59:08.885475+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "0 excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier."
+    },
+    {
+      "id": 25,
+      "time": "2026-11-07T04:59:08.883912+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "52 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; CXRT8b https://x.com/rockstargames?s=11; DtcicP https://x.com/cartoonmoney_ai"
+    },
+    {
+      "id": 24,
+      "time": "2026-11-07T04:59:06.055109+00:00",
+      "agent": "Data Scout",
+      "type": "error",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
+    },
+    {
+      "id": 23,
+      "time": "2026-11-07T04:59:06.053689+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
+    },
+    {
+      "id": 22,
+      "time": "2026-11-07T04:59:06.051889+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "CHECKLIST CONSULT: 0 shared lesson suggestion(s) read before selection. SUGGESTION ONLY; none automatically changes filters or sizing."
+    },
+    {
+      "id": 21,
+      "time": "2026-11-07T04:59:06.051156+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L."
+    },
+    {
+      "id": 20,
+      "time": "2026-11-07T04:59:06.049135+00:00",
+      "agent": "System",
+      "type": "info",
+      "text": "Cycle 2 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum."
+    },
+    {
+      "id": 19,
+      "time": "2026-11-07T04:51:23.203154+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 0 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 18,
+      "time": "2026-11-07T04:51:23.153977+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. CXRT8b https://x.com/rockstargames?s=11"
+    },
+    {
+      "id": 17,
+      "time": "2026-11-07T04:46:22.231536+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 16,
+      "time": "2026-11-07T04:46:22.157664+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "Light scan found 4 new Solana rows with an X link. Not tweets. EbZ3Kf https://x.com/cookdbot; Fmu6yk https://x.com/twizter_privacy; G77jG5 https://x.com/early404/status/2118924545146970457; 2SquPK https://x.com/mutape_xyz"
+    },
+    {
+      "id": 15,
+      "time": "2026-11-07T04:41:21.107012+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
+    },
     {
       "id": 14,
       "time": "2026-11-07T04:35:20.245828+00:00",
