@@ -2,8 +2,8 @@
   "date": "2026-11-04",
   "timezone": "America/New_York",
   "label": "PAPER / SIMULATED",
-  "pnl_usd": 165.5974,
-  "trade_count": 27,
+  "pnl_usd": 202.2116,
+  "trade_count": 34,
   "trades": [
     {
       "id": "55fd55dac130f2c5",
@@ -438,6 +438,156 @@
       }
     },
     {
+      "id": "1bfef081070e98b3",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-04T00:00:00-05:00",
+      "exit_time": "2026-11-04T03:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1793768400,
+      "exit_ts": 1793775600,
+      "entry_price": 0.0008922546058071726,
+      "exit_price": 0.0008208742373425989,
+      "notional_usd": 100.0,
+      "pnl_usd": -10.002,
+      "pnl_pct": -10.002,
+      "side": "long",
+      "exit_reason": "stop",
+      "strategy_id": "dip_20_40_stop8_tp40_hold24",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 40% above, time-stop after 24 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "in_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 87155.25,
+      "market_cap_usd": 1005599.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.263347,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 5,
+        "reject": 0,
+        "abstain": 1,
+        "tally": "5/6 approve",
+        "rule": "majority 5/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 26% of window ATH, liq $87,155, vol $143,110."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "approve",
+            "reason": "4 earlier fills on this pool net +$6.95."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop8_tp40_hold24 (stop 8%, target 40%)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "7576957900afb316",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-04T00:00:00-05:00",
+      "exit_time": "2026-11-04T03:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1793768400,
+      "exit_ts": 1793775600,
+      "entry_price": 0.0008922546058071726,
+      "exit_price": 0.0007851840531103119,
+      "notional_usd": 100.0,
+      "pnl_usd": -13.9149,
+      "pnl_pct": -13.9149,
+      "side": "long",
+      "exit_reason": "stop",
+      "strategy_id": "dip_20_40_stop12_tp15_hold8",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "in_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 87155.25,
+      "market_cap_usd": 1005599.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.263347,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 26% of window ATH, liq $87,155, vol $143,110."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "6 earlier fills on this pool net $-18.11."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop12_tp15_hold8 (stop 12%, target 15%)."
+          }
+        ]
+      }
+    },
+    {
       "id": "48a3d32ea13ee3df",
       "label": "PAPER / SIMULATED",
       "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
@@ -535,6 +685,81 @@
       "ath_price": 0.0033881277866801163,
       "entry_frac_of_ath": 0.237272,
       "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
+    },
+    {
+      "id": "854f732271bb4fe6",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-04T04:00:00-05:00",
+      "exit_time": "2026-11-04T11:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1793782800,
+      "exit_ts": 1793804400,
+      "entry_price": 0.0008039068557700406,
+      "exit_price": 0.0009244928841355466,
+      "notional_usd": 100.0,
+      "pnl_usd": 12.4975,
+      "pnl_pct": 12.4975,
+      "side": "long",
+      "exit_reason": "target",
+      "strategy_id": "dip_20_40_stop12_tp15_hold8",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "in_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 87155.25,
+      "market_cap_usd": 1005599.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.237272,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 24% of window ATH, liq $87,155, vol $143,110."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "7 earlier fills on this pool net $-32.02."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop12_tp15_hold8 (stop 12%, target 15%)."
+          }
+        ]
+      }
     },
     {
       "id": "21b0c4d2dde7a87b",
@@ -742,6 +967,81 @@
       "ath_price": 0.0033881277866801163,
       "entry_frac_of_ath": 0.269709,
       "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
+    },
+    {
+      "id": "7ccb6aa34106cfb7",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-04T13:00:00-05:00",
+      "exit_time": "2026-11-04T15:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1793815200,
+      "exit_ts": 1793818800,
+      "entry_price": 0.0009138102363164225,
+      "exit_price": 0.0008041530079584519,
+      "notional_usd": 100.0,
+      "pnl_usd": -13.9149,
+      "pnl_pct": -13.9149,
+      "side": "long",
+      "exit_reason": "stop",
+      "strategy_id": "dip_20_40_stop12_tp15_hold8",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "in_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 87155.25,
+      "market_cap_usd": 1005599.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.269709,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 27% of window ATH, liq $87,155, vol $143,110."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "8 earlier fills on this pool net $-19.52."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop12_tp15_hold8 (stop 12%, target 15%)."
+          }
+        ]
+      }
     },
     {
       "id": "37a96d5211829b5a",
@@ -1026,6 +1326,81 @@
       }
     },
     {
+      "id": "30c97515a9f59235",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-04T16:00:00-05:00",
+      "exit_time": "2026-11-04T17:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1793826000,
+      "exit_ts": 1793826000,
+      "entry_price": 0.0008387407632493224,
+      "exit_price": 0.0009645518777367207,
+      "notional_usd": 100.0,
+      "pnl_usd": 12.4975,
+      "pnl_pct": 12.4975,
+      "side": "long",
+      "exit_reason": "target",
+      "strategy_id": "dip_20_40_stop12_tp15_hold8",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "in_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 87155.25,
+      "market_cap_usd": 1005599.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.247553,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 25% of window ATH, liq $87,155, vol $143,110."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "9 earlier fills on this pool net $-33.44."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop12_tp15_hold8 (stop 12%, target 15%)."
+          }
+        ]
+      }
+    },
+    {
       "id": "2c59642896cfb663",
       "label": "PAPER / SIMULATED",
       "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
@@ -1176,6 +1551,81 @@
       }
     },
     {
+      "id": "08811fd30ad28fd0",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-04T04:00:00-05:00",
+      "exit_time": "2026-11-04T18:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1793782800,
+      "exit_ts": 1793829600,
+      "entry_price": 0.0008039068557700406,
+      "exit_price": 0.0011254695980780567,
+      "notional_usd": 100.0,
+      "pnl_usd": 36.9535,
+      "pnl_pct": 36.9535,
+      "side": "long",
+      "exit_reason": "target",
+      "strategy_id": "dip_20_40_stop8_tp40_hold24",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 40% above, time-stop after 24 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "in_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 87155.25,
+      "market_cap_usd": 1005599.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.237272,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 24% of window ATH, liq $87,155, vol $143,110."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "5 earlier fills on this pool net $-3.05."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop8_tp40_hold24 (stop 8%, target 40%)."
+          }
+        ]
+      }
+    },
+    {
       "id": "a7b87d9347b3e1f0",
       "label": "PAPER / SIMULATED",
       "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
@@ -1273,6 +1723,81 @@
       "ath_price": 0.0033881277866801163,
       "entry_frac_of_ath": 0.397047,
       "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
+    },
+    {
+      "id": "757106213537ba1f",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-04T18:00:00-05:00",
+      "exit_time": "2026-11-04T20:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1793833200,
+      "exit_ts": 1793836800,
+      "entry_price": 0.0013452468270809099,
+      "exit_price": 0.0015470338511430462,
+      "notional_usd": 100.0,
+      "pnl_usd": 12.4975,
+      "pnl_pct": 12.4975,
+      "side": "long",
+      "exit_reason": "target",
+      "strategy_id": "dip_20_40_stop12_tp15_hold8",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "in_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 87155.25,
+      "market_cap_usd": 1005599.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.397047,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 40% of window ATH, liq $87,155, vol $143,110."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "10 earlier fills on this pool net $-20.94."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop12_tp15_hold8 (stop 12%, target 15%)."
+          }
+        ]
+      }
     }
   ]
 }

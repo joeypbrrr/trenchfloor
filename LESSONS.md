@@ -18,24 +18,6 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 
 ## Observations
 
-- **2026-11-06T20:40:07.176607-05:00** (Backtester): jeff paper loss $-6.3078 on dip_20_40_stop8_tp15_hold8 exit time liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198139-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198149-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198155-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198159-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198164-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198168-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198173-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198178-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198182-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198186-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198191-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198196-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 83077.49 mcap 915018.0
-- **2026-11-06T20:40:07.198202-05:00** (Backtester): jeff paper loss $-3.4958 on dip_20_40_stop8_tp15_hold16 exit time liq 83077.49 mcap 915018.0
-- **2026-11-06T21:12:20.168583-05:00** (Bubble Map Analyst): skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply — NETWORK top wallet 5.262% (EJVYXLQGzvjk7p5m5SXZXsLWMhcvjTnJXwumiXt1xSiT)
-- **2026-11-06T21:12:30.659277-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold24 exit stop liq 85693.47 mcap 971199.0
-- **2026-11-06T21:12:30.659289-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold24 exit stop liq 85693.47 mcap 971199.0
-- **2026-11-06T21:12:30.659296-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold24 exit stop liq 85693.47 mcap 971199.0
 - **2026-11-06T21:12:30.659301-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold24 exit stop liq 85693.47 mcap 971199.0
 - **2026-11-06T21:12:30.659304-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold24 exit stop liq 85693.47 mcap 971199.0
 - **2026-11-06T21:12:30.659309-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp15_hold24 exit stop liq 85693.47 mcap 971199.0
@@ -98,6 +80,24 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 - **2026-11-06T21:40:03.056055-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0
 - **2026-11-06T21:40:03.056060-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0
 - **2026-11-06T21:40:03.056064-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0
+- **2026-11-06T21:45:20.846250-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846274-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846284-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846291-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846296-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846301-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846306-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846311-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.846316-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923847-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923860-05:00** (Backtester): jeff paper loss $-1.3563 on dip_20_40_stop12_tp15_hold8 exit time liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923866-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923871-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923875-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923878-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923883-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923887-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0
+- **2026-11-06T21:45:20.923891-05:00** (Backtester): jeff paper loss $-6.3078 on dip_20_40_stop12_tp15_hold8 exit time liq 87155.25 mcap 1005599.0
 
 ## Tried and rejected variants
 
@@ -109,6 +109,8 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 - `dip_20_40_stop8_tp25_hold24` — **rejected** at 2026-11-06T21:21:50.241672-05:00. out-of-sample expectancy $-3.2919 over 7 trades
 - `dip_20_40_stop8_tp40_hold8` — **rejected** at 2026-11-06T21:40:03.039550-05:00. out-of-sample expectancy $-0.0333 over 6 trades
 - `dip_20_40_stop8_tp40_hold16` — **rejected** at 2026-11-06T21:40:03.089745-05:00. out-of-sample expectancy $-7.638 over 6 trades
+- `dip_20_40_stop8_tp40_hold24` — **rejected** at 2026-11-06T21:45:20.896829-05:00. out-of-sample expectancy $-6.9554 over 6 trades
+- `dip_20_40_stop12_tp15_hold8` — **tried** at 2026-11-06T21:45:20.982637-05:00. out-of-sample expectancy $0.1365 projects $9.5/mo at $100 tickets and did not beat the champion
 
 ## Rejected mints
 
