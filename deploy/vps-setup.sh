@@ -34,6 +34,7 @@ if ! grep -Eq '^/swapfile[[:space:]]' /etc/fstab; then echo '/swapfile none swap
 timedatectl set-timezone America/New_York
 if ! id trench >/dev/null 2>&1; then useradd --create-home --shell /bin/bash trench; fi
 install -d -m 0755 -o trench -g trench /opt/trenchfloor
+chown -R trench:trench /opt/trenchfloor
 as_trench() { runuser -u trench -- "$@"; }
 if [[ -d /opt/trenchfloor/.git ]]; then
   as_trench git -C /opt/trenchfloor pull --ff-only origin main
@@ -106,6 +107,7 @@ if [[ -r /sys/class/dmi/id/chassis_asset_tag ]] && [[ "$(</sys/class/dmi/id/chas
 if iptables -S InstanceServices >/dev/null 2>&1; then oracle=true; fi
 if "$oracle"; then
   echo 'Oracle image detected: preserving InstanceServices; use iptables instead of enabling ufw.'
+  ufw --force disable
   # A chain inserted at INPUT position 1 accepts 80 before Oracle's existing REJECT.
   # Preserve established sessions, loopback, ICMP and DHCP, deny other new ingress.
   iptables -N TRENCHFLOOR-IN 2>/dev/null || true
@@ -137,6 +139,7 @@ if "$oracle"; then
   apt-get -o DPkg::Lock::Timeout=180 install -y iptables-persistent
   systemctl enable netfilter-persistent
 else
+  ufw --force reset
   ufw default deny incoming
   ufw default allow outgoing
   ufw allow 22/tcp
@@ -171,7 +174,8 @@ systemctl start trenchfloor-watchdog.timer
 # Wait for the supervised dashboard, not for research/network scans to finish.
 for attempt in {1..60}; do
   code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 3 http://127.0.0.1:8796/ || true)"
-  if [[ "$code" == 200 ]]; then
+  proxy_code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 3 http://127.0.0.1/ || true)"
+  if [[ "$code" == 200 && "$proxy_code" == 200 ]]; then
     as_trench git rev-parse HEAD >/var/lib/trenchfloor/deployed-commit
     echo "$(date -Is) SETUP COMPLETE: dashboard HTTP 200. Open http://YOUR_VPS_IP/"
     echo 'If Oracle, also allow TCP 80 in its VCN security list/NSG (cloud firewall).'
