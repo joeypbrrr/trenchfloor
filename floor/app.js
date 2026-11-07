@@ -31,12 +31,21 @@ function tradeCard(trade) {
     <div class="trade-top"><strong>${esc(trade.name)} <span class="muted">${esc(trade.symbol)}</span></strong><b class="${pnlClass}">${money(trade.pnl_usd)}</b></div>
     <small>Entry ${esc(et(trade.entry_time))} @ ${esc(price(trade.entry_price))}</small>
     <small>Exit ${esc(et(trade.exit_time))} @ ${esc(price(trade.exit_price))}</small>
+    ${teamLine(trade)}
     <div class="row-links">
       <a href="${esc(trade.dex_url)}" target="_blank" rel="noopener">DexScreener</a>
       <a href="${esc(trade.gmgn_url)}" target="_blank" rel="noopener">GMGN</a>
       <span class="tag">PAPER / SIMULATED</span>
     </div>
   </article>`;
+}
+
+function teamLine(trade) {
+  const team = trade.team;
+  if (!team) return `<small class="muted">Logged before the team vote started</small>`;
+  const votes = (team.votes || []).map((v) => `<li class="vote-${esc(v.vote)}"><b>${esc(v.agent)}</b> ${esc(v.vote)} — ${esc(v.reason)}</li>`).join("");
+  return `<div class="team-line"><small>Proposed by <b>${esc(trade.proposed_by || "—")}</b> · <span class="tag good">TEAM ${esc(team.tally)}</span></small>
+    <details class="votes"><summary>Team vote · ${esc(team.rule)}</summary><ul>${votes}</ul></details></div>`;
 }
 
 function tokenCard(token, failed) {
@@ -94,7 +103,9 @@ function renderState(data) {
   $("rejected").innerHTML = rejected.length ? `<h3 class="pad" style="margin:0">Checked, not eligible</h3>` + rejected.map((t) => tokenCard(t, true)).join("") : "";
   const trades = data.recent_trades || [];
   $("ledger").innerHTML = trades.length ? trades.map(tradeCard).join("") : `<p class="pad muted">No paper trades yet. The ledger only records simulated fills.</p>`;
-  $("tradeCount").textContent = `${summary.paper_trades_total ?? 0} paper trades`;
+  $("tradeCount").textContent = `${summary.paper_trades_total ?? 0} team paper trades`;
+  const team = data.team;
+  if ($("teamNote")) $("teamNote").textContent = team ? `${team.model} Last cycle: ${team.last_cycle_taken} taken, ${team.last_cycle_rejected} turned down.` : "One team, one shared paper P&L. Every trade needs a team vote.";
   ledger = data.ledger || { days: [] };
   if (!monthCursor) {
     const latest = (ledger.days || []).map((d) => d.date).sort().pop();

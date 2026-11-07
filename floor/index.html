@@ -24,10 +24,10 @@
 <main>
   <section class="intro">
     <div>
-      <div class="eyebrow">SIX AGENTS / ONE DESK</div>
+      <div class="eyebrow">SIX AGENTS / ONE TEAM / ONE P&amp;L</div>
       <h1>Buy the dip.<br><span>Never top-tick.</span></h1>
     </div>
-    <p>A research floor for Solana meme coins. The agents read public data, reject rugs, and log <strong>paper</strong> trades. No wallet. No keys. No orders.</p>
+    <p>A research floor for Solana meme coins. The agents read public data, reject rugs, and vote as one team on every <strong>paper</strong> trade. No wallet. No keys. No orders.</p>
   </section>
   <a class="token" href="./BEST_STRATEGY.md" style="text-decoration:none;margin-bottom:16px;display:block;border:1px solid #5a3518;border-radius:8px;background:#1a100b">
     <div class="token-top"><span class="tag">BEST STRATEGY</span><b id="bestLinkText">Standing dip rule</b></div>
@@ -45,7 +45,7 @@
   <section class="metrics" aria-label="Research totals">
     <article><span>MINTS SEEN</span><strong id="discovered">—</strong><small>free public lists</small></article>
     <article><span>ELIGIBLE</span><strong id="eligible">—</strong><small>passed safety and lessons</small></article>
-    <article><span>PAPER P&amp;L</span><strong id="pnl">—</strong><small>simulated dollars</small></article>
+    <article><span>TEAM P&amp;L</span><strong id="pnl">—</strong><small>one shared paper total</small></article>
     <article class="hot"><span>FLOOR HEALTH</span><strong id="healthMetric">—</strong><small>heartbeats and Pages</small></article>
   </section>
   <div class="content-grid">
@@ -60,11 +60,11 @@
         <div id="rejected"></div>
       </section>
       <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">04</span><h2>PAPER LEDGER</h2></div><span class="small-muted" id="tradeCount">PAPER / SIMULATED</span></div>
+        <div class="panel-heading"><div><span class="section-num">04</span><h2>TEAM PAPER LEDGER</h2></div><span class="small-muted" id="tradeCount">PAPER / SIMULATED</span></div>
         <div id="ledger"></div>
       </section>
       <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">05</span><h2>P&amp;L CALENDAR</h2></div><span class="small-muted">AMERICA/NEW_YORK</span></div>
+        <div class="panel-heading"><div><span class="section-num">05</span><h2>TEAM P&amp;L CALENDAR</h2></div><span class="small-muted">AMERICA/NEW_YORK</span></div>
         <div class="cal-head"><button type="button" id="prevMonth" aria-label="Previous month">←</button><div class="month-label" id="monthLabel">Month</div><button type="button" id="nextMonth" aria-label="Next month">→</button></div>
         <div class="dow"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
         <div class="cal-grid" id="calendar"></div>
@@ -77,7 +77,8 @@
     </div>
     <aside>
       <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">07</span><h2>THE DESK</h2></div><span id="agentCount" class="pill">0 / 6</span></div>
+        <div class="panel-heading"><div><span class="section-num">07</span><h2>THE TEAM</h2></div><span id="agentCount" class="pill">0 / 6</span></div>
+        <p class="pad small-muted" id="teamNote" style="margin:0">One team, one shared paper P&amp;L.</p>
         <div id="agents"></div>
       </section>
       <section class="panel">
