@@ -46,7 +46,7 @@ A trade row, in the feed and in the day view, shows the token name and symbol, E
 
 Notable finds and paper trades are appended to `data/feed.json` immediately. The publisher pushes that file on its own, at most about every 45 seconds, so a burst of trades does not become a burst of git pushes. The page polls `data/feed.json` every 12 seconds and animates new rows.
 
-GitHub Pages usually needs about a minute after the push before the new JSON is visible. The local server at `http://127.0.0.1:8789` does not have that delay.
+GitHub Pages usually needs about a minute after the push before the new JSON is visible. The local server at `http://127.0.0.1:8795` does not have that delay.
 
 ## Run it
 
@@ -62,7 +62,7 @@ chmod +x start.sh stop.sh run_research.sh run_server.sh
 `start.sh` background-starts two restart loops with `setsid`, PID files, and logs:
 
 - `research.py` — the 30-minute cycle, 5-minute light scan, and 3-minute health check
-- `server.py` — read-only static files on `127.0.0.1:8789`
+- `server.py` — read-only static files on `127.0.0.1:8795`
 
 ```bash
 ./stop.sh

@@ -7,7 +7,7 @@ import socketserver
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PORT = 8789
+PORT = 8795
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):

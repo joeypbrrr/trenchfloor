@@ -865,7 +865,7 @@ def health(config, allow_publish=True):
     for role in ROLE_NAMES:
         HEARTS[role] = time.time()
         AGENTS[role]["heartbeat"] = now_iso()
-    local_url = config.get("local_url", "http://127.0.0.1:8789").rstrip("/") + "/data/feed.json"
+    local_url = config.get("local_url", "http://127.0.0.1:8795").rstrip("/") + "/data/feed.json"
     public = config.get("public_url", "").rstrip("/") + "/data/feed.json"
     local_ok, local_err = _reachable(local_url)
     remote_ok, remote_err = _reachable(public) if public else (False, "no public url")
