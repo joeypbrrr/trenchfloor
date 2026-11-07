@@ -33,11 +33,12 @@
     "allocation_fraction": 0.1,
     "max_open_positions": 24,
     "stop_fraction": 0.12,
-    "target_fraction": 0.25,
+    "target_fraction": 0.35,
     "max_hold_seconds": 57600,
     "position_check_seconds": 60,
     "require_green_candle": false,
-    "allocation_of_free_cash_fraction": 0.1
+    "allocation_of_free_cash_fraction": 0.1,
+    "target_floor_fraction": 0.35
   },
   "limits": {
     "enrich_mints": 60,
@@ -119,14 +120,15 @@
   "minimum_entries_per_hour": 1,
   "tiers": {
     "primary": {
-      "max_holder_pct": 15,
+      "max_holder_pct": 20,
       "max_top10_pct": 65,
       "entry_zone": [
         0.05,
         0.95
       ],
       "require_green_candle": false,
-      "notional_usd": 100
+      "notional_usd": 100,
+      "reject_soft_risks": true
     },
     "fallback": {
       "max_holder_pct": 20,
@@ -142,14 +144,24 @@
         "min_market_cap_usd": 6000,
         "max_market_cap_usd": 10000000000,
         "strict_market_cap": true
+      },
+      "penalty_only": true,
+      "penalties": {
+        "soft_risk_each": 3,
+        "top10": 2,
+        "checklist_each": 4,
+        "market": 2
       }
     },
     "hard": {
-      "max_single_non_pool_holder_pct": 20,
+      "checks": [
+        "sellable_not_honeypot",
+        "mint_authority_revoked",
+        "freeze_authority_revoked"
+      ],
       "unknown_rejects": true,
-      "min_lp_lock_burn_pct": 99.99,
-      "sell_quote_required": true,
-      "canonical_spl_only": true
+      "sell_quote_required": true
     }
-  }
+  },
+  "checklist_rules_enabled": true
 }

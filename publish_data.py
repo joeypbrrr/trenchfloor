@@ -186,7 +186,7 @@ def live_snapshots(root):
     messages = [{k: e[k] for k in ("id", "agent", "kind", "text", "time", "trade_id") if k in e}
                 for e in history.get("messages", [])[-200:]]
     files = {"data/live_chat.json": {"updated": stamp, "messages": messages},
-             "data/checklist.json": {"updated": stamp, "items": history.get("checklist", []), "status": "SUGGESTIONS ONLY — not applied"}}
+             "data/checklist.json": {"updated": stamp, "items": history.get("checklist", []), "status": "ACTIVE RULES — primary reject / fallback score penalty"}}
     for rel, payload in files.items():
         path = root / rel
         path.parent.mkdir(parents=True, exist_ok=True)

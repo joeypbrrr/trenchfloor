@@ -52,7 +52,7 @@ each treadmill <=1, kitchen <=2; walking agents count as away, so >=3 stay at de
 Real events request a return to the desk. Reduced-motion users do not get breaks.
 These animations never emit research/trade events or affect trading logic.
 
-## Persisted chat and suggestion-only loss reviews
+## Persisted chat and structured-rule loss reviews
 
 Recent 200 events: `data/cache/live-events.json`.
 Last 1,000 chat messages, deduped reviewed trade IDs, and shared checklist:
@@ -74,8 +74,9 @@ missed reviews after restarts without accepting historical/backtest imports.
 Available facts (ATH depth, entry/exit liquidity/volume, holders, duration, exit
 reason, modeled slippage) become role-specific messages; missing fields are
 explicitly unknown, and no causal claims are inferred from correlations.
-Strategist deduplicates suggestions and supporting-loss counts. The checklist
-never modifies config, strategy, filters, or the existing lessons rules.
+Strategist deduplicates structured rules and supporting-loss counts. The checklist is applied before each selection: a violation rejects primary
+and penalizes fallback score. It does not change the 12% stop / 35% target
+minimum / 16h time limit.
 
 ## Verification
 
@@ -97,20 +98,22 @@ There are no websockets on Pages, and phone caches can delay the new HTML.
 `candidate_source=legacy` restores the original DexScreener lists/pair adapter
 (with its original GeckoTerminal pool/OHLCV assistance), not GMGN/PumpPortal.
 Verified global fees are unavailable, so that filter is explicitly SKIPPED and
-logged; no fee proxy. Strict measured market cap >=$6,000. All scam checks stay.
+logged; no fee proxy. Primary market cap >=$6,000; fallback treats market
+floors as score penalties. Current three-hard-check policy is specified in TIERS.md.
 
 Forward PAPER ONLY account starts at $1,000; historical ledger/snapshots are
 archived under data/archive, not credited to balance/calendar. No broker/wallet.
-Entries: recent closed green hourly confirmation, current 20–45% ATH dip, chain
-safety and team vote; one entry per rolling 3600s, persisted; one open position.
-Size: min($100, 10% of realized account balance, cash), initially $100.
-12% stop / 25% target / 16h time stop. Public DexScreener marks checked every
+Entries: ranked primary/fallback under TIERS.md with applied checklist rules,
+three shared hard checks and team vote; one entry per rolling 3600s, persisted.
+Up to 24 open positions. Primary $100 cap / fallback $50 cap, also capped at
+10% realized balance and 10% available cash. No repeat forward-entered mint.
+12% stop / 35% target minimum / 16h time stop. Public DexScreener marks checked every
 60s while positions are open; gap losses can exceed modeled stop. Simulation
 charges 30bps fee plus 80–200bps liquidity-based slippage per side.
 
 Exits run before any entry gate. Deduplicated realized forward closes alone
 feed the persistent $300 ET-day latch. Unrealized/backtest P&L does not count.
 A durable close journal replays into ledger and factual rule-based loss reviews
-(`data/cache/paper-chat-state.json`), published with the suggestion-only checklist.
-Historical simulations never create fake live closes or checklist suggestions.
+(`data/cache/paper-chat-state.json`), published with the structured-rule checklist.
+Historical simulations never create fake live closes or checklist rules.
 Runner flock prevents a duplicate runner in THIS repository only.

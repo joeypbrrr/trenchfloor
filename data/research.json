@@ -3,10 +3,10 @@
   "disclaimer": "Paper trading / research only. No wallet. No real trades. Not financial advice.",
   "scope": "Solana meme-coin paper research",
   "ok": false,
-  "cycle_count": 1,
-  "last_cycle": "2026-11-07T04:35:20.243170+00:00",
-  "next_cycle": "2026-11-07T05:35:20.243179+00:00",
-  "generated": "2026-11-07T04:52:23.258525+00:00",
+  "cycle_count": 2,
+  "last_cycle": "2026-11-07T05:00:09.676677+00:00",
+  "next_cycle": "2026-11-07T06:00:09.676684+00:00",
+  "generated": "2026-11-07T05:09:34.062919+00:00",
   "data_status": "Starting",
   "errors": [],
   "agents": [
@@ -17,8 +17,8 @@
       "status": "idle",
       "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "",
-      "heartbeat": "2026-11-07T04:51:38.207204+00:00"
+      "latest_action": "EXIT POLICY UPDATE COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump): take profit 25% -> 35% (minimum floor). Stop remains 12%; time limit remains 16h. Applied to the existing open position; no new entry.",
+      "heartbeat": "2026-11-07T05:09:34.057539+00:00"
     },
     {
       "role": "Bubble Map Analyst",
@@ -28,27 +28,27 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T04:51:38.207219+00:00"
+      "heartbeat": "2026-11-07T05:09:34.056388+00:00"
     },
     {
       "role": "X/Twitter Scout",
       "initials": "XS",
       "color": "ff5a1f",
       "status": "idle",
-      "task": "Light scan of DexScreener boost and profile links.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "Light scan found 1 new Solana rows with an X link. Not tweets. CXRT8b https://x.com/rockstargames?s=11",
-      "heartbeat": "2026-11-07T04:51:38.207221+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:09:34.056392+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "Light scan of new GeckoTerminal pools. No safety review on this pass.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "Light scan: 20 new pools, 0 already at the liquidity filter. No paper trades on a light scan.",
-      "heartbeat": "2026-11-07T04:51:38.207223+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:09:34.056393+00:00"
     },
     {
       "role": "Backtester",
@@ -58,7 +58,7 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T04:51:38.207224+00:00"
+      "heartbeat": "2026-11-07T05:09:34.056395+00:00"
     },
     {
       "role": "Strategist",
@@ -67,11 +67,249 @@
       "status": "idle",
       "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "",
-      "heartbeat": "2026-11-07T04:51:38.207226+00:00"
+      "latest_action": "CHECKLIST POLICY UPDATE: 0 structured rule item(s) active. Violations reject primary / penalize fallback before selection; required missing observations are violations. No selection performed now.",
+      "heartbeat": "2026-11-07T05:09:34.060796+00:00"
     }
   ],
   "activity": [
+    {
+      "id": 53,
+      "time": "2026-11-07T05:09:34.061663+00:00",
+      "agent": "System",
+      "text": "DISPLAY UPDATE: each open-position card and entry row shows Opened from its own entry_time with full date and seconds in ET. COGE: Opened Nov 7, 2026, 12:00:09 AM ET.",
+      "type": "info"
+    },
+    {
+      "id": 52,
+      "time": "2026-11-07T05:09:34.060650+00:00",
+      "agent": "Strategist",
+      "text": "CHECKLIST POLICY UPDATE: 0 structured rule item(s) active. Violations reject primary / penalize fallback before selection; required missing observations are violations. No selection performed now.",
+      "type": "info"
+    },
+    {
+      "id": 51,
+      "time": "2026-11-07T05:09:34.059654+00:00",
+      "agent": "System",
+      "text": "POLICY UPDATE: hard blocks are ONLY unsellable/no sell route, active mint authority, active freeze authority; unknowns reject. Concentration, LP and risky Token-2022 extensions reject primary but penalize fallback. No demo cycle or new entry.",
+      "type": "info"
+    },
+    {
+      "id": 50,
+      "time": "2026-11-07T05:09:34.057354+00:00",
+      "agent": "Risk Manager",
+      "text": "EXIT POLICY UPDATE COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump): take profit 25% -> 35% (minimum floor). Stop remains 12%; time limit remains 16h. Applied to the existing open position; no new entry.",
+      "type": "info"
+    },
+    {
+      "id": 49,
+      "time": "2026-11-07T05:00:09.683237+00:00",
+      "agent": "System",
+      "text": "Cycle 2 finished. 91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry. Next scheduled cycle 2026-11-07 01:00:09 ET; rolling-hour entry cap remains authoritative.",
+      "type": "info"
+    },
+    {
+      "id": 48,
+      "time": "2026-11-07T05:00:09.675427+00:00",
+      "agent": "Data Scout",
+      "text": "PRIMARY FORWARD PAPER entry COGE COIN / COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump) @ 0.01566; size $100.00; score 17.354199; 12% stop / 25% target / 16h time stop. ONE TRADE PER COIN EVER: mint permanently excluded after this entry. https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+      "type": "trade"
+    },
+    {
+      "id": 47,
+      "time": "2026-11-07T05:00:09.674135+00:00",
+      "agent": "Strategist",
+      "text": "PRIMARY PAPER COGE vote approve: Dip entry under forward_ranked_primary (stop 12%, target 25%).",
+      "type": "info"
+    },
+    {
+      "id": 46,
+      "time": "2026-11-07T05:00:09.673065+00:00",
+      "agent": "Backtester",
+      "text": "PRIMARY PAPER COGE vote approve: 0 earlier simulated fills on this pool; no evidence against.",
+      "type": "info"
+    },
+    {
+      "id": 45,
+      "time": "2026-11-07T05:00:09.672190+00:00",
+      "agent": "Data Scout",
+      "text": "PRIMARY PAPER COGE vote approve: Ranked primary candidate, score 17.354199; configured tier criteria and common hard blocks passed. ATH may be optional in fallback.",
+      "type": "info"
+    },
+    {
+      "id": 44,
+      "time": "2026-11-07T05:00:09.671085+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "PRIMARY PAPER COGE vote abstain: X API unavailable (401); token has no X link. No tweets read, abstaining.",
+      "type": "info"
+    },
+    {
+      "id": 43,
+      "time": "2026-11-07T05:00:09.669953+00:00",
+      "agent": "Bubble Map Analyst",
+      "text": "PRIMARY PAPER COGE vote approve: Top non-LP wallet 0.8971% (\u2264 15.0%), no linked-wallet fail.",
+      "type": "info"
+    },
+    {
+      "id": 42,
+      "time": "2026-11-07T05:00:09.668100+00:00",
+      "agent": "Risk Manager",
+      "text": "PRIMARY PAPER COGE vote approve: Safety pass: mint authority revoked, freeze revoked.",
+      "type": "info"
+    },
+    {
+      "id": 41,
+      "time": "2026-11-07T05:00:09.664728+00:00",
+      "agent": "Strategist",
+      "text": "After hard blocks and entry criteria: primary 3, fallback-eligible 3. Using primary; team ranks by 2*log10(1+liquidity)+log10(1+volume)-topHolder/20.",
+      "type": "info"
+    },
+    {
+      "id": 40,
+      "time": "2026-11-07T05:00:07.257676+00:00",
+      "agent": "Risk Manager",
+      "text": "HODL: PASS all hard rug blocks; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 39,
+      "time": "2026-11-07T05:00:00.754118+00:00",
+      "agent": "Risk Manager",
+      "text": "GATO: PASS all hard rug blocks; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 8, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 38,
+      "time": "2026-11-07T04:59:54.676590+00:00",
+      "agent": "Risk Manager",
+      "text": "COGE: PASS all hard rug blocks; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 19, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 37,
+      "time": "2026-11-07T04:59:51.005976+00:00",
+      "agent": "Risk Manager",
+      "text": "FLOAT: verified_pool_vault: RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 36,
+      "time": "2026-11-07T04:59:45.672706+00:00",
+      "agent": "Risk Manager",
+      "text": "PENGU: LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 35,
+      "time": "2026-11-07T04:59:41.823930+00:00",
+      "agent": "Risk Manager",
+      "text": "ANSEM: complete_chain_read: FAIL non-LP non-program holder owns 49.23% (limit 20%); single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 49.2304%; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 34,
+      "time": "2026-11-07T04:59:37.730942+00:00",
+      "agent": "Risk Manager",
+      "text": "STONK: LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 33,
+      "time": "2026-11-07T04:59:34.060254+00:00",
+      "agent": "Risk Manager",
+      "text": "RAY: Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report; owner lookup not completed",
+      "type": "info"
+    },
+    {
+      "id": 32,
+      "time": "2026-11-07T04:59:33.226450+00:00",
+      "agent": "Risk Manager",
+      "text": "BIRB: Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report; owner lookup not completed",
+      "type": "info"
+    },
+    {
+      "id": 31,
+      "time": "2026-11-07T04:59:32.619174+00:00",
+      "agent": "Risk Manager",
+      "text": "PUMP: complete_chain_read: FAIL risky Token-2022 extensions: transferHook; non-LP non-program holder owns 27.83% (limit 20%); single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 27.8254%; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 30,
+      "time": "2026-11-07T04:59:17.492382+00:00",
+      "agent": "Risk Manager",
+      "text": "CARDS: Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report; owner lookup not completed",
+      "type": "info"
+    },
+    {
+      "id": 29,
+      "time": "2026-11-07T04:59:16.394215+00:00",
+      "agent": "Risk Manager",
+      "text": "ZEC: complete_chain_read: FAIL live mint authority; mint_authority_revoked: must be explicitly revoked; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "type": "info"
+    },
+    {
+      "id": 28,
+      "time": "2026-11-07T04:59:09.326611+00:00",
+      "agent": "Data Scout",
+      "text": "Tier market candidates: primary 27, fallback market pool 33; 0 excluded: already traded (before scoring).",
+      "type": "info"
+    },
+    {
+      "id": 27,
+      "time": "2026-11-07T04:59:09.325314+00:00",
+      "agent": "Risk Manager",
+      "text": "Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks.",
+      "type": "info"
+    },
+    {
+      "id": 26,
+      "time": "2026-11-07T04:59:08.885475+00:00",
+      "agent": "Data Scout",
+      "text": "0 excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier.",
+      "type": "info"
+    },
+    {
+      "id": 25,
+      "time": "2026-11-07T04:59:08.883912+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "52 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; CXRT8b https://x.com/rockstargames?s=11; DtcicP https://x.com/cartoonmoney_ai",
+      "type": "info"
+    },
+    {
+      "id": 24,
+      "time": "2026-11-07T04:59:06.055109+00:00",
+      "agent": "Data Scout",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}",
+      "type": "error"
+    },
+    {
+      "id": 23,
+      "time": "2026-11-07T04:59:06.053689+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
+      "type": "info"
+    },
+    {
+      "id": 22,
+      "time": "2026-11-07T04:59:06.051889+00:00",
+      "agent": "Strategist",
+      "text": "CHECKLIST CONSULT: 0 shared lesson suggestion(s) read before selection. SUGGESTION ONLY; none automatically changes filters or sizing.",
+      "type": "info"
+    },
+    {
+      "id": 21,
+      "time": "2026-11-07T04:59:06.051156+00:00",
+      "agent": "Risk Manager",
+      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L.",
+      "type": "info"
+    },
+    {
+      "id": 20,
+      "time": "2026-11-07T04:59:06.049135+00:00",
+      "agent": "System",
+      "text": "Cycle 2 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum.",
+      "type": "info"
+    },
     {
       "id": 19,
       "time": "2026-11-07T04:51:23.203154+00:00",
@@ -206,41 +444,38 @@
       "type": "info"
     }
   ],
-  "watchlist": [],
-  "rejected_review": [
+  "watchlist": [
     {
-      "mint": "oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "symbol": "AMD",
-      "name": "A Meme Dacity",
-      "pool": "6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
+      "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+      "symbol": "COGE",
+      "name": "COGE COIN",
+      "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
       "dex": "pumpswap",
       "quote_symbol": "SOL",
-      "price_usd": 0.001775,
-      "last_price": null,
-      "liquidity_usd": 115272.98,
-      "volume_24h_usd": 3856181.28,
-      "market_cap_usd": 1752376.0,
+      "price_usd": 0.01566,
+      "last_price": 0.015769263997614188,
+      "liquidity_usd": 334915.41,
+      "volume_24h_usd": 2234503.22,
+      "market_cap_usd": 15599028.0,
       "market_cap_from": null,
-      "liq_to_mcap": 0.06578096253315498,
-      "age_hours": 26.07,
+      "liq_to_mcap": null,
+      "age_hours": null,
       "metrics_source": "dexscreener",
-      "twitter": [
-        "https://x.com/amemedacitysol"
-      ],
-      "dex_url": "https://dexscreener.com/solana/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "gmgn_url": "https://gmgn.ai/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "eligible": false,
+      "twitter": [],
+      "dex_url": "https://dexscreener.com/solana/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+      "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+      "eligible": true,
       "lesson_blocks": [],
       "filter_reason": null,
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
+      "in_entry_zone": true,
+      "ath_frac": 0.7950072772628121,
+      "window_ath": 0.019697932896811893,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "hourly_bars": 34,
+      "daily_bars": 3,
       "history_error": null,
-      "description": "THE SKYLINE HAS A MAIN CHARACTER.",
+      "description": "",
       "global_fees_sol": null,
       "global_fees_basis": null,
       "fees_proxy_sol": null,
@@ -254,67 +489,162 @@
       "dev_wallet": null,
       "bonding_curve": null,
       "safety": {
-        "status": "incomplete",
-        "summary": "incomplete: one or more holder owners could not be read",
-        "hard_fails": [
-          "one or more holder owners could not be read"
+        "status": "pass",
+        "summary": "PASS all hard rug blocks",
+        "hard_fails": [],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
         ],
-        "warnings": [],
-        "checks": [],
-        "top_human_pct": null,
-        "top_human": null,
-        "mint_authority_active": null,
-        "freeze_authority_active": null,
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": true,
+            "detail": "top wallet 0.90%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 0.8971,
+        "top_human": "5PWa4xrVzNZr7eDPKany9mwdRCNk18jw3Yp6NTDRc4tK",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
         "risky_extensions": [],
-        "token2022": null,
-        "lp_matched": null,
+        "token2022": true,
+        "lp_matched": false,
         "lp_locked": null,
-        "lp_burned": null,
-        "program_hold_pct": null,
-        "supply_burn_pct": null,
-        "holder_over_3_5": null,
-        "cluster": {
-          "flags": [],
-          "fail": false,
-          "detail": "linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks)"
-        },
-        "extensions": [],
-        "humans": []
+        "lp_burned": true,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
+        "cluster": null,
+        "extensions": [
+          "metadataPointer",
+          "tokenMetadata"
+        ],
+        "humans": [
+          {
+            "owner": "5PWa4xrVzNZr7eDPKany9mwdRCNk18jw3Yp6NTDRc4tK",
+            "token_account": "6Cfuc2YHmMEyZKC9CHiLgBCf56QuWqAq7YPj9DCccPSi",
+            "pct": 0.8971461976169816,
+            "ui_amount": 8931088.710649,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "FYUXYHg2DSigsSiQodXZpFuqG6AM41e75jhkfhdupyGJ",
+            "token_account": "4u3kdx5LNHSVGbsFFgHdcNomabcVRZk68QcR3QWR4mQB",
+            "pct": 0.8875972859095098,
+            "ui_amount": 8836029.312553,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "CiUgsxBvx9ZuQeQsXKXykiYSip4daqfdczeEtYMEMxr2",
+            "token_account": "CXaoiDBi3VsyTgDW4cNAoPALAM1e4bNZa7zaqE8ETTyB",
+            "pct": 0.8814766337255038,
+            "ui_amount": 8775098.231568,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "FR5Z3YKXmaiXUtZoddvCPBfYLT8TjxmHZe8ifz9dVF1A",
+            "token_account": "GoRe99aWvktcomq4oThochRK6fh8n3scwBd5opa6fwYP",
+            "pct": 0.8785825094165203,
+            "ui_amount": 8746287.229513,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "8FtkU7T3PPHzA82G4oDzoug3V9qvYKyX6b2Sv3m3SiJj",
+            "token_account": "3wX53tnwL7Tzctjdfh9ajmT7K2dPt18XW5x5jhDsrSKT",
+            "pct": 0.8514350823400805,
+            "ui_amount": 8476034.644004,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "9hW8QXn3yAjRUAjuuq85jSNHUqzUWbf5oXwjppCSiwkR",
+            "token_account": "6k1dUWvVr9PeqLqfp7TGqg6Z5da6ZSwbKmkvbRFPvriW",
+            "pct": 0.8498336029869142,
+            "ui_amount": 8460091.920054,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "5wpeY1mo19QsfjFsrsp774gTJdApRtkexTspbYwSnFjK",
+            "token_account": "D3zcXncLsfj5C2b5Lrbje4qDyN7cgDm3yTdzYcxySoYY",
+            "pct": 0.8466957179587677,
+            "ui_amount": 8428854.280498,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "AM3yzg4QAfATjKsJHwTCcaVByhvYc2ZgjEA35qeF2Xvs",
+            "token_account": "29LE9xhajDA9ZktcuE1zFfZdmSLobAtWpQ2s43LSJEZa",
+            "pct": 0.8454575415028398,
+            "ui_amount": 8416528.236207,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
       }
     },
     {
-      "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
-      "symbol": "DONNA",
-      "name": "Donna Dollars",
-      "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT",
+      "mint": "HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+      "symbol": "GATO",
+      "name": "GTA6CAT",
+      "pool": "5E3dXLXGwmTDCokA51WYYaKttjFZBwqCoyUHBUi5gt2m",
       "dex": "pumpswap",
       "quote_symbol": "SOL",
-      "price_usd": 0.001511,
-      "last_price": null,
-      "liquidity_usd": 98526.38,
-      "volume_24h_usd": 84875.23,
-      "market_cap_usd": 1444693.0,
+      "price_usd": 0.01157,
+      "last_price": 0.011609276188186527,
+      "liquidity_usd": 357423.28,
+      "volume_24h_usd": 1554393.44,
+      "market_cap_usd": 11424254.0,
       "market_cap_from": null,
-      "liq_to_mcap": 0.06819883532349087,
-      "age_hours": 341.76,
+      "liq_to_mcap": null,
+      "age_hours": null,
       "metrics_source": "dexscreener",
       "twitter": [
-        "https://x.com/donnadollars365"
+        "https://x.com/TheGTA6cat"
       ],
-      "dex_url": "https://dexscreener.com/solana/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
-      "gmgn_url": "https://gmgn.ai/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
-      "eligible": false,
+      "dex_url": "https://dexscreener.com/solana/HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+      "gmgn_url": "https://gmgn.ai/sol/token/HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+      "eligible": true,
       "lesson_blocks": [],
       "filter_reason": null,
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
+      "in_entry_zone": true,
+      "ath_frac": 0.7889789859286915,
+      "window_ath": 0.014664522384434843,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "hourly_bars": 168,
+      "daily_bars": 75,
       "history_error": null,
-      "description": "SHE\u2019S NOT A TREND. SHE\u2019S THE PLOT.\nTHE DONNA EFFECT\n\nThe internet has enough serious faces. Donna brings the attitude, the punchlines, and the kind of energy you can\u2019t scroll past. This is a corner of crypto for people who came for the memes and stayed for each other.\n\nNo suits. ",
+      "description": "The most anticipated game in history. One cat. Nine lives. Zero concerns. $GATO",
       "global_fees_sol": null,
       "global_fees_basis": null,
       "fees_proxy_sol": null,
@@ -328,67 +658,162 @@
       "dev_wallet": null,
       "bonding_curve": null,
       "safety": {
-        "status": "incomplete",
-        "summary": "incomplete: one or more holder owners could not be read",
-        "hard_fails": [
-          "one or more holder owners could not be read"
+        "status": "pass",
+        "summary": "PASS all hard rug blocks",
+        "hard_fails": [],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
         ],
-        "warnings": [],
-        "checks": [],
-        "top_human_pct": null,
-        "top_human": null,
-        "mint_authority_active": null,
-        "freeze_authority_active": null,
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": true,
+            "detail": "top wallet 3.32%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 3.3245,
+        "top_human": "5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
         "risky_extensions": [],
-        "token2022": null,
-        "lp_matched": null,
+        "token2022": true,
+        "lp_matched": false,
         "lp_locked": null,
-        "lp_burned": null,
-        "program_hold_pct": null,
-        "supply_burn_pct": null,
-        "holder_over_3_5": null,
-        "cluster": {
-          "flags": [],
-          "fail": false,
-          "detail": "linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks)"
-        },
-        "extensions": [],
-        "humans": []
+        "lp_burned": true,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
+        "cluster": null,
+        "extensions": [
+          "metadataPointer",
+          "tokenMetadata"
+        ],
+        "humans": [
+          {
+            "owner": "5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm",
+            "token_account": "Dkio4cgoKrEseVhwaQR4x2n7T6AUS2cLuBE3khWWiZ9K",
+            "pct": 3.324527725782256,
+            "ui_amount": 32809777.334045,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "2t5HhGczTo8qwmCUYodTNEHR1hS3NhUvZ1bknL72VzKu",
+            "token_account": "Dd8NpA2NccEVnNiCsao4Q58GqcmZxApRK1md32A3fzrV",
+            "pct": 2.2915675679789893,
+            "ui_amount": 22615489.432749,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "4rGaKrm9Cythy3SQBrNX7r6H9w17Kj87HGiNwE4XG4q1",
+            "token_account": "GWXdZ2XQs8FSt8WhJh8j8gLo6933jKFDYc2mLsC9j7n2",
+            "pct": 1.4397609919604504,
+            "ui_amount": 14209006.949807,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "HGwxeytoLDY4AEw12n7jibSMKaY3EcHKiAFHDcCya2zQ",
+            "token_account": "CfpPyyEFzifCNWYDCoprA88NaPERDhF1SYzqme36yqAS",
+            "pct": 1.4185828720226006,
+            "ui_amount": 14000000.0,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "Ba16LD2KE5AAaq3uMbwV4zZ8NzfGBFxtPrBGZRBbJosn",
+            "token_account": "A1gmdbMUNMUCUEBoHZNKQpc8uNnkcLWGcukoLmVrLB4E",
+            "pct": 1.105354250967754,
+            "ui_amount": 10908745.494357,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "DxRWnRHMP6kmbMqDhs27XvsSS5emfJLvwxQga3rSfB9v",
+            "token_account": "9ZhMDiadyVVuvyXKEVb3Spz8ZoaDozMQ7abGtFTvV4o6",
+            "pct": 1.0617160636325509,
+            "ui_amount": 10478080.050172,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "CrvMqFndK6En7DiWvdnCdrt3A4ZJfBwMH3Y9URBRkCjm",
+            "token_account": "BRLMA5JiuvwD6GZaDQYJeK1xgKkBriExy45SCLmvv4G2",
+            "pct": 1.0422318861163233,
+            "ui_amount": 10285790.624854,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "B3T9xPsLiSfEc63DmHoxMTCewKEVaWffdKZfUmWbooyy",
+            "token_account": "AEMpZF7E3PJGUbKoCEmfZ6ZxJPCNgRknBExzfxNkkr1h",
+            "pct": 0.9435030899938246,
+            "ui_amount": 9311435.743673,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
       }
     },
     {
-      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "symbol": "jeff",
-      "name": "jeff",
-      "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
-      "dex": "raydium",
+      "mint": "DKtofLM6bhb54GQy5YFSWQjQmGiZqAkjzkQJ1LTopump",
+      "symbol": "HODL",
+      "name": "Diamond Hands",
+      "pool": "ANS69UDTbMCWbW7ZuCYXLZ4HMCQkvzPMtCW9zjPZQGKR",
+      "dex": "pumpswap",
       "quote_symbol": "SOL",
-      "price_usd": 0.0009986,
-      "last_price": null,
-      "liquidity_usd": 86666.81,
-      "volume_24h_usd": 138965.24,
-      "market_cap_usd": 998621.0,
+      "price_usd": 0.004006,
+      "last_price": 0.003827187585223733,
+      "liquidity_usd": 164965.22,
+      "volume_24h_usd": 2007619.42,
+      "market_cap_usd": 3988458.0,
       "market_cap_from": null,
-      "liq_to_mcap": 0.08678648856773491,
-      "age_hours": 243.6,
+      "liq_to_mcap": null,
+      "age_hours": null,
       "metrics_source": "dexscreener",
       "twitter": [
-        "https://x.com/i/communities/1910124515570381076"
+        "https://x.com/hodlonsolvip"
       ],
-      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "eligible": false,
+      "dex_url": "https://dexscreener.com/solana/DKtofLM6bhb54GQy5YFSWQjQmGiZqAkjzkQJ1LTopump",
+      "gmgn_url": "https://gmgn.ai/sol/token/DKtofLM6bhb54GQy5YFSWQjQmGiZqAkjzkQJ1LTopump",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/DKtofLM6bhb54GQy5YFSWQjQmGiZqAkjzkQJ1LTopump",
+      "eligible": true,
       "lesson_blocks": [],
       "filter_reason": null,
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
+      "in_entry_zone": true,
+      "ath_frac": 0.870028444785548,
+      "window_ath": 0.00460444715803221,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "hourly_bars": 7,
+      "daily_bars": 2,
       "history_error": null,
-      "description": "Born in the trenches. Launched directly on Raydium. No bonding curve. No launchpad games. Just a name, a meme, and a community that gets it.\n\nNow the community is writing the next chapter.\n\nNo grand promises. No complicated narratives. Just Jeff.",
+      "description": "Paper hands fold. Diamond hands hold. Meet $HODL: a little sparkle, a lot of conviction, and a community that knows the meme.",
       "global_fees_sol": null,
       "global_fees_basis": null,
       "fees_proxy_sol": null,
@@ -402,36 +827,131 @@
       "dev_wallet": null,
       "bonding_curve": null,
       "safety": {
-        "status": "incomplete",
-        "summary": "incomplete: one or more holder owners could not be read",
-        "hard_fails": [
-          "one or more holder owners could not be read"
+        "status": "pass",
+        "summary": "PASS all hard rug blocks",
+        "hard_fails": [],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
         ],
-        "warnings": [],
-        "checks": [],
-        "top_human_pct": null,
-        "top_human": null,
-        "mint_authority_active": null,
-        "freeze_authority_active": null,
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": true,
+            "detail": "top wallet 0.17%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 0.1712,
+        "top_human": "EzeicjuEp32bygj6LVmZ7GBT5iyAE6V9DqCtS2wYxys1",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
         "risky_extensions": [],
-        "token2022": null,
-        "lp_matched": null,
+        "token2022": true,
+        "lp_matched": false,
         "lp_locked": null,
-        "lp_burned": null,
-        "program_hold_pct": null,
-        "supply_burn_pct": null,
-        "holder_over_3_5": null,
-        "cluster": {
-          "flags": [],
-          "fail": false,
-          "detail": "linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks)"
-        },
-        "extensions": [],
-        "humans": []
+        "lp_burned": true,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
+        "cluster": null,
+        "extensions": [
+          "metadataPointer",
+          "tokenMetadata"
+        ],
+        "humans": [
+          {
+            "owner": "EzeicjuEp32bygj6LVmZ7GBT5iyAE6V9DqCtS2wYxys1",
+            "token_account": "EJ3hAxkJssqQdd41jBCUxWgA8KWaB7Wzpp3X4xZyUk1x",
+            "pct": 0.17122435118736,
+            "ui_amount": 1704581.503606,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "FJwdEa2U8rkHVhLEdw1LA3gPvQ58spteAszbsnme7g8g",
+            "token_account": "D8fmqW8jGVCpr2ab58uuhRqntGRgC9VGsp9cEBvYX9PF",
+            "pct": 0.17120620720441876,
+            "ui_amount": 1704400.87569,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "93G6cwzvDdgnmLt1ok8PtuP15syTfkJpeeA9nTVg2dNp",
+            "token_account": "2s4kr4d3dVoPRaMVGscf9WRQ21GuDLJ1BxqzzD2UEcDM",
+            "pct": 0.17107122756451731,
+            "ui_amount": 1703057.119408,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "GHhi7zSroDBDWGr9DSKTwv1CqJ5wUHdTuV58S7V59CUG",
+            "token_account": "i9U1CWhsycg6m3vKjAA7ySZCX8gpZBQpidR3j3Po6EE",
+            "pct": 0.16954774554138438,
+            "ui_amount": 1687890.472493,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "DkLLDxXB9mMfD6CNipBQhhYR6wEwSE7yspPJ9EtpdwBD",
+            "token_account": "3AV2r8hzxKq3VfytXbQpNCf9R1RJuXPSy3NdDn7ebt1N",
+            "pct": 0.1688515598141899,
+            "ui_amount": 1680959.768388,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "98YSdrPAsaZpE82LzNHtgPFbT4Jeqk5WdWaxU4ZrmxRW",
+            "token_account": "AWmtjiii2D8rSJBeNQkS4aQBX3vFhM33y8XTDVUcsS7N",
+            "pct": 0.16715794878491924,
+            "ui_amount": 1664099.444405,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "BnGCkn5Z8HHx3Qb7D2RVeNhimCpbps3S7LZYNTMCw7dd",
+            "token_account": "EsvLbs1BTTTPn1qAYx95sNKioGwYPcSr5YaHndBgny5q",
+            "pct": 0.16697865595226416,
+            "ui_amount": 1662314.539138,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "2G7GXtbQRPFQ9NRhLXjuSHXepmWzZ5xfRpwuiHJfgTqf",
+            "token_account": "Akbr9xLaBahEv522aqueRmcGiVopi3KZUkfAkCiCYfEV",
+            "pct": 0.16676311766254656,
+            "ui_amount": 1660168.801225,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
       }
     }
   ],
-  "filter_rejects_sample": [
+  "rejected_review": [
     {
       "mint": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
       "symbol": "ZEC",
@@ -439,22 +959,22 @@
       "pool": "2TAgfogn8JRwwTnsGKUa6WUT5Xdv1iMEzfEDMor68X9C",
       "dex": "orca",
       "quote_symbol": "SOL",
-      "price_usd": 1321.56,
+      "price_usd": 1316.58,
       "last_price": null,
-      "liquidity_usd": 4040403.22,
-      "volume_24h_usd": 6809797.71,
-      "market_cap_usd": 32638.0,
+      "liquidity_usd": 4042475.12,
+      "volume_24h_usd": 6809264.88,
+      "market_cap_usd": 32515.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 9217.13,
+      "age_hours": null,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
       "gmgn_url": "https://gmgn.ai/sol/token/A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
       "bubble_url": "https://app.bubblemaps.io/sol/token/A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
-      "eligible": null,
+      "eligible": false,
       "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
+      "filter_reason": null,
       "in_entry_zone": null,
       "ath_frac": null,
       "window_ath": null,
@@ -475,7 +995,128 @@
       "pump_risk": null,
       "dev_wallet": null,
       "bonding_curve": null,
-      "safety": null
+      "safety": {
+        "status": "incomplete",
+        "summary": "complete_chain_read: FAIL live mint authority; mint_authority_revoked: must be explicitly revoked; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution",
+        "hard_fails": [
+          "live mint authority"
+        ],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+        ],
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": false,
+            "detail": "FvULawNPGBbuwYus74ECaQoV1oH9Tk6XPN7VPN51NYds"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": true,
+            "detail": "top wallet 9.61%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 9.6133,
+        "top_human": "ByiAbN9MJhfQKGK5WJrfgko6XS88qqERQVRLWZTsvyTf",
+        "mint_authority_active": true,
+        "freeze_authority_active": false,
+        "risky_extensions": [],
+        "token2022": false,
+        "lp_matched": false,
+        "lp_locked": null,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
+        "cluster": null,
+        "extensions": [],
+        "humans": [
+          {
+            "owner": "ByiAbN9MJhfQKGK5WJrfgko6XS88qqERQVRLWZTsvyTf",
+            "token_account": "3pDpC7rRmrPRPvGRaGLJH8wzRUc4B1vHVZ574xPp82BB",
+            "pct": 9.613273795878364,
+            "ui_amount": 10245.91394383,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "DUHvDxvzPrP5WzGyLqKz6zHPf1o8QbFthCGmqYUhcoyQ",
+            "token_account": "9suGnMmuD5Tp8mwFhP5gw6q1todrCUasfcoHEhcjYN4o",
+            "pct": 5.533503190643779,
+            "ui_amount": 5897.65762456,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "2FwV6duQGoy2ABw4MXEgZS7q3SqinmKbJuSLB8ii97qu",
+            "token_account": "JBfVhBm7qjonXjL71kUNz4qWcfhN6iPMuUdQWvk8uMAt",
+            "pct": 5.528030018143929,
+            "ui_amount": 5891.82426793,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "DHb8Y9emUGoqTUzwdkRnhNWWmyvZTsGRiGQMEtycPaSn",
+            "token_account": "7muPXroaziH8RTD62Ea4gQ3NuAPZswf8Gj7iuPZ6Ae6Y",
+            "pct": 3.186881223738932,
+            "ui_amount": 3396.60676071,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "AGZKnWucwdX2i3cbYShfaNC2aGMJQd1acyF31wzDHyDr",
+            "token_account": "AXSoKvbXxbAyCUg56wRgJLMgPBFpmhqTqvaTR7zs9uEd",
+            "pct": 2.9346227374359213,
+            "ui_amount": 3127.7473901,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "9sEo7uYooCE8eJpoqPEEqwP2nYLPDhUgRsEUTwFsnok4",
+            "token_account": "Ac9hRA3uNcDXEhKkb7Wr7mYbZgAHVYKGW5zK36RDBWuL",
+            "pct": 2.7660966844837294,
+            "ui_amount": 2948.1308024,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "GTHKH8s82ZR8GTSFZ1dUu6wfdxhy59wpMShxzG5zjiPm",
+            "token_account": "286rooUyx3xswATm7xKvjMLUkEH4KDyoBEvY2HvitjAX",
+            "pct": 1.338216078357839,
+            "ui_amount": 1426.28276987,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "nfBTjn4FTFoB4NHs5CidtZmwSoaTR3h1yCGPs6YmePt",
+            "token_account": "3roQCLK1BKoKnjvCf3DAY8T85dtur1dWxDXFLNF1e4ef",
+            "pct": 1.1282151652081245,
+            "ui_amount": 1202.46190198,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
+      }
     },
     {
       "mint": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
@@ -484,22 +1125,22 @@
       "pool": "HnhpJPJgBG2KwniMTNW8cVBHvk1hFog3RC3kjnyc23tD",
       "dex": "raydium",
       "quote_symbol": "USDC",
-      "price_usd": 0.2286,
+      "price_usd": 0.2264,
       "last_price": null,
-      "liquidity_usd": 3591897.18,
-      "volume_24h_usd": 5843181.85,
-      "market_cap_usd": 203678987.0,
+      "liquidity_usd": 3575922.76,
+      "volume_24h_usd": 5911591.6,
+      "market_cap_usd": 201774606.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 10425.67,
+      "age_hours": null,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
       "gmgn_url": "https://gmgn.ai/sol/token/CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
       "bubble_url": "https://app.bubblemaps.io/sol/token/CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
-      "eligible": null,
+      "eligible": false,
       "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
+      "filter_reason": null,
       "in_entry_zone": null,
       "ath_frac": null,
       "window_ath": null,
@@ -520,52 +1161,28 @@
       "pump_risk": null,
       "dev_wallet": null,
       "bonding_curve": null,
-      "safety": null
-    },
-    {
-      "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
-      "symbol": "PENGU",
-      "name": "Pudgy Penguins",
-      "pool": "FAqh648xeeaTqL7du49sztp9nfj5PjRQrfvaMccyd9cz",
-      "dex": "orca",
-      "quote_symbol": "SOL",
-      "price_usd": 0.006515,
-      "last_price": null,
-      "liquidity_usd": 2979652.66,
-      "volume_24h_usd": 233582.14,
-      "market_cap_usd": 409549413.0,
-      "market_cap_from": null,
-      "liq_to_mcap": null,
-      "age_hours": 16551.57,
-      "metrics_source": "dexscreener",
-      "twitter": [],
-      "dex_url": "https://dexscreener.com/solana/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
-      "gmgn_url": "https://gmgn.ai/sol/token/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
-      "eligible": null,
-      "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
-      "history_error": null,
-      "description": "",
-      "global_fees_sol": null,
-      "global_fees_basis": null,
-      "fees_proxy_sol": null,
-      "fees_proxy_basis": null,
-      "fee_filter_basis": null,
-      "global_fees_verified": null,
-      "global_fees_observed_sol": null,
-      "pump_observation": null,
-      "pump_checks": null,
-      "pump_risk": null,
-      "dev_wallet": null,
-      "bonding_curve": null,
-      "safety": null
+      "safety": {
+        "status": "incomplete",
+        "summary": "Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report",
+        "hard_fails": [],
+        "warnings": [],
+        "checks": [],
+        "top_human_pct": null,
+        "top_human": null,
+        "mint_authority_active": null,
+        "freeze_authority_active": null,
+        "risky_extensions": [],
+        "token2022": null,
+        "lp_matched": null,
+        "lp_locked": null,
+        "lp_burned": null,
+        "program_hold_pct": null,
+        "supply_burn_pct": null,
+        "holder_over_3_5": null,
+        "cluster": null,
+        "extensions": [],
+        "humans": []
+      }
     },
     {
       "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
@@ -574,22 +1191,22 @@
       "pool": "BofA2ViUSudPBTUms2KRuG6AHNeMawjNfwqTJDgx5BKW",
       "dex": "orca",
       "quote_symbol": "SOL",
-      "price_usd": 0.003896,
+      "price_usd": 0.003891,
       "last_price": null,
-      "liquidity_usd": 2555173.86,
-      "volume_24h_usd": 6477780.52,
-      "market_cap_usd": 1789273099.0,
+      "liquidity_usd": 2553759.69,
+      "volume_24h_usd": 6378795.18,
+      "market_cap_usd": 1786577385.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 10021.01,
+      "age_hours": null,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
       "gmgn_url": "https://gmgn.ai/sol/token/pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
       "bubble_url": "https://app.bubblemaps.io/sol/token/pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
-      "eligible": null,
+      "eligible": false,
       "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
+      "filter_reason": null,
       "in_entry_zone": null,
       "ath_frac": null,
       "window_ath": null,
@@ -610,97 +1227,135 @@
       "pump_risk": null,
       "dev_wallet": null,
       "bonding_curve": null,
-      "safety": null
-    },
-    {
-      "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
-      "symbol": "RAY",
-      "name": "Raydium",
-      "pool": "2AXXcN6oN9bBT5owwmTH53C7QHUXvhLeu718Kqt8rvY2",
-      "dex": "raydium",
-      "quote_symbol": "SOL",
-      "price_usd": 1.77,
-      "last_price": null,
-      "liquidity_usd": 2046614.49,
-      "volume_24h_usd": 3103563.0,
-      "market_cap_usd": 480348545.0,
-      "market_cap_from": null,
-      "liq_to_mcap": null,
-      "age_hours": 19535.22,
-      "metrics_source": "dexscreener",
-      "twitter": [],
-      "dex_url": "https://dexscreener.com/solana/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
-      "gmgn_url": "https://gmgn.ai/sol/token/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
-      "eligible": null,
-      "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
-      "history_error": null,
-      "description": "",
-      "global_fees_sol": null,
-      "global_fees_basis": null,
-      "fees_proxy_sol": null,
-      "fees_proxy_basis": null,
-      "fee_filter_basis": null,
-      "global_fees_verified": null,
-      "global_fees_observed_sol": null,
-      "pump_observation": null,
-      "pump_checks": null,
-      "pump_risk": null,
-      "dev_wallet": null,
-      "bonding_curve": null,
-      "safety": null
-    },
-    {
-      "mint": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
-      "symbol": "STONK",
-      "name": "STONK",
-      "pool": "zxTpi4BtaWX3mgdAPoezkMD1hxx8CdeCfrqXMWvSCLX",
-      "dex": "meteora",
-      "quote_symbol": "SOL",
-      "price_usd": 0.09871,
-      "last_price": null,
-      "liquidity_usd": 1898648.47,
-      "volume_24h_usd": 2544190.15,
-      "market_cap_usd": 98717929.0,
-      "market_cap_from": null,
-      "liq_to_mcap": null,
-      "age_hours": 2081.72,
-      "metrics_source": "dexscreener",
-      "twitter": [],
-      "dex_url": "https://dexscreener.com/solana/6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
-      "gmgn_url": "https://gmgn.ai/sol/token/6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
-      "eligible": null,
-      "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
-      "history_error": null,
-      "description": "",
-      "global_fees_sol": null,
-      "global_fees_basis": null,
-      "fees_proxy_sol": null,
-      "fees_proxy_basis": null,
-      "fee_filter_basis": null,
-      "global_fees_verified": null,
-      "global_fees_observed_sol": null,
-      "pump_observation": null,
-      "pump_checks": null,
-      "pump_risk": null,
-      "dev_wallet": null,
-      "bonding_curve": null,
-      "safety": null
+      "safety": {
+        "status": "incomplete",
+        "summary": "complete_chain_read: FAIL risky Token-2022 extensions: transferHook; non-LP non-program holder owns 27.83% (limit 20%); single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 27.8254%; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution",
+        "hard_fails": [
+          "risky Token-2022 extensions: transferHook",
+          "non-LP non-program holder owns 27.83% (limit 20%)"
+        ],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+        ],
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": false,
+            "detail": "transferHook"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": false,
+            "detail": "top wallet 27.83%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 27.8254,
+        "top_human": "Cfq1ts1iFr1eUWWBm8eFxUzm5R3YA3UvMZznwiShbgZt",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
+        "risky_extensions": [
+          "transferHook"
+        ],
+        "token2022": true,
+        "lp_matched": false,
+        "lp_locked": null,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": true,
+        "cluster": null,
+        "extensions": [
+          "transferHook",
+          "metadataPointer",
+          "tokenMetadata"
+        ],
+        "humans": [
+          {
+            "owner": "Cfq1ts1iFr1eUWWBm8eFxUzm5R3YA3UvMZznwiShbgZt",
+            "token_account": "7AN6avKCJPMkXkW8kPwMuHmaWvJeHH69e8rKpLf9rdfk",
+            "pct": 27.82539599405005,
+            "ui_amount": 229261858182.10394,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "8UhbNoBXmGoxJr2TeWW8wmSMoWmjS2rTT2tVJxzuTogC",
+            "token_account": "5Sbgq5EJP7JQDkZQ22cSwWQXFofwsJiuygkPXraDthwf",
+            "pct": 9.7095596164719,
+            "ui_amount": 80000000010.00023,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "9pkFKCR1mdS31JxjKdtmWg2awZUg6vJUYVY722DAcXzv",
+            "token_account": "GGNKqK95ZFFyKem9Gqx7uvc7De4cBTjxYMJYssHWVaAM",
+            "pct": 4.247932332889178,
+            "ui_amount": 35000000010.00025,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "BBvQteuawKB2UtExfevL8HYLjWWsgmWXsp922vFbvCfT",
+            "token_account": "FapAcxVZBeeyQYMH5uyFmWM8i9HKvAfPqYAe2yYmAQao",
+            "pct": 3.0342373809846728,
+            "ui_amount": 25000000010.02305,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "GTeSSwovPiVirpvWJpThUWiLDSLsuApmJw621Yom3MhB",
+            "token_account": "HXVBCbgfPaUaQguWtdxQ3MSDF61oW22P1F7gKceWcZYv",
+            "pct": 3.0342373809819034,
+            "ui_amount": 25000000010.000233,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "AvqFxKNrYZNvxsj2oWhLW8det68HzCXBqswshoD2TdT6",
+            "token_account": "3q1s1v1Ka1jMdcLPHhudzbYSiHvDoYDSnnJVgbsd2D1q",
+            "pct": 2.9128678857911803,
+            "ui_amount": 24000000010.000267,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "85WTujfJ9meJq5hfjAeb5gftj7n8Q7QTsZJbRqMD5ERS",
+            "token_account": "aBL2UafVZeTDHBa5Y74z2dpBSUMHckkBEhuQLzxda7s",
+            "pct": 2.50324150867853,
+            "ui_amount": 20624964326.866386,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "8UHpWBnhYNeAQURWjAABp8vSrzfYa69o7sfi65vYLC42",
+            "token_account": "29dkQLrrJY6FS464bSVFoCogiNADvZRsBUCTvvNmeRBY",
+            "pct": 2.321929927822014,
+            "ui_amount": 19131083343.25026,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
+      }
     },
     {
       "mint": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
@@ -709,22 +1364,22 @@
       "pool": "GUWFT7bbLphGrcpAPnnEnBbe1uErv9e6LLC2qPx2wZy1",
       "dex": "raydium",
       "quote_symbol": "USDC",
-      "price_usd": 0.09705,
+      "price_usd": 0.09611,
       "last_price": null,
-      "liquidity_usd": 1702045.95,
-      "volume_24h_usd": 9381020.77,
-      "market_cap_usd": 27659454.0,
+      "liquidity_usd": 1697683.18,
+      "volume_24h_usd": 9312248.09,
+      "market_cap_usd": 27392487.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 6785.7,
+      "age_hours": null,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
       "gmgn_url": "https://gmgn.ai/sol/token/G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
       "bubble_url": "https://app.bubblemaps.io/sol/token/G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
-      "eligible": null,
+      "eligible": false,
       "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
+      "filter_reason": null,
       "in_entry_zone": null,
       "ath_frac": null,
       "window_ath": null,
@@ -745,7 +1400,258 @@
       "pump_risk": null,
       "dev_wallet": null,
       "bonding_curve": null,
-      "safety": null
+      "safety": {
+        "status": "incomplete",
+        "summary": "Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report",
+        "hard_fails": [],
+        "warnings": [],
+        "checks": [],
+        "top_human_pct": null,
+        "top_human": null,
+        "mint_authority_active": null,
+        "freeze_authority_active": null,
+        "risky_extensions": [],
+        "token2022": null,
+        "lp_matched": null,
+        "lp_locked": null,
+        "lp_burned": null,
+        "program_hold_pct": null,
+        "supply_burn_pct": null,
+        "holder_over_3_5": null,
+        "cluster": null,
+        "extensions": [],
+        "humans": []
+      }
+    },
+    {
+      "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+      "symbol": "RAY",
+      "name": "Raydium",
+      "pool": "2AXXcN6oN9bBT5owwmTH53C7QHUXvhLeu718Kqt8rvY2",
+      "dex": "raydium",
+      "quote_symbol": "SOL",
+      "price_usd": 1.78,
+      "last_price": null,
+      "liquidity_usd": 2048312.5,
+      "volume_24h_usd": 3090958.4,
+      "market_cap_usd": 480696414.0,
+      "market_cap_from": null,
+      "liq_to_mcap": null,
+      "age_hours": null,
+      "metrics_source": "dexscreener",
+      "twitter": [],
+      "dex_url": "https://dexscreener.com/solana/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+      "gmgn_url": "https://gmgn.ai/sol/token/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+      "eligible": false,
+      "lesson_blocks": null,
+      "filter_reason": null,
+      "in_entry_zone": null,
+      "ath_frac": null,
+      "window_ath": null,
+      "ath_note": null,
+      "hourly_bars": null,
+      "daily_bars": null,
+      "history_error": null,
+      "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
+      "global_fees_verified": null,
+      "global_fees_observed_sol": null,
+      "pump_observation": null,
+      "pump_checks": null,
+      "pump_risk": null,
+      "dev_wallet": null,
+      "bonding_curve": null,
+      "safety": {
+        "status": "incomplete",
+        "summary": "Hard rug check UNKNOWN: chosen DexScreener pool absent from LP report",
+        "hard_fails": [],
+        "warnings": [],
+        "checks": [],
+        "top_human_pct": null,
+        "top_human": null,
+        "mint_authority_active": null,
+        "freeze_authority_active": null,
+        "risky_extensions": [],
+        "token2022": null,
+        "lp_matched": null,
+        "lp_locked": null,
+        "lp_burned": null,
+        "program_hold_pct": null,
+        "supply_burn_pct": null,
+        "holder_over_3_5": null,
+        "cluster": null,
+        "extensions": [],
+        "humans": []
+      }
+    },
+    {
+      "mint": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+      "symbol": "STONK",
+      "name": "STONK",
+      "pool": "zxTpi4BtaWX3mgdAPoezkMD1hxx8CdeCfrqXMWvSCLX",
+      "dex": "meteora",
+      "quote_symbol": "SOL",
+      "price_usd": 0.1014,
+      "last_price": null,
+      "liquidity_usd": 2051761.14,
+      "volume_24h_usd": 2649565.25,
+      "market_cap_usd": 101405866.0,
+      "market_cap_from": null,
+      "liq_to_mcap": null,
+      "age_hours": null,
+      "metrics_source": "dexscreener",
+      "twitter": [],
+      "dex_url": "https://dexscreener.com/solana/6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+      "gmgn_url": "https://gmgn.ai/sol/token/6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+      "eligible": false,
+      "lesson_blocks": null,
+      "filter_reason": null,
+      "in_entry_zone": null,
+      "ath_frac": null,
+      "window_ath": null,
+      "ath_note": null,
+      "hourly_bars": null,
+      "daily_bars": null,
+      "history_error": null,
+      "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
+      "global_fees_verified": null,
+      "global_fees_observed_sol": null,
+      "pump_observation": null,
+      "pump_checks": null,
+      "pump_risk": null,
+      "dev_wallet": null,
+      "bonding_curve": null,
+      "safety": {
+        "status": "incomplete",
+        "summary": "LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution",
+        "hard_fails": [],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+        ],
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": true,
+            "detail": "top wallet 5.36%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 5.3583,
+        "top_human": "Beqv6dzTcjV2eodo8RRXCiCcnSYrS1vkQKhfqwHXqeit",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
+        "risky_extensions": [],
+        "token2022": false,
+        "lp_matched": false,
+        "lp_locked": null,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
+        "cluster": null,
+        "extensions": [],
+        "humans": [
+          {
+            "owner": "Beqv6dzTcjV2eodo8RRXCiCcnSYrS1vkQKhfqwHXqeit",
+            "token_account": "FwF5ddHTvMKBiWHVNjPjwGaxU55c96HeQ7TuQ9BnThXV",
+            "pct": 5.358284442183231,
+            "ui_amount": 41700386.71402287,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "CLNEVwuSAiGsvPtE74yLhda4beNfd8qfZXVKkUcAJZDL",
+            "token_account": "7jYrGaiXV1ENC9qRRDeocoDdfoHYtne2LdYWpyaLWM7A",
+            "pct": 2.7911684292263956,
+            "ui_amount": 21722027.663631883,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "4ugDhHJ8XDXAeABmrNmGffFaLbJb9BkPyiFGVSV9ocwo",
+            "token_account": "2SR6tM2m93B9Rh62YNSKTL32hRX6uGUJZWrRX89eZT9W",
+            "pct": 2.6604742372523726,
+            "ui_amount": 20704911.382217582,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "F5hkYsi8JxjyA2JHN5CA7MbnnhWubkXB2ZQB7Gkaxqs6",
+            "token_account": "3tXv7zJydwjR92mPBwCBXtdazUK8HHDc9CFFg5RgWLqd",
+            "pct": 1.863290402797868,
+            "ui_amount": 14500896.918704772,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "zV18RQeme9fDZUbCGf7skSWNz6Vphs5j3PQUHjHdcgi",
+            "token_account": "EkXZopGXtLoLUusGbmanZEgYHsyMHZeaYDcpBSWghTji",
+            "pct": 1.7092013305699594,
+            "ui_amount": 13301711.998672664,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "AfrddTGYwCVEQB1gxCAhR8i48o6qtxYqksdVkeLudEhg",
+            "token_account": "EERy3mN8BosukCZPQvMNfLvfh7VRtm62Xje7QNWccYJn",
+            "pct": 1.5298008545352055,
+            "ui_amount": 11905543.26070233,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "4UrFSCrGxgoCtCUBAEZq7ZmPK3Pczkxx7PwYnkBMi1KR",
+            "token_account": "8EiQw5zBbk2ZE7QB6poRU274sErgrxvYhui7qsrRGYsT",
+            "pct": 1.2306139591350695,
+            "ui_amount": 9577147.04124554,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "4Hw4QR35CHmfU99MRTZPUwU6h1zzToaw5yBW2pu6BP5x",
+            "token_account": "BFfmoEpEjGpZ9fwTyFYFDv9we5EX6rb4k6vjHXMwWBpN",
+            "pct": 1.197444167342063,
+            "ui_amount": 9319005.99630534,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
+      }
     },
     {
       "mint": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
@@ -754,22 +1660,22 @@
       "pool": "FnzKY6x7entQ1eR3D225dQyT7ybfka4PskBMQhb8L3CC",
       "dex": "pumpswap",
       "quote_symbol": "SOL",
-      "price_usd": 0.04654,
+      "price_usd": 0.04718,
       "last_price": null,
-      "liquidity_usd": 1261456.16,
-      "volume_24h_usd": 1599287.61,
-      "market_cap_usd": 46420524.0,
+      "liquidity_usd": 1270764.31,
+      "volume_24h_usd": 1605528.52,
+      "market_cap_usd": 47061621.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 3439.49,
+      "age_hours": null,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
       "gmgn_url": "https://gmgn.ai/sol/token/9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
       "bubble_url": "https://app.bubblemaps.io/sol/token/9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
-      "eligible": null,
+      "eligible": false,
       "lesson_blocks": null,
-      "filter_reason": "pair older than maximum age",
+      "filter_reason": null,
       "in_entry_zone": null,
       "ath_frac": null,
       "window_ath": null,
@@ -790,36 +1696,479 @@
       "pump_risk": null,
       "dev_wallet": null,
       "bonding_curve": null,
-      "safety": null
+      "safety": {
+        "status": "incomplete",
+        "summary": "complete_chain_read: FAIL non-LP non-program holder owns 49.23% (limit 20%); single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 49.2304%; LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution",
+        "hard_fails": [
+          "non-LP non-program holder owns 49.23% (limit 20%)"
+        ],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+        ],
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": false,
+            "detail": "top wallet 49.23%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 49.2304,
+        "top_human": "7oU9nR9VEvFPwvp2PpXo2LQc6A92QRhcUTwhLWT7MsDM",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
+        "risky_extensions": [],
+        "token2022": true,
+        "lp_matched": false,
+        "lp_locked": null,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": true,
+        "cluster": null,
+        "extensions": [
+          "metadataPointer",
+          "tokenMetadata"
+        ],
+        "humans": [
+          {
+            "owner": "7oU9nR9VEvFPwvp2PpXo2LQc6A92QRhcUTwhLWT7MsDM",
+            "token_account": "GdrKtm8einYWAfjWhAtmoi6Em5cqEitsF4u1GxZkL3f",
+            "pct": 49.23042562465034,
+            "ui_amount": 491003700.487968,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "GV6UUmNxz2RpKxmNAPadYKb7uQpszwqQAu3qLJxVdC52",
+            "token_account": "2U9XFtekYTstzMYXmuyDCNdFxRYB91dMtSKxtUB5rVct",
+            "pct": 8.746787064666323,
+            "ui_amount": 87236800.446857,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "87ZDLDDbMAqmHJwsAgNjpJVCf9gZvwMJJMbFbXNTrkva",
+            "token_account": "4NS9y9LTuUw927QgG13oojFcwAnkBnNwQVzGXdGfD6bj",
+            "pct": 2.6079345447830113,
+            "ui_amount": 26010449.75483,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "9SLPTL41SPsYkgdsMzdfJsxymEANKr5bYoBsQzJyKpKS",
+            "token_account": "GQ9KnmgYLjkv3uB6EpTgXfYmX6eLYP35WXCkKrUgQTKK",
+            "pct": 1.0774292766585218,
+            "ui_amount": 10745829.538157,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "79F6D51MSKfjdK621TLnVgz35U3srZj1W8b9dxwBHAT1",
+            "token_account": "GZwuJej6yfJ5HJrqM5iSLzvxGFthCha5PZh1UAxr5GAU",
+            "pct": 0.9889221388504926,
+            "ui_amount": 9863096.317147,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "CLM6E4zpTviEC77nWKogpVLQoXx9tgoQCYJ8NibxKg1Q",
+            "token_account": "NubMtFhLpussJCe9hBB3BghNDKL8HwdTmVxp8rwTfr3",
+            "pct": 0.8754134149968227,
+            "ui_amount": 8731007.720661,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "77v5PKZU6s5kMg8TXq2nknmTC7i8tnhbHnqLtS3nDRzE",
+            "token_account": "9LZcsPHfg2D7HVkQxXmEPfG92gCyGRP85E6wpF3srEB6",
+            "pct": 0.524858390809616,
+            "ui_amount": 5234718.344394,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "2g9wfpmnsaU6eQsX6dRCXf9Mhiw9BbimzWoQWFRuB97Q",
+            "token_account": "8nsWUYzretuvBtnZN6PHcbbwS3AHhH7bqTyqyQPhNjvD",
+            "pct": 0.5049807188243242,
+            "ui_amount": 5036466.747378,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
+      }
+    },
+    {
+      "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "pool": "FAqh648xeeaTqL7du49sztp9nfj5PjRQrfvaMccyd9cz",
+      "dex": "orca",
+      "quote_symbol": "SOL",
+      "price_usd": 0.006513,
+      "last_price": null,
+      "liquidity_usd": 2978663.2,
+      "volume_24h_usd": 225772.77,
+      "market_cap_usd": 409413812.0,
+      "market_cap_from": null,
+      "liq_to_mcap": null,
+      "age_hours": null,
+      "metrics_source": "dexscreener",
+      "twitter": [],
+      "dex_url": "https://dexscreener.com/solana/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "gmgn_url": "https://gmgn.ai/sol/token/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "eligible": false,
+      "lesson_blocks": null,
+      "filter_reason": null,
+      "in_entry_zone": null,
+      "ath_frac": null,
+      "window_ath": null,
+      "ath_note": null,
+      "hourly_bars": null,
+      "daily_bars": null,
+      "history_error": null,
+      "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
+      "global_fees_verified": null,
+      "global_fees_observed_sol": null,
+      "pump_observation": null,
+      "pump_checks": null,
+      "pump_risk": null,
+      "dev_wallet": null,
+      "bonding_curve": null,
+      "safety": {
+        "status": "incomplete",
+        "summary": "LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution",
+        "hard_fails": [],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+        ],
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": true,
+            "detail": "top wallet 9.37%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 9.3728,
+        "top_human": "GcEXZEUhbK4KyFV7B7q28Zh7PKzGsC3oqgjvGRLaZJZu",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
+        "risky_extensions": [],
+        "token2022": false,
+        "lp_matched": false,
+        "lp_locked": null,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
+        "cluster": null,
+        "extensions": [],
+        "humans": [
+          {
+            "owner": "GcEXZEUhbK4KyFV7B7q28Zh7PKzGsC3oqgjvGRLaZJZu",
+            "token_account": "FJhg2bE1PZEedxpqpXZpJKCfF2m9Z6n9MtLSe2zNo4XY",
+            "pct": 9.3727686282574,
+            "ui_amount": 7191048649.537309,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM",
+            "token_account": "6dErg7d5gCLo3APvWLxKNWJQaVoRsBJfEL7t3awCvccx",
+            "pct": 7.429344979400838,
+            "ui_amount": 5700000000.0,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "GziA3ZgkmnUcK9vuscnDpzLTcpHTSnmyQ6JwPKP5oSkR",
+            "token_account": "9L8T8MhH4jDafq5qSKHshaVfGoySoSDTbsDU2Jc6a16T",
+            "pct": 6.520744719284663,
+            "ui_amount": 5002896621.839214,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "5PLU3MB93miiNvd1dcY6VkWSzjeGBQpssqbbBJDALrkm",
+            "token_account": "93odVNBUZpe765cesNH98w8zz1bMcF1phDkMrWW385T4",
+            "pct": 4.768873959795642,
+            "ui_amount": 3658812674.092216,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "51yZyDSnec4xnUv7XLRVYcDyV4x3wUtzrDcRaYbmQU5j",
+            "token_account": "4fh9vfdCCqBWqcCKhYzBSuHzxkiAPCorMshLUuvmiqqT",
+            "pct": 4.737919737490066,
+            "ui_amount": 3635063734.228609,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "3XT1PNGE2mC31WSxY4jkEcVDLXGovReFEHzvaHm7SgtS",
+            "token_account": "5e2faSYutRBmAk2rEVSPaDBJUYvEosa27azuuyVVHR1t",
+            "pct": 3.635760156912177,
+            "ui_amount": 2789456264.564355,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "8Mm46CsqxiyAputDUp2cXHg41HE3BfynTeMBDwzrMZQH",
+            "token_account": "2WGHSZKsZYfv66PRZTZjrfeSN5vZZNsggvhCRg1Zcvat",
+            "pct": 3.412560012914,
+            "ui_amount": 2618210909.244725,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "3gd3dqgtJ4jWfBfLYTX67DALFetjc5iS72sCgRhCkW2u",
+            "token_account": "4UFWyxqtSF8V492w3tmqistD8yurv39JZCjUJcc6jYt9",
+            "pct": 2.065873691041733,
+            "ui_amount": 1584995725.947235,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
+      }
+    },
+    {
+      "mint": "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "symbol": "FLOAT",
+      "name": "FLOAT",
+      "pool": "FJk9sajdc2Q4heRPPu3yLzkmf2ZByZkpiHQLv9e2bn5A",
+      "dex": "raydium",
+      "quote_symbol": "SOL",
+      "price_usd": 0.006138,
+      "last_price": null,
+      "liquidity_usd": 486700.28,
+      "volume_24h_usd": 1743602.62,
+      "market_cap_usd": 6132541.0,
+      "market_cap_from": null,
+      "liq_to_mcap": null,
+      "age_hours": null,
+      "metrics_source": "dexscreener",
+      "twitter": [],
+      "dex_url": "https://dexscreener.com/solana/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "gmgn_url": "https://gmgn.ai/sol/token/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "eligible": false,
+      "lesson_blocks": null,
+      "filter_reason": null,
+      "in_entry_zone": null,
+      "ath_frac": null,
+      "window_ath": null,
+      "ath_note": null,
+      "hourly_bars": null,
+      "daily_bars": null,
+      "history_error": null,
+      "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
+      "global_fees_verified": null,
+      "global_fees_observed_sol": null,
+      "pump_observation": null,
+      "pump_checks": null,
+      "pump_risk": null,
+      "dev_wallet": null,
+      "bonding_curve": null,
+      "safety": {
+        "status": "fail",
+        "summary": "verified_pool_vault: RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions; sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution",
+        "hard_fails": [],
+        "warnings": [
+          "LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+        ],
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 20%",
+            "pass": true,
+            "detail": "top wallet 5.46%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "not visible on the largest base-token accounts"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 5.4645,
+        "top_human": "EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
+        "risky_extensions": [],
+        "token2022": false,
+        "lp_matched": false,
+        "lp_locked": null,
+        "lp_burned": true,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
+        "cluster": null,
+        "extensions": [],
+        "humans": [
+          {
+            "owner": "EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G",
+            "token_account": "EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G",
+            "pct": 5.464511445579301,
+            "ui_amount": 49893683.978906,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "GpMZbSM2GgvTKHJirzeGfMFoaZ8UR2X7F4v8vHTvxFbL",
+            "token_account": "H5yeZaYgJax2iATAu8WXJMumR5hTTcaqncwZxSdVNqXF",
+            "pct": 4.341164375686614,
+            "ui_amount": 39636971.3227,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "6zMVSeukMUMKu5tDsECh4QMqrCRZqTbTvuawztFfwNti",
+            "token_account": "2xornsC21cG3QZXyFuqcHuHF6EKoMooXNGrWcThSugy5",
+            "pct": 3.540791498136512,
+            "ui_amount": 32329172.297029,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "BHREKFkPQgAtDs8Vb1UfLkUpjG6ScidTjHaCWFuG2AtX",
+            "token_account": "DQeQgJUt88PC16KSLYGY9NQuYiNZu9TdPNgktrj1rYVp",
+            "pct": 2.86406098752056,
+            "ui_amount": 26150289.047938,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "8B3KyNP6QWnvbuHAz4CCMLQmWhcXJ3KvcX2GHCEs6yNS",
+            "token_account": "HuseTz9sg8N6g7BeMXjG2dtL6pfSemv9AhfXBteLP13u",
+            "pct": 2.5576764062524293,
+            "ui_amount": 23352846.746638,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "95ddWCEqs7bX1vAPFXgAxNKmYkCvpQFiurCk4KWg2AST",
+            "token_account": "AhQpSUWGUwEpyYueQDBewYWnF45srebu9odaLJQJopKY",
+            "pct": 2.2004978676003257,
+            "ui_amount": 20091630.568571,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "AH75Bn6QHSt5K2Ad4p1otns3JTwpSJWZTwiwKWNhmnKx",
+            "token_account": "HET8hvawFLZxFknrY6NbKmDZ8XhWbCsKG9FhDbc19LqA",
+            "pct": 2.008500934858503,
+            "ui_amount": 18338603.901404,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "8k1sAmVUjzaZkxqexeYkCPphjcQobYugQeGmCyvKtHNG",
+            "token_account": "J7xpaYkF83CztZz3DfktoDYujocgurFMmb3vSBE1eryN",
+            "pct": 1.5296776045007459,
+            "ui_amount": 13966710.793572,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
+      }
     }
   ],
+  "filter_rejects_sample": [],
   "best": {
-    "id": "dip_20_40_stop8_tp15_hold8",
-    "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
-    "oos": {
-      "trades": 9,
-      "net_usd": 3.6742,
-      "expectancy_usd": 0.4082,
-      "win_rate": 0.4444,
-      "profit_factor": 1.0793,
-      "wins": 4,
-      "losses": 5
-    },
-    "status": "champion",
-    "principle": "Buy dips. Never top-tick."
+    "id": "forward_ranked_primary_fallback",
+    "name": "One fresh mint per rolling hour; primary $100 cap, fallback $50 cap; common hard rug blocks; no repeat mints.",
+    "status": "forward_paper",
+    "oos": null
   },
-  "strategist_note": "Living champion dip_20_40_stop8_tp15_hold8. out-of-sample expectancy $0.4082 beat the previous champion Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
-  "risk_note": "Reviewed 3 tokens. Safety fails 0. Incomplete 3. Eligible 0. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
+  "strategist_note": "Ranked primary/fallback with structured checklist rules applied before selection: primary rejects violations; fallback penalizes them. Exit: 12% stop / at least 35% take-profit / 16h maximum. Permanent traded-mint exclusion and rolling-hour cap remain.",
+  "risk_note": "Hard blocks ONLY: unsellable/no sell route, active mint authority, active freeze authority; unknowns reject. Holder concentration, LP and risky extensions reject primary and penalize fallback.",
   "summary": {
-    "discovered": 93,
-    "enriched": 30,
-    "passed_filters": 3,
-    "reviewed": 3,
-    "eligible": 0,
+    "discovered": 91,
+    "enriched": 60,
+    "passed_filters": 27,
+    "reviewed": 12,
+    "eligible": 3,
+    "new_paper_trades": 1,
     "paper_trades_total": 0,
-    "paper_pnl_usd": 0,
-    "new_paper_trades": 0,
-    "team_rejected": 0
+    "paper_pnl_usd": 0
   },
   "sources": {
     "x_twitter": {
@@ -837,55 +2186,27 @@
       "counts": {
         "boosts_latest": 25,
         "boosts_top": 26,
-        "profiles_latest": 28
+        "profiles_latest": 27
       },
       "errors": []
     },
     "dexscreener_pairs": {
       "ok": true,
-      "detail": "30 pairs from tokens/v1",
-      "pairs": 30,
+      "detail": "1 pairs from tokens/v1",
+      "pairs": 1,
       "errors": []
     },
     "solana_rpc": {
       "ok": true,
-      "calls": 21,
+      "calls": 80,
       "endpoints": [
         "https://public.rpc.solanavibestation.com",
         "https://api.mainnet-beta.solana.com"
       ],
-      "errors": [],
-      "detail": "public RPC only, no key"
-    },
-    "geckoterminal": {
-      "ok": true,
-      "detail": [
-        {
-          "kind": "trending_pools",
-          "rows": 20
-        },
-        {
-          "kind": "new_pools",
-          "rows": 20
-        }
-      ]
+      "errors": []
     }
   },
   "report": {
-    "filter_stage_survivors": {
-      "queued": 30,
-      "quote_age": 8,
-      "liquidity": 4,
-      "volume": 4,
-      "market_cap": 4,
-      "all_market_filters_and_lessons": 3,
-      "deep_scam_reviews": 3,
-      "scam_pass": 0,
-      "history_ready": 0,
-      "current_dip_zone": 0,
-      "entry_taken": 0,
-      "global_fees": "SKIPPED \u2014 data unavailable on DexScreener"
-    },
     "discovered": {
       "gecko": [
         {
@@ -900,40 +2221,218 @@
       "gecko_errors": [],
       "list_errors": [],
       "pair_errors": [],
-      "skipped_rejected": 6,
+      "skipped_rejected": 0,
       "rows": 0,
-      "x_linked": 54,
-      "discovered": 93,
-      "enriched": 30,
-      "dex_pairs": 30
+      "x_linked": 52,
+      "discovered": 91,
+      "excluded_already_traded": 0,
+      "enriched": 60,
+      "dex_pairs": 60
     },
-    "filter_counts": {
-      "pair older than maximum age": 11,
-      "pair younger than minimum age": 5,
-      "lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book": 1,
-      "quote is not SOL, USDC, or USDT": 6,
-      "liquidity unknown": 3,
-      "liquidity below minimum": 1
+    "tiers": {
+      "before_after": {
+        "same_queue_size": 60,
+        "old_market_filters": 13,
+        "new_primary_market_filters": 27,
+        "new_fallback_market_filters": 33
+      },
+      "primary_market": 27,
+      "fallback_market": 33,
+      "primary": 3,
+      "fallback": 3,
+      "excluded_traded": 0,
+      "tier": "primary",
+      "market_review_cap": 12,
+      "selected_trade": {
+        "id": "paper-7e3d8a997aff4e5bb3d183dcc3ff7b81",
+        "mode": "forward:paper",
+        "realized": false,
+        "tier": "primary",
+        "selection_score": 17.354199,
+        "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+        "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+        "symbol": "COGE",
+        "name": "COGE COIN",
+        "entry_ts": 1794027609.6664712,
+        "entry_time": "2026-11-07T05:00:09.666471+00:00",
+        "entry_price": 0.01566,
+        "entry_frac_of_ath": 0.7950072772628121,
+        "notional_usd": 100,
+        "slippage_bps_per_side": 80,
+        "cost_rate": 0.011,
+        "entry_liquidity_usd": 334915.41,
+        "entry_volume_usd": 2234503.22,
+        "top_human_pct": 0.8971,
+        "stop_fraction": 0.12,
+        "target_fraction": 0.25,
+        "max_hold_seconds": 57600,
+        "dex_url": "https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+        "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+        "strategy_id": "forward_ranked_primary",
+        "hard_rug_checks": [
+          {
+            "name": "verified_pool_vault",
+            "pass": true,
+            "detail": "RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions"
+          },
+          {
+            "name": "complete_chain_read",
+            "pass": true,
+            "detail": "PASS with warnings: LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+          },
+          {
+            "name": "mint_authority_revoked",
+            "pass": true,
+            "detail": "must be explicitly revoked"
+          },
+          {
+            "name": "freeze_authority_revoked",
+            "pass": true,
+            "detail": "must be explicitly revoked"
+          },
+          {
+            "name": "single_non_pool_holder_20pct",
+            "pass": true,
+            "detail": "top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 0.8971%"
+          },
+          {
+            "name": "LP_locked_or_burned",
+            "pass": true,
+            "detail": "chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject"
+          },
+          {
+            "name": "sellable_not_honeypot",
+            "pass": true,
+            "detail": "canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+          }
+        ],
+        "team": {
+          "approved": true,
+          "approve": 5,
+          "reject": 0,
+          "abstain": 1,
+          "tally": "5/6 approve",
+          "rule": "majority 5/5 of voting agents",
+          "vetoes": [],
+          "votes": [
+            {
+              "agent": "Risk Manager",
+              "vote": "approve",
+              "reason": "Safety pass: mint authority revoked, freeze revoked."
+            },
+            {
+              "agent": "Bubble Map Analyst",
+              "vote": "approve",
+              "reason": "Top non-LP wallet 0.8971% (\u2264 15.0%), no linked-wallet fail."
+            },
+            {
+              "agent": "X/Twitter Scout",
+              "vote": "abstain",
+              "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
+            },
+            {
+              "agent": "Data Scout",
+              "vote": "approve",
+              "reason": "Ranked primary candidate, score 17.354199; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+            },
+            {
+              "agent": "Backtester",
+              "vote": "approve",
+              "reason": "0 earlier simulated fills on this pool; no evidence against."
+            },
+            {
+              "agent": "Strategist",
+              "vote": "approve",
+              "reason": "Dip entry under forward_ranked_primary (stop 12%, target 25%)."
+            }
+          ],
+          "proposed_by": "Data Scout"
+        },
+        "proposed_by": "Data Scout"
+      },
+      "excluded_already_traded": 0
     },
-    "passed_filters": 3,
-    "reviewed": 3,
-    "eligible": 0,
-    "histories": 0,
-    "variants": {
-      "proposed": [],
-      "results": [],
-      "team_taken": 0,
-      "new_entry": null,
-      "note": "Forward paper account only. Historical backtests never credit the reset account."
-    },
-    "safety_fail": 0,
-    "safety_incomplete": 3,
-    "holder_or_cluster_fails": 0,
-    "x_linked": 54,
-    "rpc_calls": 21,
-    "new_paper_trades": 0,
-    "ledger_trades": 0,
-    "ledger_pnl_usd": 0
+    "reviewed": 12,
+    "rpc_calls": 80,
+    "new_paper_trades": 1,
+    "hard_pass": 3,
+    "hard_blocks": [
+      {
+        "mint": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
+        "symbol": "ZEC",
+        "reasons": [
+          "complete_chain_read: FAIL live mint authority",
+          "mint_authority_revoked: must be explicitly revoked",
+          "LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject",
+          "sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+        ]
+      },
+      {
+        "mint": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+        "symbol": "CARDS",
+        "reasons": [
+          "chosen DexScreener pool absent from LP report"
+        ]
+      },
+      {
+        "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+        "symbol": "PUMP",
+        "reasons": [
+          "complete_chain_read: FAIL risky Token-2022 extensions: transferHook; non-LP non-program holder owns 27.83% (limit 20%)",
+          "single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 27.8254%",
+          "LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject",
+          "sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+        ]
+      },
+      {
+        "mint": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
+        "symbol": "BIRB",
+        "reasons": [
+          "chosen DexScreener pool absent from LP report"
+        ]
+      },
+      {
+        "mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+        "symbol": "RAY",
+        "reasons": [
+          "chosen DexScreener pool absent from LP report"
+        ]
+      },
+      {
+        "mint": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+        "symbol": "STONK",
+        "reasons": [
+          "LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject",
+          "sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+        ]
+      },
+      {
+        "mint": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+        "symbol": "ANSEM",
+        "reasons": [
+          "complete_chain_read: FAIL non-LP non-program holder owns 49.23% (limit 20%)",
+          "single_non_pool_holder_20pct: top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 49.2304%",
+          "LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject",
+          "sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+        ]
+      },
+      {
+        "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+        "symbol": "PENGU",
+        "reasons": [
+          "LP_locked_or_burned: chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject",
+          "sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+        ]
+      },
+      {
+        "mint": "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+        "symbol": "FLOAT",
+        "reasons": [
+          "verified_pool_vault: RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions",
+          "sellable_not_honeypot: canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+        ]
+      }
+    ]
   },
   "health": {
     "local": true,
@@ -941,9 +2440,9 @@
     "site_reachable": true,
     "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T04:51:38.251032+00:00",
+    "checked_at": "2026-11-07T05:00:11.399168+00:00",
     "stale_agents": [],
-    "last_published": "2026-11-06T23:35:20.425704-05:00 ET"
+    "last_published": "2026-11-07T00:00:09.863064-05:00 ET"
   },
   "ledger": {
     "timezone": "America/New_York",
@@ -951,7 +2450,8 @@
     "updated": null,
     "total_pnl_usd": 0,
     "trade_count": 0,
-    "days": []
+    "days": [],
+    "trade_ids": []
   },
   "recent_trades": [],
   "lessons_preview": {
@@ -990,71 +2490,484 @@
     ],
     "observations": [
       {
-        "time": "2026-11-07T04:09:36.663858+00:00",
-        "time_et": "2026-11-06T23:09:36.663859-05:00",
+        "time": "2026-11-07T02:21:50.072538+00:00",
+        "time_et": "2026-11-06T21:21:50.072539-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.663855+00:00",
-        "time_et": "2026-11-06T23:09:36.663856-05:00",
+        "time": "2026-11-07T02:21:50.170987+00:00",
+        "time_et": "2026-11-06T21:21:50.170993-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.663851+00:00",
-        "time_et": "2026-11-06T23:09:36.663852-05:00",
+        "time": "2026-11-07T02:21:50.171004+00:00",
+        "time_et": "2026-11-06T21:21:50.171005-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.663847+00:00",
-        "time_et": "2026-11-06T23:09:36.663848-05:00",
+        "time": "2026-11-07T02:21:50.171011+00:00",
+        "time_et": "2026-11-06T21:21:50.171012-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.663843+00:00",
-        "time_et": "2026-11-06T23:09:36.663844-05:00",
+        "time": "2026-11-07T02:21:50.171018+00:00",
+        "time_et": "2026-11-06T21:21:50.171019-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.663839+00:00",
-        "time_et": "2026-11-06T23:09:36.663841-05:00",
+        "time": "2026-11-07T02:21:50.171024+00:00",
+        "time_et": "2026-11-06T21:21:50.171026-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.663834+00:00",
-        "time_et": "2026-11-06T23:09:36.663836-05:00",
+        "time": "2026-11-07T02:21:50.171031+00:00",
+        "time_et": "2026-11-06T21:21:50.171032-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.663824+00:00",
-        "time_et": "2026-11-06T23:09:36.663826-05:00",
+        "time": "2026-11-07T02:21:50.171040+00:00",
+        "time_et": "2026-11-06T21:21:50.171042-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.606067+00:00",
-        "time_et": "2026-11-06T23:09:36.606068-05:00",
+        "time": "2026-11-07T02:21:50.171046+00:00",
+        "time_et": "2026-11-06T21:21:50.171048-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-6.3078 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0"
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
       },
       {
-        "time": "2026-11-07T04:09:36.606063+00:00",
-        "time_et": "2026-11-06T23:09:36.606064-05:00",
+        "time": "2026-11-07T02:21:50.171052+00:00",
+        "time_et": "2026-11-06T21:21:50.171054-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+      },
+      {
+        "time": "2026-11-07T02:21:50.171058+00:00",
+        "time_et": "2026-11-06T21:21:50.171060-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+      },
+      {
+        "time": "2026-11-07T02:21:50.171064+00:00",
+        "time_et": "2026-11-06T21:21:50.171066-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+      },
+      {
+        "time": "2026-11-07T02:21:50.171070+00:00",
+        "time_et": "2026-11-06T21:21:50.171072-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002503+00:00",
+        "time_et": "2026-11-06T21:40:03.002511-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002525+00:00",
+        "time_et": "2026-11-06T21:40:03.002527-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002540+00:00",
+        "time_et": "2026-11-06T21:40:03.002543-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002547+00:00",
+        "time_et": "2026-11-06T21:40:03.002548-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002552+00:00",
+        "time_et": "2026-11-06T21:40:03.002553-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002556+00:00",
+        "time_et": "2026-11-06T21:40:03.002558-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002564+00:00",
+        "time_et": "2026-11-06T21:40:03.002565-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-1.9031 on dip_20_40_stop8_tp40_hold8 exit time liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.002569+00:00",
+        "time_et": "2026-11-06T21:40:03.002570-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-6.3078 on dip_20_40_stop8_tp40_hold8 exit time liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056014+00:00",
+        "time_et": "2026-11-06T21:40:03.056019-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056029+00:00",
+        "time_et": "2026-11-06T21:40:03.056031-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056035+00:00",
+        "time_et": "2026-11-06T21:40:03.056037-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056040+00:00",
+        "time_et": "2026-11-06T21:40:03.056041-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056045+00:00",
+        "time_et": "2026-11-06T21:40:03.056046-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056049+00:00",
+        "time_et": "2026-11-06T21:40:03.056051-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056054+00:00",
+        "time_et": "2026-11-06T21:40:03.056055-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056059+00:00",
+        "time_et": "2026-11-06T21:40:03.056060-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:40:03.056062+00:00",
+        "time_et": "2026-11-06T21:40:03.056064-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846238+00:00",
+        "time_et": "2026-11-06T21:45:20.846250-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846271+00:00",
+        "time_et": "2026-11-06T21:45:20.846274-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846282+00:00",
+        "time_et": "2026-11-06T21:45:20.846284-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846289+00:00",
+        "time_et": "2026-11-06T21:45:20.846291-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846295+00:00",
+        "time_et": "2026-11-06T21:45:20.846296-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846300+00:00",
+        "time_et": "2026-11-06T21:45:20.846301-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846305+00:00",
+        "time_et": "2026-11-06T21:45:20.846306-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846310+00:00",
+        "time_et": "2026-11-06T21:45:20.846311-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.846315+00:00",
+        "time_et": "2026-11-06T21:45:20.846316-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923842+00:00",
+        "time_et": "2026-11-06T21:45:20.923847-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923859+00:00",
+        "time_et": "2026-11-06T21:45:20.923860-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-1.3563 on dip_20_40_stop12_tp15_hold8 exit time liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923865+00:00",
+        "time_et": "2026-11-06T21:45:20.923866-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923869+00:00",
+        "time_et": "2026-11-06T21:45:20.923871-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923874+00:00",
+        "time_et": "2026-11-06T21:45:20.923875-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923877+00:00",
+        "time_et": "2026-11-06T21:45:20.923878-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923882+00:00",
+        "time_et": "2026-11-06T21:45:20.923883-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923886+00:00",
+        "time_et": "2026-11-06T21:45:20.923887-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T02:45:20.923890+00:00",
+        "time_et": "2026-11-06T21:45:20.923891-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-6.3078 on dip_20_40_stop12_tp15_hold8 exit time liq 87155.25 mcap 1005599.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920628+00:00",
+        "time_et": "2026-11-06T22:19:53.920645-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920674+00:00",
+        "time_et": "2026-11-06T22:19:53.920677-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920681+00:00",
+        "time_et": "2026-11-06T22:19:53.920683-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920686+00:00",
+        "time_et": "2026-11-06T22:19:53.920687-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920702+00:00",
+        "time_et": "2026-11-06T22:19:53.920704-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920715+00:00",
+        "time_et": "2026-11-06T22:19:53.920717-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920720+00:00",
+        "time_et": "2026-11-06T22:19:53.920721-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:53.920724+00:00",
+        "time_et": "2026-11-06T22:19:53.920725-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017375+00:00",
+        "time_et": "2026-11-06T22:19:54.017381-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017392+00:00",
+        "time_et": "2026-11-06T22:19:54.017393-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017397+00:00",
+        "time_et": "2026-11-06T22:19:54.017399-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017413+00:00",
+        "time_et": "2026-11-06T22:19:54.017415-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017418+00:00",
+        "time_et": "2026-11-06T22:19:54.017421-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017424+00:00",
+        "time_et": "2026-11-06T22:19:54.017425-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017428+00:00",
+        "time_et": "2026-11-06T22:19:54.017430-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T03:19:54.017432+00:00",
+        "time_et": "2026-11-06T22:19:54.017433-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+      },
+      {
+        "time": "2026-11-07T04:09:24.697572+00:00",
+        "time_et": "2026-11-06T23:09:24.697605-05:00",
+        "kind": "rule_example",
+        "source": "Bubble Map Analyst",
+        "text": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply \u2014 FLOAT top wallet 5.4635% (EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G)"
+      },
+      {
+        "time": "2026-11-07T04:09:36.606030+00:00",
+        "time_et": "2026-11-06T23:09:36.606032-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.606043+00:00",
+        "time_et": "2026-11-06T23:09:36.606044-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-1.3563 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.606049+00:00",
+        "time_et": "2026-11-06T23:09:36.606051-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.606054+00:00",
+        "time_et": "2026-11-06T23:09:36.606055-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
         "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
@@ -1067,11 +2980,74 @@
         "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T04:09:36.606054+00:00",
-        "time_et": "2026-11-06T23:09:36.606055-05:00",
+        "time": "2026-11-07T04:09:36.606063+00:00",
+        "time_et": "2026-11-06T23:09:36.606064-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
         "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.606067+00:00",
+        "time_et": "2026-11-06T23:09:36.606068-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-6.3078 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663824+00:00",
+        "time_et": "2026-11-06T23:09:36.663826-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663834+00:00",
+        "time_et": "2026-11-06T23:09:36.663836-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663839+00:00",
+        "time_et": "2026-11-06T23:09:36.663841-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663843+00:00",
+        "time_et": "2026-11-06T23:09:36.663844-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663847+00:00",
+        "time_et": "2026-11-06T23:09:36.663848-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663851+00:00",
+        "time_et": "2026-11-06T23:09:36.663852-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663855+00:00",
+        "time_et": "2026-11-06T23:09:36.663856-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+      },
+      {
+        "time": "2026-11-07T04:09:36.663858+00:00",
+        "time_et": "2026-11-06T23:09:36.663859-05:00",
+        "kind": "paper_loss",
+        "source": "Backtester",
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       }
     ],
     "variants": [
@@ -1870,25 +3846,338 @@
   "paper_account": {
     "started": "2026-11-07T04:34:52.188271+00:00",
     "starting_balance_usd": 1000.0,
-    "cash_usd": 1000.0,
+    "cash_usd": 900.0,
     "realized_pnl_usd": 0,
     "balance_usd": 1000.0,
-    "reserved_usd": 0,
-    "positions": [],
-    "last_entry_ts": null,
-    "sizing": "10% of realized account balance, capped at $100 and available cash; max one open position"
+    "reserved_usd": 100,
+    "positions": [
+      {
+        "id": "paper-7e3d8a997aff4e5bb3d183dcc3ff7b81",
+        "mode": "forward:paper",
+        "realized": false,
+        "tier": "primary",
+        "selection_score": 17.354199,
+        "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+        "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+        "symbol": "COGE",
+        "name": "COGE COIN",
+        "entry_ts": 1794027609.6664712,
+        "entry_time": "2026-11-07T05:00:09.666471+00:00",
+        "entry_price": 0.01566,
+        "entry_frac_of_ath": 0.7950072772628121,
+        "notional_usd": 100,
+        "slippage_bps_per_side": 80,
+        "cost_rate": 0.011,
+        "entry_liquidity_usd": 334915.41,
+        "entry_volume_usd": 2234503.22,
+        "top_human_pct": 0.8971,
+        "stop_fraction": 0.12,
+        "target_fraction": 0.35,
+        "max_hold_seconds": 57600,
+        "dex_url": "https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+        "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+        "strategy_id": "forward_ranked_primary",
+        "hard_rug_checks": [
+          {
+            "name": "verified_pool_vault",
+            "pass": true,
+            "detail": "RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions"
+          },
+          {
+            "name": "complete_chain_read",
+            "pass": true,
+            "detail": "PASS with warnings: LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+          },
+          {
+            "name": "mint_authority_revoked",
+            "pass": true,
+            "detail": "must be explicitly revoked"
+          },
+          {
+            "name": "freeze_authority_revoked",
+            "pass": true,
+            "detail": "must be explicitly revoked"
+          },
+          {
+            "name": "single_non_pool_holder_20pct",
+            "pass": true,
+            "detail": "top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 0.8971%"
+          },
+          {
+            "name": "LP_locked_or_burned",
+            "pass": true,
+            "detail": "chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject"
+          },
+          {
+            "name": "sellable_not_honeypot",
+            "pass": true,
+            "detail": "canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+          }
+        ],
+        "team": {
+          "approved": true,
+          "approve": 5,
+          "reject": 0,
+          "abstain": 1,
+          "tally": "5/6 approve",
+          "rule": "majority 5/5 of voting agents",
+          "vetoes": [],
+          "votes": [
+            {
+              "agent": "Risk Manager",
+              "vote": "approve",
+              "reason": "Safety pass: mint authority revoked, freeze revoked."
+            },
+            {
+              "agent": "Bubble Map Analyst",
+              "vote": "approve",
+              "reason": "Top non-LP wallet 0.8971% (\u2264 15.0%), no linked-wallet fail."
+            },
+            {
+              "agent": "X/Twitter Scout",
+              "vote": "abstain",
+              "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
+            },
+            {
+              "agent": "Data Scout",
+              "vote": "approve",
+              "reason": "Ranked primary candidate, score 17.354199; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+            },
+            {
+              "agent": "Backtester",
+              "vote": "approve",
+              "reason": "0 earlier simulated fills on this pool; no evidence against."
+            },
+            {
+              "agent": "Strategist",
+              "vote": "approve",
+              "reason": "Dip entry under forward_ranked_primary (stop 12%, target 25%)."
+            }
+          ],
+          "proposed_by": "Data Scout"
+        },
+        "proposed_by": "Data Scout",
+        "mark_price_usd": 0.01584,
+        "mark_time": "2026-11-07T05:01:16.444746+00:00",
+        "exit_policy_updates": [
+          {
+            "time": "2026-11-07T05:09:34.056856+00:00",
+            "target_before": 0.25,
+            "target_after": 0.35
+          }
+        ]
+      }
+    ],
+    "last_entry_ts": 1794027609.6664712,
+    "sizing": "primary cap $100, fallback cap $50; min(cap, 10% realized balance, 10% available cash); max 24 open positions",
+    "exit_spec": {
+      "stop_fraction": 0.12,
+      "target_fraction": 0.35,
+      "max_hold_seconds": 57600
+    },
+    "tier_pnl_usd": {
+      "primary": 0,
+      "fallback": 0
+    }
   },
   "daily_stop": {
     "enabled": true,
     "halted": false,
     "mode": "forward:paper",
-    "date_et": "2026-11-06",
+    "date_et": "2026-11-07",
     "target_usd": 300.0,
     "realized_pnl_usd": 0.0,
     "realized_fills": 0,
-    "reset_at": "2026-11-07T00:00:00-05:00",
+    "reset_at": "2026-11-08T00:00:00-05:00",
     "hit_at": null,
     "basis": "deduplicated realized forward paper closes only; no unrealized P&L",
     "blocks": "new entries only; position exits are never gated"
+  },
+  "configuration": {
+    "candidate_source": "legacy",
+    "cycle_seconds": 3600,
+    "entry_interval_seconds": 3600,
+    "daily_stop_enabled": true,
+    "daily_profit_stop_usd": 300,
+    "rpc_resilience_enabled": true,
+    "forward_paper_enabled": true,
+    "tiered_selection_enabled": true,
+    "checklist_rules_enabled": true,
+    "tiers": {
+      "primary": {
+        "max_holder_pct": 20,
+        "max_top10_pct": 65,
+        "entry_zone": [
+          0.05,
+          0.95
+        ],
+        "require_green_candle": false,
+        "notional_usd": 100,
+        "reject_soft_risks": true
+      },
+      "fallback": {
+        "max_holder_pct": 20,
+        "max_top10_pct": 100,
+        "entry_zone": null,
+        "require_green_candle": false,
+        "notional_usd": 50,
+        "filters": {
+          "min_pair_age_hours": 0.08333333333333333,
+          "max_pair_age_days": 3650,
+          "min_liquidity_usd": 1000,
+          "min_volume_24h_usd": 500,
+          "min_market_cap_usd": 6000,
+          "max_market_cap_usd": 10000000000,
+          "strict_market_cap": true
+        },
+        "penalty_only": true,
+        "penalties": {
+          "soft_risk_each": 3,
+          "top10": 2,
+          "checklist_each": 4,
+          "market": 2
+        }
+      },
+      "hard": {
+        "checks": [
+          "sellable_not_honeypot",
+          "mint_authority_revoked",
+          "freeze_authority_revoked"
+        ],
+        "unknown_rejects": true,
+        "sell_quote_required": true
+      }
+    },
+    "exit_spec": {
+      "stop_fraction": 0.12,
+      "target_fraction": 0.35,
+      "target_floor_fraction": 0.35,
+      "max_hold_seconds": 57600
+    },
+    "global_fees_filter": "SKIPPED: unavailable on DexScreener; no proxy"
+  },
+  "last_updated_et": "2026-11-07T00:10:06.865230-05:00",
+  "tier_selection": {
+    "before_after": {
+      "same_queue_size": 60,
+      "old_market_filters": 13,
+      "new_primary_market_filters": 27,
+      "new_fallback_market_filters": 33
+    },
+    "primary_market": 27,
+    "fallback_market": 33,
+    "primary": 3,
+    "fallback": 3,
+    "excluded_traded": 0,
+    "tier": "primary",
+    "market_review_cap": 12,
+    "selected_trade": {
+      "id": "paper-7e3d8a997aff4e5bb3d183dcc3ff7b81",
+      "mode": "forward:paper",
+      "realized": false,
+      "tier": "primary",
+      "selection_score": 17.354199,
+      "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+      "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+      "symbol": "COGE",
+      "name": "COGE COIN",
+      "entry_ts": 1794027609.6664712,
+      "entry_time": "2026-11-07T05:00:09.666471+00:00",
+      "entry_price": 0.01566,
+      "entry_frac_of_ath": 0.7950072772628121,
+      "notional_usd": 100,
+      "slippage_bps_per_side": 80,
+      "cost_rate": 0.011,
+      "entry_liquidity_usd": 334915.41,
+      "entry_volume_usd": 2234503.22,
+      "top_human_pct": 0.8971,
+      "stop_fraction": 0.12,
+      "target_fraction": 0.25,
+      "max_hold_seconds": 57600,
+      "dex_url": "https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+      "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+      "strategy_id": "forward_ranked_primary",
+      "hard_rug_checks": [
+        {
+          "name": "verified_pool_vault",
+          "pass": true,
+          "detail": "RPC exact vault mint/owner and known DEX program; no approximate liquidity exclusions"
+        },
+        {
+          "name": "complete_chain_read",
+          "pass": true,
+          "detail": "PASS with warnings: LP vault was not matched to DexScreener base liquidity on the largest accounts; lock/burn of the LP token is not visible"
+        },
+        {
+          "name": "mint_authority_revoked",
+          "pass": true,
+          "detail": "must be explicitly revoked"
+        },
+        {
+          "name": "freeze_authority_revoked",
+          "pass": true,
+          "detail": "must be explicitly revoked"
+        },
+        {
+          "name": "single_non_pool_holder_20pct",
+          "pass": true,
+          "detail": "top-20 token accounts aggregated by owner, only exact verified chosen-pool vault excluded; 0.8971%"
+        },
+        {
+          "name": "LP_locked_or_burned",
+          "pass": true,
+          "detail": "chosen pool LP fully burned: current LP mint supply zero plus positive historical LP issuance and >=99.99% lock/burn report; unknown/unverified locks reject"
+        },
+        {
+          "name": "sellable_not_honeypot",
+          "pass": true,
+          "detail": "canonical SPL token, revoked authorities, no risky extensions, fresh read-only sell route through verified pool; no signed execution"
+        }
+      ],
+      "team": {
+        "approved": true,
+        "approve": 5,
+        "reject": 0,
+        "abstain": 1,
+        "tally": "5/6 approve",
+        "rule": "majority 5/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 0.8971% (\u2264 15.0%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Ranked primary candidate, score 17.354199; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "approve",
+            "reason": "0 earlier simulated fills on this pool; no evidence against."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under forward_ranked_primary (stop 12%, target 25%)."
+          }
+        ],
+        "proposed_by": "Data Scout"
+      },
+      "proposed_by": "Data Scout"
+    },
+    "excluded_already_traded": 0
   }
 }

@@ -40,7 +40,19 @@ class PaperAccount:
                     reserved_usd=round(sum(p['notional_usd'] for p in d['positions']), 4),
                     positions=d['positions'], last_entry_ts=d['last_entry_ts'],
                     sizing=('primary cap $100, fallback cap $50; min(cap, 10% realized balance, 10% available cash); max 24 open positions' if self.config.get('tiered_selection_enabled') else '10% of realized account balance, capped at $100 and available cash; max one open position'),
+                    exit_spec={'stop_fraction':self.config['paper']['stop_fraction'],'target_fraction':max(self.config['paper']['target_fraction'],self.config['paper'].get('target_floor_fraction',0)),'max_hold_seconds':self.config['paper']['max_hold_seconds']},
                     tier_pnl_usd={tier:round(sum(t['pnl_usd'] for t in d['closed'] if t.get('tier','primary')==tier),6) for tier in ('primary','fallback')})
+
+    def sync_exit_policy(self,post):
+        paper=self.config['paper']
+        floor=max(paper.get('target_floor_fraction',0),paper['target_fraction'])
+        for p in self.data['positions']:
+            old=p.get('target_fraction',0)
+            if old<floor:
+                p['target_fraction']=floor
+                p.setdefault('exit_policy_updates',[]).append({'time':iso(time.time()),'target_before':old,'target_after':floor})
+                self.save()
+                post('Risk Manager',f"EXIT POLICY UPDATE {p.get('symbol',p['mint'])} ({p['mint']}): take profit {old*100:g}% -> {floor*100:g}% (minimum floor). Stop remains {p['stop_fraction']*100:g}%; time limit remains {p['max_hold_seconds']/3600:g}h. Applied to the existing open position; no new entry.")
 
     def reconcile(self, memory, close_event):
         # Durable account journal is written BEFORE ledger/chat. Replay is idempotent.
@@ -53,6 +65,7 @@ class PaperAccount:
 
     def manage(self, market, memory, post, close_event, now=None):
         now = now or time.time()
+        self.sync_exit_policy(post)
         self.reconcile(memory, close_event)
         positions = self.data['positions']
         if not positions:
@@ -129,7 +142,7 @@ class PaperAccount:
             size = round(min(paper['notional_usd'], balance * paper['allocation_fraction'], self.data['cash_usd']), 4)
             if size <= 0:
                 return None
-            variant = dict(id='forward_dip_20_45', stop=paper['stop_fraction'], target=paper['target_fraction'], zone_high=zone['max_frac_of_ath'])
+            variant = dict(id='forward_dip_20_45', stop=paper['stop_fraction'], target=max(paper['target_fraction'],paper.get('target_floor_fraction',0)), zone_high=zone['max_frac_of_ath'])
             slip = slippage_bps(token.get('liquidity_usd'), paper)
             t = dict(id='paper-' + uuid.uuid4().hex, mode='forward:paper', realized=False,
                      mint=token['mint'], pool=token['pool'], symbol=token.get('symbol', '?'), name=token.get('name', '?'),
@@ -138,7 +151,7 @@ class PaperAccount:
                      cost_rate=(paper['fee_bps_per_side'] + slip) / 10000,
                      entry_liquidity_usd=token.get('liquidity_usd'), entry_volume_usd=token.get('volume_24h_usd'),
                      top_human_pct=token.get('safety', {}).get('top_human_pct'),
-                     stop_fraction=paper['stop_fraction'], target_fraction=paper['target_fraction'], max_hold_seconds=paper['max_hold_seconds'],
+                     stop_fraction=paper['stop_fraction'], target_fraction=max(paper['target_fraction'],paper.get('target_floor_fraction',0)), max_hold_seconds=paper['max_hold_seconds'],
                      dex_url=token.get('dex_url') or 'https://dexscreener.com/solana/' + token['pool'],
                      gmgn_url=token.get('gmgn_url', ''), strategy_id=variant['id'])
             result = team_review(t, token, variant, [], self.config, market.source_status.get('x_twitter'))
@@ -152,7 +165,7 @@ class PaperAccount:
             self.data['cash_usd'] -= size
             self.data['last_entry_ts'] = now
             self.save()  # both cash debit and rolling-hour gate persist atomically
-            post(t['proposed_by'], f"FORWARD PAPER entry {t['symbol']} ({t['mint']}) @ {price}; allocation ${size:.2f}, 12% stop / 25% target / 16h time stop. {t['dex_url']}", 'trade', t)
+            post(t['proposed_by'], f"FORWARD PAPER entry {t['symbol']} ({t['mint']}) @ {price}; allocation ${size:.2f}, {paper['stop_fraction']*100:g}% stop / {max(paper['target_fraction'],paper.get('target_floor_fraction',0))*100:g}% target / {paper['max_hold_seconds']/3600:g}h time stop. {t['dex_url']}", 'trade', t)
             return t
         post('Strategist', 'No forward paper entry: no fully scam-filtered current dip with a recent closed green confirmation. No trade minimum; no forced trade.')
         return None
@@ -180,7 +193,7 @@ class PaperAccount:
             if tier not in ('primary','fallback') or token.get('tier_eligible') is not True:continue
             settings=self.config['tiers'][tier]
             filters=self.config['filters'] if tier=='primary' else settings['filters']
-            if market_reason(token,filters,now) or tier_reason(token,settings):continue
+            if (tier=='primary' and market_reason(token,filters,now)) or tier_reason(token,settings):continue
             # Entry guard repeats common hard-block attestation; no team/minimum bypass.
             safety=token.get('safety') or {}
             if safety.get('hard_rug_pass') is not True or not safety.get('hard_rug_checks') or any(c.get('pass') is not True for c in safety['hard_rug_checks']):continue
@@ -189,16 +202,16 @@ class PaperAccount:
                 post('Risk Manager','No entry: paper cash below one-cent funded size; no fabricated borrowing.')
                 return None
             frac=token.get('ath_frac')
-            variant=dict(id='forward_ranked_'+tier,stop=paper['stop_fraction'],target=paper['target_fraction'],zone_high=(settings.get('entry_zone') or [0,1e100])[1])
+            variant=dict(id='forward_ranked_'+tier,stop=paper['stop_fraction'],target=max(paper['target_fraction'],paper.get('target_floor_fraction',0)),zone_high=(settings.get('entry_zone') or [0,1e100])[1])
             slip=slippage_bps(token.get('liquidity_usd'),paper)
             t=dict(id='paper-'+uuid.uuid4().hex,mode='forward:paper',realized=False,tier=tier,selection_score=token['score'],
                    mint=token['mint'],pool=token['pool'],symbol=token.get('symbol','?'),name=token.get('name','?'),
                    entry_ts=now,entry_time=iso(now),entry_price=token['price_usd'],entry_frac_of_ath=frac,notional_usd=size,
                    slippage_bps_per_side=slip,cost_rate=(paper['fee_bps_per_side']+slip)/10000,
                    entry_liquidity_usd=token.get('liquidity_usd'),entry_volume_usd=token.get('volume_24h_usd'),
-                   top_human_pct=safety.get('top_human_pct'),stop_fraction=paper['stop_fraction'],target_fraction=paper['target_fraction'],
+                   top_human_pct=safety.get('top_human_pct'),stop_fraction=paper['stop_fraction'],target_fraction=max(paper['target_fraction'],paper.get('target_floor_fraction',0)),
                    max_hold_seconds=paper['max_hold_seconds'],dex_url='https://dexscreener.com/solana/'+token['pool'],gmgn_url=token.get('gmgn_url',''),
-                   strategy_id=variant['id'],hard_rug_checks=safety['hard_rug_checks'])
+                   strategy_id=variant['id'],hard_rug_checks=safety['hard_rug_checks'],checklist_audit={'active_rule_keys':token.get('active_checklist_rule_keys',[]),'violations':token.get('checklist_violations',[])},fallback_penalties=token.get('fallback_penalties',[]) if tier=='fallback' else [])
             vote_config={**self.config,'holder_fail_pct':settings['max_holder_pct'],'filters':filters}
             result=team_review(t,token,variant,[],vote_config,market.source_status.get('x_twitter'))
             for v in result['votes']:post(v['agent'],f"{tier.upper()} PAPER {t['symbol']} vote {v['vote']}: {v['reason']}")
@@ -207,7 +220,7 @@ class PaperAccount:
             self.data['positions'].append(t);self.data['cash_usd']-=size;self.data['last_entry_ts']=now
             self.save()  # journal is authoritative if process stops before registry write
             registry.add(t)
-            post(t['proposed_by'],f"{tier.upper()} FORWARD PAPER entry {t['name']} / {t['symbol']} ({t['mint']}) @ {t['entry_price']}; size ${size:.2f}; score {t['selection_score']}; 12% stop / 25% target / 16h time stop. ONE TRADE PER COIN EVER: mint permanently excluded after this entry. {t['dex_url']}",'trade',t)
+            post(t['proposed_by'],f"{tier.upper()} FORWARD PAPER entry {t['name']} / {t['symbol']} ({t['mint']}) @ {t['entry_price']}; size ${size:.2f}; score {t['selection_score']}; {paper['stop_fraction']*100:g}% stop / {max(paper['target_fraction'],paper.get('target_floor_fraction',0))*100:g}% target / {paper['max_hold_seconds']/3600:g}h time stop. ONE TRADE PER COIN EVER: mint permanently excluded after this entry. {t['dex_url']}",'trade',t)
             return t
         post('Risk Manager','NO TRADE: no funded, untraded, team-approved candidate with every hard rug check known/pass; minimum never overrides hard blocks.')
         return None

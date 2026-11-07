@@ -29,6 +29,11 @@ def _vote(agent, vote, reason):
 
 def risk_vote(token):
     safety = token.get("safety") or {}
+    if token.get("entry_tier") in ("primary","fallback") and token.get("tier_eligible"):
+        checks=safety.get("hard_rug_checks",[])
+        if safety.get("hard_rug_pass") is True and checks and all(x.get("pass") is True for x in checks):
+            return _vote("Risk Manager",APPROVE,"Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties.")
+        return _vote("Risk Manager",REJECT,"Required hard check failed or UNKNOWN.")
     status = safety.get("status")
     if status != "pass":
         fails = "; ".join(safety.get("hard_fails") or []) or safety.get("summary") or "no safety result"
@@ -45,6 +50,8 @@ def risk_vote(token):
 
 def bubble_vote(token, holder_limit=3.5):
     safety = token.get("safety") or {}
+    if token.get("entry_tier")=="fallback" and token.get("tier_eligible"):
+        return _vote("Bubble Map Analyst",APPROVE,f"Fallback concentration/LP/extensions/checklist risk scored, not vetoed; holder {safety.get('top_human_pct')}%, penalties {token.get('fallback_penalties',[])}")
     top = safety.get("top_human_pct")
     if safety.get("holder_over_3_5") or (top is not None and float(top) > holder_limit):
         return _vote("Bubble Map Analyst", REJECT, f"One wallet holds {top}% (> {holder_limit}% fail line).")

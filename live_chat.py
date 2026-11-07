@@ -1,10 +1,11 @@
-"""Persistent factual agent chat and suggestion-only reviews of forward paper closes.
+"""Persistent factual agent chat and structured-rule reviews of forward paper closes.
 Historical/backtest fills are NEVER reviewed as live closes. No strategy writes.
 """
 import json
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from checklist_rules import normalize_item, STATUS
 
 class LiveChat:
     def __init__(self, path):
@@ -13,6 +14,8 @@ class LiveChat:
             self.data = json.loads(self.path.read_text())
         except (OSError, ValueError):
             self.data = {"messages": [], "checklist": [], "reviewed": [], "started": time.time()}
+
+        self.data["checklist"]=[normalize_item(x) for x in self.data.get("checklist",[])]
 
     def save(self):
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -54,7 +57,7 @@ class LiveChat:
         def suggest(key, text):
             suggestions.append((key, text))
         say("Risk Manager", f"{t.get('symbol', '?')} closed for ${t['pnl_usd']:.2f}. Exit reason: {t.get('exit_reason') or 'not recorded'}. This describes recorded facts, not a proven cause.")
-        say("Strategist", ("Entry rationale: ranked "+t["tier"]+" candidate with common hard rug blocks and recorded team majority. Green-candle confirmation optional; fallback ATH optional. " if t.get("tier") else "Entry rationale: current dip plus closed green confirmation, measured chain/holder safety, and recorded team majority. ") + ((t.get("team") or {}).get("rule") or "Full entry vote was not recorded.") + " A passing entry check is not a guarantee; suggestions below require testing, not automatic changes.")
+        say("Strategist", ("Entry rationale: ranked "+t["tier"]+" candidate with common hard rug blocks and recorded team majority. Green-candle confirmation optional; fallback ATH optional. " if t.get("tier") else "Entry rationale: current dip plus closed green confirmation, measured chain/holder safety, and recorded team majority. ") + ((t.get("team") or {}).get("rule") or "Full entry vote was not recorded.") + " A passing entry check is not a guarantee; the approved checklist policy applies structured rules to subsequent selections, not proof of causation.")
         frac = t.get("entry_frac_of_ath")
         say("Data Scout", f"Entry was {float(frac)*100:.1f}% of recorded window ATH ({(1-float(frac))*100:.1f}% below it)." if frac is not None else "Entry depth vs ATH was not recorded; cannot assess.")
         for name in ("liquidity", "volume"):
@@ -79,10 +82,12 @@ class LiveChat:
         for key, text in suggestions:
             item = next((i for i in self.data["checklist"] if i["key"] == key), None)
             if item is None:
-                item = {"key": key, "suggestion": text, "supporting_losses": 0, "trade_ids": [], "status": "SUGGESTION ONLY — not applied"}
+                item = {"key": key, "suggestion": text, "supporting_losses": 0, "trade_ids": [], "status": STATUS}
+                item=normalize_item(item)
                 self.data["checklist"].append(item)
             if t["id"] not in item["trade_ids"]:
                 item["trade_ids"].append(t["id"])
                 item["supporting_losses"] += 1
-            say("Strategist", f"Checklist suggestion ({item['supporting_losses']} supporting loss(es), not causal proof): {text} SUGGESTION ONLY: no strategy or filter was changed.")
+            item.update(normalize_item(item))
+            say("Strategist", f"CHECKLIST RULE ADDED/UPDATED ({item['supporting_losses']} supporting loss(es), not causal proof): {item['rule_text']} Rules {item['rules']}. Applied before selection: PRIMARY violation rejects; FALLBACK violation penalizes score.")
         return messages

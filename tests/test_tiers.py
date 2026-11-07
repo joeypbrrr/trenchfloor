@@ -52,9 +52,9 @@ class TierTests(unittest.TestCase):
  def test_registry_only_reconstructs_forward_journal_not_old_backtests(self):
   atomic_json(self.root/'data/paper_account.json',{'positions':[dict(mode='forward:paper',mint='A')],'closed':[dict(mode='legacy:backtest',mint='OLD')]})
   r=TradedMints(self.root);self.assertIn('A',r);self.assertNotIn('OLD',r)
- def test_hard20_and_tier15(self):
+ def test_soft_holder20_primary_and_fallback_penalty(self):
   self.assertIsNone(tier_reason(self.token,self.config['tiers']['primary']))
-  c={**self.token,'safety':{**self.safety,'top_human_pct':19}}
+  c={**self.token,'safety':{**self.safety,'top_human_pct':21}}
   self.assertIsNotNone(tier_reason(c,self.config['tiers']['primary']))
   self.assertIsNone(tier_reason(c,self.config['tiers']['fallback']))
  def test_daily_halt_overrides_minimum(self):

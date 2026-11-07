@@ -126,6 +126,16 @@ def boot(config):
         }
         HEARTS[name] = time.time()
     STATE["agents"] = [AGENTS[name] for name in ROLE_NAMES]
+    if config.get("forward_paper_enabled"):
+        account=PaperAccount(ROOT,config)
+        account.sync_exit_policy(post)
+        STATE["paper_account"]=account.snapshot()
+        STATE["daily_stop"]=DailyStop(ROOT).status(config)
+        STATE["configuration"]={k:config.get(k) for k in ("candidate_source","cycle_seconds","entry_interval_seconds","daily_stop_enabled","daily_profit_stop_usd","rpc_resilience_enabled","forward_paper_enabled","tiered_selection_enabled","checklist_rules_enabled","tiers")}
+        STATE["configuration"]["exit_spec"]={k:config["paper"][k] for k in ("stop_fraction","target_fraction","target_floor_fraction","max_hold_seconds") if k in config["paper"]}
+        STATE["configuration"]["global_fees_filter"]="SKIPPED: unavailable on DexScreener; no proxy"
+        STATE["last_updated_et"]=prior.get("last_updated_et") or et_now()
+        STATE["tier_selection"]=prior.get("tier_selection",{})
     save_state()
 
 
@@ -932,13 +942,14 @@ def tiered_cycle(config):
     for role in ROLE_NAMES:update(role,"working","Selecting one forward PAPER entry using approved tiers.")
     post("System",f"Cycle {STATE['cycle_count']} started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum.")
     daily_stop_status(config,announce=True)
-    checklist = PAPER_CHAT.data.get("checklist",[]) if PAPER_CHAT else []
-    post("Strategist",f"CHECKLIST CONSULT: {len(checklist)} shared lesson suggestion(s) read before selection. SUGGESTION ONLY; none automatically changes filters or sizing.")
+    from checklist_rules import normalize_item
+    checklist = [normalize_item(x) for x in (PAPER_CHAT.data.get("checklist",[]) if PAPER_CHAT else [])]
+    post("Strategist",f"CHECKLIST CONSULT + APPLY: {len(checklist)} structured rule item(s) loaded before selection. Violations REJECT PRIMARY and PENALIZE FALLBACK; unknown required observations count as violations.")
     for item in checklist:
-        post("Strategist","CHECKLIST CONSULT / "+item.get("key","?")+": "+item.get("suggestion","")+" — reviewed, not automatically applied.")
+        post("Strategist","CHECKLIST CONSULT / "+item.get("key","?")+": "+str(item.get("rules",[]))+" — ACTIVE primary reject / fallback score penalty.")
     queue,found=discover(config)
     post("Risk Manager","Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks.")
-    selection=evaluate(queue,MARKET,config,post,load_history,ROOT)
+    selection=evaluate(queue,MARKET,config,post,load_history,ROOT,checklist=checklist)
     reviewed=selection.pop("reviewed")
     candidates=selection.pop("candidates")
     for c in reviewed:
@@ -963,8 +974,8 @@ def tiered_cycle(config):
     STATE["configuration"]={k:config.get(k) for k in ("candidate_source","cycle_seconds","entry_interval_seconds","daily_stop_enabled","daily_profit_stop_usd","rpc_resilience_enabled","forward_paper_enabled","tiered_selection_enabled","minimum_entries_per_hour","tiers")}
     STATE["configuration"]["global_fees_filter"]="SKIPPED: unavailable on DexScreener; no proxy"
     STATE["best"]={"id":"forward_ranked_primary_fallback","name":"One fresh mint per rolling hour; primary $100 cap, fallback $50 cap; common hard rug blocks; no repeat mints.","status":"forward_paper","oos":None}
-    STATE["strategist_note"]="Current paper selection uses scored primary candidates; only if primary is empty, scored fallback. Minimum yields to daily halt, rolling-hour limit, unavailable cash, or failed/unknown hard blocks. Checklist is advisory."
-    STATE["risk_note"]="Hard blocks: unsellable/honeypot, mint/freeze authority, LP burn/lock unknown or failing, single non-pool holder >20%; all unknowns reject. No wallet, no execution."
+    STATE["strategist_note"]="Current paper selection uses scored primary candidates; only if primary is empty, scored fallback. Minimum yields to daily halt, rolling-hour limit, unavailable cash, or failed/unknown hard blocks. Checklist rules are applied: primary rejection / fallback penalty."
+    STATE["risk_note"]="Hard blocks ONLY: no sell route/unsellable, active mint authority, active freeze authority; unknowns on these reject. Holder concentration, LP and risky extensions reject primary and penalize fallback. No wallet, no execution."
     STATE["goal"]={"status_line":"$300/day realized paper profit hard stop. Not a guarantee of profit."}
     STATE["team"]={"model":"Six factual rule-based votes on highest ranked hard-safe candidates; Risk Manager and Bubble Map Analyst can veto.","last_cycle_taken":int(entry is not None),"last_cycle_rejected":0}
     STATE["sources"]=MARKET.source_status

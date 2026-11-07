@@ -36,7 +36,8 @@ class ChatTests(unittest.TestCase):
         self.assertEqual(self.chat.record(e), [])
         restored=LiveChat(self.path)
         self.assertEqual(restored.data["checklist"][0]["supporting_losses"],1)
-        self.assertIn("not applied", restored.data["checklist"][0]["status"].lower())
+        self.assertIn("primary", restored.data["checklist"][0]["status"].lower())
+        self.assertTrue(restored.data["checklist"][0]["rules"])
     def test_profit_not_reviewed(self):
         self.assertEqual(self.chat.record(self.close(pnl_usd=4)), [])
     def test_independent_losses_increment_support(self):
