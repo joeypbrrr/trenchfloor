@@ -1,7 +1,7 @@
 {
   "started": "2026-11-07T04:34:52.188271+00:00",
   "starting_balance_usd": 1000.0,
-  "cash_usd": 590.49,
+  "cash_usd": 652.4559830000001,
   "last_entry_ts": 1794042338.1930752,
   "positions": [
     {
@@ -110,8 +110,8 @@
         "proposed_by": "Data Scout"
       },
       "proposed_by": "Data Scout",
-      "mark_price_usd": 0.01825,
-      "mark_time": "2026-11-07T09:25:16.655106+00:00",
+      "mark_price_usd": 0.0179,
+      "mark_time": "2026-11-07T10:10:38.149921+00:00",
       "exit_policy_updates": [
         {
           "time": "2026-11-07T05:09:34.056856+00:00",
@@ -211,8 +211,8 @@
         "proposed_by": "Data Scout"
       },
       "proposed_by": "Data Scout",
-      "mark_price_usd": 0.01234,
-      "mark_time": "2026-11-07T09:25:16.655106+00:00"
+      "mark_price_usd": 0.01271,
+      "mark_time": "2026-11-07T10:10:38.149921+00:00"
     },
     {
       "id": "paper-7def2ee2dd1c4fe6939f0537097a4ece",
@@ -305,102 +305,8 @@
         "proposed_by": "Data Scout"
       },
       "proposed_by": "Data Scout",
-      "mark_price_usd": 0.003799,
-      "mark_time": "2026-11-07T09:25:16.655106+00:00"
-    },
-    {
-      "id": "paper-278e35c1222548f0b825bd22197c6181",
-      "mode": "forward:paper",
-      "realized": false,
-      "tier": "primary",
-      "selection_score": 16.524261,
-      "mint": "oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "pool": "6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
-      "symbol": "AMD",
-      "name": "A Meme Dacity",
-      "entry_ts": 1794038675.3338163,
-      "entry_time": "2026-11-07T08:04:35.333816+00:00",
-      "entry_price": 0.001419,
-      "entry_frac_of_ath": 0.3938384319411226,
-      "notional_usd": 72.9,
-      "slippage_bps_per_side": 80,
-      "cost_rate": 0.011,
-      "entry_liquidity_usd": 103830.28,
-      "entry_volume_usd": 3155033.57,
-      "top_human_pct": 0.148,
-      "stop_fraction": 0.12,
-      "target_fraction": 0.35,
-      "max_hold_seconds": 57600,
-      "dex_url": "https://dexscreener.com/solana/6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
-      "gmgn_url": "https://gmgn.ai/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "strategy_id": "forward_ranked_primary",
-      "hard_rug_checks": [
-        {
-          "name": "mint_authority_revoked",
-          "pass": true,
-          "detail": "explicitly revoked"
-        },
-        {
-          "name": "freeze_authority_revoked",
-          "pass": true,
-          "detail": "explicitly revoked"
-        },
-        {
-          "name": "sellable_not_honeypot",
-          "pass": true,
-          "detail": "read-only positive sell route required; known paused/nontransferable rejects; unknown route/paused state rejects; no execution"
-        }
-      ],
-      "checklist_audit": {
-        "active_rule_keys": [],
-        "violations": []
-      },
-      "fallback_penalties": [],
-      "team": {
-        "approved": true,
-        "approve": 5,
-        "reject": 0,
-        "abstain": 1,
-        "tally": "5/6 approve",
-        "rule": "majority 5/5 of voting agents",
-        "vetoes": [],
-        "votes": [
-          {
-            "agent": "Risk Manager",
-            "vote": "approve",
-            "reason": "Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties."
-          },
-          {
-            "agent": "Bubble Map Analyst",
-            "vote": "approve",
-            "reason": "Top non-LP wallet 0.148% (\u2264 20.0%), no linked-wallet fail."
-          },
-          {
-            "agent": "X/Twitter Scout",
-            "vote": "abstain",
-            "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
-          },
-          {
-            "agent": "Data Scout",
-            "vote": "approve",
-            "reason": "Ranked primary candidate, score 16.524261; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
-          },
-          {
-            "agent": "Backtester",
-            "vote": "approve",
-            "reason": "0 earlier simulated fills on this pool; no evidence against."
-          },
-          {
-            "agent": "Strategist",
-            "vote": "approve",
-            "reason": "Dip entry under forward_ranked_primary (stop 12%, target 35%)."
-          }
-        ],
-        "proposed_by": "Data Scout"
-      },
-      "proposed_by": "Data Scout",
-      "mark_price_usd": 0.001412,
-      "mark_time": "2026-11-07T09:25:16.655106+00:00"
+      "mark_price_usd": 0.004027,
+      "mark_time": "2026-11-07T10:10:38.149921+00:00"
     },
     {
       "id": "paper-45c7f772ff9441ad9dc47bd207cca0ef",
@@ -493,9 +399,112 @@
         "proposed_by": "Data Scout"
       },
       "proposed_by": "Data Scout",
-      "mark_price_usd": 0.002875,
-      "mark_time": "2026-11-07T09:25:16.655106+00:00"
+      "mark_price_usd": 0.002889,
+      "mark_time": "2026-11-07T10:10:38.149921+00:00"
     }
   ],
-  "closed": []
+  "closed": [
+    {
+      "id": "paper-278e35c1222548f0b825bd22197c6181",
+      "mode": "forward:paper",
+      "realized": true,
+      "tier": "primary",
+      "selection_score": 16.524261,
+      "mint": "oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
+      "pool": "6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
+      "symbol": "AMD",
+      "name": "A Meme Dacity",
+      "entry_ts": 1794038675.3338163,
+      "entry_time": "2026-11-07T08:04:35.333816+00:00",
+      "entry_price": 0.001419,
+      "entry_frac_of_ath": 0.3938384319411226,
+      "notional_usd": 72.9,
+      "slippage_bps_per_side": 80,
+      "cost_rate": 0.011,
+      "entry_liquidity_usd": 103830.28,
+      "entry_volume_usd": 3155033.57,
+      "top_human_pct": 0.148,
+      "stop_fraction": 0.12,
+      "target_fraction": 0.35,
+      "max_hold_seconds": 57600,
+      "dex_url": "https://dexscreener.com/solana/6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
+      "gmgn_url": "https://gmgn.ai/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
+      "strategy_id": "forward_ranked_primary",
+      "hard_rug_checks": [
+        {
+          "name": "mint_authority_revoked",
+          "pass": true,
+          "detail": "explicitly revoked"
+        },
+        {
+          "name": "freeze_authority_revoked",
+          "pass": true,
+          "detail": "explicitly revoked"
+        },
+        {
+          "name": "sellable_not_honeypot",
+          "pass": true,
+          "detail": "read-only positive sell route required; known paused/nontransferable rejects; unknown route/paused state rejects; no execution"
+        }
+      ],
+      "checklist_audit": {
+        "active_rule_keys": [],
+        "violations": []
+      },
+      "fallback_penalties": [],
+      "team": {
+        "approved": true,
+        "approve": 5,
+        "reject": 0,
+        "abstain": 1,
+        "tally": "5/6 approve",
+        "rule": "majority 5/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 0.148% (\u2264 20.0%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Ranked primary candidate, score 16.524261; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "approve",
+            "reason": "0 earlier simulated fills on this pool; no evidence against."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under forward_ranked_primary (stop 12%, target 35%)."
+          }
+        ],
+        "proposed_by": "Data Scout"
+      },
+      "proposed_by": "Data Scout",
+      "mark_price_usd": 0.001233,
+      "mark_time": "2026-11-07T09:46:04.874838+00:00",
+      "exit_ts": 1794044764.8748384,
+      "exit_time": "2026-11-07T09:46:04.874838+00:00",
+      "exit_price": 0.001233,
+      "exit_reason": "stop",
+      "pnl_usd": -10.934017,
+      "exit_liquidity_usd": 96877.24,
+      "exit_volume_usd": 3157705.1,
+      "review_delivered": true
+    }
+  ]
 }

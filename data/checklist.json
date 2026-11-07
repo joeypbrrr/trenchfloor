@@ -1,5 +1,25 @@
 {
-  "updated": "2026-11-07T09:26:26.582382+00:00",
-  "items": [],
+  "updated": "2026-11-07T10:13:28.909461+00:00",
+  "items": [
+    {
+      "key": "stop_confirmation",
+      "suggestion": "Require a recently closed green hourly candle after a stop-out loss.",
+      "supporting_losses": 1,
+      "trade_ids": [
+        "paper-278e35c1222548f0b825bd22197c6181"
+      ],
+      "status": "ACTIVE \u2014 primary violation rejects; fallback violation penalizes score",
+      "rules": [
+        {
+          "field": "green_confirmation",
+          "op": "eq",
+          "value": true,
+          "missing_violation": true
+        }
+      ],
+      "rule_text": "Require a recently closed green hourly candle after a stop-out loss.",
+      "enabled": true
+    }
+  ],
   "status": "ACTIVE RULES \u2014 primary reject / fallback score penalty"
 }
