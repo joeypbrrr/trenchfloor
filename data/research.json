@@ -6,7 +6,7 @@
   "cycle_count": 2,
   "last_cycle": "2026-11-07T05:00:09.676677+00:00",
   "next_cycle": "2026-11-07T06:00:09.676684+00:00",
-  "generated": "2026-11-07T05:09:34.062919+00:00",
+  "generated": "2026-11-07T05:17:53.465786+00:00",
   "data_status": "Starting",
   "errors": [],
   "agents": [
@@ -17,8 +17,8 @@
       "status": "idle",
       "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "EXIT POLICY UPDATE COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump): take profit 25% -> 35% (minimum floor). Stop remains 12%; time limit remains 16h. Applied to the existing open position; no new entry.",
-      "heartbeat": "2026-11-07T05:09:34.057539+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:17:08.373253+00:00"
     },
     {
       "role": "Bubble Map Analyst",
@@ -28,27 +28,27 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T05:09:34.056388+00:00"
+      "heartbeat": "2026-11-07T05:17:08.373266+00:00"
     },
     {
       "role": "X/Twitter Scout",
       "initials": "XS",
       "color": "ff5a1f",
       "status": "idle",
-      "task": "Reading lessons before the first cycle.",
+      "task": "Light scan of DexScreener boost and profile links.",
       "detail": "",
-      "latest_action": "",
-      "heartbeat": "2026-11-07T05:09:34.056392+00:00"
+      "latest_action": "Light scan found 3 new Solana rows with an X link. Not tweets. GoqdpM https://x.com/allhaildonkey; 76inp9 https://x.com/trystonka; 3axY5M https://x.com/Clowntrenches/status/2118928653169963372",
+      "heartbeat": "2026-11-07T05:17:08.373268+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "Reading lessons before the first cycle.",
+      "task": "Light scan of new GeckoTerminal pools. No safety review on this pass.",
       "detail": "",
-      "latest_action": "",
-      "heartbeat": "2026-11-07T05:09:34.056393+00:00"
+      "latest_action": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan.",
+      "heartbeat": "2026-11-07T05:17:08.373269+00:00"
     },
     {
       "role": "Backtester",
@@ -58,7 +58,7 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T05:09:34.056395+00:00"
+      "heartbeat": "2026-11-07T05:17:08.373271+00:00"
     },
     {
       "role": "Strategist",
@@ -67,11 +67,25 @@
       "status": "idle",
       "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "CHECKLIST POLICY UPDATE: 0 structured rule item(s) active. Violations reject primary / penalize fallback before selection; required missing observations are violations. No selection performed now.",
-      "heartbeat": "2026-11-07T05:09:34.060796+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:17:08.373273+00:00"
     }
   ],
   "activity": [
+    {
+      "id": 55,
+      "time": "2026-11-07T05:15:53.324241+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 54,
+      "time": "2026-11-07T05:15:53.283783+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "Light scan found 3 new Solana rows with an X link. Not tweets. GoqdpM https://x.com/allhaildonkey; 76inp9 https://x.com/trystonka; 3axY5M https://x.com/Clowntrenches/status/2118928653169963372",
+      "type": "info"
+    },
     {
       "id": 53,
       "time": "2026-11-07T05:09:34.061663+00:00",
@@ -2440,9 +2454,9 @@
     "site_reachable": true,
     "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T05:00:11.399168+00:00",
+    "checked_at": "2026-11-07T05:17:08.423459+00:00",
     "stale_agents": [],
-    "last_published": "2026-11-07T05:10:25.612809+00:00"
+    "last_published": "2026-11-07T05:18:04.692894+00:00"
   },
   "ledger": {
     "timezone": "America/New_York",
@@ -3957,8 +3971,8 @@
           "proposed_by": "Data Scout"
         },
         "proposed_by": "Data Scout",
-        "mark_price_usd": 0.01584,
-        "mark_time": "2026-11-07T05:01:16.444746+00:00",
+        "mark_price_usd": 0.01604,
+        "mark_time": "2026-11-07T05:17:53.429951+00:00",
         "exit_policy_updates": [
           {
             "time": "2026-11-07T05:09:34.056856+00:00",

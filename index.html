@@ -290,6 +290,33 @@ footer span:last-child{text-align:right;color:#e4a578}
 /* Live copy: entire scene fits phone width; no room-navigation tabs. */
 #scene{height:clamp(280px,45vh,560px)}
 @media(max-width:480px){#scene{height:250px}.feed-item p,.lesson{overflow-wrap:anywhere;word-break:normal}.feed-item{font-size:12px}.fh{gap:8px;flex-wrap:wrap}#liveChat{max-height:520px!important}}
+
+/* Position-first dashboard: this panel is directly above the floor at every width. */
+.position-hero{margin:18px 0 14px;border:1px solid #71e6bd99;border-radius:10px;background:linear-gradient(120deg,#17312b,#101c22);box-shadow:0 0 30px #71e6bd16;overflow:hidden}
+.position-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:12px 18px;border-bottom:1px solid #71e6bd33}
+.position-heading h2{margin:0;color:var(--teal);font:700 13px var(--mono);letter-spacing:1px}
+.position-heading h2 small{font:10px var(--mono);color:var(--muted)}
+#heroTeamTrades{font:600 12px var(--mono);color:var(--text)}
+#openPositions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px;padding:14px 18px}
+.position-card{margin:0!important;padding:0!important;background:none!important;border:0!important;min-width:0}
+.position-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 10px}
+.position-title h3{font:700 25px/1.2 var(--display);margin:0;color:#fff}
+.position-title h3 small{font-size:15px;color:var(--muted);font-weight:500}
+.new-position{padding:4px 9px;border-radius:5px;background:var(--teal);color:#08251b;font:800 11px var(--mono);letter-spacing:1px;box-shadow:0 0 18px #71e6bd44}
+.position-data{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:10px 0}
+.position-data.risk-prices{grid-template-columns:repeat(2,minmax(0,1fr))}
+.position-datum{display:flex;flex-direction:column;gap:3px;min-width:0}
+.position-datum span{font:10px var(--mono);letter-spacing:.6px;color:var(--muted)}
+.position-datum strong{font:600 20px var(--mono);color:var(--text);overflow-wrap:anywhere}
+.position-datum.stop strong{color:var(--red)}.position-datum.target strong{color:var(--teal)}
+.position-card .trade-when{font:13px/1.5 var(--mono);color:#d4e7e0;margin:10px 0}
+.position-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:10px}
+.position-deadline{font:12px/1.5 var(--mono);color:#e8cf9f;margin:0}
+.position-dex{border:1px solid #71e6bd66;background:#71e6bd14;border-radius:5px;padding:7px 12px;font:600 12px var(--mono);color:var(--teal)}
+#fillCount{font-size:clamp(16px,2vw,24px);line-height:1.3}
+#liveChat{max-height:none!important;overflow:visible!important}
+.chat-older summary{padding:14px;color:var(--teal);cursor:pointer;font:12px var(--mono)}
+@media(max-width:640px){.position-hero{margin-top:12px}.position-heading{padding:10px 12px}.position-heading h2{font-size:12px}#heroTeamTrades{font-size:10px}#openPositions{padding:12px}.position-title h3{font-size:23px}.position-title h3 small{font-size:13px}.position-datum strong{font-size:17px}.position-card .trade-when{font-size:11px}.position-deadline{font-size:11px}.position-bottom{gap:8px}.position-dex{padding:6px 10px}}
 </style>
 </head>
 <body>
@@ -308,18 +335,10 @@ footer span:last-child{text-align:right;color:#e4a578}
     </div>
   </header>
   <main id="top">
-    <section class="intro">
-      <div>
-        <div class="eyebrow">ONE TEAM <span>/ 06 SEATS / ONE P&amp;L</span></div>
-        <h1>Better filters.<br><span>Sharper entries.</span></h1>
-      </div>
-      <p>Six agents. One team. One shared paper P&amp;L. One market: <strong>Solana meme coins.</strong><br>Every paper trade is proposed by one agent and <strong>voted on by all six</strong>. Buys dips. Never top-ticks. Free public data only.</p>
+    <section class="position-hero" id="openPositionPanel" aria-labelledby="openPositionsHeading" aria-live="polite">
+      <div class="position-heading"><h2 id="openPositionsHeading">OPEN POSITION <small>· PAPER ONLY</small></h2><span id="heroTeamTrades">TEAM TRADES · loading</span></div>
+      <div id="openPositions"><p class="empty">Loading current paper positions…</p></div>
     </section>
-    <a class="best-link" href="./BEST_STRATEGY.md">
-      <span>★ BEST STRATEGY</span>
-      <b id="bestLinkText">Waiting for the first cycle</b>
-      <i aria-hidden="true">→</i>
-    </a>
     <section class="floor-card" aria-label="Rotatable 3D view of the research floor">
       <div class="scene-head">
         <div><span class="section-num">01</span><span>LIVE RESEARCH FLOOR</span></div>
@@ -340,7 +359,19 @@ footer span:last-child{text-align:right;color:#e4a578}
         <span class="desk-id"><b>TF–06</b> <span>PAPER / SIMULATED</span></span>
       </div>
     </section>
-<section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">AGENT CHAT ROOM</h2><span class="pill">RULE-BASED · LIVE PUSH</span></div><p class="method-note">Messages come from actual research events, not autonomous conversation. Loss reviews use recorded forward-paper closes only; missing facts stay unknown.</p><div id="liveChat" style="max-height:480px;overflow:auto"><p class="empty">Waiting for live messages. No demo chat.</p></div></section>
+    <section class="intro">
+      <div>
+        <div class="eyebrow">ONE TEAM <span>/ 06 SEATS / ONE P&amp;L</span></div>
+        <h1>Better filters.<br><span>Sharper entries.</span></h1>
+      </div>
+      <p>Six agents. One team. One shared paper P&amp;L. One market: <strong>Solana meme coins.</strong><br>Every paper trade is proposed by one agent and <strong>voted on by all six</strong>. Buys dips. Never top-ticks. Free public data only.</p>
+    </section>
+    <a class="best-link" href="./BEST_STRATEGY.md">
+      <span>★ BEST STRATEGY</span>
+      <b id="bestLinkText">Waiting for the first cycle</b>
+      <i aria-hidden="true">→</i>
+    </a>
+<section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">AGENT CHAT ROOM</h2><span class="pill">NEWEST FIRST · ACTUAL EVENTS</span></div><p class="method-note">Messages come from actual research events, not autonomous conversation. Loss reviews use recorded forward-paper closes only; missing facts stay unknown.</p><div id="liveChat"><p class="empty">Waiting for live messages. No demo chat.</p></div></section>
 <section class="panel" aria-labelledby="liveChecklistTitle"><div class="panel-heading"><h2 id="liveChecklistTitle">SHARED LESSONS CHECKLIST</h2><span class="pill">ACTIVE RULES</span></div><div id="liveChecklist"><p class="empty">No live losses reviewed. Historical backtests are excluded.</p></div></section>
     <section class="pulse" aria-label="Research pulse">
       <span id="lastCycle">Waiting for the first cycle</span>
@@ -387,7 +418,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <p class="method-note">Days are America/New_York exit dates from <span class="mono">data/ledger/</span>. Tap a day for its paper trades: token, symbol, entry and exit in ET, dollar P&amp;L, who proposed it, the team vote, and DexScreener / GMGN links.</p>
     </section>
     <p class="method-note" id="accountStatus">Paper account: waiting for current snapshot.</p>
-    <section class="panel" aria-labelledby="openPositionsHeading"><div class="panel-heading"><h2 id="openPositionsHeading">OPEN PAPER POSITIONS</h2></div><div class="trade-list" id="openPositions"><p class="empty">No open paper positions.</p></div></section>
+
     <section class="panel" aria-labelledby="ledgerHeading">
       <div class="panel-heading">
         <div><span class="section-num">05</span><h2 id="ledgerHeading">TEAM PAPER LEDGER</h2></div>
@@ -506,20 +537,42 @@ function tradeCard(t){
   links[1].href = t.gmgn_url || ('https://gmgn.ai/sol/token/' + t.mint);
   return art;
 }
+function precisePrice(v){return v==null||!Number.isFinite(Number(v))?'—':'$'+Number(v).toLocaleString('en-US',{maximumSignificantDigits:12});}
+function positionDatum(label,value,kind=''){
+  const box=document.createElement('div');box.className='position-datum '+kind;
+  const name=document.createElement('span');name.textContent=label;
+  const val=document.createElement('strong');val.textContent=value;box.append(name,val);return box;
+}
 function positionCard(input){
   const current=state&&state.paper_account&&(state.paper_account.positions||[]).find(p=>p.id===input.id);
   const t=current||input;
-  const art=document.createElement('article');art.className='trade';
-  const title=document.createElement('h3');title.textContent=(t.symbol||'TOKEN')+' · '+(t.name||'')+' · '+(t.tier||'paper').toUpperCase();
-  const opened=document.createElement('p');opened.className='trade-when';opened.textContent='Opened '+et(t.entry_time)+' · Entry '+price(t.entry_price)+' · Size '+money(t.notional_usd);
-  const exits=document.createElement('p');exits.textContent='Stop '+((t.stop_fraction||0)*100).toFixed(0)+'% · Target '+((t.target_fraction||0)*100).toFixed(0)+'% · Time limit '+((t.max_hold_seconds||0)/3600)+'h · PAPER ONLY';
-  const mint=document.createElement('p');mint.className='mint';mint.textContent=t.mint||'';
-  const link=document.createElement('a');link.href=t.dex_url||('https://dexscreener.com/solana/'+t.pool);link.textContent='DexScreener';link.target='_blank';link.rel='noopener';
-  art.append(title,opened,exits,mint,link);return art;
+  const art=document.createElement('article');art.className='trade position-card';art.dataset.positionId=t.id||t.mint||'';
+  const title=document.createElement('div');title.className='position-title';
+  const coin=document.createElement('h3');coin.textContent=t.symbol||'TOKEN';
+  const name=document.createElement('small');name.textContent=' · '+(t.name||t.symbol||'');coin.append(name);title.append(coin);
+  const openedAt=Date.parse(t.entry_time);
+  if(Number.isFinite(openedAt)&&Date.now()-openedAt>=0&&Date.now()-openedAt<3600000){const badge=document.createElement('span');badge.className='new-position';badge.textContent='NEW';title.append(badge);}
+  const data=document.createElement('div');data.className='position-data';
+  const size=t.notional_usd==null?'—':Number(t.notional_usd).toLocaleString('en-US',{style:'currency',currency:'USD'});
+  data.append(positionDatum('SIZE',size),positionDatum('ENTRY PRICE',precisePrice(t.entry_price)),positionDatum('TIER',(t.tier||'paper').toUpperCase()));
+  const opened=document.createElement('p');opened.className='trade-when';opened.textContent='Opened '+et(t.entry_time);
+  const risk=document.createElement('div');risk.className='position-data risk-prices';
+  const stop=t.stop_fraction==null?NaN:Number(t.entry_price)*(1-Number(t.stop_fraction));
+  const target=t.target_fraction==null?NaN:Number(t.entry_price)*(1+Number(t.target_fraction));
+  risk.append(positionDatum('STOP · '+((t.stop_fraction||0)*100).toFixed(0)+'%',precisePrice(stop),'stop'),positionDatum('TARGET · '+((t.target_fraction||0)*100).toFixed(0)+'%',precisePrice(target),'target'));
+  const bottom=document.createElement('div');bottom.className='position-bottom';
+  const deadline=document.createElement('p');deadline.className='position-deadline';
+  const until=Number.isFinite(openedAt)&&t.max_hold_seconds?new Date(openedAt+Number(t.max_hold_seconds)*1000).toISOString():null;
+  deadline.textContent='Time stop ('+((t.max_hold_seconds||0)/3600)+'h) · '+et(until);
+  const link=document.createElement('a');link.className='position-dex';link.href=t.dex_url||('https://dexscreener.com/solana/'+t.pool);link.textContent='DexScreener ↗';link.target='_blank';link.rel='noopener';
+  bottom.append(deadline,link);art.append(title,data,opened,risk,bottom);return art;
 }
+function teamTradeCounts(d){return {open:((d.paper_account&&d.paper_account.positions)||[]).length,closed:Number((d.ledger||{}).trade_count||0)};}
 function renderOpenPositions(d){
   const positions=(d.paper_account&&d.paper_account.positions)||[];
-  $('openPositions').replaceChildren(...(positions.length?positions.map(positionCard):[empty('No open paper positions.')]));
+  const counts=teamTradeCounts(d);$('heroTeamTrades').textContent='TEAM TRADES · '+counts.open+' open / '+counts.closed+' closed';
+  const clock=d.next_cycle?new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(d.next_cycle))+' ET':'pending';
+  $('openPositions').replaceChildren(...(positions.length?positions.map(positionCard):[empty('No open position · next cycle '+clock)]));
 }
 function tokenCard(tk, failed){
   const s = tk.safety || {};
@@ -585,14 +638,14 @@ function renderMetrics(d){
   const L = d.ledger || {};
   const net = $('netPnl');
   if (L.total_pnl_usd == null) { net.textContent = '—'; } else { net.textContent = money(L.total_pnl_usd); net.className = Number(L.total_pnl_usd) < 0 ? 'negative' : 'positive'; }
-  $('fillCount').textContent = L.trade_count == null ? '—' : String(L.trade_count);
+  const counts=teamTradeCounts(d);$('fillCount').textContent=counts.open+' open / '+counts.closed+' closed';
   const days = L.days || [];
   const w = days.reduce((s, x) => s + (x.wins || 0), 0), l = days.reduce((s, x) => s + (x.losses || 0), 0);
   $('winRate').textContent = w + l ? Math.round(w / (w + l) * 100) + '%' : '—';
   const v = votedTrades(d);
   $('avgVote').textContent = v.length ? (v.reduce((s, t) => s + (t.team.approve || 0), 0) / v.length).toFixed(1) + ' / 6' : '—';
   if(d.paper_account){const a=d.paper_account;$('accountStatus').textContent='PAPER BALANCE '+money(a.balance_usd)+' · CASH '+money(a.cash_usd)+' · RESERVED '+money(a.reserved_usd)+' · STARTED '+et(a.started)+' · '+a.sizing+' · EXIT 12% STOP / 35% TARGET MIN / 16h MAX · REALIZED primary '+money((a.tier_pnl_usd||{}).primary||0)+' / fallback '+money((a.tier_pnl_usd||{}).fallback||0);}
-  $('fillSub').textContent = (days.length ? days.length + ' DAYS · ' : '') + 'SIMULATED FILLS';
+  $('fillSub').textContent = (days.length ? days.length + ' DAYS · ' : '') + 'FORWARD PAPER · OPEN / REALIZED CLOSED';
 }
 function renderLedger(d){
   const host = $('ledger'); const trades = d.recent_trades || [];
@@ -718,8 +771,8 @@ async function loadState(){ try { renderState(await loadJSON('data/research.json
 async function loadFeed(){ try { renderFeed(await loadJSON('data/feed.json')); } catch (e) { $('feed').replaceChildren(empty('Feed unavailable: ' + e.message)); } }
 function tick(){ if (!state || !state.next_cycle) return; const left = Math.max(0, Math.floor((new Date(state.next_cycle) - Date.now()) / 1000)); $('countdown').textContent = String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0'); }
 renderRoster(); buildMonths(); renderCalendar(); renderEquity();
-// Keep the calendar in the continuous page immediately under the scene.
-document.querySelector('.floor-card').after(document.getElementById('calendar'));
+// Position -> continuous floor -> newest-first chat; the calendar stays below current status.
+document.querySelector('.floor-card').after(document.querySelector('[aria-labelledby="liveChatTitle"]'));
 // Live copy only: no static JSON polling. WebSockets work through quick tunnels;
 // the server also offers local SSE at /events for diagnostics.
 let liveSocket, liveLastId = null, liveHeartbeat = null, liveConnected = false, staticMode = PAGES_HOST, staticTimer = null;
@@ -749,14 +802,17 @@ function liveApply(s){
     b.textContent=e.text.replace(/https?:\S+/g,'').slice(0,120);b.dataset.until=Date.now()+12000;
   });
   const chat=document.getElementById('liveChat');
-  chat.replaceChildren(...(s.chat.length?s.chat.slice(-200).map(e=>{
+  const newest=s.chat.slice(-200).sort((a,b)=>(Date.parse(b.time)||0)-(Date.parse(a.time)||0));
+  const chatRow=e=>{
     const row=document.createElement('article');row.className='feed-item';
     const color=(AGENTS.find(a=>a.role===e.agent)||{}).color||'#e4a578';
     const title=document.createElement('div');title.className='fh';
     const who=document.createElement('b');who.textContent='● '+e.agent;who.style.color=color;
     const when=document.createElement('time');when.textContent=et(e.time);title.append(who,when);
     const body=document.createElement('p');body.textContent=e.text;row.append(title,body);return row;
-  }):[empty('No live agent messages yet. No demo conversation is generated.')]));
+  };
+  chat.replaceChildren(...(newest.length?newest.slice(0,24).map(chatRow):[empty('No live agent messages yet. No demo conversation is generated.')]));
+  if(newest.length>24){const older=document.createElement('details');older.className='chat-older';const summary=document.createElement('summary');summary.textContent='Older messages ('+(newest.length-24)+') · newest first';older.append(summary,...newest.slice(24).map(chatRow));chat.append(older);}
   const checklist=document.getElementById('liveChecklist');
   checklist.replaceChildren(...(s.checklist.length?s.checklist.map(item=>{const row=document.createElement('div');row.className='lesson';const text=document.createElement('b');text.textContent=item.rule_text||item.suggestion;const note=document.createElement('small');note.textContent=item.supporting_losses+' supporting live paper loss(es) · PRIMARY REJECT · FALLBACK SCORE PENALTY';row.append(text,note);return row}):[empty('No forward paper losses have closed since this dashboard started. Historical/backtest rows do not seed reviews. No active checklist rules yet.')]));
   liveLastId=s.sequence;liveHealth();
