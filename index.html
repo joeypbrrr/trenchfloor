@@ -341,7 +341,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       </div>
     </section>
 <section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">AGENT CHAT ROOM</h2><span class="pill">RULE-BASED · LIVE PUSH</span></div><p class="method-note">Messages come from actual research events, not autonomous conversation. Loss reviews use recorded forward-paper closes only; missing facts stay unknown.</p><div id="liveChat" style="max-height:480px;overflow:auto"><p class="empty">Waiting for live messages. No demo chat.</p></div></section>
-<section class="panel" aria-labelledby="liveChecklistTitle"><div class="panel-heading"><h2 id="liveChecklistTitle">SHARED LESSONS CHECKLIST</h2><span class="pill">SUGGESTIONS ONLY</span></div><div id="liveChecklist"><p class="empty">No live losses reviewed. Historical backtests are excluded.</p></div></section>
+<section class="panel" aria-labelledby="liveChecklistTitle"><div class="panel-heading"><h2 id="liveChecklistTitle">SHARED LESSONS CHECKLIST</h2><span class="pill">ACTIVE RULES</span></div><div id="liveChecklist"><p class="empty">No live losses reviewed. Historical backtests are excluded.</p></div></section>
     <section class="pulse" aria-label="Research pulse">
       <span id="lastCycle">Waiting for the first cycle</span>
       <span>NEXT CYCLE <b id="countdown">--:--</b></span>
@@ -387,6 +387,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <p class="method-note">Days are America/New_York exit dates from <span class="mono">data/ledger/</span>. Tap a day for its paper trades: token, symbol, entry and exit in ET, dollar P&amp;L, who proposed it, the team vote, and DexScreener / GMGN links.</p>
     </section>
     <p class="method-note" id="accountStatus">Paper account: waiting for current snapshot.</p>
+    <section class="panel" aria-labelledby="openPositionsHeading"><div class="panel-heading"><h2 id="openPositionsHeading">OPEN PAPER POSITIONS</h2></div><div class="trade-list" id="openPositions"><p class="empty">No open paper positions.</p></div></section>
     <section class="panel" aria-labelledby="ledgerHeading">
       <div class="panel-heading">
         <div><span class="section-num">05</span><h2 id="ledgerHeading">TEAM PAPER LEDGER</h2></div>
@@ -459,7 +460,7 @@ const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<
 const money = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
 const moneyShort = (v) => { const n = Number(v); const a = Math.abs(n); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + (a >= 1000 ? (a / 1000).toFixed(1) + 'k' : a >= 100 ? Math.round(a) : a.toFixed(2)); };
 const price = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return '$' + n.toLocaleString('en-US', { maximumFractionDigits: Math.abs(n) >= 1 ? 4 : Math.abs(n) >= 0.01 ? 6 : 8 }); };
-const ET_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit' });
+const ET_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit' });
 const et = (v) => { if (!v) return '—'; const d = new Date(v); return Number.isNaN(d.getTime()) ? '—' : ET_FMT.format(d) + ' ET'; };
 const todayET = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -497,13 +498,28 @@ function tradeCard(t){
   art.querySelector('strong').textContent = t.name || t.symbol || 'Token';
   art.querySelector('.sym').textContent = t.symbol || '?';
   const pnl = art.querySelector('.pnl'); pnl.textContent = money(t.pnl_usd); pnl.classList.add(Number(t.pnl_usd) < 0 ? 'negative' : 'positive');
-  art.querySelector('.trade-when').textContent = 'Entry ' + et(t.entry_time) + ' @ ' + price(t.entry_price) + ' → Exit ' + et(t.exit_time) + ' @ ' + price(t.exit_price);
+  art.querySelector('.trade-when').textContent = 'Opened ' + et(t.entry_time) + ' @ ' + price(t.entry_price) + ' → Exit ' + et(t.exit_time) + ' @ ' + price(t.exit_price);
   art.querySelector('.mint').textContent = (t.tier ? t.tier.toUpperCase()+' · ' : '') + (t.strategy_id ? t.strategy_id + ' · ' : '') + (t.mint || '');
   art.querySelector('.mint').after(teamBlock(t));
   const links = art.querySelectorAll('a');
   links[0].href = t.dex_url || ('https://dexscreener.com/solana/' + t.mint);
   links[1].href = t.gmgn_url || ('https://gmgn.ai/sol/token/' + t.mint);
   return art;
+}
+function positionCard(input){
+  const current=state&&state.paper_account&&(state.paper_account.positions||[]).find(p=>p.id===input.id);
+  const t=current||input;
+  const art=document.createElement('article');art.className='trade';
+  const title=document.createElement('h3');title.textContent=(t.symbol||'TOKEN')+' · '+(t.name||'')+' · '+(t.tier||'paper').toUpperCase();
+  const opened=document.createElement('p');opened.className='trade-when';opened.textContent='Opened '+et(t.entry_time)+' · Entry '+price(t.entry_price)+' · Size '+money(t.notional_usd);
+  const exits=document.createElement('p');exits.textContent='Stop '+((t.stop_fraction||0)*100).toFixed(0)+'% · Target '+((t.target_fraction||0)*100).toFixed(0)+'% · Time limit '+((t.max_hold_seconds||0)/3600)+'h · PAPER ONLY';
+  const mint=document.createElement('p');mint.className='mint';mint.textContent=t.mint||'';
+  const link=document.createElement('a');link.href=t.dex_url||('https://dexscreener.com/solana/'+t.pool);link.textContent='DexScreener';link.target='_blank';link.rel='noopener';
+  art.append(title,opened,exits,mint,link);return art;
+}
+function renderOpenPositions(d){
+  const positions=(d.paper_account&&d.paper_account.positions)||[];
+  $('openPositions').replaceChildren(...(positions.length?positions.map(positionCard):[empty('No open paper positions.')]));
 }
 function tokenCard(tk, failed){
   const s = tk.safety || {};
@@ -575,7 +591,7 @@ function renderMetrics(d){
   $('winRate').textContent = w + l ? Math.round(w / (w + l) * 100) + '%' : '—';
   const v = votedTrades(d);
   $('avgVote').textContent = v.length ? (v.reduce((s, t) => s + (t.team.approve || 0), 0) / v.length).toFixed(1) + ' / 6' : '—';
-  if(d.paper_account){const a=d.paper_account;$('accountStatus').textContent='PAPER BALANCE '+money(a.balance_usd)+' · CASH '+money(a.cash_usd)+' · RESERVED '+money(a.reserved_usd)+' · STARTED '+et(a.started)+' · '+a.sizing+' · REALIZED primary '+money((a.tier_pnl_usd||{}).primary||0)+' / fallback '+money((a.tier_pnl_usd||{}).fallback||0);}
+  if(d.paper_account){const a=d.paper_account;$('accountStatus').textContent='PAPER BALANCE '+money(a.balance_usd)+' · CASH '+money(a.cash_usd)+' · RESERVED '+money(a.reserved_usd)+' · STARTED '+et(a.started)+' · '+a.sizing+' · EXIT 12% STOP / 35% TARGET MIN / 16h MAX · REALIZED primary '+money((a.tier_pnl_usd||{}).primary||0)+' / fallback '+money((a.tier_pnl_usd||{}).fallback||0);}
   $('fillSub').textContent = (days.length ? days.length + ' DAYS · ' : '') + 'SIMULATED FILLS';
 }
 function renderLedger(d){
@@ -607,7 +623,7 @@ function renderState(d){
   $('liveDot').className = 'live-dot ' + (d.ok && !stale ? 'ok-dot' : 'bad-dot');
   $('lastCycle').textContent = d.last_cycle ? 'Last updated ' + et(d.last_updated_et||d.last_cycle) + ' · ' + (d.data_status || '') : 'Waiting for the first cycle';
   $('sceneStatus').textContent = d.ok ? 'AGENTS SEATED · LIVE' : 'CHECK ERRORS';
-  renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
+  renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderOpenPositions(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
   ledgerDays = (d.ledger && d.ledger.days) || ledgerDays;
   buildMonths(); renderCalendar(); renderEquity();
 }
@@ -691,7 +707,7 @@ function renderFeed(feed){
   host.replaceChildren(...(events.length ? events.slice(0, 120).map(ev => {
     const a = document.createElement('article'); a.className = 'feed-item' + (ev.type === 'error' ? ' err' : '') + (!first && !seenFeed.has(ev.id) ? ' is-new' : '');
     a.innerHTML = '<div class="fh"><b></b><time></time></div>'; a.querySelector('b').textContent = ev.agent; a.querySelector('time').textContent = et(ev.time);
-    if (ev.trade) a.appendChild(tradeCard(ev.trade)); else { const p = document.createElement('p'); p.textContent = ev.text; a.appendChild(p); }
+    if (ev.trade) a.appendChild(ev.trade.exit_time?tradeCard(ev.trade):positionCard(ev.trade)); else { const p = document.createElement('p'); p.textContent = ev.text; a.appendChild(p); }
     return a;
   }) : [empty('Waiting for the first transmission.')]));
   events.forEach(e => seenFeed.add(e.id));
@@ -742,7 +758,7 @@ function liveApply(s){
     const body=document.createElement('p');body.textContent=e.text;row.append(title,body);return row;
   }):[empty('No live agent messages yet. No demo conversation is generated.')]));
   const checklist=document.getElementById('liveChecklist');
-  checklist.replaceChildren(...(s.checklist.length?s.checklist.map(item=>{const row=document.createElement('div');row.className='lesson';const text=document.createElement('b');text.textContent=item.suggestion;const note=document.createElement('small');note.textContent=item.supporting_losses+' supporting live paper loss(es) · SUGGESTION ONLY — NOT APPLIED';row.append(text,note);return row}):[empty('No forward paper losses have closed since this dashboard started. Historical/backtest rows do not seed reviews. No checklist suggestions yet.')]));
+  checklist.replaceChildren(...(s.checklist.length?s.checklist.map(item=>{const row=document.createElement('div');row.className='lesson';const text=document.createElement('b');text.textContent=item.rule_text||item.suggestion;const note=document.createElement('small');note.textContent=item.supporting_losses+' supporting live paper loss(es) · PRIMARY REJECT · FALLBACK SCORE PENALTY';row.append(text,note);return row}):[empty('No forward paper losses have closed since this dashboard started. Historical/backtest rows do not seed reviews. No active checklist rules yet.')]));
   liveLastId=s.sequence;liveHealth();
 }
 async function loadStaticSnapshot(){

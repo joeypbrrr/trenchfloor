@@ -2,12 +2,12 @@
   "name": "Trenchfloor",
   "disclaimer": "Paper trading / research only. No wallet. No real trades. Not financial advice.",
   "scope": "Solana meme-coin paper research",
-  "ok": true,
+  "ok": false,
   "cycle_count": 2,
   "last_cycle": "2026-11-07T05:00:09.676677+00:00",
   "next_cycle": "2026-11-07T06:00:09.676684+00:00",
-  "generated": "2026-11-07T05:00:09.684542+00:00",
-  "data_status": "91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry",
+  "generated": "2026-11-07T05:09:34.062919+00:00",
+  "data_status": "Starting",
   "errors": [],
   "agents": [
     {
@@ -15,63 +15,91 @@
       "initials": "RM",
       "color": "ff7a00",
       "status": "idle",
-      "task": "91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "PRIMARY PAPER COGE vote approve: Safety pass: mint authority revoked, freeze revoked.",
-      "heartbeat": "2026-11-07T05:00:09.676704+00:00"
+      "latest_action": "EXIT POLICY UPDATE COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump): take profit 25% -> 35% (minimum floor). Stop remains 12%; time limit remains 16h. Applied to the existing open position; no new entry.",
+      "heartbeat": "2026-11-07T05:09:34.057539+00:00"
     },
     {
       "role": "Bubble Map Analyst",
       "initials": "BA",
       "color": "ffb000",
       "status": "idle",
-      "task": "91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "PRIMARY PAPER COGE vote approve: Top non-LP wallet 0.8971% (\u2264 15.0%), no linked-wallet fail.",
-      "heartbeat": "2026-11-07T05:00:09.677831+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:09:34.056388+00:00"
     },
     {
       "role": "X/Twitter Scout",
       "initials": "XS",
       "color": "ff5a1f",
       "status": "idle",
-      "task": "91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "PRIMARY PAPER COGE vote abstain: X API unavailable (401); token has no X link. No tweets read, abstaining.",
-      "heartbeat": "2026-11-07T05:00:09.678993+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:09:34.056392+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "PRIMARY FORWARD PAPER entry COGE COIN / COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump) @ 0.01566; size $100.00; score 17.354199; 12% stop / 25% target / 16h time stop. ONE TRADE PER COIN EVER: mint permanently exclu",
-      "heartbeat": "2026-11-07T05:00:09.679974+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:09:34.056393+00:00"
     },
     {
       "role": "Backtester",
       "initials": "BT",
       "color": "ffc266",
       "status": "idle",
-      "task": "91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "PRIMARY PAPER COGE vote approve: 0 earlier simulated fills on this pool; no evidence against.",
-      "heartbeat": "2026-11-07T05:00:09.680965+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T05:09:34.056395+00:00"
     },
     {
       "role": "Strategist",
       "initials": "ST",
       "color": "ff6a00",
       "status": "idle",
-      "task": "91 mints \u00b7 3 primary \u00b7 3 fallback \u00b7 1 new paper entry",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "PRIMARY PAPER COGE vote approve: Dip entry under forward_ranked_primary (stop 12%, target 25%).",
-      "heartbeat": "2026-11-07T05:00:09.681946+00:00"
+      "latest_action": "CHECKLIST POLICY UPDATE: 0 structured rule item(s) active. Violations reject primary / penalize fallback before selection; required missing observations are violations. No selection performed now.",
+      "heartbeat": "2026-11-07T05:09:34.060796+00:00"
     }
   ],
   "activity": [
+    {
+      "id": 53,
+      "time": "2026-11-07T05:09:34.061663+00:00",
+      "agent": "System",
+      "text": "DISPLAY UPDATE: each open-position card and entry row shows Opened from its own entry_time with full date and seconds in ET. COGE: Opened Nov 7, 2026, 12:00:09 AM ET.",
+      "type": "info"
+    },
+    {
+      "id": 52,
+      "time": "2026-11-07T05:09:34.060650+00:00",
+      "agent": "Strategist",
+      "text": "CHECKLIST POLICY UPDATE: 0 structured rule item(s) active. Violations reject primary / penalize fallback before selection; required missing observations are violations. No selection performed now.",
+      "type": "info"
+    },
+    {
+      "id": 51,
+      "time": "2026-11-07T05:09:34.059654+00:00",
+      "agent": "System",
+      "text": "POLICY UPDATE: hard blocks are ONLY unsellable/no sell route, active mint authority, active freeze authority; unknowns reject. Concentration, LP and risky Token-2022 extensions reject primary but penalize fallback. No demo cycle or new entry.",
+      "type": "info"
+    },
+    {
+      "id": 50,
+      "time": "2026-11-07T05:09:34.057354+00:00",
+      "agent": "Risk Manager",
+      "text": "EXIT POLICY UPDATE COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump): take profit 25% -> 35% (minimum floor). Stop remains 12%; time limit remains 16h. Applied to the existing open position; no new entry.",
+      "type": "info"
+    },
     {
       "id": 49,
       "time": "2026-11-07T05:00:09.683237+00:00",
@@ -2130,8 +2158,8 @@
     "status": "forward_paper",
     "oos": null
   },
-  "strategist_note": "Current paper selection uses scored primary candidates; only if primary is empty, scored fallback. Minimum yields to daily halt, rolling-hour limit, unavailable cash, or failed/unknown hard blocks. Checklist is advisory.",
-  "risk_note": "Hard blocks: unsellable/honeypot, mint/freeze authority, LP burn/lock unknown or failing, single non-pool holder >20%; all unknowns reject. No wallet, no execution.",
+  "strategist_note": "Ranked primary/fallback with structured checklist rules applied before selection: primary rejects violations; fallback penalizes them. Exit: 12% stop / at least 35% take-profit / 16h maximum. Permanent traded-mint exclusion and rolling-hour cap remain.",
+  "risk_note": "Hard blocks ONLY: unsellable/no sell route, active mint authority, active freeze authority; unknowns reject. Holder concentration, LP and risky extensions reject primary and penalize fallback.",
   "summary": {
     "discovered": 91,
     "enriched": 60,
@@ -2164,8 +2192,8 @@
     },
     "dexscreener_pairs": {
       "ok": true,
-      "detail": "60 pairs from tokens/v1",
-      "pairs": 60,
+      "detail": "1 pairs from tokens/v1",
+      "pairs": 1,
       "errors": []
     },
     "solana_rpc": {
@@ -2412,9 +2440,9 @@
     "site_reachable": true,
     "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T04:51:38.251032+00:00",
+    "checked_at": "2026-11-07T05:00:11.399168+00:00",
     "stale_agents": [],
-    "last_published": "2026-11-07T05:00:09.862221+00:00"
+    "last_published": "2026-11-07T05:10:25.612809+00:00"
   },
   "ledger": {
     "timezone": "America/New_York",
@@ -3844,7 +3872,7 @@
         "entry_volume_usd": 2234503.22,
         "top_human_pct": 0.8971,
         "stop_fraction": 0.12,
-        "target_fraction": 0.25,
+        "target_fraction": 0.35,
         "max_hold_seconds": 57600,
         "dex_url": "https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
         "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
@@ -3928,11 +3956,25 @@
           ],
           "proposed_by": "Data Scout"
         },
-        "proposed_by": "Data Scout"
+        "proposed_by": "Data Scout",
+        "mark_price_usd": 0.01584,
+        "mark_time": "2026-11-07T05:01:16.444746+00:00",
+        "exit_policy_updates": [
+          {
+            "time": "2026-11-07T05:09:34.056856+00:00",
+            "target_before": 0.25,
+            "target_after": 0.35
+          }
+        ]
       }
     ],
     "last_entry_ts": 1794027609.6664712,
     "sizing": "primary cap $100, fallback cap $50; min(cap, 10% realized balance, 10% available cash); max 24 open positions",
+    "exit_spec": {
+      "stop_fraction": 0.12,
+      "target_fraction": 0.35,
+      "max_hold_seconds": 57600
+    },
     "tier_pnl_usd": {
       "primary": 0,
       "fallback": 0
@@ -3951,6 +3993,70 @@
     "basis": "deduplicated realized forward paper closes only; no unrealized P&L",
     "blocks": "new entries only; position exits are never gated"
   },
+  "configuration": {
+    "candidate_source": "legacy",
+    "cycle_seconds": 3600,
+    "entry_interval_seconds": 3600,
+    "daily_stop_enabled": true,
+    "daily_profit_stop_usd": 300,
+    "rpc_resilience_enabled": true,
+    "forward_paper_enabled": true,
+    "tiered_selection_enabled": true,
+    "checklist_rules_enabled": true,
+    "tiers": {
+      "primary": {
+        "max_holder_pct": 20,
+        "max_top10_pct": 65,
+        "entry_zone": [
+          0.05,
+          0.95
+        ],
+        "require_green_candle": false,
+        "notional_usd": 100,
+        "reject_soft_risks": true
+      },
+      "fallback": {
+        "max_holder_pct": 20,
+        "max_top10_pct": 100,
+        "entry_zone": null,
+        "require_green_candle": false,
+        "notional_usd": 50,
+        "filters": {
+          "min_pair_age_hours": 0.08333333333333333,
+          "max_pair_age_days": 3650,
+          "min_liquidity_usd": 1000,
+          "min_volume_24h_usd": 500,
+          "min_market_cap_usd": 6000,
+          "max_market_cap_usd": 10000000000,
+          "strict_market_cap": true
+        },
+        "penalty_only": true,
+        "penalties": {
+          "soft_risk_each": 3,
+          "top10": 2,
+          "checklist_each": 4,
+          "market": 2
+        }
+      },
+      "hard": {
+        "checks": [
+          "sellable_not_honeypot",
+          "mint_authority_revoked",
+          "freeze_authority_revoked"
+        ],
+        "unknown_rejects": true,
+        "sell_quote_required": true
+      }
+    },
+    "exit_spec": {
+      "stop_fraction": 0.12,
+      "target_fraction": 0.35,
+      "target_floor_fraction": 0.35,
+      "max_hold_seconds": 57600
+    },
+    "global_fees_filter": "SKIPPED: unavailable on DexScreener; no proxy"
+  },
+  "last_updated_et": "2026-11-07T00:10:06.865230-05:00",
   "tier_selection": {
     "before_after": {
       "same_queue_size": 60,
@@ -4073,62 +4179,5 @@
       "proposed_by": "Data Scout"
     },
     "excluded_already_traded": 0
-  },
-  "configuration": {
-    "candidate_source": "legacy",
-    "cycle_seconds": 3600,
-    "entry_interval_seconds": 3600,
-    "daily_stop_enabled": true,
-    "daily_profit_stop_usd": 300,
-    "rpc_resilience_enabled": true,
-    "forward_paper_enabled": true,
-    "tiered_selection_enabled": true,
-    "minimum_entries_per_hour": 1,
-    "tiers": {
-      "primary": {
-        "max_holder_pct": 15,
-        "max_top10_pct": 65,
-        "entry_zone": [
-          0.05,
-          0.95
-        ],
-        "require_green_candle": false,
-        "notional_usd": 100
-      },
-      "fallback": {
-        "max_holder_pct": 20,
-        "max_top10_pct": 100,
-        "entry_zone": null,
-        "require_green_candle": false,
-        "notional_usd": 50,
-        "filters": {
-          "min_pair_age_hours": 0.08333333333333333,
-          "max_pair_age_days": 3650,
-          "min_liquidity_usd": 1000,
-          "min_volume_24h_usd": 500,
-          "min_market_cap_usd": 6000,
-          "max_market_cap_usd": 10000000000,
-          "strict_market_cap": true
-        }
-      },
-      "hard": {
-        "max_single_non_pool_holder_pct": 20,
-        "unknown_rejects": true,
-        "min_lp_lock_burn_pct": 99.99,
-        "sell_quote_required": true,
-        "canonical_spl_only": true
-      }
-    },
-    "global_fees_filter": "SKIPPED: unavailable on DexScreener; no proxy"
-  },
-  "goal": {
-    "status_line": "$300/day realized paper profit hard stop. Not a guarantee of profit."
-  },
-  "team": {
-    "model": "Six factual rule-based votes on highest ranked hard-safe candidates; Risk Manager and Bubble Map Analyst can veto.",
-    "last_cycle_taken": 1,
-    "last_cycle_rejected": 0
-  },
-  "cycle_duration_seconds": 63.632,
-  "last_updated_et": "2026-11-07T00:00:09.676681-05:00"
+  }
 }
