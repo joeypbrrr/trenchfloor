@@ -1,0 +1,171 @@
+{
+  "rules": [
+    {
+      "id": "R1",
+      "code": "holder_over_3_5",
+      "rule": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply",
+      "evidence": "GLITCH top wallet 3.5852% (8DJHyX9scPUAdR3J7HRULqEiTNR8LHGkCgwnGopeEAq1)",
+      "source": "Bubble Map Analyst",
+      "time": "2026-11-07T01:29:25.197399+00:00",
+      "time_et": "2026-11-06T20:29:25.197404-05:00",
+      "mints": [
+        "DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump",
+        "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump"
+      ],
+      "active": true
+    },
+    {
+      "id": "R2",
+      "code": "min_liq_to_mcap_5pct",
+      "rule": "skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book",
+      "evidence": "COGE lost $-10.002 with liquidity/mcap 0.027",
+      "source": "Risk Manager",
+      "time": "2026-11-07T01:29:31.564240+00:00",
+      "time_et": "2026-11-06T20:29:31.564242-05:00",
+      "mints": [
+        "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump"
+      ],
+      "active": true
+    }
+  ],
+  "rejected_mints": [
+    {
+      "mint": "DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump",
+      "symbol": "CBUCKS",
+      "reason": "holder above 3.5%",
+      "code": "holder_over_3_5",
+      "time": "2026-11-07T01:29:25.197554+00:00",
+      "time_et": "2026-11-06T20:29:25.197557-05:00"
+    },
+    {
+      "mint": "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump",
+      "symbol": "GLITCH",
+      "reason": "holder above 3.5%",
+      "code": "holder_over_3_5",
+      "time": "2026-11-07T01:29:25.198059+00:00",
+      "time_et": "2026-11-06T20:29:25.198061-05:00"
+    }
+  ],
+  "observations": [
+    {
+      "time": "2026-11-07T01:29:25.197416+00:00",
+      "time_et": "2026-11-06T20:29:25.197417-05:00",
+      "kind": "rule",
+      "source": "Bubble Map Analyst",
+      "text": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply \u2014 CBUCKS top wallet 14.5407% (BwSwtsPphxFDckVvEaFcwEzG2SAxTprN19fswwe5YZbK)"
+    },
+    {
+      "time": "2026-11-07T01:29:25.197940+00:00",
+      "time_et": "2026-11-06T20:29:25.197943-05:00",
+      "kind": "rule_example",
+      "source": "Bubble Map Analyst",
+      "text": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply \u2014 GLITCH top wallet 3.5852% (8DJHyX9scPUAdR3J7HRULqEiTNR8LHGkCgwnGopeEAq1)"
+    },
+    {
+      "time": "2026-11-07T01:29:31.564221+00:00",
+      "time_et": "2026-11-06T20:29:31.564225-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "COGE paper loss $-10.002 on dip_20_40_stop8_tp15_hold8 exit stop liq 264988.6 mcap 9819816.0"
+    },
+    {
+      "time": "2026-11-07T01:29:31.564247+00:00",
+      "time_et": "2026-11-06T20:29:31.564248-05:00",
+      "kind": "rule",
+      "source": "Risk Manager",
+      "text": "skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book \u2014 COGE lost $-10.002 with liquidity/mcap 0.027"
+    },
+    {
+      "time": "2026-11-07T01:29:31.566953+00:00",
+      "time_et": "2026-11-06T20:29:31.566956-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "COGE paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 264988.6 mcap 9819816.0"
+    }
+  ],
+  "variants": [
+    {
+      "id": "dip_20_40_stop8_tp15_hold8",
+      "status": "deferred",
+      "reason": "only 0 out-of-sample paper trades (need 5); not rejected",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.15,
+        "hold_bars": 8
+      },
+      "oos": {
+        "trades": 0,
+        "net_usd": 0.0,
+        "expectancy_usd": null,
+        "win_rate": null,
+        "profit_factor": null,
+        "wins": 0,
+        "losses": 0
+      },
+      "ins": {
+        "trades": 1,
+        "net_usd": -10.002,
+        "expectancy_usd": -10.002,
+        "win_rate": 0.0,
+        "profit_factor": 0.0,
+        "wins": 0,
+        "losses": 1
+      },
+      "pools": [
+        {
+          "symbol": "COGE",
+          "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+          "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T01:29:31.565445+00:00",
+      "time_et": "2026-11-06T20:29:31.565449-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp15_hold16",
+      "status": "deferred",
+      "reason": "only 0 out-of-sample paper trades (need 5); not rejected",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.15,
+        "hold_bars": 16
+      },
+      "oos": {
+        "trades": 0,
+        "net_usd": 0.0,
+        "expectancy_usd": null,
+        "win_rate": null,
+        "profit_factor": null,
+        "wins": 0,
+        "losses": 0
+      },
+      "ins": {
+        "trades": 1,
+        "net_usd": -10.002,
+        "expectancy_usd": -10.002,
+        "win_rate": 0.0,
+        "profit_factor": 0.0,
+        "wins": 0,
+        "losses": 1
+      },
+      "pools": [
+        {
+          "symbol": "COGE",
+          "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
+          "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T01:29:31.567513+00:00",
+      "time_et": "2026-11-06T20:29:31.567515-05:00"
+    }
+  ],
+  "champion_id": null
+}
