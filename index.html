@@ -373,7 +373,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <b id="bestLinkText">Waiting for the first cycle</b>
       <i aria-hidden="true">→</i>
     </a>
-<section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">TRADE REVIEWS</h2><span class="pill">ONE PER CLOSE · WINS &amp; LOSSES</span></div><p class="method-note">Closed paper trades only. Each review uses recorded facts: what went right, what went wrong, red flags, and how to improve the next entry. Losses also say how to avoid a repeat. Other chat stays in the log.</p><div id="liveChat"><p class="empty">Loading trade reviews…</p></div></section>
+<section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">TRADE REVIEWS</h2><span class="pill">ONE PER CLOSE · WINS &amp; LOSSES</span></div><p class="method-note">Closed paper trades only. One review per close. A losing close adds a post-loss review of that coin — holders, clusters, bundles, dev wallet, liquidity, volume, and price path — before the next entry. Other chat stays in the log.</p><div id="liveChat"><p class="empty">Loading trade reviews…</p></div></section>
 <section class="panel" aria-labelledby="liveChecklistTitle"><div class="panel-heading"><h2 id="liveChecklistTitle">SHARED LESSONS CHECKLIST</h2><span class="pill">ACTIVE RULES</span></div><div id="liveChecklist"><p class="empty">No live losses reviewed. Historical backtests are excluded.</p></div></section>
     <section class="pulse" aria-label="Research pulse">
       <span id="lastCycle">Waiting for the first cycle</span>
@@ -541,6 +541,13 @@ function tradeCard(t){
   const links = art.querySelectorAll('a');
   links[0].href = t.dex_url || ('https://dexscreener.com/solana/' + t.mint);
   links[1].href = t.gmgn_url || ('https://gmgn.ai/sol/token/' + t.mint);
+  const lossReview = t.post_loss_review;
+  if (lossReview && lossReview.text) {
+    const det = document.createElement('details'); det.className = 'vote-why';
+    const summary = document.createElement('summary'); summary.textContent = 'Post-loss review';
+    const body = document.createElement('p'); body.style.whiteSpace = 'pre-wrap'; body.textContent = lossReview.text;
+    det.append(summary, body); art.append(det);
+  }
   return art;
 }
 function precisePrice(v){return v==null||!Number.isFinite(Number(v))?'—':'$'+Number(v).toLocaleString('en-US',{maximumSignificantDigits:12});}
@@ -703,6 +710,7 @@ function renderWatch(d){
 }
 function renderLessons(d){
   const L = d.lessons_preview || {}; const host = $('lessons'); const nodes = [];
+  (L.loss_reviews || []).slice().reverse().forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<span></span><small></small>'; a.querySelector('span').textContent = r.text || r.improve_entries || ''; a.querySelector('small').textContent = et(r.checked_at) + ' · post-loss review' + (r.symbol ? ' · ' + r.symbol : ''); nodes.push(a); });
   (L.rules || []).slice().reverse().forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<b></b><small></small>'; a.querySelector('b').textContent = r.rule; a.querySelector('small').textContent = et(r.time_et || r.time) + ' · ' + (r.source || '') + (r.evidence ? ' · ' + r.evidence : ''); nodes.push(a); });
   (L.observations || []).slice(0, 8).forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<span></span><small></small>'; a.querySelector('span').textContent = r.text; a.querySelector('small').textContent = et(r.time_et || r.time) + ' · ' + (r.source || ''); nodes.push(a); });
   host.replaceChildren(...(nodes.length ? nodes : [empty('No lessons yet.')]));

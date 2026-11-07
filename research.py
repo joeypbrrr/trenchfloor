@@ -15,7 +15,7 @@ from pathlib import Path
 
 from backtest import beats_goal, describe_variant, goal_projection, metrics, oos_window_seconds, simulate, split_samples, variant_catalog
 from memory import DISCLAIMER, Memory, atomic_json, et_now, now_iso
-from publish_data import publish
+from publish_data import live_snapshots, publish
 from events import emit, start_heartbeat
 from safety import review_token, sample_links
 from team import review_trades
@@ -25,6 +25,7 @@ from traded_mints import TradedMints
 from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num, ResilientRpcClient
 from candidate_sources import candidates as source_candidates, fee_filter_reason
 from entry_gates import GLOBAL_FEES_POLICY
+from post_loss_review import review_losing_trade
 from daily_stop import DailyStop, mode_for, close_time, fill_key
 
 ROOT = Path(__file__).resolve().parent
@@ -911,6 +912,67 @@ def rank_watchlist(reviewed):
     return eligible, failed
 
 
+def refresh_loss_chat(trade):
+    if PAPER_CHAT is not None:
+        PAPER_CHAT.rewrite_trade_review(trade)
+    other = ROOT / "data/cache/live-chat-state.json"
+    if other.exists():
+        LiveChat(other).rewrite_trade_review(trade)
+
+
+def publish_loss_review(trade):
+    """Put the written review on the feed, research.json, and the published chat snapshot."""
+    global FEED_DIRTY
+    doc = trade.get("post_loss_review") if isinstance(trade.get("post_loss_review"), dict) else {}
+    text = str(doc.get("text") or "").strip()
+    if not text or MEMORY is None:
+        return
+    event = MEMORY.add_feed("Backtester", text, "trade_review")
+    STATE.setdefault("activity", [])
+    STATE["activity"].insert(0, {"id": event["id"], "time": event["time"], "agent": "Backtester", "text": text, "type": "trade_review"})
+    del STATE["activity"][80:]
+    STATE["recent_trades"] = MEMORY.recent_trades(12)
+    STATE["ledger"] = MEMORY.index
+    preview = STATE.get("lessons_preview")
+    if not isinstance(preview, dict):
+        preview = {}
+    preview = dict(preview)
+    preview["loss_reviews"] = MEMORY.data.get("loss_reviews") or []
+    STATE["lessons_preview"] = preview
+    FEED_DIRTY = True
+    save_state()
+    try:
+        live_snapshots(ROOT)
+    except Exception as exc:
+        log(f"loss review snapshot failed: {exc}")
+    maybe_publish_full(force=True)
+
+
+def backfill_loss_reviews(config):
+    """Redo closed losing paper trades that have no completed post-loss review."""
+    account = PaperAccount(ROOT, config)
+    account.loss_review = lambda trade: review_losing_trade(trade, MARKET, config)
+    account.loss_review_refresh = refresh_loss_chat
+    account.loss_review_surface = publish_loss_review
+    done = account.complete_loss_reviews(MEMORY, paper_close_event)
+    STATE["paper_account"] = account.snapshot()
+    STATE["daily_stop"] = DailyStop(ROOT).status(config)
+    STATE["ledger"] = MEMORY.index
+    STATE["recent_trades"] = MEMORY.recent_trades(12)
+    preview = STATE.get("lessons_preview")
+    if not isinstance(preview, dict):
+        preview = {}
+    preview = dict(preview)
+    preview["loss_reviews"] = MEMORY.data.get("loss_reviews") or []
+    STATE["lessons_preview"] = preview
+    save_state()
+    try:
+        live_snapshots(ROOT)
+    except Exception as exc:
+        log(f"loss review snapshot failed: {exc}")
+    return done
+
+
 def paper_close_event(trade):
     event = {"agent": "Backtester", "kind": "trade_close", "text": f"Forward paper realized close {trade['symbol']}: ${trade['pnl_usd']:.2f}",
              "time": et_now(), "trade": trade, "is_live_close": True, "historical": False}
@@ -923,11 +985,21 @@ def manage_paper(config):
     if not config.get("forward_paper_enabled"):
         return
     account = PaperAccount(ROOT, config)
-    account.manage(MARKET, MEMORY, post, paper_close_event)
+    account.manage(
+        MARKET, MEMORY, post, paper_close_event,
+        loss_review=lambda trade: review_losing_trade(trade, MARKET, config),
+        loss_review_refresh=refresh_loss_chat,
+        loss_review_surface=publish_loss_review,
+    )
     STATE["paper_account"] = account.snapshot()
     STATE["daily_stop"] = DailyStop(ROOT).status(config)
     STATE["ledger"] = MEMORY.index
     STATE["recent_trades"] = MEMORY.recent_trades(12)
+    preview = STATE.get("lessons_preview")
+    if isinstance(preview, dict):
+        preview = dict(preview)
+        preview["loss_reviews"] = MEMORY.data.get("loss_reviews") or []
+        STATE["lessons_preview"] = preview
     save_state()
 
 
@@ -964,7 +1036,7 @@ def tiered_cycle(config):
     STATE["watchlist"]=[public_token(c) for c in candidates]
     STATE["rejected_review"]=[public_token(c) for c in reviewed if c not in candidates]
     STATE["filter_rejects_sample"]=[]
-    STATE["lessons_preview"]={k:MEMORY.data.get(k,[]) for k in ("rules","observations","variants","rejected_mints")}
+    STATE["lessons_preview"]={k:MEMORY.data.get(k,[]) for k in ("rules","observations","variants","rejected_mints","loss_reviews")}
     STATE["summary"]={"discovered":found.get("discovered",0),"enriched":len(queue),"passed_filters":selection["primary_market"],
         "reviewed":len(reviewed),"eligible":len(candidates),"new_paper_trades":int(entry is not None),
         "paper_trades_total":MEMORY.index.get("trade_count",0),"paper_pnl_usd":MEMORY.index.get("total_pnl_usd",0)}
@@ -1095,6 +1167,7 @@ def cycle(config):
         "observations": list(reversed(MEMORY.data.get("observations") or []))[:12],
         "variants": MEMORY.data.get("variants") or [],
         "rejected_mints": (MEMORY.data.get("rejected_mints") or [])[-12:],
+        "loss_reviews": MEMORY.data.get("loss_reviews") or [],
     }
     STATE["summary"] = {
         "discovered": found.get("discovered", 0),
@@ -1296,6 +1369,7 @@ def main():
     parser.add_argument("--fee-proxy", action="store_true", help="dry-run only: opt into an explicitly labeled, non-global fee proxy")
     parser.add_argument("--pumpportal-db", type=Path, help="dry-run only: isolated collector store")
     parser.add_argument("--report-json", type=Path, help="dry-run only: destination for summary")
+    parser.add_argument("--backfill-loss-reviews", action="store_true", help="write post-loss reviews for closed losing paper trades that do not have one, then exit")
     args = parser.parse_args()
     NO_PUBLISH = args.no_publish or __import__("os").environ.get("TRENCHFLOOR_SKIP_PUBLISH") == "1"
     if not args.dry_run and (args.candidate_source or args.fee_proxy or args.report_json or args.pumpportal_db):
@@ -1329,6 +1403,13 @@ def main():
         (ROOT / "config.json").write_text(json.dumps(config))
         NO_PUBLISH = True
     boot(config)
+    if args.backfill_loss_reviews:
+        count = backfill_loss_reviews(config)
+        log(f"backfilled {count} post-loss review(s)")
+        print(json.dumps({"backfill_loss_reviews": count}), flush=True)
+        if sandbox is not None:
+            sandbox.cleanup()
+        return 0
     if args.once or args.dry_run:
         try:
             cycle(config)

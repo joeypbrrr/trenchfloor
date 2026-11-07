@@ -535,6 +535,13 @@ function tradeCard(t){
   const links = art.querySelectorAll('a');
   links[0].href = t.dex_url || ('https://dexscreener.com/solana/' + t.mint);
   links[1].href = t.gmgn_url || ('https://gmgn.ai/sol/token/' + t.mint);
+  const lossReview = t.post_loss_review;
+  if (lossReview && lossReview.text) {
+    const det = document.createElement('details'); det.className = 'vote-why';
+    const summary = document.createElement('summary'); summary.textContent = 'Post-loss review';
+    const body = document.createElement('p'); body.style.whiteSpace = 'pre-wrap'; body.textContent = lossReview.text;
+    det.append(summary, body); art.append(det);
+  }
   return art;
 }
 function precisePrice(v){return v==null||!Number.isFinite(Number(v))?'—':'$'+Number(v).toLocaleString('en-US',{maximumSignificantDigits:12});}
@@ -660,6 +667,7 @@ function renderWatch(d){
 }
 function renderLessons(d){
   const L = d.lessons_preview || {}; const host = $('lessons'); const nodes = [];
+  (L.loss_reviews || []).slice().reverse().forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<span></span><small></small>'; a.querySelector('span').textContent = r.text || r.improve_entries || ''; a.querySelector('small').textContent = et(r.checked_at) + ' · post-loss review' + (r.symbol ? ' · ' + r.symbol : ''); nodes.push(a); });
   (L.rules || []).slice().reverse().forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<b></b><small></small>'; a.querySelector('b').textContent = r.rule; a.querySelector('small').textContent = et(r.time_et || r.time) + ' · ' + (r.source || '') + (r.evidence ? ' · ' + r.evidence : ''); nodes.push(a); });
   (L.observations || []).slice(0, 8).forEach(r => { const a = document.createElement('div'); a.className = 'lesson'; a.innerHTML = '<span></span><small></small>'; a.querySelector('span').textContent = r.text; a.querySelector('small').textContent = et(r.time_et || r.time) + ' · ' + (r.source || ''); nodes.push(a); });
   host.replaceChildren(...(nodes.length ? nodes : [empty('No lessons yet.')]));
