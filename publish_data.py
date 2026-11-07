@@ -18,14 +18,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PUBLIC = "https://joeypbrrr.github.io/trenchfloor/floor/"
+PUBLIC = "https://joeypbrrr.github.io/trenchfloor/"
 SITE_FILES = [
     "index.html",
-    "app.js",
-    "scene.js",
-    "style.css",
-    "three.min.js",
-    "config.js",
     "manifest.webmanifest",
     "sw.js",
     ".nojekyll",
@@ -217,7 +212,7 @@ def publish(root=None, feed_only=False, remote=None, branch="gh-pages", work=Non
     ensure_worktree(work, remote, branch)
     if (work / ".git").exists() and git(work, "rev-parse", "--verify", "HEAD").returncode == 0:
         sync(work, branch)
-    copied = copy_payload(root, work / "floor", feed_only=feed_only)
+    copied = copy_payload(root, work, feed_only=feed_only)
     stamp = datetime.now(timezone.utc).isoformat()
     message = ("Feed update " if feed_only else "Research publish ") + stamp
     if not commit(work, message):

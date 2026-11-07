@@ -45,12 +45,12 @@ class PublishRetry(unittest.TestCase):
             git(other, "push", "origin", "HEAD:gh-pages")
             # Commit on the stale worktree, then let the retry rebase.
             (src / "data" / "feed.json").write_text(json.dumps({"events": ["v2"]}) + "\n")
-            copy_payload(src, work / "floor", feed_only=True)
+            copy_payload(src, work, feed_only=True)
             self.assertTrue(commit(work, "stale feed commit"))
             push_with_retry(work, "gh-pages")
             check = root / "check"
             git(None, "clone", str(bare), str(check))
-            self.assertIn("v2", (check / "floor" / "data" / "feed.json").read_text())
+            self.assertIn("v2", (check / "data" / "feed.json").read_text())
             self.assertIn("other side", (check / "NOTE").read_text())
 
     def test_second_publish_fast_forwards(self):
@@ -76,7 +76,7 @@ class PublishRetry(unittest.TestCase):
             self.assertTrue(result["published"])
             check = root / "check"
             git(None, "clone", str(bare), str(check))
-            self.assertIn("events", (check / "floor" / "data" / "feed.json").read_text())
+            self.assertIn("events", (check / "data" / "feed.json").read_text())
             self.assertEqual((check / "EXTRA").read_text(), "kept\n")
 
 

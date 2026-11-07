@@ -702,6 +702,7 @@ def goal_status(config, variant_report):
     else:
         legacy = champ and not (champ.get("goal") or {}).get("monthly_usd") and (champ.get("oos") or {}).get("expectancy_usd")
         line = (f"{label}: no version qualifies with a monthly projection this cycle (need ≥{min_oos} out-of-sample trades and a positive average). "
+                + "".join(f"{r['id']} projects ${r['monthly_usd']:,.2f}/mo ({r['status']}, {r.get('oos_trades')} OOS trades). " for r in rows if r["role"] == "candidate" and r.get("monthly_usd") is not None)
                 + (f"Champion {champ['id']} predates the goal and has no measured trade frequency yet. " if legacy else "")
                 + "Not loosening the out-of-sample rule to chase the goal.")
         pct = None

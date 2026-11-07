@@ -16,4 +16,4 @@ start_one() {
 start_one research ./run_research.sh
 start_one server ./run_server.sh
 echo "Local site: http://127.0.0.1:8795"
-echo "Public site, once Pages is enabled: https://joeypbrrr.github.io/trenchfloor/floor/"
+echo "Public site: https://joeypbrrr.github.io/trenchfloor/ (design mockup at /preview/)"

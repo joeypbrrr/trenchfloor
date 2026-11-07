@@ -4,7 +4,7 @@ Six paper-trading research agents work as **one team** with one memory and **one
 
 There is no broker, no private key, and no paid API. GMGN is never a filter or a data source. A token page may link to `https://gmgn.ai/sol/token/<mint>` the same way it links to DexScreener.
 
-Live floor: https://joeypbrrr.github.io/trenchfloor/floor/ · Design preview (main page): https://joeypbrrr.github.io/trenchfloor/
+Live floor (main page): https://joeypbrrr.github.io/trenchfloor/ · Design mockup with mock data: https://joeypbrrr.github.io/trenchfloor/preview/ · `/floor/` redirects to the main page.
 
 ## What the agents do
 
@@ -127,7 +127,7 @@ Rate limits are spaced in `config.json`. A failed call stays an error on the sit
 
 ## The site
 
-Black room, orange neon, six agents at one desk, fixed camera (it does not orbit). Panels: activity feed, P&L calendar, lessons, ranked watchlist, paper ledger, and the best strategy. Installable from a phone: `manifest.webmanifest` and Apple web-app tags. Footer: "Paper trading / research only. No wallet. No real trades. Not financial advice."
+`index.html` is one self-contained page (Three.js from jsDelivr) with the same look as the design mockup, driven only by real files: `data/research.json`, `data/feed.json`, and `data/ledger/*.json`. A black room with orange neon holds six agents at one desk (left to right in roster order), a kitchen, two treadmills, and a bathroom. Drag to rotate, pinch or scroll to zoom, and two-finger drag to pan. The Desk, Kitchen, Treadmills, and Bathroom buttons move the camera, and Reset view brings it back. Panels: goal and best strategy, the team with live agent status, the team P&L calendar with an equity curve and a day view, the team paper ledger with "Proposed by X · n/6 approve" and vote dots, the ranked watchlist, the live feed, the learning log, and sources and health. Missing data shows an empty state, never a placeholder number. There is no service worker; `sw.js` only retires old ones. Installable from a phone: `manifest.webmanifest` and Apple web-app tags.
 
 ## Limits
 
