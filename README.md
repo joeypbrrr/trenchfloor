@@ -233,6 +233,9 @@ public endpoint in a stable order, retries once after backoff and never exceeds
 the configured 64-call budget. It uses existing free mainnet/publicnode/vibestation
 fallbacks, no API keys. All three answered a parsed mint read during testing.
 The tested drpc endpoint refused Solana on its free plan, so it was **not** added.
+A final read-only token review completed 7 RPC requests in 7.790s but returned
+`incomplete: one or more holder owners could not be read` (zero transport errors),
+so RPC connectivity is improved, not a guarantee of complete holder coverage.
 Partial/failed safety results never become passes in the new modes. The old
 client's rotating index could repeat endpoints within one attempt sequence, and
 its lifetime budget/cache/failure state was never reset between cycles.
