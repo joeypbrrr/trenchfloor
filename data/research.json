@@ -6,7 +6,7 @@
   "cycle_count": 7,
   "last_cycle": "2026-11-07T10:13:28.696858+00:00",
   "next_cycle": "2026-11-07T11:13:28.696870+00:00",
-  "generated": "2026-11-07T10:33:50.847354+00:00",
+  "generated": "2026-11-07T10:53:33.649875+00:00",
   "data_status": "Starting",
   "errors": [],
   "agents": [
@@ -18,7 +18,7 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T10:33:24.925363+00:00"
+      "heartbeat": "2026-11-07T10:51:47.589331+00:00"
     },
     {
       "role": "Bubble Map Analyst",
@@ -28,27 +28,27 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T10:33:24.925377+00:00"
+      "heartbeat": "2026-11-07T10:51:47.589367+00:00"
     },
     {
       "role": "X/Twitter Scout",
       "initials": "XS",
       "color": "ff5a1f",
       "status": "idle",
-      "task": "Reading lessons before the first cycle.",
+      "task": "Light scan of DexScreener boost and profile links.",
       "detail": "",
-      "latest_action": "",
-      "heartbeat": "2026-11-07T10:33:24.925381+00:00"
+      "latest_action": "Light scan",
+      "heartbeat": "2026-11-07T10:53:28.563472+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "Reading lessons before the first cycle.",
+      "task": "Light scan of new GeckoTerminal pools. No safety review on this pass.",
       "detail": "",
-      "latest_action": "",
-      "heartbeat": "2026-11-07T10:33:24.925383+00:00"
+      "latest_action": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "heartbeat": "2026-11-07T10:53:28.565160+00:00"
     },
     {
       "role": "Backtester",
@@ -58,7 +58,7 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T10:33:24.925384+00:00"
+      "heartbeat": "2026-11-07T10:51:47.589378+00:00"
     },
     {
       "role": "Strategist",
@@ -68,16 +68,44 @@
       "task": "Reading lessons before the first cycle.",
       "detail": "",
       "latest_action": "",
-      "heartbeat": "2026-11-07T10:33:24.925386+00:00"
+      "heartbeat": "2026-11-07T10:51:47.589380+00:00"
     }
   ],
   "activity": [
     {
+      "id": 372,
+      "time": "2026-11-07T10:53:28.560307+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 371,
+      "time": "2026-11-07T10:48:27.526540+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 370,
+      "time": "2026-11-07T10:43:25.852598+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 369,
+      "time": "2026-11-07T10:43:25.803519+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "Light scan found 3 new Solana rows with an X link. Not tweets. Gycifb https://x.com/Vestiofun; 9LtmLi https://x.com/devilsiopf/status/2119013484629467369; 7dfUvF https://x.com/humanevolvd/status/2119013588958367997?a=axn6ozYWtkjviEqKiNM&s=46",
+      "type": "info"
+    },
+    {
       "id": 368,
-      "time": "2026-11-07T10:33:50.845891+00:00",
-      "agent": "Backtester",
-      "text": "POST-LOSS REVIEW / AMD / $-10.93 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: CLEAN 2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 4 known acquisition slots\n- dev_creator: CLEAN creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills\n- liquidity: CLEAN liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills\n- price_mcap_path: CLEAN price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233.\nImprove entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.",
-      "type": "trade_review"
+      "time": "2026-11-07T10:38:24.205960+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
     },
     {
       "id": 367,
@@ -603,34 +631,6 @@
       "agent": "Backtester",
       "text": "FORWARD PAPER close AMD (oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump): stop, $-10.93 net after modeled fees/slippage. https://dexscreener.com/solana/6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
       "type": "trade"
-    },
-    {
-      "id": 292,
-      "time": "2026-11-07T09:38:01.498574+00:00",
-      "agent": "Data Scout",
-      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan.",
-      "type": "info"
-    },
-    {
-      "id": 291,
-      "time": "2026-11-07T09:31:21.171829+00:00",
-      "agent": "Data Scout",
-      "text": "Light scan: 20 new pools, 5 already at the liquidity filter. No paper trades on a light scan.",
-      "type": "info"
-    },
-    {
-      "id": 290,
-      "time": "2026-11-07T09:25:52.536015+00:00",
-      "agent": "Data Scout",
-      "text": "Light scan: 19 new pools, 6 already at the liquidity filter. No paper trades on a light scan.",
-      "type": "info"
-    },
-    {
-      "id": 289,
-      "time": "2026-11-07T09:25:52.493118+00:00",
-      "agent": "X/Twitter Scout",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. TiMSdJ https://x.com/returntotimmy",
-      "type": "info"
     }
   ],
   "watchlist": [],
@@ -2850,9 +2850,9 @@
     "site_reachable": true,
     "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T10:33:09.219584+00:00",
+    "checked_at": "2026-11-07T10:51:47.631352+00:00",
     "stale_agents": [],
-    "last_published": "2026-11-07T10:33:51.050389+00:00"
+    "last_published": "2026-11-07T10:54:20.160189+00:00"
   },
   "ledger": {
     "timezone": "America/New_York",
@@ -3159,7 +3159,8 @@
         "improve_entries": "Improve entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.",
         "text": "POST-LOSS REVIEW / AMD / $-10.93 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: CLEAN 2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 4 known acquisition slots\n- dev_creator: CLEAN creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills\n- liquidity: CLEAN liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills\n- price_mcap_path: CLEAN price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233.\nImprove entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close."
       },
-      "loss_lesson_stored": true
+      "loss_lesson_stored": true,
+      "loss_review_surfaced": true
     }
   ],
   "lessons_preview": {
@@ -4550,66 +4551,7 @@
         "time_et": "2026-11-06T23:09:24.698744-05:00"
       }
     ],
-    "loss_reviews": [
-      {
-        "trade_id": "paper-278e35c1222548f0b825bd22197c6181",
-        "mint": "oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-        "symbol": "AMD",
-        "pnl_usd": -10.934017,
-        "checked_at": "2026-11-07T10:33:50.839179+00:00",
-        "attempts": 1,
-        "factors": [],
-        "checks": [
-          {
-            "name": "holder_distribution",
-            "result": "clean",
-            "detail": "top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%"
-          },
-          {
-            "name": "fresh_wallet_cluster",
-            "result": "clean",
-            "detail": "2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)"
-          },
-          {
-            "name": "linked_wallet_cluster",
-            "result": "clean",
-            "detail": "no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)"
-          },
-          {
-            "name": "bundle_sniper_share",
-            "result": "clean",
-            "detail": "no same-slot bundle and no sniper share at the cap in 4 known acquisition slots"
-          },
-          {
-            "name": "dev_creator",
-            "result": "clean",
-            "detail": "creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills"
-          },
-          {
-            "name": "liquidity",
-            "result": "clean",
-            "detail": "liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
-          },
-          {
-            "name": "volume_profile",
-            "result": "clean",
-            "detail": "volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills"
-          },
-          {
-            "name": "price_mcap_path",
-            "result": "clean",
-            "detail": "price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%"
-          },
-          {
-            "name": "on_chain_anomalies",
-            "result": "clean",
-            "detail": "mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233."
-          }
-        ],
-        "improve_entries": "Improve entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.",
-        "text": "POST-LOSS REVIEW / AMD / $-10.93 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: CLEAN 2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 4 known acquisition slots\n- dev_creator: CLEAN creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills\n- liquidity: CLEAN liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills\n- price_mcap_path: CLEAN price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233.\nImprove entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close."
-      }
-    ]
+    "loss_reviews": []
   },
   "paper_account": {
     "started": "2026-11-07T04:34:52.188271+00:00",
@@ -4711,7 +4653,7 @@
         },
         "proposed_by": "Data Scout",
         "mark_price_usd": 0.01271,
-        "mark_time": "2026-11-07T10:33:07.902858+00:00"
+        "mark_time": "2026-11-07T10:53:33.567512+00:00"
       },
       {
         "id": "paper-7def2ee2dd1c4fe6939f0537097a4ece",
@@ -4804,8 +4746,8 @@
           "proposed_by": "Data Scout"
         },
         "proposed_by": "Data Scout",
-        "mark_price_usd": 0.004078,
-        "mark_time": "2026-11-07T10:33:07.902858+00:00"
+        "mark_price_usd": 0.004037,
+        "mark_time": "2026-11-07T10:53:33.567512+00:00"
       },
       {
         "id": "paper-45c7f772ff9441ad9dc47bd207cca0ef",
@@ -4898,8 +4840,8 @@
           "proposed_by": "Data Scout"
         },
         "proposed_by": "Data Scout",
-        "mark_price_usd": 0.002806,
-        "mark_time": "2026-11-07T10:33:07.902858+00:00"
+        "mark_price_usd": 0.002834,
+        "mark_time": "2026-11-07T10:53:33.567512+00:00"
       }
     ],
     "last_entry_ts": 1794042338.1930752,

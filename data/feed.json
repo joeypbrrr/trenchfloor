@@ -1,13 +1,41 @@
 {
-  "updated": "2026-11-07T10:33:50.845903+00:00",
-  "next_id": 369,
+  "updated": "2026-11-07T10:53:28.560373+00:00",
+  "next_id": 373,
   "events": [
     {
+      "id": 372,
+      "time": "2026-11-07T10:53:28.560307+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 371,
+      "time": "2026-11-07T10:48:27.526540+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 370,
+      "time": "2026-11-07T10:43:25.852598+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 369,
+      "time": "2026-11-07T10:43:25.803519+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "Light scan found 3 new Solana rows with an X link. Not tweets. Gycifb https://x.com/Vestiofun; 9LtmLi https://x.com/devilsiopf/status/2119013484629467369; 7dfUvF https://x.com/humanevolvd/status/2119013588958367997?a=axn6ozYWtkjviEqKiNM&s=46"
+    },
+    {
       "id": 368,
-      "time": "2026-11-07T10:33:50.845891+00:00",
-      "agent": "Backtester",
-      "type": "trade_review",
-      "text": "POST-LOSS REVIEW / AMD / $-10.93 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: CLEAN 2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 4 known acquisition slots\n- dev_creator: CLEAN creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills\n- liquidity: CLEAN liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills\n- price_mcap_path: CLEAN price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233.\nImprove entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close."
+      "time": "2026-11-07T10:38:24.205960+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan."
     },
     {
       "id": 367,
@@ -1643,34 +1671,6 @@
       "agent": "Risk Manager",
       "type": "info",
       "text": "PUMP: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned', 'Token_2022_extensions']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 192,
-      "time": "2026-11-07T08:03:30.521616+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE CARDS: base 16.945712 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 5.945712; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 191,
-      "time": "2026-11-07T08:03:30.517273+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "CARDS: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 190,
-      "time": "2026-11-07T08:03:27.176146+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Tier market candidates: primary 23, fallback market pool 59; 0 excluded: already traded (before scoring)."
-    },
-    {
-      "id": 189,
-      "time": "2026-11-07T08:03:27.172570+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks."
     }
   ]
 }
