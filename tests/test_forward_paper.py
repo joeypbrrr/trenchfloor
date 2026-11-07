@@ -88,7 +88,8 @@ class PublicationAndFeeTests(unittest.TestCase):
             with patch.object(research,'MEMORY',mem),patch.object(research,'post') as post:
                 passed,_,_=research.screen([c],cfg)
                 self.assertEqual(len(passed),1)
-                self.assertIn('SKIPPED',post.call_args[0][1])
+                self.assertNotIn('SKIPPED',post.call_args[0][1])
+                self.assertIn('fail-closed',post.call_args[0][1])
 
     def test_only_forced_end_of_cycle_publishes(self):
         import research

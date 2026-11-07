@@ -7,6 +7,7 @@ import time
 from urllib.parse import urlencode
 from sources import num, http_json, SourceError, SKIP_MINTS, SKIP_SYMBOLS
 from safety import review_token, TOKEN_LEGACY, TOKEN_2022, KNOWN_AMM
+from entry_gates import assess_entry_gates, gather_entry_evidence
 from traded_mints import TradedMints
 
 SOL='So11111111111111111111111111111111111111112'
@@ -32,7 +33,7 @@ def score(c):
                  -(c.get('safety',{}).get('top_human_pct') or 0)/20,6)
 
 def hard_review(c, market, config):
-    """Exactly three hard tests. Concentration/LP/extensions are SOFT evidence."""
+    """Hard entry gates. Unknown data blocks. Extensions stay a primary soft risk."""
     meta={'hard_rug_pass':False,'hard_rug_checks':[],'soft_checks':[]}
     def hard(name,passed,detail):meta['hard_rug_checks'].append({'name':name,'pass':passed,'detail':detail})
     info={};extensions=[];decimals=None;mint_value=None
@@ -72,8 +73,8 @@ def hard_review(c, market, config):
     except (SourceError,ValueError,TypeError,OverflowError,ZeroDivisionError) as exc:meta['sell_read_error']=str(exc)
     hard('sellable_not_honeypot',route,'read-only positive sell route required; known paused/nontransferable rejects; unknown route/paused state rejects; no execution')
     meta['sell_quote']={k:q.get(k) for k in ('inAmount','outAmount','inputMint','outputMint','contextSlot')} if isinstance(q,dict) else None
-    # LP and pool verification are independent soft observations: failures here
-    # must NEVER masquerade as a missing authority or missing sell route.
+    # Rugcheck is only used to confirm the pool vault address. LP lock/burn and
+    # the other entry gates are decided later and never relabel mint, freeze, or sell-route.
     report={};pool={};exact=False;burned=None
     try:
         report,_=http_json('https://api.rugcheck.xyz/v1/tokens/'+c['mint']+'/report',timeout=12,attempts=2)
@@ -91,7 +92,7 @@ def hard_review(c, market, config):
             if 'amount' in supply:burned=int(supply['amount'])==0
     except (SourceError,ValueError,TypeError,AttributeError) as exc:meta['lp_read_error']=str(exc)
     try:
-        chain=review_token(market.rpc,c['mint'],None,20,require_complete=True,excluded_owners={c['pool']} if exact else set(),aggregate_holders=True,conservative_tail=False)
+        chain=review_token(market.rpc,c['mint'],None,20,require_complete=True,excluded_owners={c['pool']} if c.get('pool') else set(),aggregate_holders=True,conservative_tail=False)
     except (SourceError,ValueError,TypeError,AttributeError) as exc:chain={'status':'incomplete','summary':str(exc)}
     meta.update({k:v for k,v in chain.items() if k not in ('status','summary','hard_fails','hard_rug_checks')})
     meta['mint_authority_active']=info.get('mintAuthority') is not None if 'mintAuthority' in info else None
@@ -101,15 +102,22 @@ def hard_review(c, market, config):
     ext_names=[e.get('extension') for e in extensions if isinstance(e,dict)] if isinstance(extensions,list) else []
     extension_safe=(program==TOKEN_LEGACY or (program==TOKEN_2022 and set(ext_names).issubset(safe)))
     meta['soft_checks']=[
-        {'name':'holder_observations_complete','pass':chain.get('status')!='incomplete' and num(chain.get('top_human_pct')) is not None and exact,'detail':'top-20 accounts aggregated; only exact verified pool excluded'},
+        {'name':'holder_observations_complete','pass':chain.get('status')!='incomplete' and num(chain.get('top_human_pct')) is not None and exact,'detail':'top-20 accounts aggregated; only the pool address and exact verified vault are excluded'},
         {'name':'single_non_pool_holder_20pct','pass':None if num(chain.get('top_human_pct')) is None else chain['top_human_pct']<=20,'detail':str(chain.get('top_human_pct'))+'%'},
-        {'name':'LP_locked_or_burned','pass':burned,'detail':'fully burned LP evidence; unverified lock/burn becomes a fallback penalty'},
         {'name':'Token_2022_extensions','pass':extension_safe,'detail':'risky/unknown extensions primary-reject, fallback-penalty unless actually unsellable'}]
-    meta['lp_burned']=burned;meta['lp_locked']=None
+    try:
+        evidence=gather_entry_evidence(c,market,chain,config,http_get=http_json)
+    except (SourceError,TypeError,ValueError,AttributeError,OSError) as exc:
+        evidence={'holder_read_ok':False,'holder_read_error':str(exc),'trade_read_ok':False,'trade_read_error':str(exc),'lp_detail':str(exc),'fee_detail':str(exc),'created_ts':c.get('created_ts')}
+    for check in assess_entry_gates(evidence,config):
+        hard(check['name'],check['pass'],check['detail'])
+    meta['lp_burned']=evidence.get('lp_burned_or_locked') if evidence.get('lp_visible') else burned
+    meta['lp_locked']=None
+    meta['entry_gate_evidence']={k:evidence.get(k) for k in ('top10_ex_pool_burn_pct','holder_read_ok','trade_read_ok','lp_visible','lp_burned_or_locked','global_fees_verified','global_fees_sol','fee_lower_bound_sol','fee_detail','lp_detail')}
     meta['hard_reasons']=[x['name']+': '+x['detail'] for x in meta['hard_rug_checks'] if x['pass'] is not True]
     meta['hard_rug_pass']=not meta['hard_reasons']
     meta['status']='pass' if meta['hard_rug_pass'] else ('incomplete' if any(x['pass'] is None for x in meta['hard_rug_checks']) else 'fail')
-    meta['summary']='PASS three hard checks; soft flags '+str([x['name'] for x in meta['soft_checks'] if x['pass'] is not True]) if meta['hard_rug_pass'] else '; '.join(meta['hard_reasons'])
+    meta['summary']='PASS hard entry gates; soft flags '+str([x['name'] for x in meta['soft_checks'] if x['pass'] is not True]) if meta['hard_rug_pass'] else '; '.join(meta['hard_reasons'])
     return meta
 
 def tier_reason(c, settings):
@@ -160,7 +168,11 @@ def evaluate(queue, market, config, post, history, root, checklist=None):
         c['safety']=hard_review(c,market,config)
         c['score']=score(c);reviewed.append(c)
         post('Risk Manager',f"{c.get('symbol',c['mint'])}: {c['safety']['summary']}; owner lookup {c['safety'].get('owner_lookup','not completed')}")
-        if c['safety'].get('hard_rug_pass') is not True:continue
+        if c['safety'].get('hard_rug_pass') is not True:
+            sym=c.get('symbol',c['mint'])
+            for reason in c['safety'].get('hard_reasons') or ['hard entry gate failed or unknown']:
+                post('Risk Manager',f"HARD BLOCK {sym}: {reason}")
+            continue
         c['lesson_blocks']=[] # Old soft 3.5%/liquidity lessons do not override owner-approved new tiers.
         c['eligible']=True
         if c in primary:
@@ -183,7 +195,7 @@ def evaluate(queue, market, config, post, history, root, checklist=None):
         c['fallback_penalties']=penalties;c['fallback_score']=round(c['score']-sum(x['points'] for x in penalties),6)
         if c in fallback and tier_reason(c,config['tiers']['fallback']) is None:
             f.append(c)
-            post('Bubble Map Analyst',f"FALLBACK SCORE {c.get('symbol',c['mint'])}: base {c['score']} minus "+str(penalties)+f" = {c['fallback_score']}; concentration/LP/extensions/checklist are penalties, not hard vetoes.")
+            post('Bubble Map Analyst',f"FALLBACK SCORE {c.get('symbol',c['mint'])}: base {c['score']} minus "+str(penalties)+f" = {c['fallback_score']}; single-holder concentration, extensions, and checklist are penalties. Top-10, LP, clusters, wash, and fees already had to pass as hard gates.")
     p.sort(key=lambda c:(c['score'],c['mint']),reverse=True);f.sort(key=lambda c:(c['fallback_score'],c['mint']),reverse=True)
     chosen=p if p else f; tier='primary' if p else 'fallback'
     for c in chosen:

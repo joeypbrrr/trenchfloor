@@ -32,7 +32,7 @@ def risk_vote(token):
     if token.get("entry_tier") in ("primary","fallback") and token.get("tier_eligible"):
         checks=safety.get("hard_rug_checks",[])
         if safety.get("hard_rug_pass") is True and checks and all(x.get("pass") is True for x in checks):
-            return _vote("Risk Manager",APPROVE,"Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties.")
+            return _vote("Risk Manager",APPROVE,"Hard entry gates passed: sell route, revoked mint and freeze, pair age, top-10, fresh-wallet cluster, bundle/sniper, wash, LP lock/burn, global fees.")
         return _vote("Risk Manager",REJECT,"Required hard check failed or UNKNOWN.")
     status = safety.get("status")
     if status != "pass":

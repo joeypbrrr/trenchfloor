@@ -47,7 +47,7 @@
     "variants_per_cycle": 2,
     "hourly_bars": 168,
     "daily_bars": 90,
-    "rpc_budget": 240,
+    "rpc_budget": 480,
     "cluster_tokens": 2,
     "feed_events": 180,
     "feed_trades_per_cycle": 40
@@ -113,7 +113,7 @@
     "max_launch_slot_lookups": 8
   },
   "publish_once_per_cycle": true,
-  "global_fees_unavailable_policy": "skip_and_log",
+  "global_fees_unavailable_policy": "fail_closed",
   "forward_paper_enabled": true,
   "entry_interval_seconds": 3600,
   "tiered_selection_enabled": true,
@@ -157,11 +157,36 @@
       "checks": [
         "sellable_not_honeypot",
         "mint_authority_revoked",
-        "freeze_authority_revoked"
+        "freeze_authority_revoked",
+        "min_pair_age",
+        "top10_ex_pool_burn",
+        "fresh_wallet_cluster",
+        "bundle_sniper_share",
+        "wash_trade",
+        "lp_locked_or_burned",
+        "global_fees_sol"
       ],
       "unknown_rejects": true,
       "sell_quote_required": true
     }
   },
-  "checklist_rules_enabled": true
+  "checklist_rules_enabled": true,
+  "entry_gates": {
+    "min_pair_age_hours": 0.25,
+    "max_top10_pct": 40,
+    "fresh_wallet_seconds": 86400,
+    "min_fresh_wallets": 3,
+    "max_fresh_cluster_pct": 8,
+    "min_linked_wallets": 2,
+    "max_linked_funder_pct": 5,
+    "same_slot_min_wallets": 3,
+    "max_bundle_sniper_pct": 15,
+    "sniper_slot_window": 5,
+    "max_wash_roundtrip_fraction": 0.3,
+    "min_global_fees_sol": 1.5,
+    "holder_sample": 5,
+    "signature_limit": 20,
+    "funder_tx_budget": 5,
+    "wash_tx_budget": 6
+  }
 }

@@ -97,14 +97,16 @@ There are no websockets on Pages, and phone caches can delay the new HTML.
 
 `candidate_source=legacy` restores the original DexScreener lists/pair adapter
 (with its original GeckoTerminal pool/OHLCV assistance), not GMGN/PumpPortal.
-Verified global fees are unavailable, so that filter is explicitly SKIPPED and
-logged; no fee proxy. Primary market cap >=$6,000; fallback treats market
-floors as score penalties. Current three-hard-check policy is specified in TIERS.md.
+Global fees are a fail-closed hard entry gate (verified cumulative SOL fees,
+or an on-chain unclaimed protocol+creator lower bound already >= 1.5 SOL).
+They are not skipped when DexScreener has no fee field, and volume is not used
+as a proxy. Primary market cap >=$6,000; fallback still treats the other market
+floors as score penalties. The hard entry gates are specified in TIERS.md.
 
 Forward PAPER ONLY account starts at $1,000; historical ledger/snapshots are
 archived under data/archive, not credited to balance/calendar. No broker/wallet.
 Entries: ranked primary/fallback under TIERS.md with applied checklist rules,
-three shared hard checks and team vote; one entry per rolling 3600s, persisted.
+the shared hard entry gates and team vote; one entry per rolling 3600s, persisted.
 Up to 24 open positions. Primary $100 cap / fallback $50 cap, also capped at
 10% realized balance and 10% available cash. No repeat forward-entered mint.
 12% stop / 35% target minimum / 16h time stop. Public DexScreener marks checked every
