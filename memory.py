@@ -490,13 +490,14 @@ class Memory:
         text = "\n".join(lines).rstrip() + "\n"
         self.lessons_md.write_text(text)
 
-    def write_champion_md(self, variant, oos, pools):
+    def write_champion_md(self, variant, oos, pools, goal=None):
         lines = [
             "# Trenchfloor best strategy",
             "",
             f"**{DISCLAIMER}**",
             "",
-            f"Champion `{variant['id']}`, promoted {et_now()} ET because it beat the previous out-of-sample record.",
+        ] + standing_goal_lines(goal) + [
+            f"Champion `{variant['id']}`, promoted {variant.get('time_et') or et_now()} ET because it beat the previous out-of-sample record.",
             "",
             "## Rule",
             "",
@@ -522,6 +523,30 @@ class Memory:
             "ATH is the highest high in the free GeckoTerminal window fetched for each pool (daily up to 90 bars and hourly up to 168). It is not a guaranteed lifetime high when the endpoint returns less. In-sample numbers are not the promotion basis and are stored on the variant record in `data/lessons.json`.",
             "",
         ]
+        lines += goal_progress_lines(goal if goal is not None else self.data.get("goal_status"))
+        self.best_md.write_text("\n".join(lines))
+
+    def write_champion_md_current(self, goal):
+        """Rewrite BEST_STRATEGY.md every cycle so the standing goal and goal progress stay current."""
+        self.data["goal_status"] = goal
+        self.save()
+        champ = self.champion()
+        if champ:
+            self.write_champion_md(champ, champ.get("oos") or {}, champ.get("pools") or [], goal)
+            return
+        lines = [
+            "# Trenchfloor best strategy",
+            "",
+            f"**{DISCLAIMER}**",
+            "",
+        ] + standing_goal_lines(goal) + [
+            "No out-of-sample champion yet. This file keeps the standing dip rule until a variant passes the out-of-sample gates.",
+            "",
+            "## Standing principle",
+            "",
+            "Buy dips. Never top-tick. Entry zone: 20–45% of the window ATH, after a bounce bar that does not set the high.",
+            "",
+        ] + goal_progress_lines(goal)
         self.best_md.write_text("\n".join(lines))
 
     def ensure_champion_doc(self):
@@ -532,6 +557,40 @@ class Memory:
         if champ["id"] not in text:
             oos = champ.get("oos") or {}
             self.write_champion_md(champ, oos, champ.get("pools") or [])
+
+
+def standing_goal_lines(goal=None):
+    low = (goal or {}).get("monthly_goal_low_usd", 3000)
+    high = (goal or {}).get("monthly_goal_high_usd", 5000)
+    return [
+        "## Standing goal",
+        "",
+        f"Joey's standing goal: at least **${low:,.0f}–${high:,.0f} extra per month**. Every agent reads this; the Strategist ranks promotions by projected monthly P&L toward it.",
+        "",
+        "The goal never loosens the safety rules: a version still needs at least 5 out-of-sample paper trades, a positive out-of-sample average, and must not be previously rejected. Everything here is paper / simulated; projections are not income.",
+        "",
+    ]
+
+
+def goal_progress_lines(goal):
+    lines = ["## Goal progress", ""]
+    if not goal:
+        return lines + ["No goal projection yet. The next full cycle writes one.", ""]
+    lines.append(goal.get("status_line") or "")
+    lines.append("")
+    lines.append(f"Paper ticket: ${goal.get('notional_usd', 100):,.0f}. Updated {et_now()} ET.")
+    lines.append("")
+    lines.append("| Version | Role | Status | OOS trades | Avg $/trade | Trades/mo | Projected $/mo at ticket | Ticket for low goal | Ticket for high goal | Qualifies |")
+    lines.append("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |")
+    for r in goal.get("candidates") or []:
+        f = lambda v, pre="$": "—" if v is None else f"{pre}{v:,.2f}" if isinstance(v, float) else f"{pre}{v}"
+        lines.append(
+            f"| `{r.get('id')}` | {r.get('role')} | {r.get('status')} | {r.get('oos_trades') if r.get('oos_trades') is not None else '—'} | "
+            f"{f(r.get('expectancy_usd'))} | {f(r.get('trades_per_month'), '')} | {f(r.get('monthly_usd'))} | "
+            f"{f(r.get('ticket_for_low_usd'))} | {f(r.get('ticket_for_high_usd'))} | {'yes' if r.get('qualifies') else 'no'} |"
+        )
+    lines += ["", goal.get("method") or "", ""]
+    return lines
 
 
 def _exit_day(iso_text):

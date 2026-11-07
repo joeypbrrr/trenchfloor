@@ -21,6 +21,12 @@ They share `data/research.json`, `data/lessons.json`, and `data/ledger/`.
 
 A full cycle is every 30 minutes. A lighter scan (new pools and new X links, no safety review and no paper trades) runs every 5 minutes. A health check every 3 minutes refreshes heartbeats, flags stale agents, and checks the local site and the Pages URL.
 
+## Standing goal
+
+Joey's standing goal: at least **$3,000–$5,000 extra per month**. It lives in `config.json` (`monthly_goal_low`, `monthly_goal_high`), in every agent's start-of-cycle banner, in `BEST_STRATEGY.md` (the Strategist rewrites that file every cycle and the "Standing goal" and "Goal progress" sections are part of its template in `memory.py`), in `data/research.json` under `goal`, and on the site.
+
+The Strategist projects monthly paper P&L for each candidate and the champion from out-of-sample results only: average $ per OOS trade × OOS trades per month (pooled OOS trade count ÷ the OOS window length × 30.44 days). It reports that at the $100 paper ticket and the ticket size that would be needed for $3k and $5k a month (P&L is linear in ticket because fees and slippage are percentages; real fills at bigger tickets would slip more). Promotion is ranked by projected monthly P&L, but the gates never move: at least 5 out-of-sample trades, a positive out-of-sample average, and not previously rejected. A champion promoted before the goal existed has no measured trade frequency, so the first challenger is compared on the old per-trade rule. Each cycle the Strategist posts one goal-status line in the feed, and says so plainly when nothing qualifies. Paper projections are not income.
+
 ## One team, one P&L
 
 There is no per-agent P&L. Every paper trade goes into one shared team ledger, and the headline P&L and the calendar are team totals.

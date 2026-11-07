@@ -13,7 +13,7 @@ import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 
-from backtest import beats, describe_variant, metrics, simulate, split_samples, variant_catalog
+from backtest import beats_goal, describe_variant, goal_projection, metrics, oos_window_seconds, simulate, split_samples, variant_catalog
 from memory import DISCLAIMER, Memory, atomic_json, et_now, now_iso
 from publish_data import publish
 from safety import review_token, sample_links
@@ -212,7 +212,8 @@ def lessons_banner():
     rules = MEMORY.data.get("rules") or []
     variants = MEMORY.data.get("variants") or []
     blocked = [v for v in variants if v.get("status") in {"rejected", "tried", "champion", "replaced"}]
-    return f"Read {len(rules)} standing rules and {len(blocked)} variants that will not be retested."
+    low, high, _ = goal_settings(load_config())
+    return f"Read {len(rules)} standing rules and {len(blocked)} variants that will not be retested. Standing goal: ${low:,.0f}–${high:,.0f}/mo extra (paper projection; OOS rules never loosened)."
 
 
 def blank(mint):
@@ -580,6 +581,8 @@ def run_variants(tokens, config):
     team_rejected = 0
     tokens_by_mint = {t["mint"]: t for t in tokens}
     x_status = (MARKET.source_status or {}).get("x_twitter") or {}
+    goal_low, goal_high, notional = goal_settings(config)
+    window = oos_window_seconds(tokens, paper)
     for variant in proposed:
         update("Backtester", "working", f"Simulating {variant['id']} on {len(tokens)} eligible pools.", action=f"Simulating {variant['id']}")
         trades = []
@@ -623,18 +626,19 @@ def run_variants(tokens, config):
             reason = f" e.g. {sample['symbol']}: {no_votes[0]['agent']} — {no_votes[0]['reason']}" if no_votes else ""
             post("Risk Manager", f"Team turned down {len(vetoed)} proposed {variant['id']} paper trades ({'; '.join(f'{k}: {n}' for k, n in why.items())}).{reason}")
         min_oos = int(paper.get("min_oos_trades", 5))
+        projection = goal_projection(oos_m, window, notional, goal_low, goal_high)
         if oos_m["trades"] < min_oos:
             status = "deferred"
             reason = f"only {oos_m['trades']} out-of-sample paper trades (need {min_oos}); not rejected"
         elif oos_m["expectancy_usd"] is None or oos_m["expectancy_usd"] <= 0:
             status = "rejected"
             reason = f"out-of-sample expectancy ${oos_m['expectancy_usd']} over {oos_m['trades']} trades"
-        elif beats(oos_m, champion_oos, min_oos):
+        elif beats_goal(oos_m, projection, champion, min_oos):
             status = "champion"
-            reason = f"out-of-sample expectancy ${oos_m['expectancy_usd']} beat the previous champion"
+            reason = f"out-of-sample expectancy ${oos_m['expectancy_usd']} over {oos_m['trades']} trades projects ${projection['monthly_usd']}/mo at ${notional:.0f} tickets, beating the previous champion toward the ${goal_low:,.0f}–${goal_high:,.0f}/mo goal"
         else:
             status = "tried"
-            reason = f"out-of-sample expectancy ${oos_m['expectancy_usd']} did not beat the champion"
+            reason = f"out-of-sample expectancy ${oos_m['expectancy_usd']} projects ${projection['monthly_usd']}/mo at ${notional:.0f} tickets and did not beat the champion"
         pools = [{"symbol": t.get("symbol"), "mint": t.get("mint"), "pool": t.get("pool")} for t in tokens]
         record = {
             "id": variant["id"],
@@ -644,6 +648,7 @@ def run_variants(tokens, config):
             "params": {k: variant[k] for k in ("zone_low", "zone_high", "stop", "target", "hold_bars")},
             "oos": oos_m,
             "ins": ins_m,
+            "goal": projection,
             "pools": pools,
             "attempts": 1,
         }
@@ -651,15 +656,65 @@ def run_variants(tokens, config):
         if status == "champion":
             MEMORY.write_champion_md(variant, oos_m, pools)
             champion_oos = oos_m
+            champion = MEMORY.champion()
             post("Strategist", f"BEST_STRATEGY.md replaced by {variant['id']}. {reason}")
         elif status == "rejected":
             post("Strategist", f"Rejected {variant['id']}: {reason}. It will not be retested.", "error")
         else:
             post("Strategist", f"{variant['id']} is {status}: {reason}")
         post("Backtester", f"{variant['id']}: {len(fresh)} team-approved paper trades ({len(vetoed)} turned down), {oos_m['trades']} out of sample, net ${oos_m['net_usd']}.")
-        results.append({"id": variant["id"], "status": status, "reason": reason, "oos": oos_m, "in_sample": ins_m, "new_trades": len(fresh), "team_rejected": len(vetoed)})
+        results.append({"id": variant["id"], "status": status, "reason": reason, "oos": oos_m, "in_sample": ins_m, "goal": projection, "new_trades": len(fresh), "team_rejected": len(vetoed)})
         log(f"variant {variant['id']} {status} trades {len(fresh)}")
     return {"proposed": [v["id"] for v in proposed], "results": results, "team_taken": team_taken, "team_rejected": team_rejected}
+
+
+def goal_settings(config):
+    low = float(config.get("monthly_goal_low", 3000))
+    high = float(config.get("monthly_goal_high", 5000))
+    notional = float((config.get("paper") or {}).get("notional_usd", 100))
+    return low, high, notional
+
+
+def goal_status(config, variant_report):
+    """Goal progress across this cycle's candidates and the champion. Only versions that pass the OOS gates count."""
+    low, high, notional = goal_settings(config)
+    min_oos = int((config.get("paper") or {}).get("min_oos_trades", 5))
+    rows = []
+    for r in variant_report.get("results") or []:
+        g = r.get("goal") or {}
+        rows.append({"id": r["id"], "role": "candidate", "status": r.get("status"), **g})
+    champ = MEMORY.champion()
+    if champ:
+        g = champ.get("goal") or {}
+        rows.append({"id": champ["id"], "role": "champion", "status": "champion", **g,
+                     "oos_trades": (champ.get("oos") or {}).get("trades"), "expectancy_usd": (champ.get("oos") or {}).get("expectancy_usd")})
+    for row in rows:
+        exp = row.get("expectancy_usd")
+        row["qualifies"] = bool(row.get("status") != "rejected" and (row.get("oos_trades") or 0) >= min_oos and exp is not None and exp > 0)
+    ranked = sorted([r for r in rows if r["qualifies"] and r.get("monthly_usd") is not None], key=lambda r: r["monthly_usd"], reverse=True)
+    best = ranked[0] if ranked else None
+    label = f"Goal ${low/1000:g}k–{high/1000:g}k/mo"
+    if best:
+        line = (f"{label}: best qualifying version {best['id']} ({best['role']}) projects ${best['monthly_usd']:,.2f}/mo at ${notional:.0f} tickets "
+                f"({best['trades_per_month']} trades/mo × ${best['expectancy_usd']}/trade OOS); needs ~${best['ticket_for_low_usd']:,.0f}–${best['ticket_for_high_usd']:,.0f} tickets. "
+                "Paper projection only; bigger tickets would slip more than modeled.")
+        pct = round(best["monthly_usd"] / low * 100, 2) if low else None
+    else:
+        legacy = champ and not (champ.get("goal") or {}).get("monthly_usd") and (champ.get("oos") or {}).get("expectancy_usd")
+        line = (f"{label}: no version qualifies with a monthly projection this cycle (need ≥{min_oos} out-of-sample trades and a positive average). "
+                + (f"Champion {champ['id']} predates the goal and has no measured trade frequency yet. " if legacy else "")
+                + "Not loosening the out-of-sample rule to chase the goal.")
+        pct = None
+    return {
+        "monthly_goal_low_usd": low,
+        "monthly_goal_high_usd": high,
+        "notional_usd": notional,
+        "best": best,
+        "progress_pct_of_low": pct,
+        "candidates": rows,
+        "status_line": line,
+        "method": "Projected monthly P&L = out-of-sample average $ per trade × out-of-sample trades per month (pooled OOS trade count ÷ the OOS window length × 30.44 days). Ticket needed = $100 × goal ÷ projected monthly. Promotion requires ≥5 OOS trades, a positive average, and a variant that is not rejected; among those, the higher projected monthly P&L wins.",
+    }
 
 
 def public_token(cand):
@@ -746,6 +801,9 @@ def cycle(config):
         else:
             post("Backtester", f"{label} does not have enough hourly bars ({cand.get('hourly_bars') or 0}). {cand.get('history_error') or ''}", "error")
     variant_report = run_variants(histories, config)
+    STATE["goal"] = goal_status(config, variant_report)
+    post("Strategist", STATE["goal"]["status_line"])
+    MEMORY.write_champion_md_current(STATE["goal"])
     ranked, failed = rank_watchlist(reviewed)
     STATE["watchlist"] = [public_token(c) for c in ranked]
     STATE["rejected_review"] = [public_token(c) for c in failed]

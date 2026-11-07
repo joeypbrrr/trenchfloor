@@ -217,3 +217,70 @@ def beats(oos_metrics, champion_oos, min_trades):
     if not champion_oos or champion_oos.get("expectancy_usd") is None:
         return True
     return oos_metrics["expectancy_usd"] > float(champion_oos["expectancy_usd"]) + 0.01
+
+
+DAYS_PER_MONTH = 30.44
+
+
+def oos_window_seconds(tokens, paper):
+    """Length of the out-of-sample slice: the longest last-30% window across the tested pools.
+
+    Pools are traded side by side, so trades per month is the pooled OOS trade
+    count divided by this one shared window, not by the sum of the windows.
+    """
+    frac = float(paper.get("oos_fraction", 0.30))
+    best = 0
+    for token in tokens:
+        bars = token.get("bars") or []
+        if len(bars) < 3:
+            continue
+        cut = min(max(int(len(bars) * (1.0 - frac)), 1), len(bars) - 1)
+        deltas = [bars[i]["t"] - bars[i - 1]["t"] for i in range(1, min(8, len(bars))) if bars[i]["t"] > bars[i - 1]["t"]]
+        bar_seconds = int(sorted(deltas)[len(deltas) // 2]) if deltas else 3600
+        best = max(best, bars[-1]["t"] - bars[cut]["t"] + bar_seconds)
+    return best
+
+
+def goal_projection(oos_metrics, window_seconds, notional, goal_low, goal_high):
+    """Projected monthly paper P&L from out-of-sample results.
+
+    monthly = average $ per OOS trade x OOS trades per month. P&L is linear in
+    the ticket because fees and slippage are percentages, so the ticket needed
+    for a goal is notional x goal / monthly. Real fills at bigger tickets would
+    slip more; this does not model that.
+    """
+    trades = int((oos_metrics or {}).get("trades") or 0)
+    exp = (oos_metrics or {}).get("expectancy_usd")
+    out = {
+        "notional_usd": notional,
+        "oos_trades": trades,
+        "oos_window_days": round(window_seconds / 86400.0, 2) if window_seconds else None,
+        "trades_per_month": None,
+        "expectancy_usd": exp,
+        "monthly_usd": None,
+        "ticket_for_low_usd": None,
+        "ticket_for_high_usd": None,
+        "goal_low_usd": goal_low,
+        "goal_high_usd": goal_high,
+    }
+    if not trades or not window_seconds or exp is None:
+        return out
+    per_month = trades / (window_seconds / 86400.0) * DAYS_PER_MONTH
+    monthly = exp * per_month
+    out["trades_per_month"] = round(per_month, 1)
+    out["monthly_usd"] = round(monthly, 2)
+    if monthly > 0:
+        out["ticket_for_low_usd"] = round(notional * goal_low / monthly, 0)
+        out["ticket_for_high_usd"] = round(notional * goal_high / monthly, 0)
+    return out
+
+
+def beats_goal(oos_metrics, projection, champion, min_trades):
+    """Promotion toward the monthly goal. The out-of-sample gates in beats() always apply first."""
+    if not beats(oos_metrics, None, min_trades):
+        return False
+    champ_proj = (champion or {}).get("goal") or {}
+    if champion and champ_proj.get("monthly_usd") is not None:
+        return (projection.get("monthly_usd") or 0) > float(champ_proj["monthly_usd"]) + 0.01
+    # Legacy champion without a monthly projection: fall back to the old per-trade rule.
+    return beats(oos_metrics, (champion or {}).get("oos"), min_trades)
