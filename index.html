@@ -275,6 +275,11 @@ footer span:last-child{text-align:right;color:#e4a578}
 .feed{max-height:720px;overflow:auto}
 .lesson{padding:10px 16px;border-bottom:1px solid #202c30;font-size:12px}
 .lesson small{display:block;color:var(--muted);font:10px var(--mono);margin-top:3px}
+.bt-wrap{overflow-x:auto}
+.bt-table{width:100%;border-collapse:collapse;font:11px var(--mono);margin:0 0 8px}
+.bt-table caption{caption-side:top;text-align:left;padding:10px 16px 4px;font:9px var(--mono);letter-spacing:1px;color:var(--muted)}
+.bt-table th,.bt-table td{padding:6px 10px;border-bottom:1px solid #202c30;text-align:right;white-space:nowrap}
+.bt-table th:first-child,.bt-table td:first-child,.bt-table th:nth-child(2),.bt-table td:nth-child(2){text-align:left}
 .ops{padding:12px 16px;font:11px/1.5 var(--mono);color:#8b9a9e;word-break:break-word}
 .pulse{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0 0;padding:12px 16px;border:1px solid var(--line);border-radius:5px;background:var(--surface);font:11px var(--mono);color:#9fb0ae}
 .pulse b{font:600 20px var(--display);color:#ffb56a}
@@ -451,8 +456,16 @@ footer span:last-child{text-align:right;color:#e4a578}
       </div>
       <div id="lessons"><p class="empty">No lessons yet.</p></div>
     </section>
+    <section class="panel" aria-labelledby="iterHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">09</span><h2 id="iterHeading">ITERATIVE BACKTEST</h2></div>
+        <a class="small-muted" href="./data/backtest_iterations.md">REPORT →</a>
+      </div>
+      <p class="method-note" id="iterNote">Paper history only. Rules are learned on the train split and kept only when the held-out book is not worse.</p>
+      <div id="iterBacktest"><p class="empty">Loading the iterative backtest…</p></div>
+    </section>
     <section class="panel" aria-labelledby="opsHeading">
-      <div class="panel-heading"><div><span class="section-num">09</span><h2 id="opsHeading">SOURCES &amp; HEALTH</h2></div></div>
+      <div class="panel-heading"><div><span class="section-num">10</span><h2 id="opsHeading">SOURCES &amp; HEALTH</h2></div></div>
       <p class="ops" id="opsText">Honest errors only. A failed source stays failed.</p>
     </section>
     <footer>
@@ -872,12 +885,71 @@ async function loadStaticSnapshot(){
     liveApply({research,agents:research.agents||[],ledger,events:(feed.events||[]).slice().reverse().map(e=>({...e,kind:e.kind||e.type||'info'})),chat:chat.messages||[],checklist:checklist.items||[],heartbeat:null,server_time:feed.updated||research.generated,sequence:Date.now()});
   }catch(err){$('systemState').textContent='PREVIEW DATA UNAVAILABLE';console.error('Static preview data',err);}
   liveHealth();
+  loadIterativeBacktest();
 }
 function startStaticPolling(){
   staticMode=true;liveConnected=false;liveHealth();
   if(staticTimer)return;
   loadStaticSnapshot();staticTimer=setInterval(loadStaticSnapshot,60000);
   if(liveSocket)liveSocket.close();
+}
+function fmtNum(v){ if(v==null || !Number.isFinite(Number(v))) return '—'; return Number(v).toFixed(2); }
+function metricTable(caption, iterations, key){
+  const wrap = document.createElement('div'); wrap.className = 'bt-wrap';
+  const table = document.createElement('table'); table.className = 'bt-table';
+  const cap = document.createElement('caption'); cap.textContent = caption; table.append(cap);
+  const head = document.createElement('tr');
+  ['Iter','Rules added','Trades','Win rate','Avg win','Avg loss','Expectancy','PnL','Max DD'].forEach(label => { const th = document.createElement('th'); th.textContent = label; head.append(th); });
+  const thead = document.createElement('thead'); thead.append(head); table.append(thead);
+  const body = document.createElement('tbody');
+  (iterations || []).forEach(row => {
+    const stats = row[key] || {};
+    const tr = document.createElement('tr');
+    const added = (row.rules_added || []).map(rule => rule.id || rule.rule).join(', ') || '—';
+    const win = stats.win_rate == null ? '—' : (Number(stats.win_rate) * 100).toFixed(1) + '%';
+    [String(row.iteration), added, String(stats.trades ?? '—'), win, fmtNum(stats.avg_win_usd), fmtNum(stats.avg_loss_usd), fmtNum(stats.expectancy_usd), fmtNum(stats.pnl_usd), fmtNum(stats.max_drawdown_usd)].forEach(value => { const td = document.createElement('td'); td.textContent = value; tr.append(td); });
+    body.append(tr);
+  });
+  table.append(body); wrap.append(table); return wrap;
+}
+function renderIterativeBacktest(report){
+  const host = $('iterBacktest'); if(!host) return;
+  const note = $('iterNote');
+  if(note){
+    const bits = [report.disclaimer, report.split, report.thin_data ? report.thin_data_reason : ''].filter(Boolean);
+    note.textContent = bits.join(' ');
+  }
+  const wrap = document.createElement('div');
+  const rules = document.createElement('div'); rules.className = 'lesson';
+  const title = document.createElement('b');
+  const finalRules = report.final_rules || [];
+  title.textContent = finalRules.length ? ('Final rules: ' + finalRules.map(rule => rule.rule).join(' · ')) : 'Final rules: none kept';
+  const small = document.createElement('small');
+  small.textContent = 'Stopped: ' + (report.stopped_because || '—') + ' · strategy ' + (report.strategy_id || '—');
+  rules.append(title, small); wrap.append(rules);
+  wrap.append(metricTable('TRAIN', report.iterations || [], 'train'));
+  wrap.append(metricTable('OUT OF SAMPLE', report.iterations || [], 'out_of_sample'));
+  (report.rejected_rules || []).slice(0, 8).forEach(rule => {
+    const row = document.createElement('div'); row.className = 'lesson';
+    const label = document.createElement('b'); label.textContent = 'Rejected · ' + (rule.verdict || rule.stage || '');
+    const detail = document.createElement('small'); detail.textContent = (rule.rule || rule.feature || '') + ' — ' + (rule.reason || '');
+    row.append(label, detail); wrap.append(row);
+  });
+  const seen = new Set();
+  (report.iterations || []).forEach(iteration => (iteration.research_notes || []).forEach(item => {
+    const key = String(iteration.iteration) + ':' + (item.feature || '');
+    if(seen.has(key)) return; seen.add(key);
+    const row = document.createElement('div'); row.className = 'lesson';
+    const label = document.createElement('b'); label.textContent = (item.verdict || 'note') + ' — ' + (item.feature || '');
+    const detail = document.createElement('small'); detail.textContent = item.text || '';
+    row.append(label, detail); wrap.append(row);
+  }));
+  host.replaceChildren(wrap);
+}
+async function loadIterativeBacktest(){
+  const host = $('iterBacktest'); if(!host) return;
+  try { renderIterativeBacktest(await loadJSON('data/backtest_iterations.json')); }
+  catch(e){ host.replaceChildren(empty('No iterative backtest report yet (' + e.message + '). Nothing was invented.')); }
 }
 function liveConnect(){
   if(PAGES_HOST||staticMode){startStaticPolling();return;}
@@ -888,7 +960,7 @@ function liveConnect(){
   liveSocket.onerror=()=>startStaticPolling();
   setTimeout(()=>{if(!liveConnected)startStaticPolling()},5000);
 }
-liveConnect();setInterval(()=>{tick();liveHealth()},1000);
+liveConnect();loadIterativeBacktest();setInterval(()=>{tick();liveHealth()},1000);
 setInterval(()=>{
   if(!window.__seatNDC)return;const host=document.getElementById('scene'),coords=window.__seatNDC();
   liveBubbles.forEach((b,i)=>{const p=coords.find(p=>p.i===i);b.hidden=Date.now()>Number(b.dataset.until)||!p||Math.abs(p.x)>1||Math.abs(p.y)>1;if(p){b.style.left=((p.x+1)/2*host.clientWidth)+'px';b.style.top=((1-p.y)/2*host.clientHeight)+'px'}});

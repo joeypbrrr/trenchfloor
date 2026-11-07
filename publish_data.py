@@ -42,6 +42,8 @@ SITE_FILES = [
     "data/paper_account.json",
     "data/traded_mints.json",
     "data/daily_stop.json",
+    "data/backtest_iterations.json",
+    "data/backtest_iterations.md",
     "floor/index.html",
 ]
 TOKEN_RE = re.compile(r"(https?://)([^/\s@]+)@")
