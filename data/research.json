@@ -6,7 +6,7 @@
   "cycle_count": 7,
   "last_cycle": "2026-11-07T03:19:54.086115+00:00",
   "next_cycle": "2026-11-07T03:49:54.086125+00:00",
-  "generated": "2026-11-07T03:19:54.092447+00:00",
+  "generated": "2026-11-07T03:42:44.930893+00:00",
   "data_status": "92 mints \u00b7 4 passed filters \u00b7 4 eligible \u00b7 32 new paper trades",
   "errors": [],
   "agents": [
@@ -18,7 +18,7 @@
       "task": "Reviewed 4 tokens. Safety fails 0. Incomplete 0. Eligible 4. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
       "detail": "",
       "latest_action": "Voting dip_20_40_stop12_tp15_hold24",
-      "heartbeat": "2026-11-07T03:19:54.083799+00:00"
+      "heartbeat": "2026-11-07T03:42:44.840377+00:00"
     },
     {
       "role": "Bubble Map Analyst",
@@ -28,27 +28,27 @@
       "task": "0 concentration or cluster fails this cycle. Links are https://app.bubblemaps.io/sol/token/<mint>.",
       "detail": "",
       "latest_action": "coin holder check passed. Top non-LP non-program wallet 3.0944%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/GdY4Z6pYU",
-      "heartbeat": "2026-11-07T03:19:54.084614+00:00"
+      "heartbeat": "2026-11-07T03:42:44.840391+00:00"
     },
     {
       "role": "X/Twitter Scout",
       "initials": "XS",
       "color": "ff5a1f",
       "status": "idle",
-      "task": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
+      "task": "Light scan of DexScreener boost and profile links.",
       "detail": "",
-      "latest_action": "54 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; FzmSx4 https://x.com/BustedMe",
-      "heartbeat": "2026-11-07T03:19:54.088621+00:00"
+      "latest_action": "Light scan found 3 new Solana rows with an X link. Not tweets. 2fnGKg https://x.com/MyPodcat?s=20; Ho7n9c https://x.com/Orpofun; BdouwE https://twitter.com/WatcherGuru/status/2118902136096379063",
+      "heartbeat": "2026-11-07T03:42:44.840394+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "92 mints \u00b7 4 passed filters \u00b7 4 eligible \u00b7 32 new paper trades",
+      "task": "Light scan of new GeckoTerminal pools. No safety review on this pass.",
       "detail": "",
-      "latest_action": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T20:00:00-05:00 @ 0.0009186092600509723 exit 2026-11-06T23:00:00-05:00 @ 0.0010564006490586181 P&L $",
-      "heartbeat": "2026-11-07T03:19:54.087073+00:00"
+      "latest_action": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan.",
+      "heartbeat": "2026-11-07T03:42:44.840396+00:00"
     },
     {
       "role": "Backtester",
@@ -58,7 +58,7 @@
       "task": "Ledger 194 paper trades, net $-247.1398.",
       "detail": "",
       "latest_action": "dip_20_40_stop12_tp15_hold24: 16 team-approved paper trades (0 turned down), 6 out of sample, net $-4.2522.",
-      "heartbeat": "2026-11-07T03:19:54.087859+00:00"
+      "heartbeat": "2026-11-07T03:42:44.840397+00:00"
     },
     {
       "role": "Strategist",
@@ -68,10 +68,38 @@
       "task": "Living champion dip_20_40_stop8_tp15_hold8. out-of-sample expectancy $0.4082 beat the previous champion Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
       "detail": "",
       "latest_action": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). dip_20_40_stop12_tp15_hold16 projects $-49.31/mo (rejected, 6 OOS trades). dip_20_40_stop12",
-      "heartbeat": "2026-11-07T03:19:54.086132+00:00"
+      "heartbeat": "2026-11-07T03:42:44.840398+00:00"
     }
   ],
   "activity": [
+    {
+      "id": 389,
+      "time": "2026-11-07T03:42:44.834812+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 388,
+      "time": "2026-11-07T03:42:43.365816+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "Light scan found 3 new Solana rows with an X link. Not tweets. 2fnGKg https://x.com/MyPodcat?s=20; Ho7n9c https://x.com/Orpofun; BdouwE https://twitter.com/WatcherGuru/status/2118902136096379063",
+      "type": "info"
+    },
+    {
+      "id": 387,
+      "time": "2026-11-07T03:24:59.196246+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 386,
+      "time": "2026-11-07T03:24:57.654358+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "Light scan found 4 new Solana rows with an X link. Not tweets. 2LuPXo https://x.com/OmniAgentHQ; 2JmAdk https://x.com/henrys0x/status/2118900997099528369?s=46; 2PDF6A https://x.com/Bennycoinfun/status/2118900036876513303; C89aVB https://x.com/stonkmarket_SOL",
+      "type": "info"
+    },
     {
       "id": 385,
       "time": "2026-11-07T03:19:54.089348+00:00",
@@ -602,34 +630,6 @@
       "time": "2026-11-07T02:45:20.949658+00:00",
       "agent": "Data Scout",
       "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T04:00:00-05:00 @ 0.0008039068557700406 exit 2026-11-04T11:00:00-05:00 @ 0.0009244928841355466 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 309,
-      "time": "2026-11-07T02:45:20.945529+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T00:00:00-05:00 @ 0.0008922546058071726 exit 2026-11-04T03:00:00-05:00 @ 0.0007851840531103119 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 308,
-      "time": "2026-11-07T02:45:20.942526+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T20:00:00-05:00 @ 0.0010576337295621519 exit 2026-11-03T22:00:00-05:00 @ 0.0009307176820146937 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 307,
-      "time": "2026-11-07T02:45:20.939308+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T12:00:00-05:00 @ 0.0011212556478299284 exit 2026-11-03T13:00:00-05:00 @ 0.0012894439950044175 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 306,
-      "time": "2026-11-07T02:45:20.935537+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T10:00:00-05:00 @ 0.0012041128943110966 exit 2026-11-03T11:00:00-05:00 @ 0.001059619346993765 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
       "type": "trade"
     }
   ],
@@ -1590,8 +1590,8 @@
       "detail": "token-boosts latest/top and token-profiles latest",
       "counts": {
         "boosts_latest": 25,
-        "boosts_top": 25,
-        "profiles_latest": 28
+        "boosts_top": 26,
+        "profiles_latest": 27
       },
       "errors": []
     },
@@ -1762,9 +1762,9 @@
     "site_reachable": true,
     "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T02:51:26.344657+00:00",
+    "checked_at": "2026-11-07T03:42:44.930846+00:00",
     "stale_agents": [],
-    "last_published": "2026-11-07T03:19:54.274124+00:00"
+    "last_published": "2026-11-07T03:42:45.066041+00:00"
   },
   "ledger": {
     "timezone": "America/New_York",
