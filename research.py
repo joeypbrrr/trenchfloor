@@ -24,6 +24,7 @@ from live_chat import LiveChat
 from traded_mints import TradedMints
 from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num, ResilientRpcClient
 from candidate_sources import candidates as source_candidates, fee_filter_reason
+from entry_gates import GLOBAL_FEES_POLICY
 from daily_stop import DailyStop, mode_for, close_time, fill_key
 
 ROOT = Path(__file__).resolve().parent
@@ -133,7 +134,7 @@ def boot(config):
         STATE["daily_stop"]=DailyStop(ROOT).status(config)
         STATE["configuration"]={k:config.get(k) for k in ("candidate_source","cycle_seconds","entry_interval_seconds","daily_stop_enabled","daily_profit_stop_usd","rpc_resilience_enabled","forward_paper_enabled","tiered_selection_enabled","checklist_rules_enabled","tiers")}
         STATE["configuration"]["exit_spec"]={k:config["paper"][k] for k in ("stop_fraction","target_fraction","target_floor_fraction","max_hold_seconds") if k in config["paper"]}
-        STATE["configuration"]["global_fees_filter"]="SKIPPED: unavailable on DexScreener; no proxy"
+        STATE["configuration"]["global_fees_filter"]=GLOBAL_FEES_POLICY
         STATE["last_updated_et"]=prior.get("last_updated_et") or et_now()
         STATE["tier_selection"]=prior.get("tier_selection",{})
     save_state()
@@ -414,7 +415,7 @@ def screen(candidates, config):
         filters["max_pair_age_days"] = settings.get("max_age_days", 7)
     now = time.time()
     if not new_source:
-        post("Risk Manager", "Global fees filter SKIPPED: DexScreener does not supply verified 1.5 SOL global fees. No proxy used; unavailable fees are not a rejection. Market cap floor $6,000 and all scam checks remain enforced.", publish_feed=False)
+        post("Risk Manager", "Global fees are not skipped. " + GLOBAL_FEES_POLICY + " Market cap floor $6,000 still applies.", publish_feed=False)
     passed = []
     rejected = []
     counts = {}
@@ -948,7 +949,7 @@ def tiered_cycle(config):
     for item in checklist:
         post("Strategist","CHECKLIST CONSULT / "+item.get("key","?")+": "+str(item.get("rules",[]))+" — ACTIVE primary reject / fallback score penalty.")
     queue,found=discover(config)
-    post("Risk Manager","Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks.")
+    post("Risk Manager","Global fees are a hard entry gate on both tiers. "+GLOBAL_FEES_POLICY)
     selection=evaluate(queue,MARKET,config,post,load_history,ROOT,checklist=checklist)
     reviewed=selection.pop("reviewed")
     candidates=selection.pop("candidates")
@@ -972,10 +973,10 @@ def tiered_cycle(config):
         "new_paper_trades":int(entry is not None),"hard_pass":sum(c.get("safety",{}).get("hard_rug_pass") is True for c in reviewed),
         "hard_blocks":[{"mint":c["mint"],"symbol":c.get("symbol"),"reasons":c["safety"].get("hard_reasons",[])} for c in reviewed if c["safety"].get("hard_rug_pass") is not True]}
     STATE["configuration"]={k:config.get(k) for k in ("candidate_source","cycle_seconds","entry_interval_seconds","daily_stop_enabled","daily_profit_stop_usd","rpc_resilience_enabled","forward_paper_enabled","tiered_selection_enabled","minimum_entries_per_hour","tiers")}
-    STATE["configuration"]["global_fees_filter"]="SKIPPED: unavailable on DexScreener; no proxy"
+    STATE["configuration"]["global_fees_filter"]=GLOBAL_FEES_POLICY
     STATE["best"]={"id":"forward_ranked_primary_fallback","name":"One fresh mint per rolling hour; primary $100 cap, fallback $50 cap; common hard rug blocks; no repeat mints.","status":"forward_paper","oos":None}
     STATE["strategist_note"]="Current paper selection uses scored primary candidates; only if primary is empty, scored fallback. Minimum yields to daily halt, rolling-hour limit, unavailable cash, or failed/unknown hard blocks. Checklist rules are applied: primary rejection / fallback penalty."
-    STATE["risk_note"]="Hard blocks ONLY: no sell route/unsellable, active mint authority, active freeze authority; unknowns on these reject. Holder concentration, LP and risky extensions reject primary and penalize fallback. No wallet, no execution."
+    STATE["risk_note"]="Hard blocks on both tiers: unsellable, active or unknown mint/freeze authority, pair age under 15 minutes or unknown, top-10 above 40% excluding pool and burn, fresh-wallet cluster, bundle/sniper share, wash trade, LP lock/burn not visible, and global fees that are under 1.5 SOL or unproven. Single-holder 20% and token extensions still reject primary and penalize fallback. No wallet, no execution."
     STATE["goal"]={"status_line":"$300/day realized paper profit hard stop. Not a guarantee of profit."}
     STATE["team"]={"model":"Six factual rule-based votes on highest ranked hard-safe candidates; Risk Manager and Bubble Map Analyst can veto.","last_cycle_taken":int(entry is not None),"last_cycle_rejected":0}
     STATE["sources"]=MARKET.source_status
@@ -1141,7 +1142,7 @@ def cycle(config):
         stage_survivors[stage] = len(remaining)
     stage_survivors.update(all_market_filters_and_lessons=len(passed), deep_scam_reviews=len(reviewed),
         scam_pass=len(eligible), history_ready=len(histories), current_dip_zone=sum(bool(c.get("in_entry_zone")) for c in histories),
-        entry_taken=int(bool(variant_report.get("new_entry"))), global_fees="SKIPPED — data unavailable on DexScreener")
+        entry_taken=int(bool(variant_report.get("new_entry"))), global_fees=GLOBAL_FEES_POLICY)
     STATE["report"] = {
         "filter_stage_survivors": stage_survivors,
         "discovered": found,
@@ -1171,7 +1172,7 @@ def cycle(config):
     STATE["last_cycle"] = now_iso()
     STATE["last_updated_et"] = et_now()
     STATE["configuration"] = {k: config.get(k) for k in ("candidate_source", "cycle_seconds", "entry_interval_seconds", "daily_stop_enabled", "daily_profit_stop_usd", "rpc_resilience_enabled", "forward_paper_enabled")}
-    STATE["configuration"]["global_fees_filter"] = "SKIPPED: unavailable on DexScreener; no proxy"
+    STATE["configuration"]["global_fees_filter"] = GLOBAL_FEES_POLICY
     STATE["next_cycle"] = datetime.fromtimestamp(time.time() + int(config.get("cycle_seconds", 3600)), timezone.utc).isoformat()
     update("Strategist", "idle", STATE["strategist_note"], action=AGENTS["Strategist"].get("latest_action") or "No champion change")
     update("Data Scout", "idle", STATE["data_status"], action=AGENTS["Data Scout"].get("latest_action") or "Scan complete")

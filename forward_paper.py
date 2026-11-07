@@ -196,7 +196,10 @@ class PaperAccount:
             if (tier=='primary' and market_reason(token,filters,now)) or tier_reason(token,settings):continue
             # Entry guard repeats common hard-block attestation; no team/minimum bypass.
             safety=token.get('safety') or {}
-            if safety.get('hard_rug_pass') is not True or not safety.get('hard_rug_checks') or any(c.get('pass') is not True for c in safety['hard_rug_checks']):continue
+            if safety.get('hard_rug_pass') is not True or not safety.get('hard_rug_checks') or any(c.get('pass') is not True for c in safety['hard_rug_checks']):
+                reasons=safety.get('hard_reasons') or [c.get('name','hard gate')+': '+(c.get('detail') or 'failed or unknown') for c in safety.get('hard_rug_checks') or [] if c.get('pass') is not True] or ['required hard entry gate failed or unknown']
+                post('Risk Manager','HARD BLOCK '+token.get('symbol',token['mint'])+': '+'; '.join(reasons))
+                continue
             size=round(min(settings['notional_usd'],self.snapshot()['balance_usd']*paper['allocation_fraction'],self.data['cash_usd']*paper['allocation_of_free_cash_fraction']),4)
             if size<0.01:
                 post('Risk Manager','No entry: paper cash below one-cent funded size; no fabricated borrowing.')

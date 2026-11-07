@@ -30,16 +30,18 @@ class PolicyRevisionTests(unittest.TestCase):
    return dict(inputMint='A',outputMint='So11111111111111111111111111111111111111112',inAmount=q['amount'][0],outAmount='1000',routePlan=[{'swapInfo':{'ammKey':'P'}}]),200
   return {'mint':'A','markets':[]},200
  def market(self,rpc):return type('M',(),{'rpc':rpc,'source_status':{}})()
- def test_exact_three_hard_checks_soft_holder_lp_extensions_never_hard_veto(self):
+ def test_original_three_remain_and_missing_gate_data_blocks_both_tiers(self):
   m=self.market(self.rpc(extensions=[{'extension':'transferFeeConfig'}]))
   with patch('tiers.http_json',side_effect=self.http):s=hard_review(self.c,m,self.cfg)
-  self.assertTrue(s['hard_rug_pass']);self.assertEqual(len(s['hard_rug_checks']),3)
-  self.assertEqual(set(x['name'] for x in s['hard_rug_checks']),{'mint_authority_revoked','freeze_authority_revoked','sellable_not_honeypot'})
+  names={x['name'] for x in s['hard_rug_checks']}
+  self.assertTrue({'mint_authority_revoked','freeze_authority_revoked','sellable_not_honeypot'}<=names)
+  self.assertTrue({'min_pair_age','top10_ex_pool_burn','fresh_wallet_cluster','bundle_sniper_share','wash_trade','lp_locked_or_burned','global_fees_sol'}<=names)
+  self.assertFalse(s['hard_rug_pass'])
   self.assertEqual(s['top_human_pct'],80)
   c={**self.c,'safety':s}
   self.assertIsNotNone(tier_reason(c,self.cfg['tiers']['primary']))
-  self.assertIsNone(tier_reason(c,self.cfg['tiers']['fallback']))
-  self.assertGreater(len(fallback_penalties(c,self.cfg)),1)
+  self.assertIsNotNone(tier_reason(c,self.cfg['tiers']['fallback']))
+  self.assertGreater(len(fallback_penalties(c,self.cfg)),0)
  def test_active_mint_and_freeze_still_hard_reject(self):
   for args in ({'mint_auth':'DEV'},{'freeze_auth':'DEV'}):
    with patch('tiers.http_json',side_effect=self.http):s=hard_review(self.c,self.market(self.rpc(**args)),self.cfg)
@@ -58,7 +60,10 @@ class PolicyRevisionTests(unittest.TestCase):
   with patch('tiers.http_json',side_effect=self.http):s=hard_review(self.c,self.market(self.rpc(extensions=[{'extension':'pausableConfig','state':{'paused':True}}])),self.cfg)
   self.assertFalse(s['hard_rug_pass'])
  def test_hook_alone_is_soft_when_positive_route_exists(self):
-  with patch('tiers.http_json',side_effect=self.http):s=hard_review(self.c,self.market(self.rpc(extensions=[{'extension':'transferHook'}])),self.cfg)
+  now=self.c['created_ts']+7200
+  evidence={'now':now,'created_ts':self.c['created_ts'],'top10_ex_pool_burn_pct':5,'holder_read_ok':True,'holders':[{'owner':'Old','pct':1,'history_complete':True,'oldest_ts':now-10*86400,'funders':['F'],'funder_known':True,'acquire_slot':10,'acquire_known':True}],'trade_read_ok':True,'trades':[{'signer':'A','side':'buy','amount':3},{'signer':'B','side':'sell','amount':1}],'lp_visible':True,'lp_burned_or_locked':True,'lp_detail':'burned','global_fees_verified':True,'global_fees_sol':2}
+  with patch('tiers.http_json',side_effect=self.http),patch('tiers.gather_entry_evidence',return_value=evidence):
+   s=hard_review(self.c,self.market(self.rpc(extensions=[{'extension':'transferHook'}])),self.cfg)
   self.assertTrue(s['hard_rug_pass']);self.assertFalse(next(x for x in s['soft_checks'] if x['name']=='Token_2022_extensions')['pass'])
  def test_applied_checklist_primary_reject_fallback_penalty(self):
   safety=dict(status='pass',hard_rug_pass=True,hard_rug_checks=[{'name':'all','pass':True}],soft_checks=[],summary='pass',top_human_pct=1,top10_measured_pct=5)
