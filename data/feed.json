@@ -1,7 +1,49 @@
 {
-  "updated": "2026-11-07T02:43:54.575088+00:00",
-  "next_id": 268,
+  "updated": "2026-11-07T02:45:09.067456+00:00",
+  "next_id": 274,
   "events": [
+    {
+      "id": 273,
+      "time": "2026-11-07T02:45:09.067429+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PASS AMD: PASS mint, freeze, extensions, and holder concentration"
+    },
+    {
+      "id": 272,
+      "time": "2026-11-07T02:43:58.885260+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs."
+    },
+    {
+      "id": 271,
+      "time": "2026-11-07T02:43:58.882698+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "96 mints discovered, 30 enriched, 4 passed filters, 5 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'pair younger than minimum age': 5, 'quote is not SOL, USDC, or USDT': 6, 'liquidity unknown': 2, 'liquidity below minimum': 1}."
+    },
+    {
+      "id": 270,
+      "time": "2026-11-07T02:43:58.727835+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "58 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; FzmSx4 https://x.com/BustedMemeSol; 4AN9uw https://x.com/Machiavelli_HQ"
+    },
+    {
+      "id": 269,
+      "time": "2026-11-07T02:43:55.875962+00:00",
+      "agent": "Data Scout",
+      "type": "error",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
+    },
+    {
+      "id": 268,
+      "time": "2026-11-07T02:43:55.869562+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
+    },
     {
       "id": 267,
       "time": "2026-11-07T02:43:54.575073+00:00",
@@ -6682,48 +6724,6 @@
       "agent": "Data Scout",
       "type": "info",
       "text": "97 mints discovered, 30 enriched, 5 passed filters, 3 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 10, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 7, 'pair younger than minimum age': 3, 'liquidity unknown': 3, 'liquidity below minimum': 1}."
-    },
-    {
-      "id": 93,
-      "time": "2026-11-07T02:11:11.822178+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "56 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; FzmSx4 https://x.com/BustedMemeSol; 4AN9uw https://x.com/Machiavelli_HQ"
-    },
-    {
-      "id": 92,
-      "time": "2026-11-07T02:11:08.978274+00:00",
-      "agent": "Data Scout",
-      "type": "error",
-      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
-    },
-    {
-      "id": 91,
-      "time": "2026-11-07T02:11:08.976234+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
-    },
-    {
-      "id": 90,
-      "time": "2026-11-07T02:11:07.517365+00:00",
-      "agent": "System",
-      "type": "info",
-      "text": "Cycle 3 started. Read 2 standing rules and 2 variants that will not be retested. Paper trading / research only. No wallet. No real trades. Not financial advice."
-    },
-    {
-      "id": 89,
-      "time": "2026-11-07T01:48:32.968204+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 19 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 88,
-      "time": "2026-11-07T01:48:31.593333+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 56 new Solana rows with an X link. Not tweets. FzmSx4 https://x.com/BustedMemeSol; HsprHx https://x.com/TheGTA6cat; 4AN9uw https://x.com/Machiavelli_HQ; 8Xg89x https://x.com/GlitchOnSolana_; 8THZ69 https://x.com/NETWORKonSOL"
     }
   ]
 }
