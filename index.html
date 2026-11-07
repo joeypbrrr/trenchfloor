@@ -316,6 +316,7 @@ footer span:last-child{text-align:right;color:#e4a578}
 #fillCount{font-size:clamp(16px,2vw,24px);line-height:1.3}
 #liveChat{max-height:360px!important;overflow-y:auto!important;overscroll-behavior:contain}
 @media(max-width:480px){#liveChat{max-height:280px!important}}
+#liveChat .review-copy{white-space:pre-wrap;overflow-wrap:anywhere}
 .chat-older summary{padding:14px;color:var(--teal);cursor:pointer;font:12px var(--mono)}
 @media(max-width:640px){.position-hero{margin-top:12px}.position-heading{padding:10px 12px}.position-heading h2{font-size:12px}#heroTeamTrades{font-size:10px}#openPositions{padding:12px}.position-title h3{font-size:23px}.position-title h3 small{font-size:13px}.position-datum strong{font-size:17px}.position-card .trade-when{font-size:11px}.position-deadline{font-size:11px}.position-bottom{gap:8px}.position-dex{padding:6px 10px}}
 </style>
@@ -372,7 +373,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <b id="bestLinkText">Waiting for the first cycle</b>
       <i aria-hidden="true">→</i>
     </a>
-<section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">AGENT CHAT ROOM</h2><span class="pill">NEWEST FIRST · ACTUAL EVENTS</span></div><p class="method-note">Messages come from actual research events, not autonomous conversation. Loss reviews use recorded forward-paper closes only; missing facts stay unknown.</p><div id="liveChat"><p class="empty">Waiting for live messages. No demo chat.</p></div></section>
+<section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">TRADE REVIEWS</h2><span class="pill">ONE PER CLOSE · WINS &amp; LOSSES</span></div><p class="method-note">Closed paper trades only. Each review uses recorded facts: what went right, what went wrong, red flags, and how to improve the next entry. Losses also say how to avoid a repeat. Other chat stays in the log.</p><div id="liveChat"><p class="empty">Loading trade reviews…</p></div></section>
 <section class="panel" aria-labelledby="liveChecklistTitle"><div class="panel-heading"><h2 id="liveChecklistTitle">SHARED LESSONS CHECKLIST</h2><span class="pill">ACTIVE RULES</span></div><div id="liveChecklist"><p class="empty">No live losses reviewed. Historical backtests are excluded.</p></div></section>
     <section class="pulse" aria-label="Research pulse">
       <span id="lastCycle">Waiting for the first cycle</span>
@@ -530,7 +531,11 @@ function tradeCard(t){
   art.querySelector('strong').textContent = t.name || t.symbol || 'Token';
   art.querySelector('.sym').textContent = t.symbol || '?';
   const pnl = art.querySelector('.pnl'); pnl.textContent = money(t.pnl_usd); pnl.classList.add(Number(t.pnl_usd) < 0 ? 'negative' : 'positive');
-  art.querySelector('.trade-when').textContent = 'Opened ' + et(t.entry_time) + ' @ ' + price(t.entry_price) + ' → Exit ' + et(t.exit_time) + ' @ ' + price(t.exit_price);
+  const lv=tradeLevels(t);
+  const entryQ=levelQuote(lv.entryMc,t.entry_price), exitQ=levelQuote(lv.exitMc,t.exit_price);
+  const when=art.querySelector('.trade-when');
+  when.textContent = 'Opened ' + et(t.entry_time) + ' @ ' + entryQ.text + ' → Exit ' + et(t.exit_time) + ' @ ' + exitQ.text;
+  when.title=[entryQ.title?('entry '+entryQ.title):'', exitQ.title?('exit '+exitQ.title):''].filter(Boolean).join(' · ');
   art.querySelector('.mint').textContent = (t.tier ? t.tier.toUpperCase()+' · ' : '') + (t.strategy_id ? t.strategy_id + ' · ' : '') + (t.mint || '');
   art.querySelector('.mint').after(teamBlock(t));
   const links = art.querySelectorAll('a');
@@ -539,10 +544,47 @@ function tradeCard(t){
   return art;
 }
 function precisePrice(v){return v==null||!Number.isFinite(Number(v))?'—':'$'+Number(v).toLocaleString('en-US',{maximumSignificantDigits:12});}
-function positionDatum(label,value,kind=''){
+function formatMc(v){
+  const n=Number(v);
+  if(!Number.isFinite(n)||n<=0)return null;
+  if(n>=1e9)return '$'+(n/1e9).toFixed(2)+'B';
+  if(n>=1e6)return '$'+(n/1e6).toFixed(2)+'M';
+  if(n>=1e3)return '$'+Math.round(n/1e3)+'K';
+  if(n>=1)return '$'+n.toFixed(2);
+  return '$'+n.toPrecision(3);
+}
+// Supply is market cap / price from a recorded snapshot. No assumed token supply.
+function snapshotSupply(t){
+  const pairs=[];
+  const push=(px,mc)=>{const p=Number(px),m=Number(mc);if(Number.isFinite(p)&&p>0&&Number.isFinite(m)&&m>0)pairs.push({px:p,mc:m});};
+  if(t){push(t.price_usd,t.market_cap_usd);push(t.entry_price,t.entry_market_cap_usd);}
+  const mint=t&&t.mint, d=state||{};
+  ['watchlist','rejected_review','filter_rejects_sample'].forEach(key=>{(d[key]||[]).forEach(row=>{if(row&&row.mint===mint)push(row.price_usd,row.market_cap_usd);});});
+  if(!pairs.length)return null;
+  const entry=Number(t.entry_price);
+  let best=pairs[0], dist=Number.isFinite(entry)&&entry>0?Math.abs(best.px-entry)/entry:0;
+  pairs.forEach(pair=>{const gap=Number.isFinite(entry)&&entry>0?Math.abs(pair.px-entry)/entry:0;if(gap<dist){best=pair;dist=gap;}});
+  return best.mc/best.px;
+}
+function tradeLevels(t){
+  const entry=Number(t.entry_price), entryOk=Number.isFinite(entry)&&entry>0, supply=snapshotSupply(t);
+  const entryMc=entryOk&&supply?entry*supply:null;
+  const stopFrac=t.stop_fraction==null?null:Number(t.stop_fraction);
+  const targetFrac=t.target_fraction==null?null:Number(t.target_fraction);
+  const stopOk=stopFrac!=null&&Number.isFinite(stopFrac), targetOk=targetFrac!=null&&Number.isFinite(targetFrac);
+  const exit=Number(t.exit_price), exitOk=Number.isFinite(exit)&&exit>0;
+  return {entryMc,stopMc:entryMc!=null&&stopOk?entryMc*(1-stopFrac):null,targetMc:entryMc!=null&&targetOk?entryMc*(1+targetFrac):null,exitMc:exitOk&&supply?exit*supply:null,stopPx:entryOk&&stopOk?entry*(1-stopFrac):NaN,targetPx:entryOk&&targetOk?entry*(1+targetFrac):NaN};
+}
+function levelQuote(mc,px){
+  const shown=formatMc(mc), raw=precisePrice(px);
+  if(shown)return {text:shown, title:raw==='—'?'':'price '+raw};
+  if(raw==='—')return {text:'—', title:''};
+  return {text:'price '+raw, title:'price '+raw};
+}
+function positionDatum(label,value,kind='',title=''){
   const box=document.createElement('div');box.className='position-datum '+kind;
   const name=document.createElement('span');name.textContent=label;
-  const val=document.createElement('strong');val.textContent=value;box.append(name,val);return box;
+  const val=document.createElement('strong');val.textContent=value;if(title)val.title=title;box.append(name,val);return box;
 }
 function positionCard(input){
   const current=state&&state.paper_account&&(state.paper_account.positions||[]).find(p=>p.id===input.id);
@@ -555,12 +597,12 @@ function positionCard(input){
   if(Number.isFinite(openedAt)&&Date.now()-openedAt>=0&&Date.now()-openedAt<3600000){const badge=document.createElement('span');badge.className='new-position';badge.textContent='NEW';title.append(badge);}
   const data=document.createElement('div');data.className='position-data';
   const size=t.notional_usd==null?'—':Number(t.notional_usd).toLocaleString('en-US',{style:'currency',currency:'USD'});
-  data.append(positionDatum('SIZE',size),positionDatum('ENTRY PRICE',precisePrice(t.entry_price)),positionDatum('TIER',(t.tier||'paper').toUpperCase()));
+  const lv=tradeLevels(t);
+  const entryQ=levelQuote(lv.entryMc,t.entry_price), stopQ=levelQuote(lv.stopMc,lv.stopPx), targetQ=levelQuote(lv.targetMc,lv.targetPx);
+  data.append(positionDatum('SIZE',size),positionDatum(lv.entryMc?'ENTRY MCAP':'ENTRY · price',lv.entryMc?entryQ.text:precisePrice(t.entry_price),'',entryQ.title),positionDatum('TIER',(t.tier||'paper').toUpperCase()));
   const opened=document.createElement('p');opened.className='trade-when';opened.textContent='Opened '+et(t.entry_time);
   const risk=document.createElement('div');risk.className='position-data risk-prices';
-  const stop=t.stop_fraction==null?NaN:Number(t.entry_price)*(1-Number(t.stop_fraction));
-  const target=t.target_fraction==null?NaN:Number(t.entry_price)*(1+Number(t.target_fraction));
-  risk.append(positionDatum('STOP · '+((t.stop_fraction||0)*100).toFixed(0)+'%',precisePrice(stop),'stop'),positionDatum('TARGET · '+((t.target_fraction||0)*100).toFixed(0)+'%',precisePrice(target),'target'));
+  risk.append(positionDatum('STOP · '+((t.stop_fraction||0)*100).toFixed(0)+'%'+(lv.stopMc?' MCAP':' · price'),lv.stopMc?stopQ.text:precisePrice(lv.stopPx),'stop',stopQ.title),positionDatum('TARGET · '+((t.target_fraction||0)*100).toFixed(0)+'%'+(lv.targetMc?' MCAP':' · price'),lv.targetMc?targetQ.text:precisePrice(lv.targetPx),'target',targetQ.title));
   const bottom=document.createElement('div');bottom.className='position-bottom';
   const deadline=document.createElement('p');deadline.className='position-deadline';
   const until=Number.isFinite(openedAt)&&t.max_hold_seconds?new Date(openedAt+Number(t.max_hold_seconds)*1000).toISOString():null;
@@ -803,16 +845,17 @@ function liveApply(s){
     b.textContent=e.text.replace(/https?:\S+/g,'').slice(0,120);b.dataset.until=Date.now()+12000;
   });
   const chat=document.getElementById('liveChat');
-  const newest=s.chat.slice(-200).sort((a,b)=>(Date.parse(b.time)||0)-(Date.parse(a.time)||0));
+  const reviews=(s.chat||[]).filter(e=>e&&e.kind==='trade_review');
+  const newest=reviews.slice(-200).sort((a,b)=>(Date.parse(b.time)||0)-(Date.parse(a.time)||0));
   const chatRow=e=>{
     const row=document.createElement('article');row.className='feed-item';
     const color=(AGENTS.find(a=>a.role===e.agent)||{}).color||'#e4a578';
     const title=document.createElement('div');title.className='fh';
     const who=document.createElement('b');who.textContent='● '+e.agent;who.style.color=color;
     const when=document.createElement('time');when.textContent=et(e.time);title.append(who,when);
-    const body=document.createElement('p');body.textContent=e.text;row.append(title,body);return row;
+    const body=document.createElement('p');body.className='review-copy';body.textContent=e.text;row.append(title,body);return row;
   };
-  chat.replaceChildren(...(newest.length?newest.slice(0,24).map(chatRow):[empty('No live agent messages yet. No demo conversation is generated.')]));
+  chat.replaceChildren(...(newest.length?newest.slice(0,24).map(chatRow):[empty('No trade reviews yet.')]));
   if(newest.length>24){const older=document.createElement('details');older.className='chat-older';const summary=document.createElement('summary');summary.textContent='Older messages ('+(newest.length-24)+') · newest first';older.append(summary,...newest.slice(24).map(chatRow));chat.append(older);}
   const checklist=document.getElementById('liveChecklist');
   checklist.replaceChildren(...(s.checklist.length?s.checklist.map(item=>{const row=document.createElement('div');row.className='lesson';const text=document.createElement('b');text.textContent=item.rule_text||item.suggestion;const note=document.createElement('small');note.textContent=item.supporting_losses+' supporting live paper loss(es) · PRIMARY REJECT · FALLBACK SCORE PENALTY';row.append(text,note);return row}):[empty('No forward paper losses have closed since this dashboard started. Historical/backtest rows do not seed reviews. No active checklist rules yet.')]));

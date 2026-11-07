@@ -39,7 +39,33 @@ class ChatTests(unittest.TestCase):
         self.assertIn("primary", restored.data["checklist"][0]["status"].lower())
         self.assertTrue(restored.data["checklist"][0]["rules"])
     def test_profit_not_reviewed(self):
-        self.assertEqual(self.chat.record(self.close(pnl_usd=4)), [])
+        # Wins do not create loss-checklist rules. They do get one trade review.
+        messages=self.chat.record(self.close(pnl_usd=4, exit_reason='target'))
+        self.assertEqual([m['kind'] for m in messages], ['trade_review'])
+        self.assertEqual(self.chat.data['checklist'], [])
+        self.assertNotIn('How to avoid similar losses', messages[0]['text'])
+        self.assertEqual(self.chat.record(self.close(pnl_usd=4, exit_reason='target')), [])
+    def test_one_trade_review_per_close(self):
+        loss=self.chat.record(self.close(stop_fraction=0.12, entry_liquidity_usd=100, exit_liquidity_usd=70))
+        reviews=[m for m in loss if m['kind']=='trade_review']
+        self.assertEqual(len(reviews), 1)
+        self.assertEqual(reviews[0]['agent'], 'Backtester')
+        text=reviews[0]['text']
+        for part in ('What went right', 'What went wrong', 'Red flags', 'How to improve future entries', 'How to avoid similar losses', 'exit stop'):
+            self.assertIn(part, text)
+        self.assertIn('liquidity', text)
+        self.assertIn('12%', text)
+        self.assertNotIn('http', text.lower())
+        win=self.chat.record(self.close(id='win-1', pnl_usd=4.5, exit_reason='target', entry_price=1, exit_price=1.4,
+            hard_rug_checks=[{'name':'sellable_not_honeypot','pass':True}]))
+        self.assertEqual(len(win), 1)
+        self.assertEqual(win[0]['kind'], 'trade_review')
+        self.assertIn('sellable_not_honeypot', win[0]['text'])
+        self.assertNotIn('How to avoid similar losses', win[0]['text'])
+        self.assertEqual(self.chat.data['checklist'][0]['supporting_losses'], 1)
+        historical=self.close(id='hist-win', pnl_usd=9)
+        historical['historical']=True
+        self.assertEqual(self.chat.record(historical), [])
     def test_independent_losses_increment_support(self):
         self.chat.record(self.close(id="loss-a"));self.chat.record(self.close(id="loss-b"))
         self.assertEqual(self.chat.data["checklist"][0]["supporting_losses"],2)
