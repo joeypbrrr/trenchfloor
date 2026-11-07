@@ -448,6 +448,9 @@ def gather_entry_evidence(candidate, market, chain, config=None, http_get=None, 
         "fee_lower_bound_sol": None,
         "fee_read_ok": False,
         "fee_detail": "cumulative global fees were not read",
+        "creator": None,
+        "coin_creator": None,
+        "creator_detail": "creator wallet was not read",
     }
     if evidence["top10_ex_pool_burn_pct"] is None and chain.get("status") == "incomplete":
         evidence["top10_ex_pool_burn_pct"] = None
@@ -459,6 +462,7 @@ def gather_entry_evidence(candidate, market, chain, config=None, http_get=None, 
         evidence["trade_read_error"] = evidence["holder_read_error"]
         evidence["fee_detail"] = evidence["holder_read_error"]
         evidence["lp_detail"] = evidence["holder_read_error"]
+        evidence["creator_detail"] = evidence["holder_read_error"]
         return evidence
 
     humans = []
@@ -539,6 +543,9 @@ def gather_entry_evidence(candidate, market, chain, config=None, http_get=None, 
         raw = _account_bytes(value)
         decoded = decode_pumpswap_pool(raw) if raw else None
         if decoded and mint in (decoded["base_mint"], decoded["quote_mint"]):
+            evidence["creator"] = decoded["creator"]
+            evidence["coin_creator"] = decoded["coin_creator"]
+            evidence["creator_detail"] = "PumpSwap pool creator and coin_creator pubkeys"
             lp_mint = decoded["lp_mint"]
             supply, supply_err = _rpc(rpc, "getTokenSupply", [lp_mint])
             mint_info, mint_err = _rpc(rpc, "getAccountInfo", [lp_mint, {"encoding": "jsonParsed"}])
@@ -575,6 +582,8 @@ def gather_entry_evidence(candidate, market, chain, config=None, http_get=None, 
             evidence["lp_detail"] = err or "LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
             if not evidence["global_fees_verified"]:
                 evidence["fee_detail"] = evidence["lp_detail"]
+    if not evidence.get("creator") and not evidence.get("coin_creator"):
+        evidence["creator_detail"] = evidence.get("lp_detail") or evidence.get("holder_read_error") or evidence.get("creator_detail")
     if evidence["global_fees_verified"]:
         evidence["fee_read_ok"] = True
         evidence["fee_detail"] = "verified cumulative global fees"

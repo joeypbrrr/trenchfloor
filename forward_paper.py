@@ -11,10 +11,40 @@ from daily_stop import DailyStop
 from backtest import dollar_pnl, slippage_bps
 from team import team_review
 from traded_mints import TradedMints
+from post_loss_review import failed_review, review_is_complete
 
 
 def iso(ts):
     return datetime.fromtimestamp(ts, timezone.utc).isoformat()
+
+
+def _loss_pnl(trade):
+    try:
+        pnl = float(trade.get("pnl_usd"))
+    except (TypeError, ValueError):
+        return None
+    return pnl
+
+
+def _invoke_loss_review(reviewer, trade):
+    """Run the review, retry once on a crash or an empty document, then write the failure."""
+    last = None
+    for _attempt in (1, 2):
+        try:
+            doc = reviewer(trade)
+        except Exception as exc:
+            last = exc
+            continue
+        if review_is_complete(doc):
+            return doc
+        last = doc
+    if isinstance(last, Exception):
+        reason = f"{type(last).__name__}: {last}"
+    elif isinstance(last, dict):
+        reason = "post-loss review returned an incomplete document"
+    else:
+        reason = "post-loss review returned an empty document"
+    return failed_review(trade, reason)
 
 
 class PaperAccount:
@@ -54,17 +84,66 @@ class PaperAccount:
                 self.save()
                 post('Risk Manager',f"EXIT POLICY UPDATE {p.get('symbol',p['mint'])} ({p['mint']}): take profit {old*100:g}% -> {floor*100:g}% (minimum floor). Stop remains {p['stop_fraction']*100:g}%; time limit remains {p['max_hold_seconds']/3600:g}h. Applied to the existing open position; no new entry.")
 
+    def _pending_loss_reviews(self):
+        pending = []
+        for trade in self.data.get("closed") or []:
+            pnl = _loss_pnl(trade)
+            if pnl is not None and pnl < 0 and not review_is_complete(trade.get("post_loss_review")):
+                pending.append(trade)
+        return pending
+
+    def _reject_until_loss_reviewed(self, post):
+        pending = self._pending_loss_reviews()
+        if not pending:
+            return False
+        names = ", ".join(f"{trade.get('symbol') or trade.get('mint') or '?'} ({trade.get('id')})" for trade in pending[:6])
+        post("Risk Manager", f"POST-LOSS REVIEW REQUIRED before a new paper entry: {names}. The review runs on that coin and cannot be skipped or left empty.")
+        return True
+
     def reconcile(self, memory, close_event):
         # Durable account journal is written BEFORE ledger/chat. Replay is idempotent.
+        # A losing close is reviewed before its chat delivery and before any later entry.
+        reviewer = getattr(self, "loss_review", None)
+        refresh = getattr(self, "loss_review_refresh", None)
+        surface = getattr(self, "loss_review_surface", None)
         for t in self.data['closed']:
+            pnl = _loss_pnl(t)
+            is_loss = pnl is not None and pnl < 0
+            if is_loss and not review_is_complete(t.get("post_loss_review")) and reviewer is not None:
+                t["post_loss_review"] = _invoke_loss_review(reviewer, t)
+                self.save()
+                if t.get("review_delivered") and refresh is not None:
+                    refresh(t)
+            if is_loss and review_is_complete(t.get("post_loss_review")) and not t.get("loss_lesson_stored"):
+                memory.record_loss_review(t["post_loss_review"])
+                t["loss_lesson_stored"] = True
+                self.save()
             memory.record_trades([t])
+            if is_loss and review_is_complete(t.get("post_loss_review")):
+                memory.upsert_trade(t)
             if not t.get('review_delivered'):
                 close_event(t)
                 t['review_delivered'] = True
                 self.save()
+            if is_loss and review_is_complete(t.get("post_loss_review")) and not t.get("loss_review_surfaced") and surface is not None:
+                try:
+                    surface(t)
+                except Exception:
+                    pass
+                else:
+                    t["loss_review_surfaced"] = True
+                    self.save()
 
-    def manage(self, market, memory, post, close_event, now=None):
+    def complete_loss_reviews(self, memory, close_event):
+        pending = {trade.get("id") for trade in self._pending_loss_reviews()}
+        self.reconcile(memory, close_event)
+        return sum(1 for trade in self.data["closed"] if trade.get("id") in pending and review_is_complete(trade.get("post_loss_review")))
+
+    def manage(self, market, memory, post, close_event, now=None, loss_review=None, loss_review_refresh=None, loss_review_surface=None):
         now = now or time.time()
+        self.loss_review = loss_review
+        self.loss_review_refresh = loss_review_refresh
+        self.loss_review_surface = loss_review_surface
         self.sync_exit_policy(post)
         self.reconcile(memory, close_event)
         positions = self.data['positions']
@@ -105,6 +184,8 @@ class PaperAccount:
         return closed
 
     def try_entry(self, tokens, market, memory, post, now=None):
+        if self._reject_until_loss_reviewed(post):
+            return None
         if self.config.get('tiered_selection_enabled'):
             return self.try_tiered_entry(tokens,market,memory,post,now)
         now = now or time.time()

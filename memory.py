@@ -53,6 +53,7 @@ class Memory:
             "observations": [],
             "variants": [],
             "champion_id": None,
+            "loss_reviews": [],
         }
         self.feed = {"updated": None, "next_id": 1, "events": []}
         self.index = {
@@ -284,6 +285,55 @@ class Memory:
             self._rebuild_index(known)
         return fresh
 
+    def upsert_trade(self, trade):
+        """Replace one journaled fill so a post-loss review stays on the ledger row."""
+        trade_id = trade.get("id")
+        exit_time = trade.get("exit_time")
+        if not trade_id or not exit_time:
+            return False
+        day = _exit_day(exit_time)
+        path = self.ledger_dir / f"{day}.json"
+        doc = read_json(path, None)
+        if not isinstance(doc, dict) or not isinstance(doc.get("trades"), list):
+            return False
+        for index, row in enumerate(doc["trades"]):
+            if isinstance(row, dict) and row.get("id") == trade_id:
+                doc["trades"][index] = trade
+                doc["trade_count"] = len(doc["trades"])
+                doc["pnl_usd"] = round(sum((item.get("pnl_usd") or 0) for item in doc["trades"] if isinstance(item, dict)), 4)
+                atomic_json(path, doc)
+                return True
+        return False
+
+    def record_loss_review(self, review):
+        """Store one post-loss review in lessons. Same trade id replaces the prior text."""
+        if not isinstance(review, dict) or not str(review.get("text") or "").strip():
+            return None
+        reviews = [row for row in (self.data.get("loss_reviews") or []) if isinstance(row, dict)]
+        trade_id = review.get("trade_id")
+        stored = {
+            "trade_id": trade_id,
+            "mint": review.get("mint"),
+            "symbol": review.get("symbol"),
+            "pnl_usd": review.get("pnl_usd"),
+            "checked_at": review.get("checked_at"),
+            "attempts": review.get("attempts"),
+            "factors": review.get("factors") or [],
+            "checks": review.get("checks") or [],
+            "improve_entries": review.get("improve_entries"),
+            "text": review.get("text"),
+        }
+        prior = next((row for row in reviews if trade_id and row.get("trade_id") == trade_id), None)
+        if prior and prior.get("text") == stored["text"] and prior.get("improve_entries") == stored["improve_entries"]:
+            return prior
+        reviews = [row for row in reviews if not (trade_id and row.get("trade_id") == trade_id)]
+        reviews.append(stored)
+        self.data["loss_reviews"] = reviews[-40:]
+        summary = stored.get("improve_entries") or stored["text"]
+        self._observe("loss_review", f"{stored.get('symbol') or stored.get('mint') or 'loss'} post-loss review. {summary}", "Backtester")
+        self.save()
+        return stored
+
     def _rebuild_index(self, known_ids):
         days = []
         total = 0.0
@@ -473,6 +523,15 @@ class Memory:
             lines.append("")
         for row in observations:
             lines.append(f"- **{row.get('time_et')}** ({row.get('source')}): {row.get('text')}")
+        lines += ["", "## Post-loss reviews", ""]
+        loss_reviews = self.data.get("loss_reviews") or []
+        if not loss_reviews:
+            lines.append("None yet.")
+            lines.append("")
+        for row in loss_reviews:
+            flat = " ".join(str(row.get("text") or "").split())
+            lines.append(f"- **{row.get('checked_at')}** {row.get('symbol') or row.get('mint')}: {flat}")
+            lines.append("")
         lines += ["", "## Tried and rejected variants", ""]
         variants = [v for v in (self.data.get("variants") or []) if v.get("status") in {"rejected", "tried", "replaced", "champion", "deferred"}]
         if not variants:

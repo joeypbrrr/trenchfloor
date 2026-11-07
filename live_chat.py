@@ -169,6 +169,9 @@ class LiveChat:
                 improve.append("The recorded time stop ended the trade. No additional entry defect was stored, so no new entry filter is identified.")
             else:
                 improve.append("No recorded entry defect is available, so no new entry filter is identified.")
+        posted = t.get("post_loss_review") if isinstance(t.get("post_loss_review"), dict) else None
+        if pnl is not None and pnl < 0 and posted and str(posted.get("improve_entries") or "").strip():
+            improve.append(str(posted["improve_entries"]).strip())
 
         lines = [
             f"TRADE REVIEW / {symbol} / {outcome} / P&L {'+' if pnl > 0 else ''}${pnl:.2f} / exit {reason}.",
@@ -187,6 +190,8 @@ class LiveChat:
             if reason == "stop" and stop is not None:
                 avoid.append(f"The recorded stop fraction was {stop * 100:.0f}%. This review does not change that exit rule.")
             lines.append("How to avoid similar losses: " + " ".join(avoid))
+        if pnl is not None and pnl < 0 and posted and str(posted.get("text") or "").strip():
+            lines.append(str(posted["text"]).strip())
         return {
             "agent": "Backtester",
             "kind": "trade_review",
@@ -194,6 +199,23 @@ class LiveChat:
             "time": timestamp or datetime.now(timezone.utc).isoformat(),
             "trade_id": t.get("id"),
         }
+
+    def rewrite_trade_review(self, trade, timestamp=None):
+        """Replace the one trade_review for this close, or append it if none was stored."""
+        msg = self.compose_trade_review(trade, timestamp)
+        for existing in self.data.get("messages") or []:
+            if existing.get("kind") == "trade_review" and existing.get("trade_id") == trade.get("id"):
+                existing["text"] = msg["text"]
+                existing["agent"] = msg["agent"]
+                self.save()
+                return existing
+        self.data.setdefault("messages", []).append(msg)
+        reviewed = self.data.setdefault("trade_reviews", [])
+        if trade.get("id") and trade.get("id") not in reviewed:
+            reviewed.append(trade["id"])
+        self.data["messages"] = self.data["messages"][-1000:]
+        self.save()
+        return msg
 
     def review(self, t, timestamp):
         messages, suggestions = [], []
