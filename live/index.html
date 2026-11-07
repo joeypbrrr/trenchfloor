@@ -386,6 +386,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <div class="equity"><small id="equityLabel">TEAM EQUITY CURVE · PAPER</small><svg id="equity" viewBox="0 0 300 64" preserveAspectRatio="none" aria-label="Cumulative team paper P and L"></svg></div>
       <p class="method-note">Days are America/New_York exit dates from <span class="mono">data/ledger/</span>. Tap a day for its paper trades: token, symbol, entry and exit in ET, dollar P&amp;L, who proposed it, the team vote, and DexScreener / GMGN links.</p>
     </section>
+    <p class="method-note" id="accountStatus">Paper account: waiting for current snapshot.</p>
     <section class="panel" aria-labelledby="ledgerHeading">
       <div class="panel-heading">
         <div><span class="section-num">05</span><h2 id="ledgerHeading">TEAM PAPER LEDGER</h2></div>
@@ -458,7 +459,7 @@ const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<
 const money = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
 const moneyShort = (v) => { const n = Number(v); const a = Math.abs(n); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + (a >= 1000 ? (a / 1000).toFixed(1) + 'k' : a >= 100 ? Math.round(a) : a.toFixed(2)); };
 const price = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return '$' + n.toLocaleString('en-US', { maximumFractionDigits: Math.abs(n) >= 1 ? 4 : Math.abs(n) >= 0.01 ? 6 : 8 }); };
-const ET_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+const ET_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit' });
 const et = (v) => { if (!v) return '—'; const d = new Date(v); return Number.isNaN(d.getTime()) ? '—' : ET_FMT.format(d) + ' ET'; };
 const todayET = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -467,7 +468,7 @@ const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','S
 function parts(iso){ const [y, m, d] = iso.split('-').map(Number); return { y, m, d, dow: new Date(Date.UTC(y, m - 1, d)).getUTCDay() }; }
 function longDate(iso){ const p = parts(iso); return WEEKDAYS[p.dow] + ', ' + MONTHS[p.m - 1] + ' ' + p.d + ', ' + p.y; }
 const PAGES_HOST=location.hostname.endsWith('github.io');
-async function loadJSON(path){ if(PAGES_HOST&&path.startsWith('data/'))path='../'+path; const r = await fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); if (!r.ok) { const e = new Error(path + ' HTTP ' + r.status); e.status = r.status; throw e; } return r.json(); }
+async function loadJSON(path){ if(PAGES_HOST&&path.startsWith('data/')&&/\/live\/(?:index.html)?$/.test(location.pathname))path='../'+path; const r = await fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); if (!r.ok) { const e = new Error(path + ' HTTP ' + r.status); e.status = r.status; throw e; } return r.json(); }
 
 let state = null, ledgerDays = [], calMonths = [], calIndex = 0, seenFeed = null;
 
@@ -521,6 +522,7 @@ function empty(text){ const p = document.createElement('p'); p.className = 'empt
 
 function renderGoal(goal){
   const el = $('goalLine');
+  if(state&&state.daily_stop){const d=state.daily_stop;el.textContent='DAILY GOAL $300 · '+money(d.realized_pnl_usd)+' REALIZED TODAY · '+(d.halted?'HARD STOP UNTIL ET MIDNIGHT':'ENTRY GATE ARMED')+' · Max 1 new entry / rolling hour';return;}
   if (!goal) { el.textContent = 'Standing goal: $3,000–$5,000/mo extra · no projection yet (waiting for a cycle that writes one).'; return; }
   const head = 'GOAL $' + Number(goal.monthly_goal_low_usd).toLocaleString() + '–$' + Number(goal.monthly_goal_high_usd).toLocaleString() + '/MO';
   const b = goal.best;
@@ -573,6 +575,7 @@ function renderMetrics(d){
   $('winRate').textContent = w + l ? Math.round(w / (w + l) * 100) + '%' : '—';
   const v = votedTrades(d);
   $('avgVote').textContent = v.length ? (v.reduce((s, t) => s + (t.team.approve || 0), 0) / v.length).toFixed(1) + ' / 6' : '—';
+  if(d.paper_account){const a=d.paper_account;$('accountStatus').textContent='PAPER BALANCE '+money(a.balance_usd)+' · CASH '+money(a.cash_usd)+' · RESERVED '+money(a.reserved_usd)+' · STARTED '+et(a.started)+' · '+a.sizing;}
   $('fillSub').textContent = (days.length ? days.length + ' DAYS · ' : '') + 'SIMULATED FILLS';
 }
 function renderLedger(d){
@@ -602,7 +605,7 @@ function renderState(d){
   const stale = d.health && d.health.stale_agents && d.health.stale_agents.length;
   $('systemState').textContent = d.ok ? (stale ? 'STALE AGENT' : 'FLOOR ONLINE') : 'ATTENTION';
   $('liveDot').className = 'live-dot ' + (d.ok && !stale ? 'ok-dot' : 'bad-dot');
-  $('lastCycle').textContent = d.last_cycle ? 'Last cycle ' + et(d.last_cycle) + ' · ' + (d.data_status || '') : 'Waiting for the first cycle';
+  $('lastCycle').textContent = d.last_cycle ? 'Last updated ' + et(d.last_updated_et||d.last_cycle) + ' · ' + (d.data_status || '') : 'Waiting for the first cycle';
   $('sceneStatus').textContent = d.ok ? 'AGENTS SEATED · LIVE' : 'CHECK ERRORS';
   renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
   ledgerDays = (d.ledger && d.ledger.days) || ledgerDays;
@@ -709,7 +712,7 @@ let liveCache=null;
 const liveBadge = document.createElement('div'); liveBadge.style.cssText='padding:8px 12px;color:#ffb04b;font:11px monospace;text-align:center;background:#1a1009';
 liveBadge.textContent='CONNECTING TO LIVE RESEARCH'; document.body.prepend(liveBadge);
 function liveHealth(){
-  if(staticMode){liveBadge.textContent='Preview: updates every few minutes; instant mode runs on the private server';return;}
+  if(staticMode){liveBadge.textContent='PAPER ONLY · PAGES SNAPSHOT · HOURLY PUBLICATION · POLLS EVERY 60s · Last updated '+(state?et(state.last_updated_et||state.last_cycle):'waiting');return;}
   const age = liveHeartbeat ? (Date.now()-Date.parse(liveHeartbeat))/1000 : Infinity;
   liveBadge.textContent = !liveConnected ? 'DISCONNECTED — RECONNECTING' : age < 20 ? '● LIVE PUSH · RESEARCH HEARTBEAT '+Math.max(0,Math.round(age))+'s AGO · PAPER ONLY' : 'DASHBOARD CONNECTED · RESEARCH HEARTBEAT MISSING / STALE';
 }

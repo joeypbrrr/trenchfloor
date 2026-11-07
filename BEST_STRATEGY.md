@@ -33,14 +33,12 @@ ATH is the highest high in the free GeckoTerminal window fetched for each pool (
 
 ## Goal progress
 
-Goal $3k–5k/mo: no version qualifies with a monthly projection this cycle (need ≥5 out-of-sample trades and a positive average). dip_20_40_stop12_tp25_hold8 projects $-22.71/mo (rejected, 5 OOS trades). dip_20_40_stop12_tp25_hold16 projects $-214.13/mo (rejected, 5 OOS trades). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.
+Goal $3k–5k/mo: no version qualifies with a monthly projection this cycle (need ≥5 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.
 
-Paper ticket: $100. Updated 2026-11-06T23:09:36.706028-05:00 ET.
+Paper ticket: $100. Updated 2026-11-06T23:35:20.242204-05:00 ET.
 
 | Version | Role | Status | OOS trades | Avg $/trade | Trades/mo | Projected $/mo at ticket | Ticket for low goal | Ticket for high goal | Qualifies |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `dip_20_40_stop12_tp25_hold8` | candidate | rejected | 5 | $-0.38 | 59.90 | $-22.71 | — | — | no |
-| `dip_20_40_stop12_tp25_hold16` | candidate | rejected | 5 | $-3.58 | 59.90 | $-214.13 | — | — | no |
 | `dip_20_40_stop8_tp15_hold8` | champion | champion | 9 | $0.41 | — | — | — | — | yes |
 
 Projected monthly P&L = out-of-sample average $ per trade × out-of-sample trades per month (pooled OOS trade count ÷ the OOS window length × 30.44 days). Ticket needed = $100 × goal ÷ projected monthly. Promotion requires ≥5 OOS trades, a positive average, and a variant that is not rejected; among those, the higher projected monthly P&L wins.
