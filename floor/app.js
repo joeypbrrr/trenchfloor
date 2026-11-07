@@ -86,6 +86,20 @@ function renderStrategy(data) {
   $("bestLinkText").textContent = best.id ? best.id + " · out-of-sample champion" : "No out-of-sample champion yet";
 }
 
+function renderGoal(goal) {
+  const el = $("goalLine");
+  if (!el) return;
+  if (!goal) { el.textContent = "Standing goal: $3,000–$5,000/mo extra · no projection yet"; return; }
+  const low = goal.monthly_goal_low_usd, high = goal.monthly_goal_high_usd, best = goal.best;
+  const head = `GOAL $${Number(low).toLocaleString()}–$${Number(high).toLocaleString()}/MO`;
+  if (!best) {
+    el.innerHTML = `<b>${esc(head)}</b> · No version qualifies yet (needs ≥5 out-of-sample trades and a positive average). Rules are not loosened to chase the goal.`;
+    return;
+  }
+  const pct = goal.progress_pct_of_low == null ? 0 : Math.max(0, Math.min(100, goal.progress_pct_of_low));
+  el.innerHTML = `<b>${esc(head)}</b> · ${esc(best.id)} projects <b class="${best.monthly_usd >= 0 ? "pos" : "neg"}">${money(best.monthly_usd)}/mo</b> at $${Math.round(goal.notional_usd)} paper tickets · needs ~$${Number(best.ticket_for_low_usd).toLocaleString()}–$${Number(best.ticket_for_high_usd).toLocaleString()} tickets<div class="goal-bar"><span style="width:${pct}%"></span></div><small>${pct.toFixed(2)}% of the low goal at current tickets · paper projection only</small>`;
+}
+
 function renderState(data) {
   state = data;
   $("systemState").textContent = data.ok ? (data.health?.stale_agents?.length ? "STALE AGENT" : "FLOOR ONLINE") : "ATTENTION REQUIRED";
@@ -97,6 +111,7 @@ function renderState(data) {
   $("pnl").textContent = summary.paper_pnl_usd == null ? "—" : money(summary.paper_pnl_usd);
   $("pnl").className = summary.paper_pnl_usd > 0 ? "pos" : summary.paper_pnl_usd < 0 ? "neg" : "";
   renderStrategy(data);
+  renderGoal(data.goal);
   const watch = data.watchlist || [];
   $("watchlist").innerHTML = watch.length ? watch.map((t) => tokenCard(t, false)).join("") : `<p class="pad muted">No token passed safety and the lessons this cycle. Filter rejects and failed reviews are listed below. Nothing was invented to fill the board.</p>`;
   const rejected = [...(data.rejected_review || []), ...(data.filter_rejects_sample || [])];
