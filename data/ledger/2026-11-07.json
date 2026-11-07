@@ -2,8 +2,8 @@
   "date": "2026-11-07",
   "timezone": "America/New_York",
   "label": "PAPER / SIMULATED",
-  "pnl_usd": -14.2264,
-  "trade_count": 4,
+  "pnl_usd": -18.3841,
+  "trade_count": 5,
   "trades": [
     {
       "id": "paper-278e35c1222548f0b825bd22197c6181",
@@ -616,6 +616,172 @@
       "loss_lesson_stored": true,
       "review_delivered": true,
       "loss_review_surfaced": true
+    },
+    {
+      "id": "paper-7b9b2df09a4f4bff8a950db0eb670061",
+      "mode": "forward:paper",
+      "realized": true,
+      "tier": "primary",
+      "selection_score": 17.155062,
+      "mint": "HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+      "pool": "5E3dXLXGwmTDCokA51WYYaKttjFZBwqCoyUHBUi5gt2m",
+      "symbol": "GATO",
+      "name": "GTA6CAT",
+      "entry_ts": 1794031307.88147,
+      "entry_time": "2026-11-07T06:01:47.881470+00:00",
+      "entry_price": 0.01241,
+      "entry_frac_of_ath": 0.8462600877592966,
+      "notional_usd": 90.0,
+      "slippage_bps_per_side": 80,
+      "cost_rate": 0.011,
+      "entry_liquidity_usd": 370962.45,
+      "entry_volume_usd": 1522734.87,
+      "top_human_pct": 3.3245,
+      "stop_fraction": 0.12,
+      "target_fraction": 0.35,
+      "max_hold_seconds": 57600,
+      "dex_url": "https://dexscreener.com/solana/5E3dXLXGwmTDCokA51WYYaKttjFZBwqCoyUHBUi5gt2m",
+      "gmgn_url": "https://gmgn.ai/sol/token/HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+      "strategy_id": "forward_ranked_primary",
+      "hard_rug_checks": [
+        {
+          "name": "mint_authority_revoked",
+          "pass": true,
+          "detail": "explicitly revoked"
+        },
+        {
+          "name": "freeze_authority_revoked",
+          "pass": true,
+          "detail": "explicitly revoked"
+        },
+        {
+          "name": "sellable_not_honeypot",
+          "pass": true,
+          "detail": "read-only positive sell route required; known paused/nontransferable rejects; unknown route/paused state rejects; no execution"
+        }
+      ],
+      "checklist_audit": {
+        "active_rule_keys": [],
+        "violations": []
+      },
+      "fallback_penalties": [],
+      "team": {
+        "approved": true,
+        "approve": 5,
+        "reject": 0,
+        "abstain": 1,
+        "tally": "5/6 approve",
+        "rule": "majority 5/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3245% (\u2264 20.0%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Ranked primary candidate, score 17.155062; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "approve",
+            "reason": "0 earlier simulated fills on this pool; no evidence against."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under forward_ranked_primary (stop 12%, target 35%)."
+          }
+        ],
+        "proposed_by": "Data Scout"
+      },
+      "proposed_by": "Data Scout",
+      "mark_price_usd": 0.0121,
+      "mark_time": "2026-11-07T22:49:23.476124+00:00",
+      "exit_ts": 1794091763.476124,
+      "exit_time": "2026-11-07T22:49:23.476124+00:00",
+      "exit_price": 0.0121,
+      "exit_reason": "time",
+      "pnl_usd": -4.157722,
+      "exit_liquidity_usd": 366623.46,
+      "exit_volume_usd": 2000812.7,
+      "post_loss_review": {
+        "version": 1,
+        "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061",
+        "mint": "HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+        "symbol": "GATO",
+        "pnl_usd": -4.157722,
+        "checked_at": "2026-11-07T22:49:53.893175+00:00",
+        "attempts": 2,
+        "factors": [
+          {
+            "check": "fresh_wallet_cluster",
+            "text": "3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)"
+          }
+        ],
+        "checks": [
+          {
+            "name": "holder_distribution",
+            "result": "clean",
+            "detail": "top-1 3.32%; top-10 14.23%; excluding pool and burn; entry snapshot top non-LP holder 3.32%"
+          },
+          {
+            "name": "fresh_wallet_cluster",
+            "result": "flag",
+            "detail": "3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)"
+          },
+          {
+            "name": "linked_wallet_cluster",
+            "result": "clean",
+            "detail": "largest shared funder uvkhfimfuMJKUDMNEUmqACWRXMG8QSQA2i2SYEdXTHn has 1 wallet(s) and 1.42%; 4 holders had a known funder"
+          },
+          {
+            "name": "bundle_sniper_share",
+            "result": "clean",
+            "detail": "no same-slot bundle and no sniper share at the cap in 3 known acquisition slots"
+          },
+          {
+            "name": "dev_creator",
+            "result": "failed",
+            "detail": "failed after 2 attempts: creator 8CW4bxSMm3gLCdWgW8qSqTbQkm3jQug4xe1nmmdoCUhY, 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm holding 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm 3.32%; sells were not read: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not support\u2026"
+          },
+          {
+            "name": "liquidity",
+            "result": "clean",
+            "detail": "liquidity $370,962.45 at entry \u2192 $366,623.46 at exit (-1.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
+          },
+          {
+            "name": "volume_profile",
+            "result": "failed",
+            "detail": "failed after 2 attempts: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien. Recorded volume $1,522,734.87 at entry \u2192 $2,000,812.70 at exit (31.4%)"
+          },
+          {
+            "name": "price_mcap_path",
+            "result": "clean",
+            "detail": "price 0.01241 \u2192 0.0121 (-2.5%) over 1007.6 minutes; entry was 84.6% of the recorded window ATH; market cap at review $11,971,783.00; recorded stop 12%"
+          },
+          {
+            "name": "on_chain_anomalies",
+            "result": "clean",
+            "detail": "mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0121."
+          }
+        ],
+        "improve_entries": "Improve entries: GATO showed 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%). This does not change entry gates or config thresholds.",
+        "text": "POST-LOSS REVIEW / GATO / $-4.16 / exit time.\nContributing factors:\n- 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)\nChecks:\n- holder_distribution: CLEAN top-1 3.32%; top-10 14.23%; excluding pool and burn; entry snapshot top non-LP holder 3.32%\n- fresh_wallet_cluster: FLAG 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN largest shared funder uvkhfimfuMJKUDMNEUmqACWRXMG8QSQA2i2SYEdXTHn has 1 wallet(s) and 1.42%; 4 holders had a known funder\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 3 known acquisition slots\n- dev_creator: FAILED failed after 2 attempts: creator 8CW4bxSMm3gLCdWgW8qSqTbQkm3jQug4xe1nmmdoCUhY, 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm holding 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm 3.32%; sells were not read: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not support\u2026\n- liquidity: CLEAN liquidity $370,962.45 at entry \u2192 $366,623.46 at exit (-1.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: FAILED failed after 2 attempts: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien. Recorded volume $1,522,734.87 at entry \u2192 $2,000,812.70 at exit (31.4%)\n- price_mcap_path: CLEAN price 0.01241 \u2192 0.0121 (-2.5%) over 1007.6 minutes; entry was 84.6% of the recorded window ATH; market cap at review $11,971,783.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0121.\nImprove entries: GATO showed 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%). This does not change entry gates or config thresholds."
+      },
+      "loss_lesson_stored": true
     }
   ]
 }

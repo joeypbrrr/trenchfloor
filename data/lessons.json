@@ -84,13 +84,6 @@
   ],
   "observations": [
     {
-      "time": "2026-11-07T02:21:50.171011+00:00",
-      "time_et": "2026-11-06T21:21:50.171012-05:00",
-      "kind": "paper_loss",
-      "source": "Backtester",
-      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
-    },
-    {
       "time": "2026-11-07T02:21:50.171018+00:00",
       "time_et": "2026-11-06T21:21:50.171019-05:00",
       "kind": "paper_loss",
@@ -642,6 +635,13 @@
       "kind": "loss_review",
       "source": "Backtester",
       "text": "GLITCH post-loss review. Improve entries: no red flag was measured on GLITCH. price 0.002865 \u2192 0.002288 (-20.1%) over 375.4 minutes; entry was 55.4% of the recorded window ATH; market cap at review $2,119,417.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close."
+    },
+    {
+      "time": "2026-11-07T22:49:53.894331+00:00",
+      "time_et": "2026-11-07T17:49:53.894350-05:00",
+      "kind": "loss_review",
+      "source": "Backtester",
+      "text": "GATO post-loss review. Improve entries: GATO showed 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%). This does not change entry gates or config thresholds."
     }
   ],
   "variants": [
@@ -1503,6 +1503,69 @@
       ],
       "improve_entries": "Improve entries: no red flag was measured on GLITCH. price 0.002865 \u2192 0.002288 (-20.1%) over 375.4 minutes; entry was 55.4% of the recorded window ATH; market cap at review $2,119,417.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.",
       "text": "POST-LOSS REVIEW / GLITCH / $-14.35 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 3.59%; top-10 27.97%; excluding pool and burn; entry snapshot top non-LP holder 3.59%\n- fresh_wallet_cluster: CLEAN 0 fresh wallets in 5 sampled top holders holding 0.00% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 0 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 0 known acquisition slots\n- dev_creator: CLEAN creator wallets 3aHjYRK99d3gBKeU3qJ6BDU7JJjcgYamEmvRoe4fuSQL, 26XjAAxuHjkampzMDErpcp9HG3QH15Ds8NufAgp7sB9S; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 4 sampled pool fills\n- liquidity: CLEAN liquidity $148,008.09 at entry \u2192 $131,881.96 at exit (-10.9%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $242,131.62 at entry \u2192 $271,769.22 at exit (12.2%). wash no wash round-trip in 4 sampled pool fills\n- price_mcap_path: CLEAN price 0.002865 \u2192 0.002288 (-20.1%) over 375.4 minutes; entry was 55.4% of the recorded window ATH; market cap at review $2,119,417.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.002288.\nImprove entries: no red flag was measured on GLITCH. price 0.002865 \u2192 0.002288 (-20.1%) over 375.4 minutes; entry was 55.4% of the recorded window ATH; market cap at review $2,119,417.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close."
+    },
+    {
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061",
+      "mint": "HsprHxBRgiVaQdRf3TnKNuZZtaX9JUSPgMFdAkk6pump",
+      "symbol": "GATO",
+      "pnl_usd": -4.157722,
+      "checked_at": "2026-11-07T22:49:53.893175+00:00",
+      "attempts": 2,
+      "factors": [
+        {
+          "check": "fresh_wallet_cluster",
+          "text": "3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)"
+        }
+      ],
+      "checks": [
+        {
+          "name": "holder_distribution",
+          "result": "clean",
+          "detail": "top-1 3.32%; top-10 14.23%; excluding pool and burn; entry snapshot top non-LP holder 3.32%"
+        },
+        {
+          "name": "fresh_wallet_cluster",
+          "result": "flag",
+          "detail": "3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)"
+        },
+        {
+          "name": "linked_wallet_cluster",
+          "result": "clean",
+          "detail": "largest shared funder uvkhfimfuMJKUDMNEUmqACWRXMG8QSQA2i2SYEdXTHn has 1 wallet(s) and 1.42%; 4 holders had a known funder"
+        },
+        {
+          "name": "bundle_sniper_share",
+          "result": "clean",
+          "detail": "no same-slot bundle and no sniper share at the cap in 3 known acquisition slots"
+        },
+        {
+          "name": "dev_creator",
+          "result": "failed",
+          "detail": "failed after 2 attempts: creator 8CW4bxSMm3gLCdWgW8qSqTbQkm3jQug4xe1nmmdoCUhY, 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm holding 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm 3.32%; sells were not read: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not support\u2026"
+        },
+        {
+          "name": "liquidity",
+          "result": "clean",
+          "detail": "liquidity $370,962.45 at entry \u2192 $366,623.46 at exit (-1.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
+        },
+        {
+          "name": "volume_profile",
+          "result": "failed",
+          "detail": "failed after 2 attempts: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien. Recorded volume $1,522,734.87 at entry \u2192 $2,000,812.70 at exit (31.4%)"
+        },
+        {
+          "name": "price_mcap_path",
+          "result": "clean",
+          "detail": "price 0.01241 \u2192 0.0121 (-2.5%) over 1007.6 minutes; entry was 84.6% of the recorded window ATH; market cap at review $11,971,783.00; recorded stop 12%"
+        },
+        {
+          "name": "on_chain_anomalies",
+          "result": "clean",
+          "detail": "mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0121."
+        }
+      ],
+      "improve_entries": "Improve entries: GATO showed 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%). This does not change entry gates or config thresholds.",
+      "text": "POST-LOSS REVIEW / GATO / $-4.16 / exit time.\nContributing factors:\n- 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)\nChecks:\n- holder_distribution: CLEAN top-1 3.32%; top-10 14.23%; excluding pool and burn; entry snapshot top non-LP holder 3.32%\n- fresh_wallet_cluster: FLAG 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN largest shared funder uvkhfimfuMJKUDMNEUmqACWRXMG8QSQA2i2SYEdXTHn has 1 wallet(s) and 1.42%; 4 holders had a known funder\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 3 known acquisition slots\n- dev_creator: FAILED failed after 2 attempts: creator 8CW4bxSMm3gLCdWgW8qSqTbQkm3jQug4xe1nmmdoCUhY, 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm holding 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm 3.32%; sells were not read: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not support\u2026\n- liquidity: CLEAN liquidity $370,962.45 at entry \u2192 $366,623.46 at exit (-1.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: FAILED failed after 2 attempts: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien. Recorded volume $1,522,734.87 at entry \u2192 $2,000,812.70 at exit (31.4%)\n- price_mcap_path: CLEAN price 0.01241 \u2192 0.0121 (-2.5%) over 1007.6 minutes; entry was 84.6% of the recorded window ATH; market cap at review $11,971,783.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0121.\nImprove entries: GATO showed 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%). This does not change entry gates or config thresholds."
     }
   ]
 }

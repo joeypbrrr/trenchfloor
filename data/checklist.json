@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07T19:25:14.100972+00:00",
+  "updated": "2026-11-07T22:49:54.185055+00:00",
   "items": [
     {
       "key": "stop_confirmation",
@@ -20,6 +20,25 @@
         }
       ],
       "rule_text": "Require a recently closed green hourly candle after a stop-out loss.",
+      "enabled": true
+    },
+    {
+      "key": "time_exit",
+      "suggestion": "Require complete entry market and holder evidence after a time-exit loss; 16h time limit unchanged.",
+      "supporting_losses": 1,
+      "trade_ids": [
+        "paper-7b9b2df09a4f4bff8a950db0eb670061"
+      ],
+      "status": "ACTIVE \u2014 primary violation rejects; fallback violation penalizes score",
+      "rules": [
+        {
+          "field": "evidence_complete",
+          "op": "eq",
+          "value": true,
+          "missing_violation": true
+        }
+      ],
+      "rule_text": "Require complete entry market and holder evidence after a time-exit loss; 16h time limit unchanged.",
       "enabled": true
     }
   ],

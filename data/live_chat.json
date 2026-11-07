@@ -1,72 +1,6 @@
 {
-  "updated": "2026-11-07T19:25:14.100972+00:00",
+  "updated": "2026-11-07T22:49:54.185055+00:00",
   "messages": [
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Tier market candidates: primary 16, fallback market pool 59; 0 excluded: already traded (before scoring).",
-      "time": "2026-11-07T07:42:31.074367-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "PUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 59.41% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
-      "time": "2026-11-07T07:42:46.548725-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK PUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 59.41% (cap 40%)",
-      "time": "2026-11-07T07:42:46.558349-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK PUMP: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien",
-      "time": "2026-11-07T07:42:46.566303-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK PUMP: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint",
-      "time": "2026-11-07T07:42:46.575667-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK PUMP: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint",
-      "time": "2026-11-07T07:42:46.583777-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "BIRB: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 88.80% (cap 40%); lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
-      "time": "2026-11-07T07:43:16.575883-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK BIRB: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 88.80% (cap 40%)",
-      "time": "2026-11-07T07:43:16.581953-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK BIRB: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint",
-      "time": "2026-11-07T07:43:16.585400-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK BIRB: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint",
-      "time": "2026-11-07T07:43:16.588568-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "STONK: fresh_wallet_cluster: FAIL 2 fresh wallets in the top-holder sample (block at 3) holding 8.15% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
-      "time": "2026-11-07T07:43:34.906865-05:00"
-    },
     {
       "agent": "Risk Manager",
       "kind": "info",
@@ -1210,6 +1144,82 @@
       "kind": "info",
       "text": "Cycle 11 finished. 86 mints \u00b7 0 primary \u00b7 0 fallback \u00b7 0 new paper entry. Next scheduled cycle 2026-11-07 15:25:13 ET; rolling-hour entry cap remains authoritative.",
       "time": "2026-11-07T14:25:13.912837-05:00"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "trade_close",
+      "text": "Forward paper realized close GATO: $-4.16",
+      "time": "2026-11-07T17:49:53.899318-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / GATO closed for $-4.16. Exit reason: time. This describes recorded facts, not a proven cause.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Entry rationale: ranked primary candidate with common hard rug blocks and recorded team majority. Green-candle confirmation optional; fallback ATH optional. majority 5/5 of voting agents A passing entry check is not a guarantee; the approved checklist policy applies structured rules to subsequent selections, not proof of causation.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Entry was 84.6% of recorded window ATH (15.4% below it).",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Recorded liquidity: $370,962.45 at entry \u2192 $366,623.46 at exit.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Recorded volume: $1,522,734.87 at entry \u2192 $2,000,812.70 at exit.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Recorded top non-LP holder: 3.3245%. Linked-wallet changes were not recorded.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Held 1007.6 minutes; modeled slippage per side: 80 bps. Actual execution slippage is unavailable in paper research.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / No time-aligned, verified X data supplied with this close; no social explanation inferred.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / CHECKLIST RULE ADDED/UPDATED (1 supporting loss(es), not causal proof): Require complete entry market and holder evidence after a time-exit loss; 16h time limit unchanged. Rules [{'field': 'evidence_complete', 'op': 'eq', 'value': True, 'missing_violation': True}]. Applied before selection: PRIMARY violation rejects; FALLBACK violation penalizes score.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "trade_review",
+      "text": "TRADE REVIEW / GATO / loss / P&L $-4.16 / exit time.\nWhat went right: Recorded hard checks passed: mint_authority_revoked, freeze_authority_revoked, sellable_not_honeypot.\nWhat went wrong: Recorded P&L $-4.16 after modeled fees and slippage. Exit reason recorded as time.\nRed flags: No failed hard check was recorded. Checklist audit recorded no violations. Recorded top non-LP holder 3.3245%. No later holder change was recorded. Entry was 84.6% of the recorded window ATH. Recorded liquidity $370,962.45 at entry \u2192 $366,623.46 at exit. Recorded volume $1,522,734.87 at entry \u2192 $2,000,812.70 at exit.\nHow to improve future entries: The recorded time stop ended the trade. No additional entry defect was stored, so no new entry filter is identified. Improve entries: GATO showed 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%). This does not change entry gates or config thresholds.\nHow to avoid similar losses: Recorded loss of $4.16 on exit time. Fields that were not recorded stay unknown. No missed red flag was recorded. Do not invent one.\nPOST-LOSS REVIEW / GATO / $-4.16 / exit time.\nContributing factors:\n- 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)\nChecks:\n- holder_distribution: CLEAN top-1 3.32%; top-10 14.23%; excluding pool and burn; entry snapshot top non-LP holder 3.32%\n- fresh_wallet_cluster: FLAG 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN largest shared funder uvkhfimfuMJKUDMNEUmqACWRXMG8QSQA2i2SYEdXTHn has 1 wallet(s) and 1.42%; 4 holders had a known funder\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 3 known acquisition slots\n- dev_creator: FAILED failed after 2 attempts: creator 8CW4bxSMm3gLCdWgW8qSqTbQkm3jQug4xe1nmmdoCUhY, 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm holding 5MVneCfDge5vtf4C7QZmczCJbBB8vfvDbMqvopvkBLJm 3.32%; sells were not read: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not support\u2026\n- liquidity: CLEAN liquidity $370,962.45 at entry \u2192 $366,623.46 at exit (-1.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: FAILED failed after 2 attempts: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien. Recorded volume $1,522,734.87 at entry \u2192 $2,000,812.70 at exit (31.4%)\n- price_mcap_path: CLEAN price 0.01241 \u2192 0.0121 (-2.5%) over 1007.6 minutes; entry was 84.6% of the recorded window ATH; market cap at review $11,971,783.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0121.\nImprove entries: GATO showed 3 fresh wallets in 5 sampled top holders holding 5.87% combined (block at 3 wallets, or 2+ wallets at 8%). This does not change entry gates or config thresholds.",
+      "time": "2026-11-07T17:49:53.899318-05:00",
+      "trade_id": "paper-7b9b2df09a4f4bff8a950db0eb670061"
     }
   ]
 }
