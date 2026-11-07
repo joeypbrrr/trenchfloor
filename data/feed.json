@@ -1,7 +1,14 @@
 {
-  "updated": "2026-11-07T02:45:21.001208+00:00",
-  "next_id": 324,
+  "updated": "2026-11-07T02:50:23.405319+00:00",
+  "next_id": 325,
   "events": [
+    {
+      "id": 324,
+      "time": "2026-11-07T02:50:23.405250+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "Light scan found 2 new Solana rows with an X link. Not tweets. 4wn4hL https://x.com/DaliGambol/status/2118894997810327683; FhtLRw https://x.com/i/status/2118893153981968479"
+    },
     {
       "id": 323,
       "time": "2026-11-07T02:45:21.001200+00:00",
@@ -7801,46 +7808,6 @@
         "market_cap_usd": 971199.0,
         "ath_price": 0.0033881277866801163,
         "entry_frac_of_ath": 0.262704,
-        "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
-      }
-    },
-    {
-      "id": 144,
-      "time": "2026-11-07T02:12:30.740649+00:00",
-      "agent": "Backtester",
-      "type": "trade",
-      "text": "PAPER / SIMULATED jeff (jeff) entry 2026-11-05T23:00:00-05:00 @ 0.0011688038838977885 exit 2026-11-06T00:00:00-05:00 @ 0.0010752995731859653 P&L $-10.00. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "trade": {
-        "id": "48d66dfe24878cab",
-        "label": "PAPER / SIMULATED",
-        "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-        "name": "jeff",
-        "symbol": "jeff",
-        "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
-        "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-        "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-        "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-        "entry_time": "2026-11-05T23:00:00-05:00",
-        "exit_time": "2026-11-06T00:00:00-05:00",
-        "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
-        "entry_ts": 1793937600,
-        "exit_ts": 1793937600,
-        "entry_price": 0.0011688038838977885,
-        "exit_price": 0.0010752995731859653,
-        "notional_usd": 100.0,
-        "pnl_usd": -10.002,
-        "pnl_pct": -10.002,
-        "side": "long",
-        "exit_reason": "stop",
-        "strategy_id": "dip_20_40_stop8_tp25_hold8",
-        "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 25% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
-        "sample": "out_of_sample",
-        "fees_bps_per_side": 30,
-        "slippage_bps_per_side": 80,
-        "liquidity_usd": 85693.47,
-        "market_cap_usd": 971199.0,
-        "ath_price": 0.0033881277866801163,
-        "entry_frac_of_ath": 0.34497,
         "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
       }
     }
