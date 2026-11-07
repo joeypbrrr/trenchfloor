@@ -274,3 +274,13 @@ Tests run November 6, 2026, about 11:07–11:10 PM ET:
   $24,498 per ticket to average $300/day; $100 tickets would need ~735 fills/day.
   Neither is a realistic income forecast in thin coins. There is no minimum
   trade count, no new-source measured edge, and no promise of $300/day.
+
+
+## PumpPortal launch collector (OFF; free-tier limitation)
+
+See [PUMPPORTAL.md](PUMPPORTAL.md) for the source, official 1.25% bonding-curve
+fee schedule, conservative launch-risk thresholds and test results. Creates and
+migrations are free; per-token trades are documented as metered and require a
+funded wallet, so this free-only build does not subscribe to them. No complete
+trade history means no verified global fees and no qualifying trades. All new
+flags remain OFF; existing source and cycle spacing are unchanged.

@@ -15,5 +15,10 @@ start_one() {
 }
 start_one research ./run_research.sh
 start_one server ./run_server.sh
+if python3 -c 'import json,sys; sys.exit(0 if json.load(open("config.json")).get("pumpportal", {}).get("collector_enabled", False) else 1)'; then
+  start_one pumpportal ./run_pumpportal.sh
+else
+  echo "PumpPortal collector OFF (no launch feed connection started)"
+fi
 echo "Local site: http://127.0.0.1:8795"
 echo "Public site: https://joeypbrrr.github.io/trenchfloor/ (design mockup at /preview/)"

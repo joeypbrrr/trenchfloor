@@ -1,7 +1,11 @@
 #!/bin/bash
 cd "$(dirname "$0")" || exit 1
 while true; do
-  python3 -u research.py &
+  py=python3
+  if [[ -x .venv-pumpportal/bin/python ]] && python3 -c 'import json,sys; sys.exit(0 if json.load(open("config.json")).get("candidate_source") == "pumpportal" else 1)'; then
+    py=.venv-pumpportal/bin/python
+  fi
+  "$py" -u research.py &
   echo $! > research.child.pid
   wait $!
   code=$?

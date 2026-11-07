@@ -55,6 +55,9 @@ def parse_gmgn(rows, label):
 
 def candidates(market, config):
     source = config.get('candidate_source', 'legacy')
+    if source == 'pumpportal':
+        from pumpportal_source import candidates as pump_candidates
+        return pump_candidates(market, config)
     report = {'source': source, 'discovered': 0, 'enriched': 0, 'skipped_rejected': 0, 'errors': []}
     if source == 'gmgn':
         rank = gmgn_request('/v1/market/rank', chain='sol', interval='24h', limit=50, order_by='volume', direction='desc')
@@ -122,6 +125,8 @@ def fee_filter_reason(cand, config):
         return 'wash trading flagged'
     fee = num(cand.get('global_fees_sol'))
     if fee is None:
+        if config.get('candidate_source') == 'pumpportal':
+            return 'PumpPortal global fees unknown: complete trade coverage unavailable (no proxy allowed)'
         if not config.get('fee_proxy_enabled', False):
             return 'global fees unknown (strict fail closed)'
         fee = num(cand.get('fees_proxy_sol'))

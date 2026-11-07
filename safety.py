@@ -40,7 +40,7 @@ def _ext_name(ext):
     return str(ext.get("extension") or "").replace("_", "").lower()
 
 
-def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity_base, holder_fail_pct=3.5):
+def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity_base, holder_fail_pct=3.5, excluded_owners=None, aggregate_holders=False):
     """Pure assessment. `owner_meta` maps wallet -> {'executable': bool|None}."""
     checks = []
     hard = []
@@ -96,6 +96,7 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
 
     humans = []
     excluded = []
+    excluded_owners = set(excluded_owners or [])
     burned_raw = 0
     program_raw = 0
     lp_matched = False
@@ -113,10 +114,15 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
                 is_lp = True
                 lp_matched = True
         is_program = executable is True or owner in KNOWN_AMM
+        if aggregate_holders:
+            # Launch mode excludes ONLY an explicitly RPC-verified curve/pool
+            # owner, never a wallet that merely matches an approximate balance.
+            is_lp = False
+            is_program = False
         entry = {
             "owner": owner,
             "token_account": row.get("address"),
-            "pct": round(pct, 4),
+            "pct": pct if aggregate_holders else round(pct, 4),
             "ui_amount": ui,
             "executable": executable,
             "excluded_as": None,
@@ -124,6 +130,9 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
         if is_burn:
             entry["excluded_as"] = "burn"
             burned_raw += amount
+            excluded.append(entry)
+        elif owner in excluded_owners:
+            entry["excluded_as"] = "rpc_verified_bonding_curve"
             excluded.append(entry)
         elif is_lp:
             entry["excluded_as"] = "lp_vault"
@@ -135,8 +144,19 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
         else:
             humans.append(entry)
 
+    if aggregate_holders:
+        grouped = {}
+        for entry in humans:
+            dest = grouped.setdefault(entry["owner"], {**entry, "pct": 0, "ui_amount": 0})
+            dest["pct"] += entry["pct"]
+            dest["ui_amount"] += entry.get("ui_amount") or 0
+        humans = list(grouped.values())
     humans.sort(key=lambda h: h["pct"], reverse=True)
     top = humans[0]["pct"] if humans else 0.0
+    unaccounted = max(0, 100 - sum(int(r.get("amount") or 0) for r in largest or []) / supply * 100)
+    # Upper bounds account for balances outside the largest-account sample.
+    # Missing wallet distribution can reject, but cannot manufacture a pass.
+    top_upper = min(100, top + unaccounted) if aggregate_holders else top
     holder_fail = top > float(holder_fail_pct)
     if holder_fail:
         hard.append(f"non-LP non-program holder owns {top:.2f}% (limit {holder_fail_pct}%)")
@@ -169,6 +189,9 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
         "freeze_authority_active": freeze_active,
         "holder_over_3_5": holder_fail,
         "top_human_pct": round(top, 4),
+        "top_human_pct_upper": top_upper,
+        "top10_pct_upper": min(100, sum(h["pct"] for h in humans[:10]) + unaccounted),
+        "unaccounted_sample_pct": round(unaccounted, 4),
         "top_human": humans[0]["owner"] if humans else None,
         "humans": humans[:8],
         "excluded": excluded[:8],
@@ -180,6 +203,8 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
         "holder_fail_pct": holder_fail_pct,
         "extensions": [ext.get("extension") for ext in extensions if isinstance(ext, dict)],
     }
+    if aggregate_holders and not hard and top_upper > float(holder_fail_pct):
+        return _result("incomplete", [f"largest-account sample leaves a wallet upper bound of {top_upper:.2f}% (limit {holder_fail_pct}%); full concentration unknown"], checks, warnings, extra)
     return _result(status, hard, checks, warnings, extra)
 
 
@@ -290,7 +315,7 @@ def extract_funders(tx, holder):
     return found
 
 
-def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5, require_complete=False):
+def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5, require_complete=False, excluded_owners=None, aggregate_holders=False):
     """Networked review. Raises SourceError only for unexpected bugs; RPC errors become incomplete."""
     try:
         mint_result = rpc.call("getAccountInfo", [mint, {"encoding": "jsonParsed"}])
@@ -351,9 +376,9 @@ def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5, require_complet
                 return _result("incomplete", [f"holder owners unreadable: {exc}"], [], [], {"mint": mint})
         if require_complete and any(meta["executable"] is None for meta in owner_meta.values()):
             return _result("incomplete", ["one or more holder owners could not be read"], [], [], {"mint": mint})
-        assessed = assess_mint(mint_value, parsed_rows, owner_meta, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct)
+        assessed = assess_mint(mint_value, parsed_rows, owner_meta, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct, excluded_owners, aggregate_holders)
     else:
-        assessed = assess_mint(mint_value, [], {}, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct)
+        assessed = assess_mint(mint_value, [], {}, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct, excluded_owners, aggregate_holders)
     assessed["mint"] = mint
     assessed["decimals"] = decimals
     assessed["supply_ui"] = supply_value.get("uiAmountString") or supply_value.get("uiAmount")

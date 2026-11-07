@@ -7,3 +7,8 @@ data/cache/
 data/*.tmp
 data/**/*.tmp
 .DS_Store
+
+# Local public launch-event store and single-connection lock
+data/pumpportal*.sqlite3*
+data/pumpportal.collector.lock
+/.venv-pumpportal/

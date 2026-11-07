@@ -24,5 +24,6 @@ stop_one() {
   fi
   echo "stopped $name"
 }
+stop_one pumpportal
 stop_one research
 stop_one server

@@ -268,7 +268,8 @@ def discover(config):
                 continue
             row = {**blank(row["mint"]), **row}
             queue.append(row)
-        post("Data Scout", report["label"] + ". Real/organic volume is not independently verified. Unknown global fees fail closed unless the separately opted-in PROXY is used.")
+        fee_note = "Unknown global fees fail closed; no volume proxy is allowed for PumpPortal." if config.get("candidate_source") == "pumpportal" else "Unknown global fees fail closed unless the separately opted-in PROXY is used."
+        post("Data Scout", report["label"] + ". Real/organic volume is not independently verified. " + fee_note)
         return queue, report
     report = {"gecko": [], "gecko_errors": [], "list_errors": [], "pair_errors": [], "skipped_rejected": 0, "rows": 0}
     update("X/Twitter Scout", "working", "Checking whether a free X API answers, then reading DexScreener boost and profile links.", action="Checking X API")
@@ -378,13 +379,26 @@ def screen(candidates, config):
     if new_source:
         filters["min_market_cap_usd"] = config.get("new_source_min_market_cap_usd", 6000)
         filters["strict_market_cap"] = True
+    if config.get("candidate_source") == "pumpportal":
+        settings = config.get("pumpportal") or {}
+        filters["min_pair_age_hours"] = settings.get("min_age_seconds", 900) / 3600
+        filters["max_pair_age_days"] = settings.get("max_age_days", 7)
     now = time.time()
     passed = []
     rejected = []
     counts = {}
     for cand in candidates:
         emit("Data Scout", "candidate", f"Screening {cand.get('symbol') or cand['mint'][:8]}", mint=cand["mint"])
-        reason = (fee_filter_reason(cand, config) if new_source else None) or _filter_reason(cand, filters, now)
+        pump_reason = None
+        if config.get("candidate_source") == "pumpportal":
+            from pumpportal_source import checks_for
+            cand["pump_checks"] = checks_for(cand, config.get("pumpportal") or {}, now, config.get("filters"))
+            lesson_blocks = MEMORY.blocks(cand)
+            cand["pump_checks"].append({"name": "standing_lessons", "phase": "pre", "known": True, "pass": not lesson_blocks,
+                                        "reason": ("FAIL " + lesson_blocks[0]) if lesson_blocks else "PASS existing standing lessons"})
+            failed = [c for c in cand["pump_checks"] if c["phase"] == "pre" and not c["pass"]]
+            pump_reason = (failed[0]["name"] + ": " + failed[0]["reason"]) if failed else None
+        reason = pump_reason or (fee_filter_reason(cand, config) if new_source else None) or _filter_reason(cand, filters, now)
         if reason is None:
             blocks = MEMORY.blocks(cand)
             if blocks:
@@ -459,7 +473,26 @@ def review_candidates(candidates, config):
         update("Risk Manager", "working", f"Checking mint and freeze authority and Token-2022 extensions on {label}.", action=f"RPC review {label}")
         update("Bubble Map Analyst", "working", f"Measuring holder concentration on {label}. Fail line is one non-LP, non-program wallet above {holder_limit}%.", action=f"Holders {label}")
         try:
-            safety = review_token(MARKET.rpc, cand["mint"], cand.get("liquidity_base"), holder_limit, require_complete=config.get("candidate_source", "legacy") != "legacy" or config.get("rpc_resilience_enabled", False))
+            if config.get("candidate_source") == "pumpportal":
+                from pumpportal_source import launch_risk
+                cand["pump_risk"] = launch_risk(MARKET.rpc, cand, config.get("pumpportal") or {})
+            curve = {cand["bonding_curve"]} if cand.get("pump_risk", {}).get("curve_verified") else set()
+            safety = review_token(MARKET.rpc, cand["mint"], cand.get("liquidity_base"), holder_limit,
+                                  require_complete=config.get("candidate_source", "legacy") != "legacy" or config.get("rpc_resilience_enabled", False),
+                                  excluded_owners=curve, aggregate_holders=config.get("candidate_source") == "pumpportal")
+            if config.get("candidate_source") == "pumpportal":
+                from pumpportal_source import checks_for
+                risk = cand["pump_risk"]
+                risk["top_holder_pct"] = safety.get("top_human_pct_upper")
+                risk["top10_pct"] = safety.get("top10_pct_upper")
+                cand["pump_checks"] = checks_for(cand, config.get("pumpportal") or {}, existing_filters=config.get("filters"))
+                for check in cand["pump_checks"]:
+                    post("Risk Manager", f"{label} / {check['name']}: {check['reason']}", publish_feed=False)
+                failed = [c for c in cand["pump_checks"] if not c["pass"]]
+                if failed:
+                    safety["status"] = "fail" if safety.get("status") == "fail" else ("incomplete" if any(not c["known"] for c in failed) else "fail")
+                    safety["hard_fails"] = (safety.get("hard_fails") or []) + [c["reason"] for c in failed]
+                    safety["summary"] = 'PumpPortal launch-risk rejection: ' + '; '.join(c["name"] for c in failed)
         except Exception as exc:
             note_error("Risk Manager", f"{label} safety review crashed: {exc}")
             log(traceback.format_exc())
@@ -493,6 +526,11 @@ def review_candidates(candidates, config):
             safety["cluster_fail"] = False
     for cand in reviewed:
         safety = cand["safety"]
+        if config.get("candidate_source") == "pumpportal" and safety.get("status") == "pass":
+            cluster = safety.get("cluster") or {}
+            if cluster.get("error") or (safety.get("humans") and "not run" in cluster.get("detail", "")):
+                safety["status"] = "incomplete"
+                safety["summary"] = "Linked-wallet sampling incomplete; not a safety pass"
         label = cand.get("symbol") or cand["mint"][:6]
         if safety.get("status") == "fail":
             MEMORY.learn_from_safety(cand)
@@ -822,6 +860,7 @@ def public_token(cand):
         "eligible", "lesson_blocks", "filter_reason", "in_entry_zone", "ath_frac", "window_ath",
         "ath_note", "hourly_bars", "daily_bars", "history_error", "description",
         "global_fees_sol", "global_fees_basis", "fees_proxy_sol", "fees_proxy_basis", "fee_filter_basis",
+        "global_fees_verified", "global_fees_observed_sol", "pump_observation", "pump_checks", "pump_risk", "dev_wallet", "bonding_curve",
     ]
     out = {k: cand.get(k) for k in keys}
     out["safety"] = safety
@@ -855,6 +894,17 @@ def cycle(config):
     post("System", f"Cycle {STATE['cycle_count']} started. {banner} {DISCLAIMER}")
     queue, found = discover(config)
     passed, rejected, counts = screen(queue, config)
+    if config.get("candidate_source") == "pumpportal":
+        totals = {}
+        examples = {}
+        for cand in queue:
+            for check in cand.get("pump_checks") or []:
+                if not check["pass"]:
+                    totals[check["name"]] = totals.get(check["name"], 0) + 1
+                    examples[check["name"]] = check["reason"]
+        found["failure_counts_all_checks"] = totals
+        for name, count in totals.items():
+            post("Data Scout", f"PumpPortal / {name}: {count}/{len(queue)} fail or unmeasured — {examples[name]}", publish_feed=False)
     update(
         "Data Scout",
         "working",
@@ -1094,12 +1144,13 @@ def main():
     parser.add_argument("--once", action="store_true", help="run one cycle and exit")
     parser.add_argument("--no-publish", action="store_true", help="do not push gh-pages")
     parser.add_argument("--dry-run", action="store_true", help="one cycle on an isolated temporary copy of data; no publish")
-    parser.add_argument("--candidate-source", choices=["legacy", "gmgn_substitute", "gmgn"], help="dry-run only")
+    parser.add_argument("--candidate-source", choices=["legacy", "gmgn_substitute", "gmgn", "pumpportal"], help="dry-run only")
     parser.add_argument("--fee-proxy", action="store_true", help="dry-run only: opt into an explicitly labeled, non-global fee proxy")
+    parser.add_argument("--pumpportal-db", type=Path, help="dry-run only: isolated collector store")
     parser.add_argument("--report-json", type=Path, help="dry-run only: destination for summary")
     args = parser.parse_args()
     NO_PUBLISH = args.no_publish or __import__("os").environ.get("TRENCHFLOOR_SKIP_PUBLISH") == "1"
-    if not args.dry_run and (args.candidate_source or args.fee_proxy or args.report_json):
+    if not args.dry_run and (args.candidate_source or args.fee_proxy or args.report_json or args.pumpportal_db):
         parser.error("source/proxy/report overrides require --dry-run")
     config = load_config()
     sandbox = None
@@ -1120,6 +1171,13 @@ def main():
         ROOT = Path(sandbox.name)
         shutil.copytree(previous_root / "data", ROOT / "data")
         config.update(candidate_source=args.candidate_source or "gmgn_substitute", daily_stop_enabled=True, rpc_resilience_enabled=True, fee_proxy_enabled=args.fee_proxy)
+        if args.pumpportal_db:
+            config.setdefault("pumpportal", {})["db_path"] = str(args.pumpportal_db.resolve())
+        elif config.get("candidate_source") == "pumpportal":
+            db_path = Path(config.get("pumpportal", {}).get("db_path", "data/pumpportal.sqlite3"))
+            if not db_path.is_absolute():
+                db_path = previous_root / db_path
+            config.setdefault("pumpportal", {})["db_path"] = str(db_path)
         (ROOT / "config.json").write_text(json.dumps(config))
         NO_PUBLISH = True
     boot(config)
