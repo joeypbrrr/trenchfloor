@@ -58,7 +58,7 @@ h1 span{color:#8c9d9f}
 .scene-head{height:48px;border-bottom:1px solid var(--line);color:var(--text)}
 .section-num{font:10px var(--mono);color:#597175;margin-right:12px}
 .scene-tools{display:flex;gap:12px;align-items:center;color:var(--teal);font-size:9px}
-#scene{height:560px;position:relative;background:#000;touch-action:pan-y}
+#scene{height:560px;position:relative;background:#000;touch-action:none;-webkit-user-select:none;user-select:none}
 #scene canvas{display:block;width:100%;height:100%}
 .scene-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 118%,rgba(255,122,24,.22),transparent 42%),radial-gradient(ellipse at 50% 40%,transparent 46%,rgba(0,0,0,.55) 100%)}
 .scene-loading{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--muted);background:#050607;text-align:center;padding:20px}
@@ -195,6 +195,50 @@ footer span:last-child{text-align:right;color:#e4a578}
   .loader,.live-dot{animation:none}
   .day:active{transform:none}
 }
+/* rotatable view overlay */
+.scene-ui{position:absolute;inset:0;z-index:3;pointer-events:none}
+.scene-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);padding:8px 14px;border-radius:99px;background:#000000b8;border:1px solid #ff7a1866;color:#ffcf9e;font:500 11px var(--mono);letter-spacing:.4px;white-space:nowrap;transition:opacity .6s ease;box-shadow:0 0 18px #ff7a1830}
+.scene-hint.gone{opacity:0}
+.view-btns{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;align-items:flex-end;gap:6px;pointer-events:auto}
+.view-btns button,.view-jump button{min-height:34px;padding:0 12px;border-radius:5px;border:1px solid #ff7a1877;background:#0b0705cc;color:#ffb56a;font:600 10px var(--mono);letter-spacing:.6px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.view-btns button:active,.view-jump button:active{background:#2a160a}
+.view-jump{position:absolute;top:10px;left:10px;display:flex;flex-wrap:wrap;gap:6px;max-width:70%;pointer-events:auto}
+.view-jump button{min-height:30px;padding:0 9px;font-size:9px;color:#e8d2bd;border-color:#ff7a1844}
+.view-jump button.on{color:#000;background:#ff8a2a;border-color:#ff8a2a}
+/* team */
+.vote-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 10px;font:11px var(--mono);color:#9fb0ae}
+.vote-row b{color:var(--text);font-weight:600}
+.tally{color:#4ade80;border:1px solid #1f7a45;background:#0f2a1c;border-radius:3px;padding:2px 6px}
+.tally.no{color:var(--red);border-color:#6a3a34;background:#2a1514}
+.dots{display:inline-flex;gap:3px}
+.dots i{width:9px;height:9px;border-radius:50%;display:block;border:1px solid}
+.dots i.n{background:transparent!important;opacity:.9;position:relative}
+.dots i.n::after{content:'';position:absolute;left:1px;right:1px;top:3px;height:1px;background:var(--red)}
+.dots i.a{background:transparent!important;opacity:.45}
+.team-card{border:1px solid #ff7a1855;background:linear-gradient(90deg,#1c120b,#111a1e);border-radius:5px;padding:12px 14px;margin:14px 14px 0;font-size:12px;color:#c7b4a3;line-height:1.5}
+.team-card b{color:#ffb56a}
+.veto{padding:14px 16px;border-bottom:1px solid #202c30;background:#160f0e}
+.veto .trade-id strong{color:#c9b8b3;text-decoration:line-through;text-decoration-color:#ff8d7d88}
+.veto p{margin:6px 0 0;font-size:12px;color:#c8a49e}
+.cal-nav{display:flex;align-items:center;gap:6px}
+.cal-nav button{min-width:36px;min-height:36px;border-radius:4px;border:1px solid var(--line);background:#0e171a;color:var(--text);font:12px var(--mono)}
+.cal-nav button:disabled{opacity:.3}
+.cal-sum{display:flex;justify-content:space-between;gap:8px;padding:0 4px 10px;font:11px var(--mono);color:#9fb0ae}
+.cal-sum b{font-weight:600}
+.day.pos{background:#0f3a24;border-color:#1f7a45}
+.day.pos .p{color:#4ade80}
+.positive{color:#4ade80!important}
+.sw.pos{background:#0f3a24;box-shadow:inset 0 0 0 1px #1f7a45}
+.equity{padding:0 14px 12px}
+.equity svg{display:block;width:100%;height:64px}
+.equity small{font:9px var(--mono);color:#72878a;letter-spacing:.5px}
+@media(max-width:750px){
+  .scene-hint{font-size:10px;bottom:10px}
+  .view-jump{max-width:62%}
+  .cal-nav button{min-width:34px;min-height:34px}
+  .team-card{margin:10px 10px 0}
+}
+@media(max-width:360px){.day .p{font-size:7px;letter-spacing:-.4px}}
 </style>
 </head>
 <body>
@@ -215,17 +259,17 @@ footer span:last-child{text-align:right;color:#e4a578}
   <main id="top">
     <section class="intro">
       <div>
-        <div class="eyebrow">THE COLLECTIVE <span>/ 06 SEATS</span></div>
+        <div class="eyebrow">ONE TEAM <span>/ 06 SEATS / ONE P&amp;L</span></div>
         <h1>Better filters.<br><span>Sharper entries.</span></h1>
       </div>
-      <p>Six agents. One desk. One market: <strong>Solana meme coins.</strong><br>Rugs, clusters, and scouts, then a paper ledger. <strong>Buys dips. Never top-ticks.</strong></p>
+      <p>Six agents. One team. One shared P&amp;L. One market: <strong>Solana meme coins.</strong><br>Every paper trade is proposed by one agent and <strong>voted on by all six</strong>. Buys dips. Never top-ticks.</p>
     </section>
     <a class="best-link" href="#calendar">
-      <span>★ NOVEMBER PAPER LEDGER</span>
+      <span>★ TEAM P&amp;L CALENDAR</span>
       <b>Mock dollars only. Tap a day. No wallet, no orders, no live fills.</b>
       <i aria-hidden="true">→</i>
     </a>
-    <section class="floor-card" aria-label="Fixed 3D view of the research desk">
+    <section class="floor-card" aria-label="Rotatable 3D view of the research floor">
       <div class="scene-head">
         <div><span class="section-num">01</span><span>LIVE RESEARCH FLOOR</span></div>
         <div class="scene-tools"><span class="live-dot" aria-hidden="true"></span><span id="sceneStatus">BRINGING DESK ONLINE</span></div>
@@ -233,52 +277,66 @@ footer span:last-child{text-align:right;color:#e4a578}
       <div id="scene">
         <div class="scene-vignette" aria-hidden="true"></div>
         <div class="scene-loading"><span class="loader" aria-hidden="true"></span><p>Bringing the research floor online…</p></div>
+        <div class="scene-ui">
+          <div class="view-jump" id="viewJump" aria-label="Jump to an area">
+            <button type="button" data-view="desk" class="on">DESK</button>
+            <button type="button" data-view="kitchen">KITCHEN</button>
+            <button type="button" data-view="gym">TREADMILLS</button>
+            <button type="button" data-view="wc">BATHROOM</button>
+          </div>
+          <div class="view-btns"><button type="button" id="resetView" aria-label="Reset the 3D view">⟲ RESET VIEW</button></div>
+          <div class="scene-hint" id="sceneHint">☝ Drag to look around · pinch to zoom</div>
+        </div>
       </div>
       <ul class="roster" id="roster" aria-label="Agents at the desk, left to right"></ul>
       <div class="scene-foot">
-        <span>FIXED CAMERA <span>·</span> NO DRAG <span>·</span> NO ZOOM</span>
+        <span>DRAG TO ROTATE <span>·</span> PINCH / SCROLL TO ZOOM <span>·</span> TWO-FINGER PAN</span>
         <span class="desk-id"><b>TF–06</b> <span>SIMULATED ENVIRONMENT</span></span>
       </div>
     </section>
-    <section class="metrics" aria-label="Mock November statistics">
-      <article><span>NET PAPER P&amp;L</span><strong id="netPnl">—</strong><small>NOV 2026 · ET</small></article>
-      <article><span>MOCK FILLS</span><strong id="fillCount">—</strong><small>OBVIOUSLY FAKE TOKENS</small></article>
+    <section class="metrics" aria-label="Mock team statistics">
+      <article><span>TEAM P&amp;L</span><strong id="netPnl">—</strong><small>ONE SHARED LEDGER · MOCK</small></article>
+      <article><span>TEAM TRADES</span><strong id="fillCount">—</strong><small>OCT–NOV 2026 · FAKE TOKENS</small></article>
       <article><span>WIN RATE</span><strong id="winRate">—</strong><small>PAPER LEDGER ONLY</small></article>
-      <article class="teal-metric"><span>FLOOR HEALTH</span><strong>100%</strong><small>PREVIEW HEARTBEAT</small></article>
+      <article class="teal-metric"><span>AVG TEAM VOTE</span><strong id="avgVote">—</strong><small>APPROVALS PER TAKEN TRADE</small></article>
     </section>
     <section class="panel" aria-labelledby="shiftHeading">
       <div class="panel-heading">
-        <div><span class="section-num">02</span><h2 id="shiftHeading">THE SHIFT</h2></div>
+        <div><span class="section-num">02</span><h2 id="shiftHeading">THE TEAM</h2></div>
         <span class="pill" id="shiftCount">6 / 6 SEATED</span>
       </div>
+      <div class="team-card"><b>One team, one P&amp;L.</b> Each trade is proposed by one agent. All six vote before it is taken. Majority wins, but a <b>Risk Manager</b> or <b>Bubble Map Analyst</b> reject is a veto. The X Scout abstains when it has no X data.</div>
       <div class="shift-grid" id="shift"></div>
     </section>
     <section class="panel" id="calendar" aria-labelledby="calHeading">
       <div class="panel-heading">
-        <div><span class="section-num">03</span><h2 id="calHeading">PAPER P&amp;L CALENDAR</h2></div>
-        <span class="small-muted" id="calMeta">NOVEMBER 2026 · ET · MOCK</span>
+        <div><span class="section-num">03</span><h2 id="calHeading">TEAM P&amp;L CALENDAR</h2></div>
+        <div class="cal-nav"><button type="button" id="calPrev" aria-label="Previous month">←</button><button type="button" id="calNext" aria-label="Next month">→</button></div>
       </div>
       <div class="cal-wrap">
+        <div class="cal-sum"><span id="calMeta">NOVEMBER 2026 · ET · MOCK</span><b id="calTotal"></b></div>
         <div class="dow" aria-hidden="true"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
-        <div class="cal-grid" id="cal" role="grid" aria-label="November 2026 mock daily paper P and L"></div>
+        <div class="cal-grid" id="cal" role="grid" aria-label="Mock daily team paper P and L"></div>
         <div class="legend">
-          <span><i class="sw pos"></i><b class="positive">Profit day</b></span>
-          <span><i class="sw neg"></i><b class="negative">Loss day</b></span>
-          <span><i class="sw today"></i>Today · Nov 7</span>
+          <span><i class="sw pos"></i><b class="positive">Team profit day</b></span>
+          <span><i class="sw neg"></i><b class="negative">Team loss day</b></span>
+          <span><i class="sw today"></i>Today · Nov 6</span>
         </div>
       </div>
-      <p class="method-note">Tap a day for that session’s mock trades: token, symbol, entry and exit in ET, dollar P&amp;L, and placeholder DexScreener / GMGN links. Dollars are paper, not bankable.</p>
+      <div class="equity"><small>TEAM EQUITY CURVE · MOCK · OCT 1 → NOV 6</small><svg id="equity" viewBox="0 0 300 64" preserveAspectRatio="none" aria-label="Mock cumulative team P and L"></svg></div>
+      <p class="method-note">Tap a day for that session’s mock team trades: token, symbol, entry and exit in ET, dollar P&amp;L, who proposed it, the team vote, and placeholder DexScreener / GMGN links. Dollars are paper, not bankable.</p>
     </section>
     <section class="panel" id="feedSection" aria-labelledby="feedHeading">
       <div class="panel-heading">
         <div><span class="section-num">04</span><h2 id="feedHeading">FLOOR TRANSMISSIONS</h2></div>
-        <span class="small-muted">10 MOCK FILLS · NEWEST FIRST</span>
+        <span class="small-muted">TEAM VOTES · NEWEST FIRST · MOCK</span>
       </div>
+      <div id="vetoes"></div>
       <div class="trade-list" id="feed"></div>
-      <p class="method-note">Each link is a placeholder: <span class="mono">dexscreener.com/solana/&lt;mint&gt;</span> and <span class="mono">gmgn.ai/sol/token/&lt;mint&gt;</span>. Mints start with FAKE. Nothing here is a position.</p>
+      <p class="method-note">Each link is a placeholder: <span class="mono">dexscreener.com/solana/&lt;mint&gt;</span> and <span class="mono">gmgn.ai/sol/token/&lt;mint&gt;</span>. GMGN is a link only, never a filter. Mints start with FAKE. Nothing here is a position.</p>
     </section>
     <footer>
-      <span><strong>TRENCHFLOOR</strong> · A design preview of the meme-coin research floor. One desk, six seats, paper ledger only.</span>
+      <span><strong>TRENCHFLOOR</strong> · A design preview of the meme-coin research floor. One team, six seats, one paper ledger. <a href="/trenchfloor/floor/" style="color:#e4a578">Live research floor →</a></span>
       <span>DESIGN PREVIEW — mock data, no real trades, simulation and research only</span>
     </footer>
   </main>
@@ -289,7 +347,7 @@ footer span:last-child{text-align:right;color:#e4a578}
     <div class="sheet-handle" aria-hidden="true"></div>
     <div class="sheet-head">
       <div>
-        <div class="eyebrow">PAPER SESSION <span>/ MOCK</span></div>
+        <div class="eyebrow">TEAM SESSION <span>/ MOCK</span></div>
         <h3 id="sheetTitle">Day</h3>
         <p class="sheet-sub" id="sheetSub"></p>
       </div>
@@ -300,34 +358,66 @@ footer span:last-child{text-align:right;color:#e4a578}
 </div>
 <script>
 const AGENTS = [
-  { initials:'RM', role:'Risk Manager', short:'RISK MGR', roleLine:'RUGS · HOLDERS', readout:['TOP HOLDER 2.1%','TOKENOMICS OK'], task:'Rug-pull research, holder concentration, and tokenomics.', color:'#ed8d80' },
-  { initials:'BM', role:'Bubble Map Analyst', short:'BUBBLE', roleLine:'CLUSTERS', readout:['MAX HOLDER 2.8%','FAILS ABOVE 3.5%'], task:'Maps holder clusters. Fails any holder above 3.5%.', color:'#a798f3' },
-  { initials:'XS', role:'X/Twitter Scout', short:'X SCOUT', roleLine:'TWITTER / X', readout:['64 MENTIONS','NO CABAL FLAG'], task:'Scans X for coordinated posts and fresh launch chatter.', color:'#e6cf77' },
-  { initials:'DS', role:'Data Scout', short:'DATA', roleLine:'DEX · BIRDEYE', readout:['LIQ $86k','5m VOL $12k'], task:'DexScreener and Birdeye filters: liquidity, volume, pair age.', color:'#75cfee' },
-  { initials:'BT', role:'Backtester', short:'LEDGER', roleLine:'PAPER · ET', readout:['10 FILLS','LAST 19:09 ET'], task:'Paper ledger with entry and exit timestamps in ET.', color:'#e3ab70' },
-  { initials:'ST', role:'Strategist', short:'STRAT', roleLine:'DIPS ONLY', readout:['NOT A TOP-TICK','BEST_STRATEGY'], task:'Buys dips, never top-ticks. Rules live in BEST_STRATEGY.md.', color:'#74dfb0' }
-];
-const TRADES = [
-  { token:'Moonbork', symbol:'MBORK', mint:'FAKEmoonbork111111111111111111111111111', date:'2026-11-03', entry:'09:14', exit:'09:41', pnl:186 },
-  { token:'GigaWagmi', symbol:'GWAG', mint:'FAKEgigawagmi22222222222222222222222222', date:'2026-11-03', entry:'11:02', exit:'11:28', pnl:-42 },
-  { token:'SolSnort', symbol:'SNORT', mint:'FAKEsolsnort3333333333333333333333333333', date:'2026-11-05', entry:'14:06', exit:'15:12', pnl:310 },
-  { token:'PaperPepe', symbol:'PPEPE', mint:'FAKEpaperpepe44444444444444444444444444', date:'2026-11-06', entry:'08:22', exit:'08:55', pnl:74 },
-  { token:'RugGoblin', symbol:'RGOB', mint:'FAKEruggoblin55555555555555555555555555', date:'2026-11-07', entry:'10:18', exit:'10:21', pnl:-128 },
-  { token:'DipDonkey', symbol:'DIPD', mint:'FAKEdipdonkey66666666666666666666666666', date:'2026-11-10', entry:'13:40', exit:'16:05', pnl:540 },
-  { token:'NeonNoodle', symbol:'NOOD', mint:'FAKEneonnoodle7777777777777777777777777', date:'2026-11-12', entry:'09:05', exit:'09:48', pnl:-63 },
-  { token:'ChartChonk', symbol:'CHONK', mint:'FAKEchartchonk8888888888888888888888888', date:'2026-11-14', entry:'15:33', exit:'17:02', pnl:221 },
-  { token:'FakeBonk', symbol:'FBONK', mint:'FAKEfakebonk999999999999999999999999999', date:'2026-11-18', entry:'11:11', exit:'12:44', pnl:95 },
-  { token:'TopTickTom', symbol:'TTICK', mint:'FAKEtopticktom0000000000000000000000000', date:'2026-11-18', entry:'19:02', exit:'19:09', pnl:-210 }
+  { initials:'RM', role:'Risk Manager', short:'RISK MGR', roleLine:'RUGS · VETO', readout:['MINT AUTH OFF','FREEZE OFF'], task:'Rug-pull research and tokenomics. Votes on every trade and can veto it.', color:'#ed8d80' },
+  { initials:'BM', role:'Bubble Map Analyst', short:'BUBBLE', roleLine:'CLUSTERS · VETO', readout:['MAX HOLDER 2.8%','FAILS ABOVE 3.5%'], task:'Maps holder clusters. Any wallet above 3.5% is an automatic veto.', color:'#a798f3' },
+  { initials:'XS', role:'X/Twitter Scout', short:'X SCOUT', roleLine:'TWITTER / X', readout:['64 MENTIONS','NO CABAL FLAG'], task:'Reads X chatter. Abstains from the vote when it has no X data.', color:'#e6cf77' },
+  { initials:'DS', role:'Data Scout', short:'DATA', roleLine:'DEX · FILTERS', readout:['LIQ $86k','5m VOL $12k'], task:'DexScreener filters: liquidity, volume, pair age. Proposes dip entries.', color:'#75cfee' },
+  { initials:'BT', role:'Backtester', short:'LEDGER', roleLine:'TEAM LEDGER · ET', readout:['ONE TEAM P&L','TIMES IN ET'], task:'Keeps the one shared paper ledger with entry and exit times in ET.', color:'#e3ab70' },
+  { initials:'ST', role:'Strategist', short:'STRAT', roleLine:'DIPS ONLY', readout:['NOT A TOP-TICK','BEST_STRATEGY'], task:'Buys dips, never top-ticks. Proposes trades from the best strategy.', color:'#74dfb0' }
 ];
 window.FLOOR_AGENTS = AGENTS;
-
+const TODAY = '2026-11-06';
+const NAMES = [['Moonbork','MBORK'],['GigaWagmi','GWAG'],['SolSnort','SNORT'],['PaperPepe','PPEPE'],['DipDonkey','DIPD'],['NeonNoodle','NOOD'],['ChartChonk','CHONK'],['FakeBonk','FBONK'],['TrenchToad','TTOAD'],['WenLambo','WENL'],['CopeCat','COPE'],['MockMoose','MOOSE'],['PixelPug','PPUG'],['DegenDuck','DDUCK'],['HodlHippo','HIPPO'],['SnackShiba','SNACK']];
+const PROPOSERS = [3,5,3,5,3,5,2,4,1,0];
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hhmm(m){return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+function buildTrades(){
+  const r = rng(20261106), out = [];
+  const end = Date.UTC(2026,10,6);
+  for(let d = Date.UTC(2026,9,1); d <= end; d += 86400000){
+    const iso = new Date(d).toISOString().slice(0,10);
+    const n = r() < 0.16 ? 0 : 1 + Math.floor(r()*3);
+    for(let k = 0; k < n; k++){
+      const [token, symbol] = NAMES[Math.floor(r()*NAMES.length)];
+      const start = 8*60 + Math.floor(r()*11*60);
+      const hold = 7 + Math.floor(r()*150);
+      const pnl = Math.round((r() - 0.43) * 520);
+      const votes = ['y','y', r() < 0.7 ? 'a' : 'y', r() < 0.12 ? 'n' : 'y', r() < 0.18 ? 'n' : 'y', r() < 0.1 ? 'n' : 'y'];
+      while(approvals(votes)*2 <= votes.filter(v=>v!=='a').length){votes[votes.indexOf('n')]='y'}
+      out.push({ token, symbol, mint:('FAKE'+token.toLowerCase()).padEnd(40,'1'), date:iso, entry:hhmm(start), exit:hhmm(Math.min(start+hold, 23*60+59)), pnl, by:PROPOSERS[Math.floor(r()*PROPOSERS.length)], votes });
+    }
+  }
+  return out;
+}
+const TRADES = buildTrades();
+const VETOES = [
+  { token:'WhaleWobble', symbol:'WWOB', mint:'FAKEwhalewobble'.padEnd(40,'1'), date:TODAY, entry:'18:42', by:3, votes:['y','n','a','y','y','y'], why:'Vetoed by Bubble Map Analyst: one wallet holds 4.7% (fail line is 3.5%).' },
+  { token:'MintyMcMint', symbol:'MINTY', mint:'FAKEmintymcmint'.padEnd(40,'1'), date:TODAY, entry:'16:05', by:5, votes:['n','y','a','y','n','y'], why:'Vetoed by Risk Manager: mint authority still active.' }
+];
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const LONG_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 function money(n){return (n<0?'−':'+')+'$'+Math.abs(n).toLocaleString('en-US')}
 function parts(iso){const [y,m,d]=iso.split('-').map(Number);return {y,m,d,dow:new Date(Date.UTC(y,m-1,d)).getUTCDay()}}
 function longDate(iso){const p=parts(iso);return WEEKDAYS[p.dow]+', '+MONTHS[p.m-1]+' '+p.d+', '+p.y}
 function shortWhen(t){const p=parts(t.date);return MONTHS[p.m-1]+' '+p.d+', '+p.y+' · '+t.entry+' ET → '+t.exit+' ET'}
+function approvals(v){return v.filter(x=>x==='y').length}
 
+function voteRow(t, rejected){
+  const row=document.createElement('div');
+  row.className='vote-row';
+  const by=document.createElement('span');
+  by.innerHTML='Proposed by <b></b>';
+  by.querySelector('b').textContent=AGENTS[t.by].role;
+  const tally=document.createElement('span');
+  tally.className='tally'+(rejected?' no':'');
+  tally.textContent=(rejected?'✕ ':'✓ ')+approvals(t.votes)+'/6 approve';
+  const dots=document.createElement('span');
+  dots.className='dots';
+  t.votes.forEach((v,i)=>{const d=document.createElement('i');d.className=v;d.style.background=AGENTS[i].color;d.style.borderColor=AGENTS[i].color;d.title=AGENTS[i].role+': '+(v==='y'?'approve':v==='n'?'reject':'abstain');dots.appendChild(d)});
+  row.append(by,tally,dots);
+  return row;
+}
 function tradeCard(t){
   const art=document.createElement('article');
   art.className='trade';
@@ -342,6 +432,7 @@ function tradeCard(t){
   art.querySelector('.trade-when').textContent=shortWhen(t);
   const mint=art.querySelector('.mint');
   mint.textContent=t.mint;
+  mint.after(voteRow(t,false));
   const links=art.querySelectorAll('a');
   links[0].href=dex;
   links[1].href=gmgn;
@@ -349,7 +440,66 @@ function tradeCard(t){
   links[1].setAttribute('aria-label','GMGN placeholder for '+t.token);
   return art;
 }
+function vetoCard(t){
+  const art=document.createElement('article');
+  art.className='veto';
+  art.innerHTML='<div class="trade-top"><div class="trade-id"><strong></strong><span class="sym"></span></div><span class="pill">NOT TAKEN</span></div><p></p>';
+  art.querySelector('strong').textContent=t.token;
+  art.querySelector('.sym').textContent=t.symbol;
+  art.querySelector('p').textContent=MONTHS[parts(t.date).m-1]+' '+parts(t.date).d+' · '+t.entry+' ET · '+t.why+' Not in the team P&L.';
+  art.appendChild(voteRow(t,true));
+  return art;
+}
 
+const byDay={};
+TRADES.forEach(t=>{(byDay[t.date]||=[]).push(t)});
+const CAL_MONTHS=['2026-10','2026-11'];
+let calIndex=1;
+function renderCalendar(){
+  const ym=CAL_MONTHS[calIndex];
+  const [y,m]=ym.split('-').map(Number);
+  const cal=document.getElementById('cal');
+  cal.replaceChildren();
+  const first=new Date(Date.UTC(y,m-1,1)).getUTCDay();
+  const days=new Date(Date.UTC(y,m,0)).getUTCDate();
+  let total=0,count=0;
+  for(let i=0;i<first;i++){const pad=document.createElement('div');pad.className='day pad';pad.setAttribute('aria-hidden','true');cal.appendChild(pad)}
+  for(let d=1;d<=days;d++){
+    const iso=ym+'-'+String(d).padStart(2,'0');
+    const list=byDay[iso]||[];
+    const sum=list.reduce((s,t)=>s+t.pnl,0);
+    total+=sum;count+=list.length;
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='day'+(list.length?(sum<0?' neg':' pos'):'')+(iso===TODAY?' today':'');
+    btn.dataset.date=iso;
+    btn.setAttribute('role','gridcell');
+    btn.setAttribute('aria-label',list.length?longDate(iso)+', team paper P and L '+money(sum)+', '+list.length+' trade'+(list.length>1?'s':''):longDate(iso)+(iso>TODAY?', upcoming':', no mock trades'));
+    if(iso>TODAY)btn.style.opacity='.45';
+    const n=document.createElement('span');n.className='n';n.textContent=String(d);btn.appendChild(n);
+    if(list.length){const p=document.createElement('span');p.className='p';p.textContent=money(sum);btn.appendChild(p)}
+    cal.appendChild(btn);
+  }
+  const tail=(7-(first+days)%7)%7;
+  for(let i=0;i<tail;i++){const pad=document.createElement('div');pad.className='day pad';pad.setAttribute('aria-hidden','true');cal.appendChild(pad)}
+  document.getElementById('calMeta').textContent=LONG_MONTHS[m-1].toUpperCase()+' '+y+' · ET · MOCK';
+  const tot=document.getElementById('calTotal');
+  tot.textContent='TEAM '+money(total)+' · '+count+' TRADES';
+  tot.className=total<0?'negative':'positive';
+  document.getElementById('calPrev').disabled=calIndex===0;
+  document.getElementById('calNext').disabled=calIndex===CAL_MONTHS.length-1;
+}
+function renderEquity(){
+  const dates=Object.keys(byDay).sort();
+  let run=0;const pts=dates.map(d=>{run+=byDay[d].reduce((s,t)=>s+t.pnl,0);return run});
+  pts.unshift(0);
+  const lo=Math.min(0,...pts),hi=Math.max(0,...pts),span=(hi-lo)||1;
+  const xy=pts.map((v,i)=>[(i/(pts.length-1))*300,60-((v-lo)/span)*56]);
+  const line=xy.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const zeroY=(60-((0-lo)/span)*56).toFixed(1);
+  const color=run<0?'#ff8d7d':'#4ade80';
+  document.getElementById('equity').innerHTML='<line x1="0" x2="300" y1="'+zeroY+'" y2="'+zeroY+'" stroke="#2b3a3f" stroke-dasharray="3 3"/><path d="'+line+' L300 '+zeroY+' L0 '+zeroY+' Z" fill="'+color+'22"/><path d="'+line+'" fill="none" stroke="'+color+'" stroke-width="1.6" vector-effect="non-scaling-stroke"/>';
+}
 function renderBoard(){
   const net=TRADES.reduce((s,t)=>s+t.pnl,0);
   const wins=TRADES.filter(t=>t.pnl>0).length;
@@ -358,99 +508,45 @@ function renderBoard(){
   netEl.classList.add(net<0?'negative':'positive');
   document.getElementById('fillCount').textContent=String(TRADES.length);
   document.getElementById('winRate').textContent=Math.round(wins/TRADES.length*100)+'%';
-
+  document.getElementById('avgVote').textContent=(TRADES.reduce((s,t)=>s+approvals(t.votes),0)/TRADES.length).toFixed(1)+' / 6';
   const roster=document.getElementById('roster');
   const shift=document.getElementById('shift');
   AGENTS.forEach(a=>{
     const li=document.createElement('li');
-    const sw=document.createElement('i');
-    sw.style.background=a.color;
-    const name=document.createElement('span');
-    name.textContent=a.role;
-    li.append(sw,name);
-    roster.appendChild(li);
-
+    const sw=document.createElement('i');sw.style.background=a.color;
+    const name=document.createElement('span');name.textContent=a.role;
+    li.append(sw,name);roster.appendChild(li);
     const card=document.createElement('article');
     card.className='shift-card';
     card.innerHTML='<div class="shift-top"><span class="shift-ico"></span><strong></strong></div><p></p>';
     const ico=card.querySelector('.shift-ico');
-    ico.textContent=a.initials;
-    ico.style.color=a.color;
-    ico.style.borderColor=a.color+'66';
-    ico.style.background=a.color+'18';
+    ico.textContent=a.initials;ico.style.color=a.color;ico.style.borderColor=a.color+'66';ico.style.background=a.color+'18';
     card.querySelector('strong').textContent=a.role;
     card.querySelector('p').textContent=a.task;
     shift.appendChild(card);
   });
-
-  const byDay={};
-  TRADES.forEach(t=>{(byDay[t.date]||=[]).push(t)});
-  const cal=document.getElementById('cal');
-  const first=parts('2026-11-01').dow;
-  for(let i=0;i<first;i++){
-    const pad=document.createElement('div');
-    pad.className='day pad';
-    pad.setAttribute('aria-hidden','true');
-    cal.appendChild(pad);
-  }
-  for(let d=1;d<=30;d++){
-    const iso='2026-11-'+String(d).padStart(2,'0');
-    const list=byDay[iso]||[];
-    const total=list.reduce((s,t)=>s+t.pnl,0);
-    const btn=document.createElement('button');
-    btn.type='button';
-    btn.className='day'+(list.length?(total<0?' neg':' pos'):'')+(iso==='2026-11-07'?' today':'');
-    btn.dataset.date=iso;
-    btn.setAttribute('role','gridcell');
-    const label=list.length?longDate(iso)+', paper P and L '+money(total)+', '+list.length+' trade'+(list.length>1?'s':''):longDate(iso)+', no mock trades';
-    btn.setAttribute('aria-label',label);
-    const n=document.createElement('span');
-    n.className='n';
-    n.textContent=String(d);
-    btn.appendChild(n);
-    if(list.length){
-      const p=document.createElement('span');
-      p.className='p';
-      p.textContent=money(total);
-      btn.appendChild(p);
-    }
-    cal.appendChild(btn);
-  }
-  const used=first+30;
-  const tail=(7-used%7)%7;
-  for(let i=0;i<tail;i++){
-    const pad=document.createElement('div');
-    pad.className='day pad';
-    pad.setAttribute('aria-hidden','true');
-    cal.appendChild(pad);
-  }
-
+  renderCalendar();
+  renderEquity();
+  const vetoes=document.getElementById('vetoes');
+  VETOES.forEach(v=>vetoes.appendChild(vetoCard(v)));
   const feed=document.getElementById('feed');
-  [...TRADES].sort((a,b)=>(b.date+b.entry).localeCompare(a.date+a.entry)).forEach(t=>feed.appendChild(tradeCard(t)));
+  [...TRADES].sort((a,b)=>(b.date+b.entry).localeCompare(a.date+a.entry)).slice(0,10).forEach(t=>feed.appendChild(tradeCard(t)));
 }
 
 const sheet=document.getElementById('sheet');
 let lastFocus=null;
 function openDay(iso){
-  const trades=TRADES.filter(t=>t.date===iso).sort((a,b)=>a.entry.localeCompare(b.entry));
+  const trades=(byDay[iso]||[]).slice().sort((a,b)=>a.entry.localeCompare(b.entry));
   const total=trades.reduce((s,t)=>s+t.pnl,0);
   document.getElementById('sheetTitle').textContent=longDate(iso);
   const sub=document.getElementById('sheetSub');
   sub.className='sheet-sub';
-  if(!trades.length){
-    sub.textContent='No mock trades';
-  }else{
-    sub.textContent=trades.length+' paper trade'+(trades.length>1?'s':'')+' · '+money(total);
-    sub.classList.add(total<0?'negative':'positive');
-  }
+  if(!trades.length){sub.textContent=iso>TODAY?'Upcoming day':'No mock trades'}
+  else{sub.textContent='Team · '+trades.length+' paper trade'+(trades.length>1?'s':'')+' · '+money(total);sub.classList.add(total<0?'negative':'positive')}
   const body=document.getElementById('sheetBody');
   body.replaceChildren();
-  if(!trades.length){
-    const p=document.createElement('p');
-    p.className='muted empty-day';
-    p.textContent='No mock trades on this day. The desk was quiet.';
-    body.appendChild(p);
-  }else trades.forEach(t=>body.appendChild(tradeCard(t)));
+  if(!trades.length){const p=document.createElement('p');p.className='muted empty-day';p.textContent=iso>TODAY?'This day has not happened yet.':'No mock trades on this day. The team passed on everything.';body.appendChild(p)}
+  else trades.forEach(t=>body.appendChild(tradeCard(t)));
   lastFocus=document.activeElement;
   sheet.hidden=false;
   document.getElementById('app').setAttribute('inert','');
@@ -464,10 +560,9 @@ function closeSheet(){
   document.body.style.overflow='';
   if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus();
 }
-document.getElementById('cal').addEventListener('click',e=>{
-  const btn=e.target.closest('button[data-date]');
-  if(btn)openDay(btn.dataset.date);
-});
+document.getElementById('cal').addEventListener('click',e=>{const btn=e.target.closest('button[data-date]');if(btn)openDay(btn.dataset.date)});
+document.getElementById('calPrev').addEventListener('click',()=>{if(calIndex>0){calIndex--;renderCalendar()}});
+document.getElementById('calNext').addEventListener('click',()=>{if(calIndex<CAL_MONTHS.length-1){calIndex++;renderCalendar()}});
 document.getElementById('sheetClose').addEventListener('click',closeSheet);
 document.getElementById('sheetBackdrop').addEventListener('click',closeSheet);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
@@ -475,6 +570,7 @@ renderBoard();
 </script>
 <script type="module">
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -482,77 +578,53 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
 const host = document.getElementById('scene');
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const FRAMING = {
-  wide: { fov: 30, pos: [0.15, 3.7, -12.4], look: [0, 1.12, 0.28] },
-  narrow: { fov: 52, pos: [-8.6, 3.15, -5.4], look: [1.4, 1.05, 0.25] }
-};
+const coarse = matchMedia('(pointer: coarse)').matches;
+const ROOM = { x0: -15, x1: 15, z0: -8, z1: 4.55, h: 4.2 };
 const DESK_TOP = 0.78;
 const DESK_Z = 0.22;
 const SPACING = 2.5;
+// Seat 0 is the left-most seat as seen from the default camera (which looks toward +z, so +x is screen-left).
+const seatX = (i) => (2.5 - i) * SPACING;
 
 function showSceneError(text){
   const el = document.querySelector('.scene-loading');
   if(!el) return;
-  const loader = el.querySelector('.loader');
-  if(loader) loader.remove();
+  el.querySelector('.loader')?.remove();
   const p = el.querySelector('p');
   if(p) p.textContent = text;
 }
 
-function screenTexture(agent, phase){
+function canvasTex(w, h, draw){
   const c = document.createElement('canvas');
-  c.width = 512; c.height = 320;
-  const g = c.getContext('2d');
-  g.fillStyle = '#07090b';
-  g.fillRect(0, 0, 512, 320);
-  g.fillStyle = agent.color;
-  g.fillRect(0, 0, 512, 8);
-  g.font = '700 62px "IBM Plex Mono", ui-monospace, monospace';
-  g.textAlign = 'center';
-  g.textBaseline = 'middle';
-  g.fillStyle = '#f4faf8';
-  g.fillText(agent.short, 256, 78);
-  g.font = '500 26px "IBM Plex Mono", ui-monospace, monospace';
-  g.fillStyle = agent.color;
-  g.fillText(agent.roleLine, 256, 128);
-  g.font = '500 24px "IBM Plex Mono", ui-monospace, monospace';
-  g.fillStyle = '#d5e4df';
-  g.fillText(agent.readout[0], 256, 186);
-  g.fillText(agent.readout[1], 256, 222);
-  g.strokeStyle = agent.color;
-  g.lineWidth = 3;
-  g.beginPath();
-  for(let i = 0; i <= 18; i++){
-    const x = 36 + i * 24;
-    const y = 286 - Math.sin(i * 0.62 + phase) * 14 - (i % 5) * 1.4;
-    if(i) g.lineTo(x, y); else g.moveTo(x, y);
-  }
-  g.stroke();
+  c.width = w; c.height = h;
+  draw(c.getContext('2d'));
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+function screenTexture(agent, phase){
+  const tex = canvasTex(512, 320, g => {
+    g.fillStyle = '#07090b'; g.fillRect(0, 0, 512, 320);
+    g.fillStyle = agent.color; g.fillRect(0, 0, 512, 8);
+    g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.font = '700 62px "IBM Plex Mono", ui-monospace, monospace'; g.fillStyle = '#f4faf8'; g.fillText(agent.short, 256, 78);
+    g.font = '500 26px "IBM Plex Mono", ui-monospace, monospace'; g.fillStyle = agent.color; g.fillText(agent.roleLine, 256, 128);
+    g.font = '500 24px "IBM Plex Mono", ui-monospace, monospace'; g.fillStyle = '#d5e4df';
+    g.fillText(agent.readout[0], 256, 186); g.fillText(agent.readout[1], 256, 222);
+    g.strokeStyle = agent.color; g.lineWidth = 3; g.beginPath();
+    for(let i = 0; i <= 18; i++){ const x = 36 + i * 24, y = 286 - Math.sin(i * 0.62 + phase) * 14 - (i % 5) * 1.4; if(i) g.lineTo(x, y); else g.moveTo(x, y); }
+    g.stroke();
+  });
   tex.anisotropy = 4;
   return tex;
 }
-
-function signTexture(){
-  const c = document.createElement('canvas');
-  c.width = 1024; c.height = 220;
-  const g = c.getContext('2d');
-  g.clearRect(0, 0, 1024, 220);
-  g.textAlign = 'center';
-  g.textBaseline = 'middle';
-  g.font = '800 108px Manrope, sans-serif';
-  g.shadowColor = '#ff7a18';
-  g.shadowBlur = 28;
-  g.fillStyle = '#ffb56a';
-  g.fillText('TRENCHFLOOR', 512, 100);
-  g.shadowBlur = 0;
-  g.font = '500 28px "IBM Plex Mono", ui-monospace, monospace';
-  g.fillStyle = '#ff7a18';
-  g.fillText('SIMULATION ONLY', 512, 168);
-  const tex = new THREE.CanvasTexture(c);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  return tex;
+function neonSign(text, sub, w = 1024, h = 220, size = 108){
+  return canvasTex(w, h, g => {
+    g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.font = `800 ${size}px Manrope, sans-serif`; g.shadowColor = '#ff7a18'; g.shadowBlur = 28; g.fillStyle = '#ffb56a';
+    g.fillText(text, w / 2, sub ? h * 0.45 : h / 2);
+    if(sub){ g.shadowBlur = 0; g.font = '500 28px "IBM Plex Mono", ui-monospace, monospace'; g.fillStyle = '#ff7a18'; g.fillText(sub, w / 2, h * 0.78); }
+  });
 }
 
 function boot(){
@@ -561,12 +633,12 @@ function boot(){
   renderer.toneMapping = THREE.NoToneMapping;
   renderer.setClearColor(0x000000, 1);
   renderer.domElement.setAttribute('aria-hidden', 'true');
-  host.appendChild(renderer.domElement);
+  host.prepend(renderer.domElement);
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#000000');
-  scene.fog = new THREE.Fog('#000000', 26, 52);
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
+  scene.fog = new THREE.Fog('#000000', 38, 90);
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 160);
 
   const neonMat = new THREE.MeshBasicMaterial({ color: '#ff7a18' });
   const baseNeon = new THREE.Color('#ff7a18');
@@ -578,76 +650,72 @@ function boot(){
   const blackMat = new THREE.MeshStandardMaterial({ color: '#0c1012', roughness: 0.55, metalness: 0.35 });
   const chairMat = new THREE.MeshStandardMaterial({ color: '#171d21', roughness: 0.62, metalness: 0.28 });
   const skinMat = new THREE.MeshStandardMaterial({ color: '#d7bea4', roughness: 0.6, metalness: 0.02 });
+  const porcelain = new THREE.MeshStandardMaterial({ color: '#d9dde0', roughness: 0.22, metalness: 0.05 });
+  const tileMat = new THREE.MeshStandardMaterial({ color: '#121416', roughness: 0.35, metalness: 0.2 });
+  const panelMat = new THREE.MeshStandardMaterial({ color: '#0e0f10', roughness: 0.8, metalness: 0.15 });
+  const doorMat = new THREE.MeshStandardMaterial({ color: '#1d1410', roughness: 0.5, metalness: 0.3 });
+  const counterMat = new THREE.MeshStandardMaterial({ color: '#1a1a1a', roughness: 0.25, metalness: 0.6 });
+  const fridgeMat = new THREE.MeshStandardMaterial({ color: '#2a2f33', roughness: 0.3, metalness: 0.75 });
+  const woodMat = new THREE.MeshStandardMaterial({ color: '#3a2414', roughness: 0.7, metalness: 0.05 });
+  const food = (c, e = 0.1) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.6, metalness: 0, emissive: c, emissiveIntensity: e });
+  const orangeF = food('#ff8a2a', 0.25), redF = food('#d9412f'), greenF = food('#5cc46b'), bunF = food('#d49a52'), pattyF = food('#4a2a1a', 0.02), cheeseF = food('#f2c14e', 0.2), pinkF = food('#ff7fb0', 0.2), doughF = food('#e2ad69'), cokeF = food('#c62828', 0.15), noodleF = food('#f1d27a', 0.15);
 
-  function box(w, h, d, mat, x, y, z, parent = scene){
-    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
-    m.position.set(x, y, z);
-    parent.add(m);
-    return m;
+  function box(w, h, d, mat, x, y, z, parent = scene){ const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); parent.add(m); return m; }
+  function cyl(rt, rb, h, mat, x, y, z, parent = scene, seg = 14){ const m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, seg), mat); m.position.set(x, y, z); parent.add(m); return m; }
+  function ball(r, mat, x, y, z, parent = scene){ const m = new THREE.Mesh(new THREE.SphereGeometry(r, 12, 9), mat); m.position.set(x, y, z); parent.add(m); return m; }
+  function sign(tex, w, h, x, y, z, ry, parent = scene){ const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false })); m.position.set(x, y, z); m.rotation.y = ry; parent.add(m); return m; }
+
+  // Floor
+  const W = ROOM.x1 - ROOM.x0, D = ROOM.z1 - ROOM.z0, CZ = (ROOM.z0 + ROOM.z1) / 2;
+  box(W + 0.3, 0.08, D + 0.3, floorMat, 0, -0.04, CZ);
+  const grid = new THREE.GridHelper(16, 16, '#3a2418', '#1c120e');
+  grid.position.set(0, 0.012, 0.35);
+  (Array.isArray(grid.material) ? grid.material : [grid.material]).forEach(m => { m.transparent = true; m.opacity = 0.35; });
+  scene.add(grid);
+  // floor neon outline
+
+
+  // Cutaway walls: a wall hides while the camera is outside it, so you can look in from any side.
+  const walls = [];
+  function wall(len, axis, x, z, nx, nz){
+    const g = new THREE.Group();
+    scene.add(g);
+    const along = axis === 'x';
+    box(along ? len : 0.12, ROOM.h, along ? 0.12 : len, wallMat, x, ROOM.h / 2, z, g);
+    const ix = x - nx * 0.13, iz = z - nz * 0.13;
+    box(along ? len - 0.4 : 0.045, 0.045, along ? 0.045 : len - 0.4, neonMat, ix, ROOM.h - 0.18, iz, g);
+    box(along ? len - 0.4 : 0.045, 0.045, along ? 0.045 : len - 0.4, neonMat, ix, 0.05, iz, g);
+    walls.push({ g, p: new THREE.Vector3(x, 0, z), n: new THREE.Vector3(nx, 0, nz) });
+    return g;
   }
-  function cyl(rt, rb, h, mat, x, y, z, parent = scene){
-    const m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, 12), mat);
-    m.position.set(x, y, z);
-    parent.add(m);
-    return m;
-  }
-
-  box(18.4, 0.08, 9.2, floorMat, 0, -0.04, 0.35);
-  box(18.4, 4.2, 0.12, wallMat, 0, 2.1, 4.55);
-  box(0.12, 4.2, 9.2, wallMat, -9.15, 2.1, 0.35);
-  box(0.12, 4.2, 9.2, wallMat, 9.15, 2.1, 0.35);
-  box(18.4, 0.1, 9.2, wallMat, 0, 4.2, 0.35);
-
-  const strip = (w, h, d, x, y, z) => box(w, h, d, neonMat, x, y, z);
-  strip(17.6, 0.045, 0.045, 0, 4.02, 4.42);
-  strip(17.6, 0.045, 0.045, 0, 0.04, 4.42);
-  strip(0.045, 0.045, 8.5, -9.02, 4.02, 0.35);
-  strip(0.045, 0.045, 8.5, 9.02, 4.02, 0.35);
-  strip(0.045, 0.045, 8.5, -9.02, 0.04, 0.35);
-  strip(0.045, 0.045, 8.5, 9.02, 0.04, 0.35);
-  [[-8.95, -3.7], [8.95, -3.7], [-8.95, 4.35], [8.95, 4.35]].forEach(([x, z]) => strip(0.05, 4.05, 0.05, x, 2.02, z));
-  strip(17.4, 0.04, 0.04, 0, 0.04, -3.85);
-  strip(17.4, 0.04, 0.04, 0, 3.95, -3.85);
+  const back = wall(W, 'x', 0, ROOM.z1 + 0.06, 0, 1);
+  wall(W, 'x', 0, ROOM.z0 - 0.06, 0, -1);
+  const left = wall(D, 'z', ROOM.x0 - 0.06, CZ, -1, 0);
+  const right = wall(D, 'z', ROOM.x1 + 0.06, CZ, 1, 0);
+  sign(neonSign('TRENCHFLOOR', 'SIMULATION ONLY'), 7.4, 1.55, 0, 3.05, ROOM.z1 - 0.08, Math.PI, back);
   strip(14.2, 0.035, 0.08, 0, 3.42, DESK_Z);
+  function strip(w, h, d, x, y, z, parent = scene){ return box(w, h, d, neonMat, x, y, z, parent); }
 
-  const sign = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 1.55), new THREE.MeshBasicMaterial({ map: signTexture(), transparent: true }));
-  sign.position.set(0, 3.05, 4.4);
-  scene.add(sign);
-
+  // Lights
   scene.add(new THREE.HemisphereLight('#ffd2b4', '#100c0a', 1.65));
-  const key = new THREE.DirectionalLight('#fff0e2', 2.15);
-  key.position.set(-4, 9, -7);
-  scene.add(key);
-  const fill = new THREE.DirectionalLight('#ffb27a', 0.55);
-  fill.position.set(4, 3, 6);
-  scene.add(fill);
-  [[-5.2, 3.25, 0.2], [0, 3.35, 0.1], [5.2, 3.25, 0.2]].forEach(([x, y, z]) => {
-    const l = new THREE.PointLight('#ff7a18', 9, 11, 2);
-    l.position.set(x, y, z);
-    scene.add(l);
+  const key = new THREE.DirectionalLight('#fff0e2', 2.0); key.position.set(-4, 9, -7); scene.add(key);
+  const fill = new THREE.DirectionalLight('#ffb27a', 0.55); fill.position.set(4, 3, 6); scene.add(fill);
+  [[-5.2, 3.25, 0.2], [0, 3.35, 0.1], [5.2, 3.25, 0.2], [12, 2.6, -1.4], [-12.6, 3.0, -2.6]].forEach(([x, y, z]) => {
+    const l = new THREE.PointLight('#ff7a18', 8, 11, 2); l.position.set(x, y, z); scene.add(l);
   });
 
+  // Desk
   box(15.5, 0.07, 1.92, deskMat, 0, DESK_TOP - 0.035, DESK_Z);
   box(15.35, 0.045, 0.5, blackMat, 0, 0.36, DESK_Z);
   [-7.2, -2.4, 2.4, 7.2].forEach(x => box(0.1, DESK_TOP - 0.08, 0.1, metalMat, x, (DESK_TOP - 0.08) / 2, DESK_Z));
   box(15.2, 0.025, 0.06, underMat, 0, DESK_TOP - 0.09, DESK_Z - 0.9);
 
-  const grid = new THREE.GridHelper(16, 16, '#3a2418', '#1c120e');
-  grid.position.set(0, 0.012, 0.35);
-  const gmats = Array.isArray(grid.material) ? grid.material : [grid.material];
-  gmats.forEach(m => { m.transparent = true; m.opacity = 0.35; });
-  scene.add(grid);
-
   const stations = [];
-  const agents = window.FLOOR_AGENTS || [];
-  agents.forEach((agent, i) => {
-    const x = (i - 2.5) * SPACING;
+  (window.FLOOR_AGENTS || []).forEach((agent, i) => {
+    const x = seatX(i);
     const cloth = new THREE.MeshStandardMaterial({ color: agent.color, roughness: 0.66, metalness: 0.08, emissive: agent.color, emissiveIntensity: 0.16 });
     const accent = new THREE.MeshBasicMaterial({ color: agent.color });
-
-    const chair = new THREE.Group();
-    chair.position.set(x, 0, -0.82);
-    scene.add(chair);
+    const chair = new THREE.Group(); chair.position.set(x, 0, -0.82); scene.add(chair);
     cyl(0.22, 0.24, 0.05, metalMat, 0, 0.06, 0, chair);
     cyl(0.045, 0.045, 0.26, metalMat, 0, 0.2, 0, chair);
     box(0.48, 0.07, 0.46, chairMat, 0, 0.4, 0.02, chair);
@@ -655,145 +723,274 @@ function boot(){
     box(0.16, 0.08, 0.12, cloth, 0, 1.1, -0.2, chair);
     box(0.07, 0.14, 0.28, chairMat, -0.26, 0.52, 0.02, chair);
     box(0.07, 0.14, 0.28, chairMat, 0.26, 0.52, 0.02, chair);
-
-    const person = new THREE.Group();
-    person.position.set(x, 0, -0.78);
-    scene.add(person);
-    const torso = new THREE.Group();
-    torso.position.set(0, 0.72, 0.04);
-    torso.rotation.x = 0.2;
-    torso.userData.baseY = 0.72;
-    person.add(torso);
+    const person = new THREE.Group(); person.position.set(x, 0, -0.78); scene.add(person);
+    const torso = new THREE.Group(); torso.position.set(0, 0.72, 0.04); torso.rotation.x = 0.2; torso.userData.baseY = 0.72; person.add(torso);
     box(0.4, 0.46, 0.24, cloth, 0, 0.22, 0, torso);
     box(0.48, 0.1, 0.26, cloth, 0, 0.42, 0, torso);
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.145, 16, 12), skinMat);
-    head.position.set(0, 0.64, 0.02);
-    torso.add(head);
+    ball(0.145, skinMat, 0, 0.64, 0.02, torso);
     box(0.32, 0.09, 0.26, cloth, 0, 0.75, -0.01, torso);
     box(0.28, 0.035, 0.12, cloth, 0, 0.69, 0.12, torso);
     const arms = [];
     [-1, 1].forEach(s => {
-      const pivot = new THREE.Group();
-      pivot.position.set(s * 0.26, 0.4, 0.02);
-      pivot.rotation.x = -1.12;
-      pivot.rotation.z = s * -0.12;
-      pivot.userData.baseX = -1.12;
-      torso.add(pivot);
+      const pivot = new THREE.Group(); pivot.position.set(s * 0.26, 0.4, 0.02); pivot.rotation.x = -1.12; pivot.rotation.z = s * -0.12; pivot.userData.baseX = -1.12; torso.add(pivot);
       box(0.1, 0.36, 0.1, cloth, 0, -0.16, 0, pivot);
       box(0.09, 0.08, 0.1, skinMat, 0, -0.36, 0.02, pivot);
       arms.push(pivot);
-      const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.045, 12), cloth);
-      cup.rotation.z = Math.PI / 2;
-      cup.position.set(s * 0.15, 0.64, 0);
-      torso.add(cup);
+      const cup = cyl(0.05, 0.05, 0.045, cloth, s * 0.15, 0.64, 0, torso); cup.rotation.z = Math.PI / 2;
     });
-    const band = new THREE.Mesh(new THREE.TorusGeometry(0.15, 0.016, 8, 18, Math.PI), blackMat);
-    band.rotation.z = Math.PI;
-    band.position.set(0, 0.66, 0);
-    torso.add(band);
+    const band = new THREE.Mesh(new THREE.TorusGeometry(0.15, 0.016, 8, 18, Math.PI), blackMat); band.rotation.z = Math.PI; band.position.set(0, 0.66, 0); torso.add(band);
     [-1, 1].forEach(s => {
       box(0.12, 0.12, 0.28, blackMat, s * 0.1, 0.5, 0.28, person);
       box(0.11, 0.26, 0.12, blackMat, s * 0.1, 0.32, 0.46, person);
       box(0.12, 0.06, 0.18, blackMat, s * 0.1, 0.16, 0.54, person);
     });
-
     box(0.5, 0.02, 0.2, blackMat, x, DESK_TOP + 0.012, -0.22);
     const keys = box(0.46, 0.025, 0.16, blackMat, x, DESK_TOP + 0.03, -0.22);
     box(0.42, 0.008, 0.008, accent, x, DESK_TOP + 0.046, -0.22);
     box(0.08, 0.03, 0.12, blackMat, x + 0.34, DESK_TOP + 0.02, -0.18);
-
-    const rig = new THREE.Group();
-    rig.position.set(x, DESK_TOP, 0.48);
-    scene.add(rig);
+    const rig = new THREE.Group(); rig.position.set(x, DESK_TOP, 0.48); scene.add(rig);
     cyl(0.04, 0.04, 0.22, metalMat, 0, 0.12, 0, rig);
     box(0.22, 0.02, 0.16, metalMat, 0, 0.02, 0, rig);
-    const headRig = new THREE.Group();
-    headRig.position.set(0, 0.28, 0);
-    headRig.rotation.x = 0.48;
-    rig.add(headRig);
+    const headRig = new THREE.Group(); headRig.position.set(0, 0.28, 0); headRig.rotation.x = 0.48; rig.add(headRig);
     box(1.34, 0.84, 0.06, blackMat, 0, 0.42, 0, headRig);
     const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.7), new THREE.MeshBasicMaterial({ map: screenTexture(agent, i * 0.9) }));
-    screen.position.set(0, 0.42, -0.034);
-    screen.rotation.y = Math.PI;
-    headRig.add(screen);
+    screen.position.set(0, 0.42, -0.034); screen.rotation.y = Math.PI; headRig.add(screen);
     box(1.12, 0.02, 0.02, accent, 0, 0.04, -0.04, headRig);
-
     stations.push({ torso, arms, screen, keys });
   });
+
+  // ---------- Kitchen (east side, +x) ----------
+  const KX = 14.5;
+  box(0.66, 0.88, 4.2, panelMat, KX, 0.44, 1.3);                 // base cabinets
+  box(0.74, 0.05, 4.3, counterMat, KX - 0.03, 0.905, 1.3);       // counter top
+  strip(0.03, 0.03, 4.3, KX - 0.41, 0.9, 1.3);                   // neon edge
+  strip(0.02, 0.02, 4.0, KX - 0.34, 0.08, 1.3);                  // toe-kick glow
+  box(0.8, 2.05, 0.78, fridgeMat, KX - 0.07, 1.025, 3.88);       // fridge
+  box(0.02, 0.02, 0.76, blackMat, KX - 0.48, 1.42, 3.88);
+  strip(0.03, 0.55, 0.03, KX - 0.49, 1.75, 3.6);                 // handle glow
+  strip(0.03, 0.4, 0.03, KX - 0.49, 1.0, 3.6);
+  box(0.32, 0.04, 3.2, metalMat, KX + 0.25, 2.05, 1.0);          // shelf
+  strip(0.02, 0.02, 3.2, KX + 0.08, 2.02, 1.0);
+  [[-0.2, '#ff8a2a'], [0.4, '#d9412f'], [1.0, '#5cc46b'], [1.6, '#f2c14e'], [2.2, '#ff7fb0']].forEach(([z, c]) => cyl(0.07, 0.07, 0.22, food(c, 0.3), KX + 0.25, 2.18, z)); // jars
+  box(0.42, 0.34, 0.55, blackMat, KX + 0.02, 1.1, -0.35);        // microwave
+  box(0.02, 0.2, 0.32, food('#ff7a18', 0.9), KX - 0.2, 1.1, -0.4);
+  box(0.32, 0.42, 0.26, metalMat, KX + 0.05, 1.14, 0.45);        // coffee machine
+  cyl(0.045, 0.04, 0.09, porcelain, KX - 0.12, 0.975, 0.45);
+  const bowl = cyl(0.22, 0.14, 0.1, porcelain, KX - 0.05, 0.98, 1.4);
+  [[0, 0], [0.09, 0.06], [-0.08, 0.07], [0.03, -0.1]].forEach(([dx, dz]) => ball(0.075, orangeF, KX - 0.05 + dx, 1.07, 1.4 + dz));
+  ball(0.07, greenF, KX - 0.02, 1.13, 1.42);
+  box(0.46, 0.05, 0.46, food('#2a1a10', 0.05), KX - 0.05, 0.955, 2.35); // pizza box
+  const pie = cyl(0.2, 0.2, 0.02, doughF, KX - 0.05, 0.99, 2.35, scene, 18);
+  [[0.06, 0.05], [-0.07, 0.02], [0.01, -0.09]].forEach(([dx, dz]) => cyl(0.03, 0.03, 0.012, redF, KX - 0.05 + dx, 1.005, 2.35 + dz));
+  for(let k = 0; k < 3; k++){ const d = new THREE.Mesh(new THREE.TorusGeometry(0.07, 0.035, 8, 16), pinkF); d.rotation.x = Math.PI / 2; d.position.set(KX - 0.08, 0.96, 2.95 + (k - 1) * 0.17); scene.add(d); }
+  sign(neonSign('KITCHEN', 'FUEL FOR THE TEAM', 1024, 220, 120), 3.0, 0.65, ROOM.x1 - 0.08, 3.0, 1.2, -Math.PI / 2, right);
+  // Table + stools + plates
+  const TX = 11.6, TZ = -2.3;
+  cyl(0.85, 0.85, 0.05, woodMat, TX, 0.76, TZ, scene, 24);
+  cyl(0.86, 0.86, 0.02, neonMat, TX, 0.735, TZ, scene, 24);
+  cyl(0.06, 0.06, 0.72, metalMat, TX, 0.38, TZ);
+  cyl(0.35, 0.4, 0.04, metalMat, TX, 0.02, TZ);
+  [0, 2.1, 4.2].forEach(a => {
+    const sx = TX + Math.cos(a) * 1.25, sz = TZ + Math.sin(a) * 1.25;
+    cyl(0.22, 0.22, 0.06, chairMat, sx, 0.5, sz); cyl(0.03, 0.03, 0.48, metalMat, sx, 0.25, sz); cyl(0.2, 0.2, 0.02, neonMat, sx, 0.02, sz);
+  });
+  const plate = (dx, dz) => cyl(0.2, 0.17, 0.02, porcelain, TX + dx, 0.795, TZ + dz, scene, 18);
+  plate(0.35, 0.1); // burger
+  cyl(0.11, 0.12, 0.04, bunF, TX + 0.35, 0.83, TZ + 0.1); cyl(0.12, 0.12, 0.03, pattyF, TX + 0.35, 0.865, TZ + 0.1); box(0.2, 0.01, 0.2, cheeseF, TX + 0.35, 0.885, TZ + 0.1);
+  const topBun = new THREE.Mesh(new THREE.SphereGeometry(0.115, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), bunF); topBun.position.set(TX + 0.35, 0.89, TZ + 0.1); scene.add(topBun);
+  plate(-0.3, 0.3); // pizza slice
+  const slice = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.02, 1, 1, false, 0, Math.PI / 4), doughF); slice.position.set(TX - 0.36, 0.815, TZ + 0.26); scene.add(slice);
+  plate(-0.1, -0.38); // noodles
+  cyl(0.13, 0.09, 0.08, food('#1a1a1a', 0), TX - 0.1, 0.84, TZ - 0.38);
+  const nood = new THREE.Mesh(new THREE.TorusGeometry(0.06, 0.03, 6, 14), noodleF); nood.rotation.x = Math.PI / 2; nood.position.set(TX - 0.1, 0.88, TZ - 0.38); scene.add(nood);
+  [[0.05, 0.45], [0.55, -0.3]].forEach(([dx, dz]) => cyl(0.04, 0.04, 0.12, cokeF, TX + dx, 0.84, TZ + dz));
+  // pendant lamp
+  cyl(0.008, 0.008, 1.4, blackMat, TX, 3.3, TZ);
+  const shade = new THREE.Mesh(new THREE.ConeGeometry(0.32, 0.26, 18, 1, true), blackMat); shade.position.set(TX, 2.5, TZ); scene.add(shade);
+  cyl(0.29, 0.29, 0.015, neonMat, TX, 2.37, TZ, scene, 18);
+
+  // ---------- Bathroom (north-west corner, -x/+z) ----------
+  const BX0 = ROOM.x0, BX1 = -11, BZ0 = 1.2, BZ1 = ROOM.z1, BH = 2.6;
+  box(BX1 - BX0, 0.02, BZ1 - BZ0, tileMat, (BX0 + BX1) / 2, 0.012, (BZ0 + BZ1) / 2);
+  const DOOR0 = -13.4, DOOR1 = -12.5;
+  box(DOOR0 - BX0, BH, 0.1, panelMat, (BX0 + DOOR0) / 2, BH / 2, BZ0);   // front wall, left of door
+  box(BX1 - DOOR1, BH, 0.1, panelMat, (DOOR1 + BX1) / 2, BH / 2, BZ0);   // front wall, right of door
+  box(DOOR1 - DOOR0, BH - 2.12, 0.1, panelMat, (DOOR0 + DOOR1) / 2, 2.12 + (BH - 2.12) / 2, BZ0); // lintel
+  box(0.1, BH, BZ1 - BZ0, panelMat, BX1, BH / 2, (BZ0 + BZ1) / 2);      // side wall
+  strip(BX1 - BX0, 0.035, 0.035, (BX0 + BX1) / 2, BH + 0.01, BZ0);       // neon top edges
+  strip(0.035, 0.035, BZ1 - BZ0, BX1, BH + 0.01, (BZ0 + BZ1) / 2);
+  strip(0.03, 2.12, 0.03, DOOR0, 1.06, BZ0 - 0.06); strip(0.03, 2.12, 0.03, DOOR1, 1.06, BZ0 - 0.06); strip(DOOR1 - DOOR0, 0.03, 0.03, (DOOR0 + DOOR1) / 2, 2.12, BZ0 - 0.06);
+  const hinge = new THREE.Group(); hinge.position.set(DOOR1 - 0.02, 0, BZ0 - 0.03); hinge.rotation.y = -0.95; scene.add(hinge);
+  box(0.86, 2.08, 0.05, doorMat, -0.43, 1.04, 0, hinge);
+  cyl(0.025, 0.025, 0.12, metalMat, -0.78, 1.0, -0.05, hinge).rotation.x = Math.PI / 2;
+  sign(neonSign('WC', null, 256, 160, 110), 0.7, 0.44, (DOOR0 + DOOR1) / 2, 2.38, BZ0 - 0.07, Math.PI);
+  // toilet
+  const TTX = -14.1;
+  box(0.5, 0.42, 0.2, porcelain, TTX, 0.72, BZ1 - 0.14);
+  box(0.54, 0.04, 0.24, porcelain, TTX, 0.95, BZ1 - 0.14);
+  cyl(0.17, 0.13, 0.4, porcelain, TTX, 0.2, BZ1 - 0.52);
+  const seatRing = new THREE.Mesh(new THREE.TorusGeometry(0.17, 0.035, 8, 20), porcelain); seatRing.rotation.x = Math.PI / 2; seatRing.position.set(TTX, 0.42, BZ1 - 0.52); scene.add(seatRing);
+  box(0.36, 0.03, 0.42, porcelain, TTX, 0.6, BZ1 - 0.36).rotation.x = -1.35;
+  // sink + mirror
+  const SZ = 2.15;
+  cyl(0.09, 0.12, 0.78, porcelain, BX0 + 0.35, 0.39, SZ);
+  box(0.46, 0.14, 0.58, porcelain, BX0 + 0.33, 0.84, SZ);
+  box(0.36, 0.03, 0.46, tileMat, BX0 + 0.33, 0.9, SZ);
+  cyl(0.02, 0.02, 0.18, metalMat, BX0 + 0.14, 1.0, SZ);
+  box(0.16, 0.02, 0.02, metalMat, BX0 + 0.21, 1.08, SZ);
+  box(0.02, 0.8, 0.6, new THREE.MeshStandardMaterial({ color: '#4a5358', roughness: 0.05, metalness: 1 }), BX0 + 0.03, 1.65, SZ);
+  strip(0.02, 0.82, 0.02, BX0 + 0.05, 1.65, SZ - 0.31); strip(0.02, 0.82, 0.02, BX0 + 0.05, 1.65, SZ + 0.31);
+  strip(0.02, 0.02, 0.62, BX0 + 0.05, 2.06, SZ); strip(0.02, 0.02, 0.62, BX0 + 0.05, 1.24, SZ);
+  box(0.06, 0.5, 0.36, food('#ff7a18', 0.2), BX0 + 0.05, 1.25, 3.3); // towel
+
+  // ---------- Treadmills (west side, -x) ----------
+  const beltTex = canvasTex(64, 256, g => { g.fillStyle = '#0b0b0b'; g.fillRect(0, 0, 64, 256); g.fillStyle = '#2a1a10'; for(let y = 0; y < 256; y += 32) g.fillRect(0, y, 64, 6); });
+  beltTex.wrapS = beltTex.wrapT = THREE.RepeatWrapping; beltTex.repeat.set(1, 3);
+  const beltMat = new THREE.MeshStandardMaterial({ map: beltTex, roughness: 0.9, metalness: 0 });
+  const consoleTex = neonSign('5.2 MPH', 'PAPER CARDIO', 512, 220, 90);
+  function treadmill(cx, cz){
+    const g = new THREE.Group(); g.position.set(cx, 0, cz); scene.add(g);
+    box(2.1, 0.18, 0.84, blackMat, 0, 0.11, 0, g);
+    const belt = new THREE.Mesh(new THREE.PlaneGeometry(0.64, 1.9), beltMat); belt.rotation.x = -Math.PI / 2; belt.rotation.z = Math.PI / 2; belt.position.set(0.05, 0.205, 0); g.add(belt);
+    strip(2.1, 0.03, 0.03, 0, 0.21, 0.42, g); strip(2.1, 0.03, 0.03, 0, 0.21, -0.42, g);
+    [-0.36, 0.36].forEach(z => { const u = cyl(0.035, 0.035, 1.2, metalMat, -0.92, 0.78, z, g); u.rotation.z = -0.18; box(0.55, 0.04, 0.04, metalMat, -0.72, 1.1, z, g); });
+    const con = box(0.14, 0.4, 0.78, blackMat, -1.03, 1.38, 0, g); con.rotation.z = -0.35;
+    sign(consoleTex, 0.62, 0.27, -0.95, 1.4, 0, Math.PI / 2, g).rotation.x = 0; // faces +x toward the runner
+    g.children[g.children.length - 1].rotation.set(0, Math.PI / 2, 0.35);
+    return g;
+  }
+  treadmill(-12.7, -1.3);
+  treadmill(-12.7, -3.8);
+  box(3.2, 0.015, 4.2, food('#120a06', 0.02), -12.7, 0.008, -2.55); // gym mat
+  strip(3.2, 0.02, 0.03, -12.7, 0.02, -0.45); strip(3.2, 0.02, 0.03, -12.7, 0.02, -4.65);
+  sign(neonSign('GYM', 'TWO TREADMILLS', 1024, 220, 120), 2.6, 0.56, ROOM.x0 + 0.08, 3.0, -2.55, Math.PI / 2, left);
 
   let composer = null;
   try {
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    const bloom = new UnrealBloomPass(new THREE.Vector2(host.clientWidth || 2, host.clientHeight || 2), 0.34, 0.36, 0.72);
-    composer.addPass(bloom);
+    composer.addPass(new UnrealBloomPass(new THREE.Vector2(host.clientWidth || 2, host.clientHeight || 2), 0.34, 0.36, 0.72));
     composer.addPass(new OutputPass());
-  } catch (_) {
-    composer = null;
+  } catch (_) { composer = null; }
+
+  // ---------- Rotatable camera ----------
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.085;
+  controls.rotateSpeed = coarse ? 0.55 : 0.7;
+  controls.zoomSpeed = 0.9;
+  controls.panSpeed = 0.7;
+  controls.screenSpacePanning = false;
+  controls.minDistance = 3;
+  controls.maxDistance = 40;
+  controls.minPolarAngle = 0.08;
+  controls.maxPolarAngle = Math.PI / 2 - 0.06;
+  controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+  const clampTarget = () => {
+    const t = controls.target;
+    t.x = THREE.MathUtils.clamp(t.x, ROOM.x0 + 0.5, ROOM.x1 - 0.5);
+    t.z = THREE.MathUtils.clamp(t.z, ROOM.z0 + 0.5, ROOM.z1 - 0.5);
+    t.y = THREE.MathUtils.clamp(t.y, 0.3, 2.6);
+  };
+  controls.addEventListener('change', clampTarget);
+
+  function homeView(){
+    const w = host.clientWidth || 1, h = host.clientHeight || 1, aspect = w / h;
+    const narrow = w < 760;
+    const fov = narrow ? 56 : 38;
+    const fitW = narrow ? 14.6 : 21;
+    const half = Math.atan(Math.tan(THREE.MathUtils.degToRad(fov / 2)) * aspect);
+    const d = Math.min(controls.maxDistance - 2, (fitW / 2) / Math.tan(half) + (narrow ? 0.4 : 0.5));
+    const el = narrow ? 0.36 : 0.3;
+    return { fov, target: new THREE.Vector3(0, narrow ? 0.9 : 1.05, 0.1), pos: new THREE.Vector3(0, (narrow ? 0.9 : 1.05) + d * Math.sin(el), 0.1 - d * Math.cos(el)) };
   }
+  const SPOTS = {
+    kitchen: () => ({ target: new THREE.Vector3(12.6, 0.9, 0.4), pos: new THREE.Vector3(6.4, 4.6, -6.2) }),
+    gym: () => ({ target: new THREE.Vector3(-12.6, 0.7, -2.6), pos: new THREE.Vector3(-6.6, 4.4, -7.2) }),
+    wc: () => ({ target: new THREE.Vector3(-13.1, 0.4, 2.9), pos: new THREE.Vector3(-10.6, 7.6, -0.6) }),
+  };
+  let fly = null, touched = false, view = 'desk';
+  function setFov(f){ if(camera.fov !== f){ camera.fov = f; camera.updateProjectionMatrix(); } }
+  function goTo(name, instant){
+    const v = name === 'desk' ? homeView() : SPOTS[name]();
+    view = name;
+    document.querySelectorAll('#viewJump button').forEach(b => b.classList.toggle('on', b.dataset.view === name));
+    setFov(homeView().fov);
+    if(instant || reduceMotion){ camera.position.copy(v.pos); controls.target.copy(v.target); controls.update(); fly = null; return; }
+    fly = { t0: performance.now(), dur: 750, p0: camera.position.clone(), t0v: controls.target.clone(), p1: v.pos, t1: v.target };
+  }
+  const hint = document.getElementById('sceneHint');
+  if(hint && !coarse) hint.textContent = 'Drag to look around · scroll to zoom · right-drag to pan';
+  controls.addEventListener('start', () => {
+    fly = null;
+    if(!touched){ touched = true; hint?.classList.add('gone'); }
+    if(view){ view = null; document.querySelectorAll('#viewJump button').forEach(b => b.classList.remove('on')); }
+  });
+  document.getElementById('resetView')?.addEventListener('click', () => goTo('desk'));
+  document.getElementById('viewJump')?.addEventListener('click', e => { const b = e.target.closest('button[data-view]'); if(b) goTo(b.dataset.view); });
 
   function resize(){
-    const w = host.clientWidth || 1;
-    const h = host.clientHeight || 1;
-    const f = w < 760 ? FRAMING.narrow : FRAMING.wide;
-    camera.fov = f.fov;
+    const w = host.clientWidth || 1, h = host.clientHeight || 1;
     camera.aspect = w / h;
-    camera.position.set(f.pos[0], f.pos[1], f.pos[2]);
-    camera.lookAt(f.look[0], f.look[1], f.look[2]);
     camera.updateProjectionMatrix();
     const pr = Math.min(window.devicePixelRatio || 1, w < 760 ? 1.5 : 1.75);
     renderer.setPixelRatio(pr);
     renderer.setSize(w, h, false);
-    if(composer){
-      composer.setPixelRatio(pr);
-      composer.setSize(w, h);
-    }
+    if(composer){ composer.setPixelRatio(pr); composer.setSize(w, h); }
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
+    if(view === 'desk' && !fly) goTo('desk', true);
   }
   new ResizeObserver(resize).observe(host);
+  goTo('desk', true);
   resize();
 
   const status = document.getElementById('sceneStatus');
   if(status) status.textContent = 'AGENTS SEATED';
   document.querySelector('.scene-loading')?.remove();
 
+  const tmp = new THREE.Vector3();
   let bloomOk = !!composer;
+  const ease = (x) => 1 - Math.pow(1 - x, 3);
   function frame(now){
     requestAnimationFrame(frame);
     if(document.hidden) return;
     const t = now / 1000;
+    if(fly){
+      const k = Math.min(1, (now - fly.t0) / fly.dur), e = ease(k);
+      camera.position.lerpVectors(fly.p0, fly.p1, e);
+      controls.target.lerpVectors(fly.t0v, fly.t1, e);
+      if(k >= 1) fly = null;
+    }
+    controls.update();
+    for(const w of walls){ w.g.visible = tmp.copy(camera.position).sub(w.p).dot(w.n) < 0; }
     if(!reduceMotion){
       neonMat.color.copy(baseNeon).multiplyScalar(0.86 + 0.14 * Math.sin(t * 1.6));
+      beltTex.offset.y = (t * 0.9) % 1;
       stations.forEach((s, i) => {
         s.torso.position.y = s.torso.userData.baseY + Math.sin(t * 1.7 + i) * 0.012;
-        s.arms.forEach((arm, k) => {
-          arm.rotation.x = arm.userData.baseX + Math.sin(t * 8.5 + i * 0.8 + k * 1.6) * 0.07;
-        });
-        const flick = Math.sin(t * 19 + i * 4.1) > 0.985;
-        s.screen.material.color.setScalar(flick ? 0.45 : 1);
+        s.arms.forEach((arm, k) => { arm.rotation.x = arm.userData.baseX + Math.sin(t * 8.5 + i * 0.8 + k * 1.6) * 0.07; });
+        s.screen.material.color.setScalar(Math.sin(t * 19 + i * 4.1) > 0.985 ? 0.45 : 1);
       });
     }
     try {
-      if(bloomOk && composer) composer.render();
-      else renderer.render(scene, camera);
+      if(bloomOk && composer) composer.render(); else renderer.render(scene, camera);
     } catch (_) {
-      bloomOk = false;
-      composer = null;
+      bloomOk = false; composer = null;
       try { renderer.render(scene, camera); } catch (__) {}
     }
   }
   window.__seatNDC = () => {
     const out = [];
-    for (let i = 0; i < 6; i++) {
-      const x = (i - 2.5) * SPACING;
-      for (const [y, z] of [[1.55, 0.2], [0.7, -0.8], [1.35, 0.55]]) {
-        const v = new THREE.Vector3(x, y, z).project(camera);
+    for(let i = 0; i < 6; i++){
+      for(const [y, z] of [[1.55, 0.2], [0.7, -0.8], [1.35, 0.55]]){
+        const v = new THREE.Vector3(seatX(i), y, z).project(camera);
         out.push({ i, x: +v.x.toFixed(3), y: +v.y.toFixed(3) });
       }
     }
     return out;
   };
+  window.__view = { goTo, camera, controls };
   requestAnimationFrame(frame);
 }
 
@@ -802,7 +999,8 @@ function boot(){
     await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1800))]);
     if(!host) return;
     boot();
-  } catch (_) {
+  } catch (err) {
+    console.error(err);
     showSceneError('3D view could not start on this device. The mock ledger below still works.');
   }
 })();
