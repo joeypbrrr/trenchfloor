@@ -348,6 +348,169 @@ def assess_entry_gates(evidence, config=None, now=None):
     return checks
 
 
+def measure_entry_signals(evidence, config=None, now=None):
+    """Numeric readings behind the hard gates.
+
+    Read-only. `assess_entry_gates` is still the pass/fail decision, and this
+    function does not change that decision or the default thresholds. Missing
+    reads stay None. A zero is returned only when the underlying sample was
+    actually read and showed no qualifying cluster.
+    """
+    evidence = evidence or {}
+    settings = _settings(config)
+    now = now if now is not None else evidence.get("now") or time.time()
+    checks = assess_entry_gates(evidence, config=config, now=now)
+    created = num(evidence.get("created_ts"))
+    pair_age_hours = None if created is None else (float(now) - created) / 3600.0
+    holders = evidence.get("holders") if isinstance(evidence.get("holders"), list) else None
+    holder_ok = evidence.get("holder_read_ok") is True and holders is not None
+
+    fresh_measured = bool(holder_ok and all(isinstance(row, dict) and "history_complete" in row for row in holders))
+    fresh = _fresh_rows(holders or [], now, settings["fresh_wallet_seconds"]) if fresh_measured else []
+    fresh_count = len(fresh) if fresh_measured else None
+    fresh_pct = sum(float(row.get("pct") or 0) for row in fresh) if fresh_measured else None
+
+    linked_measured = bool(holder_ok and any(isinstance(row, dict) and row.get("funder_known") is True for row in holders))
+    linked_pct = None
+    linked_wallets = None
+    if linked_measured:
+        best_pct = 0.0
+        best_n = 0
+        by_funder = {}
+        for row in holders:
+            if row.get("funder_known") is not True:
+                continue
+            for funder in row.get("funders") or []:
+                by_funder.setdefault(funder, []).append(row)
+        for rows in by_funder.values():
+            seen = []
+            pct = 0.0
+            for row in rows:
+                owner = row.get("owner")
+                if owner in seen:
+                    continue
+                seen.append(owner)
+                pct += float(row.get("pct") or 0)
+            if len(seen) >= int(settings["min_linked_wallets"]) and pct >= best_pct:
+                best_pct = pct
+                best_n = len(seen)
+        linked_pct = best_pct
+        linked_wallets = best_n
+
+    slot_rows = [
+        row for row in (holders or [])
+        if isinstance(row, dict) and row.get("acquire_known") is True and row.get("acquire_slot") is not None
+    ]
+    same_slot_pct = None
+    same_slot_wallets = None
+    sniper_pct = None
+    sniper_wallets = None
+    if slot_rows:
+        best_n = 0
+        best_pct = 0.0
+        by_slot = {}
+        for row in slot_rows:
+            by_slot.setdefault(row["acquire_slot"], []).append(row)
+        min_wallets = int(settings["same_slot_min_wallets"])
+        for rows in by_slot.values():
+            seen = []
+            pct = 0.0
+            for row in rows:
+                owner = row.get("owner")
+                if owner in seen:
+                    continue
+                seen.append(owner)
+                pct += float(row.get("pct") or 0)
+            if len(seen) >= min_wallets and pct >= best_pct:
+                best_n = len(seen)
+                best_pct = pct
+        same_slot_wallets = best_n
+        same_slot_pct = best_pct
+        first = min(row["acquire_slot"] for row in slot_rows)
+        window = int(settings["sniper_slot_window"])
+        early = [row for row in slot_rows if row["acquire_slot"] <= first + window]
+        seen = []
+        share = 0.0
+        for row in early:
+            owner = row.get("owner")
+            if owner in seen:
+                continue
+            seen.append(owner)
+            share += float(row.get("pct") or 0)
+        sniper_wallets = len(seen)
+        sniper_pct = share
+
+    parts = []
+    min_wallets = int(settings["same_slot_min_wallets"])
+    if same_slot_pct is not None and (same_slot_wallets or 0) >= min_wallets:
+        parts.append(same_slot_pct)
+    if sniper_pct is not None and (sniper_wallets or 0) >= min_wallets:
+        parts.append(sniper_pct)
+    if linked_pct is not None and (linked_wallets or 0) >= int(settings["min_linked_wallets"]):
+        parts.append(linked_pct)
+    bundle_measured = bool(slot_rows) or linked_measured
+    bundle_supply_pct = (max(parts) if parts else 0.0) if bundle_measured else None
+
+    wash = None
+    if evidence.get("is_wash_trading") is True:
+        wash = 1.0
+    else:
+        trades = evidence.get("trades") if isinstance(evidence.get("trades"), list) else None
+        trade_ok = evidence.get("trade_read_ok") is True and trades is not None
+        if trade_ok:
+            flow = {}
+            total = 0.0
+            for trade in trades:
+                signer = trade.get("signer")
+                side = trade.get("side")
+                amount = num(trade.get("amount"))
+                if not signer or side not in ("buy", "sell") or amount is None:
+                    continue
+                slot = flow.setdefault(signer, {"buy": 0.0, "sell": 0.0})
+                slot[side] += amount
+                total += amount
+            wash = 0.0
+            if total > 0:
+                for sides in flow.values():
+                    turned = min(sides["buy"], sides["sell"])
+                    if sides["buy"] > 0 and sides["sell"] > 0:
+                        wash = max(wash, turned / total)
+
+    dev_hold = num(evidence.get("dev_hold_pct"))
+    if dev_hold is None:
+        dev_hold = num(evidence.get("creator_hold_pct"))
+    dev_sold_fraction = num(evidence.get("dev_sold_fraction"))
+    if "dev_dumped" in evidence or "dev_sold" in evidence:
+        dev_sold_flag = 1.0 if evidence.get("dev_dumped") is True or evidence.get("dev_sold") is True else 0.0
+    else:
+        dev_sold_flag = None
+
+    def _round(value):
+        return None if value is None else round(float(value), 6)
+
+    return {
+        "pair_age_hours": _round(pair_age_hours),
+        "top10_ex_pool_burn_pct": num(evidence.get("top10_ex_pool_burn_pct")),
+        "fresh_wallet_count": fresh_count,
+        "fresh_cluster_pct": _round(fresh_pct),
+        "linked_funder_pct": _round(linked_pct),
+        "linked_funder_wallets": linked_wallets,
+        "bundle_same_slot_pct": _round(same_slot_pct),
+        "bundle_same_slot_wallets": same_slot_wallets,
+        "sniper_supply_pct": _round(sniper_pct),
+        "sniper_wallets": sniper_wallets,
+        "bundle_supply_pct": _round(bundle_supply_pct),
+        "wash_roundtrip_fraction": _round(wash),
+        "dev_hold_pct": dev_hold,
+        "dev_sold_fraction": dev_sold_fraction,
+        "dev_sold_flag": dev_sold_flag,
+        "holder_measured": bool(holder_ok),
+        "bundle_measured": bundle_measured,
+        "fresh_measured": fresh_measured,
+        "checks": checks,
+    }
+
+
 def _rpc(rpc, method, params):
     try:
         return rpc.call(method, params), None
