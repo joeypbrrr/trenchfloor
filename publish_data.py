@@ -16,6 +16,7 @@ import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC = "https://joeypbrrr.github.io/trenchfloor/"
@@ -38,6 +39,9 @@ SITE_FILES = [
     "live/icons/icon-512.png",
     "data/live_chat.json",
     "data/checklist.json",
+    "data/paper_account.json",
+    "data/daily_stop.json",
+    "floor/index.html",
 ]
 TOKEN_RE = re.compile(r"(https?://)([^/\s@]+)@")
 
@@ -156,6 +160,8 @@ def rebase_ours(work, branch):
 def push_with_retry(work, branch, retries=4):
     last = ""
     for _attempt in range(retries):
+        if remote_has_branch(git(work, "remote", "get-url", "origin", check=True).stdout.strip(), branch):
+            git(work, "-c", "user.name=joeypbrrr", "-c", "user.email=joeypbrrr@users.noreply.github.com", "pull", "--rebase", "origin", branch, check=True)
         proc = git(work, "push", "origin", f"HEAD:{branch}", timeout=180)
         if proc.returncode == 0:
             return
@@ -172,7 +178,7 @@ def live_snapshots(root):
     if not (root / "live" / "index.html").exists():
         return []
     try:
-        history = json.loads((root / "data/cache/live-chat-state.json").read_text())
+        history = json.loads((root / ("data/cache/paper-chat-state.json" if (root / "data/cache/paper-chat-state.json").exists() else "data/cache/live-chat-state.json")).read_text())
     except (OSError, ValueError):
         history = {}
     stamp = datetime.now(timezone.utc).isoformat()
@@ -212,7 +218,18 @@ def copy_payload(root, dest, feed_only=False):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, target)
         copied.append(rel)
+    # Keep legacy ledger history archived, never leave stale pre-reset calendar days active.
+    archive = root / "data/archive"
+    if archive.exists():
+        shutil.copytree(archive, dest / "data/archive", dirs_exist_ok=True)
+        copied.extend(str(p.relative_to(root)) for p in archive.rglob("*") if p.is_file())
     ledger = root / "data" / "ledger"
+    if (root / "data/paper_account.json").exists():
+        for stale in (dest / "data/ledger").glob("????-??-??.json"):
+            if not (ledger / stale.name).exists():
+                target = dest / "data/archive/pre-forward-pages-ledger" / stale.name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.move(str(stale), target)
     if ledger.exists():
         for src in ledger.glob("*.json"):
             target = dest / "data" / "ledger" / src.name
@@ -248,7 +265,7 @@ def publish(root=None, feed_only=False, remote=None, branch="gh-pages", work=Non
     if (work / ".git").exists() and git(work, "rev-parse", "--verify", "HEAD").returncode == 0:
         sync(work, branch)
     copied = copy_payload(root, work, feed_only=feed_only)
-    stamp = datetime.now(timezone.utc).isoformat()
+    stamp = datetime.now(ZoneInfo("America/New_York")).isoformat() + " ET"
     message = ("Feed update " if feed_only else "Research publish ") + stamp
     if not commit(work, message):
         print("no new data")

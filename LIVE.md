@@ -2,10 +2,10 @@
 
 - Public phone preview: https://joeypbrrr.github.io/trenchfloor/live/
   Static fallback polls published data every 60 seconds; banner explicitly says
-  updates arrive every few minutes, not instantly. Root, /preview/ and /floor/ are unchanged.
+  publishes hourly, not instantly. Root now uses this design; /preview/ is preserved and /floor/ redirects to root.
 - Local read-only dashboard: http://127.0.0.1:8796/
 - Private event receiver: http://127.0.0.1:8797/event (loopback only).
-- Original local site (8795), Pages HTML, Pages links and publisher are unchanged.
+- Original local site (8795) and Pages root now use the approved continuous-room HTML.
 - `./live_start.sh` starts auto-restarting dashboard and Cloudflare quick tunnel.
   `./live_start.sh --local-only` starts only the dashboard. `./live_stop.sh` stops both.
   These scripts are independent of research start/stop scripts.
@@ -45,8 +45,7 @@ Test runners and `TRENCHFLOOR_EVENTS_DISABLED=1` suppress telemetry.
 ## Same floor, separate live copy
 
 `live/index.html` is a copy of the existing published floor with its 3D room,
-kitchen, two treadmills, bathroom, drag/touch rotation, and P&L calendar. Only
-this copy removes room-jump buttons, defaults to full-floor framing, places the
+kitchen, two treadmills, bathroom, drag/touch rotation, and P&L calendar. This design removes room-jump buttons, defaults to full-floor framing, places the
 calendar directly beneath the scene, and adds live bubbles, feed, chat/checklist.
 Client-side cosmetic breaks have atomic central reservations: bathroom <=1,
 each treadmill <=1, kitchen <=2; walking agents count as away, so >=3 stay at desks.
@@ -62,16 +61,16 @@ in the existing Pages publisher allowlist. Chat entries are actual rule-based
 research outputs, not invented autonomous conversation. Historical fills are
 explicitly labeled as such.
 
-**Current engine simulates historical fills. There is no forward paper position
-manager yet. Consequently there are no eligible live closes and the checklist is
-honestly empty.** The review consumer is implemented and tested, but it will not
-pretend historical backtests are live losses.
+**Forward paper position management is now enabled.** The reset account uses only
+current paper entries and observed exits. Historical backtests are archived and
+never treated as live losses. The checklist remains empty until a forward loss closes.
 
-A future forward-paper engine can emit `trade_close` with `is_live_close=True`,
+The forward-paper engine emits `trade_close` with `is_live_close=True`,
 `historical=False`, and a trade object containing `mode="forward:paper"`,
 `realized=True`, unique id, numeric entry_ts/exit_ts/pnl_usd, and no `sample` tag.
-Entries must have opened after this feature started, closes must not be future
-and must have occurred within 120 seconds. Backtests/past imports never qualify.
+Entries must have opened after this feature started; future closes never qualify.
+Live-ingest events must be within 120 seconds; trusted local journal replay recovers
+missed reviews after restarts without accepting historical/backtest imports.
 Available facts (ATH depth, entry/exit liquidity/volume, holders, duration, exit
 reason, modeled slippage) become role-specific messages; missing fields are
 explicitly unknown, and no causal claims are inferred from correlations.
@@ -87,3 +86,31 @@ deduplication and support counts. JS was syntax-checked and the occupancy state
 machine tested through 100,000 transitions. Local curl/SSE and raw RFC WebSocket
 handshake/state-frame checks passed. Full browser rendering, real-iPhone tests
 and requested screenshots are not yet verified/captured.
+
+## Approved go-live — November 6, 2026 ET
+
+Root now serves the continuous live-room design; /live/ remains an independent
+working copy, /preview/ is preserved, /floor/ redirects to root. GitHub Pages
+polls JSON every 60 seconds; data is published ONCE per completed hourly cycle.
+There are no websockets on Pages, and phone caches can delay the new HTML.
+
+`candidate_source=legacy` restores the original DexScreener lists/pair adapter
+(with its original GeckoTerminal pool/OHLCV assistance), not GMGN/PumpPortal.
+Verified global fees are unavailable, so that filter is explicitly SKIPPED and
+logged; no fee proxy. Strict measured market cap >=$6,000. All scam checks stay.
+
+Forward PAPER ONLY account starts at $1,000; historical ledger/snapshots are
+archived under data/archive, not credited to balance/calendar. No broker/wallet.
+Entries: recent closed green hourly confirmation, current 20–45% ATH dip, chain
+safety and team vote; one entry per rolling 3600s, persisted; one open position.
+Size: min($100, 10% of realized account balance, cash), initially $100.
+12% stop / 25% target / 16h time stop. Public DexScreener marks checked every
+60s while positions are open; gap losses can exceed modeled stop. Simulation
+charges 30bps fee plus 80–200bps liquidity-based slippage per side.
+
+Exits run before any entry gate. Deduplicated realized forward closes alone
+feed the persistent $300 ET-day latch. Unrealized/backtest P&L does not count.
+A durable close journal replays into ledger and factual rule-based loss reviews
+(`data/cache/paper-chat-state.json`), published with the suggestion-only checklist.
+Historical simulations never create fake live closes or checklist suggestions.
+Runner flock prevents a duplicate runner in THIS repository only.

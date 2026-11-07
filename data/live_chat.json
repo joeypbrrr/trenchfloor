@@ -1,0 +1,89 @@
+{
+  "updated": "2026-11-07T04:35:20.418682+00:00",
+  "messages": [
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L.",
+      "time": "2026-11-06T23:34:52.189606-05:00"
+    },
+    {
+      "agent": "System",
+      "kind": "info",
+      "text": "Cycle 1 started. Read 2 standing rules and 14 variants that will not be retested. Standing goal: $3,000\u2013$5,000/mo extra (paper projection; OOS rules never loosened). Paper trading / research only. No wallet. No real trades. Not financial advice.",
+      "time": "2026-11-06T23:34:52.190545-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
+      "time": "2026-11-06T23:34:52.191006-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "error",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}",
+      "time": "2026-11-06T23:34:52.191453-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "54 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; DtcicP https://x.com/cartoonmoney_ai; Ho7n9c https://x.com/Orpofun",
+      "time": "2026-11-06T23:34:55.026522-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "Global fees filter SKIPPED: DexScreener does not supply verified 1.5 SOL global fees. No proxy used; unavailable fees are not a rejection. Market cap floor $6,000 and all scam checks remain enforced.",
+      "time": "2026-11-06T23:34:55.159887-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "93 mints discovered, 30 enriched, 3 passed filters, 6 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'pair younger than minimum age': 5, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 6, 'liquidity unknown': 3, 'liquidity below minimum': 1}.",
+      "time": "2026-11-06T23:34:55.161692-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs.",
+      "time": "2026-11-06T23:34:55.162102-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "error",
+      "text": "AMD safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass.",
+      "time": "2026-11-06T23:35:20.237644-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "error",
+      "text": "DONNA safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass.",
+      "time": "2026-11-06T23:35:20.238822-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "error",
+      "text": "jeff safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass.",
+      "time": "2026-11-06T23:35:20.239242-05:00"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "info",
+      "text": "No forward paper entry: no fully scam-filtered current dip with a recent closed green confirmation. No trade minimum; no forced trade.",
+      "time": "2026-11-06T23:35:20.240301-05:00"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "info",
+      "text": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
+      "time": "2026-11-06T23:35:20.240851-05:00"
+    },
+    {
+      "agent": "System",
+      "kind": "info",
+      "text": "Cycle 1 finished. 93 mints \u00b7 3 passed filters \u00b7 0 eligible \u00b7 0 new paper trades.",
+      "time": "2026-11-06T23:35:20.245718-05:00"
+    }
+  ]
+}

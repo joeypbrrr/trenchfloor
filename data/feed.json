@@ -1,240 +1,104 @@
 {
-  "updated": "2026-11-07T01:29:31.573936+00:00",
-  "next_id": 25,
+  "updated": "2026-11-07T04:35:20.245833+00:00",
+  "next_id": 15,
   "events": [
     {
-      "id": 24,
-      "time": "2026-11-07T01:29:31.573931+00:00",
+      "id": 14,
+      "time": "2026-11-07T04:35:20.245828+00:00",
       "agent": "System",
       "type": "info",
-      "text": "Cycle 1 finished. 98 mints \u00b7 9 passed filters \u00b7 2 eligible \u00b7 2 new paper trades."
-    },
-    {
-      "id": 23,
-      "time": "2026-11-07T01:29:31.568084+00:00",
-      "agent": "Backtester",
-      "type": "info",
-      "text": "dip_20_40_stop8_tp15_hold16: 1 new paper trades, 0 out of sample, net $0.0."
-    },
-    {
-      "id": 22,
-      "time": "2026-11-07T01:29:31.567701+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "dip_20_40_stop8_tp15_hold16 is deferred: only 0 out-of-sample paper trades (need 5); not rejected"
-    },
-    {
-      "id": 21,
-      "time": "2026-11-07T01:29:31.567154+00:00",
-      "agent": "Backtester",
-      "type": "trade",
-      "text": "PAPER / SIMULATED COGE (COGE COIN) entry 2026-11-05T16:00:00-05:00 @ 0.0011376871570872487 exit 2026-11-05T17:00:00-05:00 @ 0.0010466721845202689 P&L $-10.00. https://dexscreener.com/solana/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-      "trade": {
-        "id": "4eb5493b38ef19ee",
-        "label": "PAPER / SIMULATED",
-        "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "name": "COGE COIN",
-        "symbol": "COGE",
-        "pair": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
-        "dex_url": "https://dexscreener.com/solana/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "bubble_url": "https://app.bubblemaps.io/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "entry_time": "2026-11-05T16:00:00-05:00",
-        "exit_time": "2026-11-05T17:00:00-05:00",
-        "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
-        "entry_ts": 1793912400,
-        "exit_ts": 1793912400,
-        "entry_price": 0.0011376871570872487,
-        "exit_price": 0.0010466721845202689,
-        "notional_usd": 100.0,
-        "pnl_usd": -10.002,
-        "pnl_pct": -10.002,
-        "side": "long",
-        "exit_reason": "stop",
-        "strategy_id": "dip_20_40_stop8_tp15_hold16",
-        "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
-        "sample": "in_sample",
-        "fees_bps_per_side": 30,
-        "slippage_bps_per_side": 80,
-        "liquidity_usd": 264988.6,
-        "market_cap_usd": 9819816.0,
-        "ath_price": 0.0031777863444002823,
-        "entry_frac_of_ath": 0.358012,
-        "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
-      }
-    },
-    {
-      "id": 20,
-      "time": "2026-11-07T01:29:31.566013+00:00",
-      "agent": "Backtester",
-      "type": "info",
-      "text": "dip_20_40_stop8_tp15_hold8: 1 new paper trades, 0 out of sample, net $0.0."
-    },
-    {
-      "id": 19,
-      "time": "2026-11-07T01:29:31.565620+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "dip_20_40_stop8_tp15_hold8 is deferred: only 0 out-of-sample paper trades (need 5); not rejected"
-    },
-    {
-      "id": 18,
-      "time": "2026-11-07T01:29:31.565005+00:00",
-      "agent": "Backtester",
-      "type": "trade",
-      "text": "PAPER / SIMULATED COGE (COGE COIN) entry 2026-11-05T16:00:00-05:00 @ 0.0011376871570872487 exit 2026-11-05T17:00:00-05:00 @ 0.0010466721845202689 P&L $-10.00. https://dexscreener.com/solana/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-      "trade": {
-        "id": "a3163fd8b46dc65d",
-        "label": "PAPER / SIMULATED",
-        "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "name": "COGE COIN",
-        "symbol": "COGE",
-        "pair": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
-        "dex_url": "https://dexscreener.com/solana/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "gmgn_url": "https://gmgn.ai/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "bubble_url": "https://app.bubblemaps.io/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-        "entry_time": "2026-11-05T16:00:00-05:00",
-        "exit_time": "2026-11-05T17:00:00-05:00",
-        "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
-        "entry_ts": 1793912400,
-        "exit_ts": 1793912400,
-        "entry_price": 0.0011376871570872487,
-        "exit_price": 0.0010466721845202689,
-        "notional_usd": 100.0,
-        "pnl_usd": -10.002,
-        "pnl_pct": -10.002,
-        "side": "long",
-        "exit_reason": "stop",
-        "strategy_id": "dip_20_40_stop8_tp15_hold8",
-        "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
-        "sample": "in_sample",
-        "fees_bps_per_side": 30,
-        "slippage_bps_per_side": 80,
-        "liquidity_usd": 264988.6,
-        "market_cap_usd": 9819816.0,
-        "ath_price": 0.0031777863444002823,
-        "entry_frac_of_ath": 0.358012,
-        "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
-      }
-    },
-    {
-      "id": 17,
-      "time": "2026-11-07T01:29:31.562882+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "Proposing dip_20_40_stop8_tp15_hold8; dip_20_40_stop8_tp15_hold16. Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both."
-    },
-    {
-      "id": 16,
-      "time": "2026-11-07T01:29:31.561958+00:00",
-      "agent": "Backtester",
-      "type": "error",
-      "text": "AMD does not have enough hourly bars (24). "
-    },
-    {
-      "id": 15,
-      "time": "2026-11-07T01:29:27.556197+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "COGE window ATH fraction now is 1.0 (outside the 20\u201345% zone)."
-    },
-    {
-      "id": 14,
-      "time": "2026-11-07T01:29:25.199535+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "AMD is eligible for a paper dip test."
+      "text": "Cycle 1 finished. 93 mints \u00b7 3 passed filters \u00b7 0 eligible \u00b7 0 new paper trades."
     },
     {
       "id": 13,
-      "time": "2026-11-07T01:29:25.199272+00:00",
-      "agent": "Bubble Map Analyst",
+      "time": "2026-11-07T04:35:20.240964+00:00",
+      "agent": "Strategist",
       "type": "info",
-      "text": "AMD holder check passed. Top non-LP non-program wallet 0.1023%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump"
+      "text": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal."
     },
     {
       "id": 12,
-      "time": "2026-11-07T01:29:25.198997+00:00",
-      "agent": "Risk Manager",
+      "time": "2026-11-07T04:35:20.240450+00:00",
+      "agent": "Strategist",
       "type": "info",
-      "text": "PASS AMD: PASS mint, freeze, extensions, and holder concentration"
+      "text": "No forward paper entry: no fully scam-filtered current dip with a recent closed green confirmation. No trade minimum; no forced trade."
     },
     {
       "id": 11,
-      "time": "2026-11-07T01:29:25.198632+00:00",
-      "agent": "Bubble Map Analyst",
+      "time": "2026-11-07T04:35:20.239330+00:00",
+      "agent": "Risk Manager",
       "type": "error",
-      "text": "FAIL GLITCH: FAIL non-LP non-program holder owns 3.59% (limit 3.5%) https://app.bubblemaps.io/sol/token/8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump"
+      "text": "jeff safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass."
     },
     {
       "id": 10,
-      "time": "2026-11-07T01:29:25.197680+00:00",
-      "agent": "Bubble Map Analyst",
+      "time": "2026-11-07T04:35:20.238914+00:00",
+      "agent": "Risk Manager",
       "type": "error",
-      "text": "FAIL CBUCKS: FAIL non-LP non-program holder owns 14.54% (limit 3.5%) https://app.bubblemaps.io/sol/token/DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump"
+      "text": "DONNA safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass."
     },
     {
       "id": 9,
-      "time": "2026-11-07T01:29:25.196993+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "COGE is eligible for a paper dip test."
+      "time": "2026-11-07T04:35:20.238403+00:00",
+      "agent": "Risk Manager",
+      "type": "error",
+      "text": "AMD safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass."
     },
     {
       "id": 8,
-      "time": "2026-11-07T01:29:25.196308+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "COGE holder check passed. Top non-LP non-program wallet 0.8971%. sampled 3 wallets, up to 8 recent signatures each; not a full funding history https://app.bubblemaps.io/sol/token/8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump"
-    },
-    {
-      "id": 7,
-      "time": "2026-11-07T01:29:25.195733+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "PASS COGE: PASS mint, freeze, extensions, and holder concentration"
-    },
-    {
-      "id": 6,
-      "time": "2026-11-07T01:28:12.924310+00:00",
+      "time": "2026-11-07T04:34:55.162193+00:00",
       "agent": "Data Scout",
       "type": "info",
       "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs."
     },
     {
-      "id": 5,
-      "time": "2026-11-07T01:28:12.923748+00:00",
+      "id": 7,
+      "time": "2026-11-07T04:34:55.161786+00:00",
       "agent": "Data Scout",
       "type": "info",
-      "text": "98 mints discovered, 30 enriched, 9 passed filters, 0 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'quote is not SOL, USDC, or USDT': 5, 'pair younger than minimum age': 4, 'liquidity unknown': 1}."
+      "text": "93 mints discovered, 30 enriched, 3 passed filters, 6 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'pair younger than minimum age': 5, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 6, 'liquidity unknown': 3, 'liquidity below minimum': 1}."
+    },
+    {
+      "id": 6,
+      "time": "2026-11-07T04:34:55.161017+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Global fees filter SKIPPED: DexScreener does not supply verified 1.5 SOL global fees. No proxy used; unavailable fees are not a rejection. Market cap floor $6,000 and all scam checks remain enforced."
+    },
+    {
+      "id": 5,
+      "time": "2026-11-07T04:34:55.027113+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "54 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; DtcicP https://x.com/cartoonmoney_ai; Ho7n9c https://x.com/Orpofun"
     },
     {
       "id": 4,
-      "time": "2026-11-07T01:28:12.778031+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "57 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacityonx; GATO https://x.com/TheGTA6cat; 4AN9uw https://x.com/Machiavelli_HQ; 8Xg89x https://x.com/GlitchOnSolana_"
+      "time": "2026-11-07T04:34:52.191525+00:00",
+      "agent": "Data Scout",
+      "type": "error",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
     },
     {
       "id": 3,
-      "time": "2026-11-07T01:28:09.942796+00:00",
-      "agent": "Data Scout",
-      "type": "error",
-      "text": "Birdeye free endpoint refused a keyless request: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}. Not used."
+      "time": "2026-11-07T04:34:52.191082+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
     },
     {
       "id": 2,
-      "time": "2026-11-07T01:28:09.723872+00:00",
-      "agent": "X/Twitter Scout",
+      "time": "2026-11-07T04:34:52.190620+00:00",
+      "agent": "System",
       "type": "info",
-      "text": "No free X/Twitter API is reachable (HTTP 401). Not inventing tweets."
+      "text": "Cycle 1 started. Read 2 standing rules and 14 variants that will not be retested. Standing goal: $3,000\u2013$5,000/mo extra (paper projection; OOS rules never loosened). Paper trading / research only. No wallet. No real trades. Not financial advice."
     },
     {
       "id": 1,
-      "time": "2026-11-07T01:28:09.647763+00:00",
-      "agent": "System",
+      "time": "2026-11-07T04:34:52.189673+00:00",
+      "agent": "Risk Manager",
       "type": "info",
-      "text": "Cycle 1 started. Read 0 standing rules and 0 variants that will not be retested. Paper trading / research only. No wallet. No real trades. Not financial advice."
+      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L."
     }
   ]
 }

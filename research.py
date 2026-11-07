@@ -19,6 +19,8 @@ from publish_data import publish
 from events import emit, start_heartbeat
 from safety import review_token, sample_links
 from team import review_trades
+from forward_paper import PaperAccount
+from live_chat import LiveChat
 from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num, ResilientRpcClient
 from candidate_sources import candidates as source_candidates, fee_filter_reason
 from daily_stop import DailyStop, mode_for, close_time, fill_key
@@ -44,6 +46,7 @@ FEED_DIRTY = False
 LAST_FEED_PUSH = 0.0
 LAST_FULL_PUSH = 0.0
 PUBLISHING = False
+PAPER_CHAT = None
 
 
 def log(msg):
@@ -66,9 +69,12 @@ def load_prior():
 
 
 def boot(config):
-    global MEMORY, MARKET
+    global MEMORY, MARKET, PAPER_CHAT
     start_heartbeat()
     MEMORY = Memory(ROOT)
+    if config.get("forward_paper_enabled"):
+        PAPER_CHAT = LiveChat(ROOT / "data/cache/paper-chat-state.json")
+        PaperAccount(ROOT, config)
     if not MEMORY.path.exists():
         MEMORY.save()
     else:
@@ -145,6 +151,8 @@ def update(role, status, task, detail="", action=None):
 def post(agent, text, kind="info", trade=None, publish_feed=True):
     global FEED_DIRTY
     emit(agent, kind, text)
+    if PAPER_CHAT is not None:
+        PAPER_CHAT.record({"agent": agent, "kind": kind, "text": text, "time": et_now()})
     event = MEMORY.add_feed(agent, text, kind, trade)
     STATE["activity"].insert(0, {"id": event["id"], "time": event["time"], "agent": agent, "text": text, "type": kind})
     del STATE["activity"][80:]
@@ -176,6 +184,8 @@ def maybe_publish_feed(force=False):
     if not FEED_DIRTY and not force:
         return
     config = load_config()
+    if config.get("publish_once_per_cycle", False):
+        return
     gap = float(config.get("feed_publish_min_seconds", 45))
     if not force and LAST_FEED_PUSH and time.time() - LAST_FEED_PUSH < gap:
         return
@@ -196,6 +206,8 @@ def maybe_publish_full(force=False):
     if NO_PUBLISH or PUBLISHING:
         return
     config = load_config()
+    if config.get("publish_once_per_cycle", False) and not force:
+        return
     gap = float(config.get("full_publish_min_seconds", 600))
     if not force and LAST_FULL_PUSH and time.time() - LAST_FULL_PUSH < gap:
         return
@@ -384,6 +396,8 @@ def screen(candidates, config):
         filters["min_pair_age_hours"] = settings.get("min_age_seconds", 900) / 3600
         filters["max_pair_age_days"] = settings.get("max_age_days", 7)
     now = time.time()
+    if not new_source:
+        post("Risk Manager", "Global fees filter SKIPPED: DexScreener does not supply verified 1.5 SOL global fees. No proxy used; unavailable fees are not a rejection. Market cap floor $6,000 and all scam checks remain enforced.", publish_feed=False)
     passed = []
     rejected = []
     counts = {}
@@ -879,10 +893,29 @@ def rank_watchlist(reviewed):
     return eligible, failed
 
 
+def paper_close_event(trade):
+    event = {"agent": "Backtester", "kind": "trade_close", "text": f"Forward paper realized close {trade['symbol']}: ${trade['pnl_usd']:.2f}",
+             "time": et_now(), "trade": trade, "is_live_close": True, "historical": False}
+    if PAPER_CHAT is not None:
+        PAPER_CHAT.record(event, allow_journal_replay=True)
+    emit("Backtester", "trade_close", event["text"], trade=trade, is_live_close=True, historical=False)
+
+
+def manage_paper(config):
+    if not config.get("forward_paper_enabled"):
+        return
+    account = PaperAccount(ROOT, config)
+    account.manage(MARKET, MEMORY, post, paper_close_event)
+    STATE["paper_account"] = account.snapshot()
+    STATE["daily_stop"] = DailyStop(ROOT).status(config)
+    save_state()
+
+
 def cycle(config):
     started = time.monotonic()
     if config.get("rpc_resilience_enabled", False):
         MARKET.rpc = ResilientRpcClient(config.get("rpc_urls") or [], config.get("rpc_min_interval_seconds", 1.25), (config.get("limits") or {}).get("rpc_budget", 64))
+    manage_paper(config)
     daily_stop_status(config, announce=True)
     emit("System", "cycle_start", "Research cycle starting")
     STATE["errors"] = []
@@ -929,7 +962,14 @@ def cycle(config):
             post("Data Scout", f"{label} window ATH fraction now is {None if frac is None else round(frac, 3)} ({'inside' if cand.get('in_entry_zone') else 'outside'} the 20–45% zone).")
         else:
             post("Backtester", f"{label} does not have enough hourly bars ({cand.get('hourly_bars') or 0}). {cand.get('history_error') or ''}", "error")
-    variant_report = run_variants(histories, config)
+    if config.get("forward_paper_enabled"):
+        account = PaperAccount(ROOT, config)
+        entry = account.try_entry(histories, MARKET, MEMORY, post)
+        STATE["paper_account"] = account.snapshot()
+        variant_report = {"proposed": [], "results": [], "team_taken": int(entry is not None), "new_entry": entry,
+                          "note": "Forward paper account only. Historical backtests never credit the reset account."}
+    else:
+        variant_report = run_variants(histories, config)
     STATE["goal"] = goal_status(config, variant_report)
     post("Strategist", STATE["goal"]["status_line"])
     MEMORY.write_champion_md_current(STATE["goal"])
@@ -977,7 +1017,7 @@ def cycle(config):
         "eligible": len(ranked),
         "paper_trades_total": ledger.get("trade_count") or 0,
         "paper_pnl_usd": ledger.get("total_pnl_usd") or 0,
-        "new_paper_trades": sum(r.get("new_trades") or 0 for r in variant_report.get("results") or []),
+        "new_paper_trades": (variant_report.get("team_taken", 0) if config.get("forward_paper_enabled") else sum(r.get("new_trades") or 0 for r in variant_report.get("results") or [])),
     }
     STATE["summary"]["team_rejected"] = variant_report.get("team_rejected") or 0
     STATE["team"] = {
@@ -1001,7 +1041,23 @@ def cycle(config):
         STATE["sources"]["geckoterminal"] = {"ok": True, "detail": found["gecko"]}
     else:
         STATE["sources"]["geckoterminal"] = {"ok": bool(found.get("gecko")), "detail": found.get("gecko"), "errors": found.get("gecko_errors")}
+    # First-rejection categories form a cumulative pipeline (no future-stage
+    # measurements are required for a token to pass an earlier stage).
+    stage_survivors = {"queued": len(queue)}
+    remaining = list(queue)
+    stages = [
+        ("quote_age", {"quote asset", "quote is not SOL, USDC, or USDT", "quote asset unknown", "pair age unknown", "pair younger than minimum age", "pair older than maximum age"}),
+        ("liquidity", {"liquidity unknown", "liquidity below minimum"}),
+        ("volume", {"volume unknown", "volume below minimum"}),
+        ("market_cap", {"market cap unknown", "market cap below minimum", "market cap above maximum"})]
+    for stage, reasons in stages:
+        remaining = [c for c in remaining if _filter_reason(dict(c), config["filters"], time.time()) not in reasons]
+        stage_survivors[stage] = len(remaining)
+    stage_survivors.update(all_market_filters_and_lessons=len(passed), deep_scam_reviews=len(reviewed),
+        scam_pass=len(eligible), history_ready=len(histories), current_dip_zone=sum(bool(c.get("in_entry_zone")) for c in histories),
+        entry_taken=int(bool(variant_report.get("new_entry"))), global_fees="SKIPPED — data unavailable on DexScreener")
     STATE["report"] = {
+        "filter_stage_survivors": stage_survivors,
         "discovered": found,
         "filter_counts": counts,
         "passed_filters": len(passed),
@@ -1027,7 +1083,10 @@ def cycle(config):
     STATE["cycle_duration_seconds"] = round(time.monotonic() - started, 3)
     daily_stop_status(config)
     STATE["last_cycle"] = now_iso()
-    STATE["next_cycle"] = datetime.fromtimestamp(time.time() + int(config.get("cycle_seconds", 1800)), timezone.utc).isoformat()
+    STATE["last_updated_et"] = et_now()
+    STATE["configuration"] = {k: config.get(k) for k in ("candidate_source", "cycle_seconds", "entry_interval_seconds", "daily_stop_enabled", "daily_profit_stop_usd", "rpc_resilience_enabled", "forward_paper_enabled")}
+    STATE["configuration"]["global_fees_filter"] = "SKIPPED: unavailable on DexScreener; no proxy"
+    STATE["next_cycle"] = datetime.fromtimestamp(time.time() + int(config.get("cycle_seconds", 3600)), timezone.utc).isoformat()
     update("Strategist", "idle", STATE["strategist_note"], action=AGENTS["Strategist"].get("latest_action") or "No champion change")
     update("Data Scout", "idle", STATE["data_status"], action=AGENTS["Data Scout"].get("latest_action") or "Scan complete")
     update("Backtester", "idle", f"Ledger {ledger.get('trade_count') or 0} paper trades, net ${ledger.get('total_pnl_usd') or 0}.", action=AGENTS["Backtester"].get("latest_action") or "Ledger updated")
@@ -1135,7 +1194,7 @@ def cycle_due(config):
         then = datetime.fromisoformat(STATE["last_cycle"]).timestamp()
     except ValueError:
         return True
-    return time.time() - then >= float(config.get("cycle_seconds", 1800))
+    return time.time() - then >= float(config.get("cycle_seconds", 3600))
 
 
 def main():
@@ -1170,7 +1229,7 @@ def main():
         previous_root = ROOT
         ROOT = Path(sandbox.name)
         shutil.copytree(previous_root / "data", ROOT / "data")
-        config.update(candidate_source=args.candidate_source or "gmgn_substitute", daily_stop_enabled=True, rpc_resilience_enabled=True, fee_proxy_enabled=args.fee_proxy)
+        config.update(candidate_source=args.candidate_source or config.get("candidate_source", "legacy"), daily_stop_enabled=True, rpc_resilience_enabled=True, fee_proxy_enabled=args.fee_proxy)
         if args.pumpportal_db:
             config.setdefault("pumpportal", {})["db_path"] = str(args.pumpportal_db.resolve())
         elif config.get("candidate_source") == "pumpportal":
@@ -1200,11 +1259,15 @@ def main():
         (ROOT / "data" / "cycle.requested").unlink(missing_ok=True)
         print(json.dumps(STATE.get("report") or {}, indent=2), flush=True)
         return 0 if STATE.get("ok") else 1
+    next_position_check = time.time() + 60
     next_health = time.time() + 15
     next_light = time.time() + float(config.get("light_scan_seconds", 300))
     while True:
         config = load_config()
         try:
+            if time.time() >= next_position_check:
+                manage_paper(config)
+                next_position_check = time.time() + float(config.get("paper", {}).get("position_check_seconds", 60))
             if cycle_due(config):
                 (ROOT / "data" / "cycle.requested").unlink(missing_ok=True)
                 cycle(config)

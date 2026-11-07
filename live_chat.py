@@ -20,7 +20,7 @@ class LiveChat:
         tmp.write_text(json.dumps(self.data))
         tmp.replace(self.path)
 
-    def record(self, event):
+    def record(self, event, allow_journal_replay=False):
         generated = []
         if event.get("kind") not in ("heartbeat", "status"):
             self.data["messages"].append(event)
@@ -35,7 +35,7 @@ class LiveChat:
                 and trade.get("mode") == "forward:paper" and not trade.get("sample")
                 and trade.get("id") and trade["id"] not in self.data["reviewed"]
                 and self.data["started"] <= entry_ts < exit_ts <= time.time()
-                and time.time() - exit_ts <= 120 and float(trade.get("pnl_usd", 0)) < 0)
+                and (allow_journal_replay or time.time() - exit_ts <= 120) and float(trade.get("pnl_usd", 0)) < 0)
         except (TypeError, ValueError):
             qualifies = False
         if qualifies:
@@ -54,6 +54,7 @@ class LiveChat:
         def suggest(key, text):
             suggestions.append((key, text))
         say("Risk Manager", f"{t.get('symbol', '?')} closed for ${t['pnl_usd']:.2f}. Exit reason: {t.get('exit_reason') or 'not recorded'}. This describes recorded facts, not a proven cause.")
+        say("Strategist", "Entry rationale: current dip plus closed green confirmation, measured chain/holder safety, and recorded team majority. " + ((t.get("team") or {}).get("rule") or "Full entry vote was not recorded.") + " A passing entry check is not a guarantee; suggestions below require testing, not automatic changes.")
         frac = t.get("entry_frac_of_ath")
         say("Data Scout", f"Entry was {float(frac)*100:.1f}% of recorded window ATH ({(1-float(frac))*100:.1f}% below it)." if frac is not None else "Entry depth vs ATH was not recorded; cannot assess.")
         for name in ("liquidity", "volume"):

@@ -1,19 +1,20 @@
 {
   "public_url": "https://joeypbrrr.github.io/trenchfloor/",
   "local_url": "http://127.0.0.1:8795",
-  "cycle_seconds": 1800,
+  "cycle_seconds": 3600,
   "health_seconds": 180,
   "light_scan_seconds": 300,
-  "full_publish_min_seconds": 600,
-  "feed_publish_min_seconds": 45,
+  "full_publish_min_seconds": 3600,
+  "feed_publish_min_seconds": 3600,
   "stale_agent_seconds": 1200,
   "filters": {
     "min_liquidity_usd": 12000,
     "min_volume_24h_usd": 8000,
     "min_pair_age_hours": 6,
     "max_pair_age_days": 60,
-    "min_market_cap_usd": 25000,
-    "max_market_cap_usd": 20000000
+    "min_market_cap_usd": 6000,
+    "max_market_cap_usd": 20000000,
+    "strict_market_cap": true
   },
   "entry_zone": {
     "min_frac_of_ath": 0.2,
@@ -27,7 +28,14 @@
     "slippage_extra_below_12k_bps": 80,
     "oos_fraction": 0.3,
     "min_oos_trades": 5,
-    "min_hourly_bars": 30
+    "min_hourly_bars": 30,
+    "starting_balance_usd": 1000,
+    "allocation_fraction": 0.1,
+    "max_open_positions": 1,
+    "stop_fraction": 0.12,
+    "target_fraction": 0.25,
+    "max_hold_seconds": 57600,
+    "position_check_seconds": 60
   },
   "limits": {
     "enrich_mints": 30,
@@ -58,11 +66,11 @@
   },
   "candidate_source": "legacy",
   "daily_profit_stop_usd": 300,
-  "daily_stop_enabled": false,
+  "daily_stop_enabled": true,
   "fee_proxy_enabled": false,
   "new_source_min_market_cap_usd": 6000,
   "new_source_min_global_fees_sol": 1.5,
-  "rpc_resilience_enabled": false,
+  "rpc_resilience_enabled": true,
   "pumpportal": {
     "collector_enabled": false,
     "trade_stream_enabled": false,
@@ -100,5 +108,9 @@
     "max_provenance_wallets": 4,
     "pump_program_id": "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P",
     "max_launch_slot_lookups": 8
-  }
+  },
+  "publish_once_per_cycle": true,
+  "global_fees_unavailable_policy": "skip_and_log",
+  "forward_paper_enabled": true,
+  "entry_interval_seconds": 3600
 }

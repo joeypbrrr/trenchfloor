@@ -4,13 +4,17 @@
       "id": "R1",
       "code": "holder_over_3_5",
       "rule": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply",
-      "evidence": "GLITCH top wallet 3.5852% (8DJHyX9scPUAdR3J7HRULqEiTNR8LHGkCgwnGopeEAq1)",
+      "evidence": "FLOAT top wallet 5.4635% (EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G)",
       "source": "Bubble Map Analyst",
       "time": "2026-11-07T01:29:25.197399+00:00",
       "time_et": "2026-11-06T20:29:25.197404-05:00",
       "mints": [
         "DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump",
-        "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump"
+        "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump",
+        "HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump",
+        "8THZ69JP2ErZuHVj4G5rcwkFfsQafp5mQsaoQReApump",
+        "BWJfBNeXpapG7uoqByp5KSwWgCQba8QcDmA2DQiEpump",
+        "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr"
       ],
       "active": true
     },
@@ -44,50 +48,607 @@
       "code": "holder_over_3_5",
       "time": "2026-11-07T01:29:25.198059+00:00",
       "time_et": "2026-11-06T20:29:25.198061-05:00"
+    },
+    {
+      "mint": "HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump",
+      "symbol": "SI276",
+      "reason": "holder above 3.5%",
+      "code": "holder_over_3_5",
+      "time": "2026-11-07T01:39:56.831796+00:00",
+      "time_et": "2026-11-06T20:39:56.831802-05:00"
+    },
+    {
+      "mint": "8THZ69JP2ErZuHVj4G5rcwkFfsQafp5mQsaoQReApump",
+      "symbol": "NETWORK",
+      "reason": "holder above 3.5%",
+      "code": "holder_over_3_5",
+      "time": "2026-11-07T02:12:20.169464+00:00",
+      "time_et": "2026-11-06T21:12:20.169472-05:00"
+    },
+    {
+      "mint": "BWJfBNeXpapG7uoqByp5KSwWgCQba8QcDmA2DQiEpump",
+      "symbol": "Leonida",
+      "reason": "holder above 3.5%",
+      "code": "holder_over_3_5",
+      "time": "2026-11-07T02:21:39.521174+00:00",
+      "time_et": "2026-11-06T21:21:39.521179-05:00"
+    },
+    {
+      "mint": "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "symbol": "FLOAT",
+      "reason": "holder above 3.5%",
+      "code": "holder_over_3_5",
+      "time": "2026-11-07T04:09:24.698737+00:00",
+      "time_et": "2026-11-06T23:09:24.698744-05:00"
     }
   ],
   "observations": [
     {
-      "time": "2026-11-07T01:29:25.197416+00:00",
-      "time_et": "2026-11-06T20:29:25.197417-05:00",
-      "kind": "rule",
-      "source": "Bubble Map Analyst",
-      "text": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply \u2014 CBUCKS top wallet 14.5407% (BwSwtsPphxFDckVvEaFcwEzG2SAxTprN19fswwe5YZbK)"
+      "time": "2026-11-07T02:21:50.072538+00:00",
+      "time_et": "2026-11-06T21:21:50.072539-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0"
     },
     {
-      "time": "2026-11-07T01:29:25.197940+00:00",
-      "time_et": "2026-11-06T20:29:25.197943-05:00",
+      "time": "2026-11-07T02:21:50.170987+00:00",
+      "time_et": "2026-11-06T21:21:50.170993-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171004+00:00",
+      "time_et": "2026-11-06T21:21:50.171005-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171011+00:00",
+      "time_et": "2026-11-06T21:21:50.171012-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171018+00:00",
+      "time_et": "2026-11-06T21:21:50.171019-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171024+00:00",
+      "time_et": "2026-11-06T21:21:50.171026-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171031+00:00",
+      "time_et": "2026-11-06T21:21:50.171032-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171040+00:00",
+      "time_et": "2026-11-06T21:21:50.171042-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171046+00:00",
+      "time_et": "2026-11-06T21:21:50.171048-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171052+00:00",
+      "time_et": "2026-11-06T21:21:50.171054-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171058+00:00",
+      "time_et": "2026-11-06T21:21:50.171060-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171064+00:00",
+      "time_et": "2026-11-06T21:21:50.171066-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:21:50.171070+00:00",
+      "time_et": "2026-11-06T21:21:50.171072-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002503+00:00",
+      "time_et": "2026-11-06T21:40:03.002511-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002525+00:00",
+      "time_et": "2026-11-06T21:40:03.002527-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002540+00:00",
+      "time_et": "2026-11-06T21:40:03.002543-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002547+00:00",
+      "time_et": "2026-11-06T21:40:03.002548-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002552+00:00",
+      "time_et": "2026-11-06T21:40:03.002553-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002556+00:00",
+      "time_et": "2026-11-06T21:40:03.002558-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold8 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002564+00:00",
+      "time_et": "2026-11-06T21:40:03.002565-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-1.9031 on dip_20_40_stop8_tp40_hold8 exit time liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.002569+00:00",
+      "time_et": "2026-11-06T21:40:03.002570-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-6.3078 on dip_20_40_stop8_tp40_hold8 exit time liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056014+00:00",
+      "time_et": "2026-11-06T21:40:03.056019-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056029+00:00",
+      "time_et": "2026-11-06T21:40:03.056031-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056035+00:00",
+      "time_et": "2026-11-06T21:40:03.056037-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056040+00:00",
+      "time_et": "2026-11-06T21:40:03.056041-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056045+00:00",
+      "time_et": "2026-11-06T21:40:03.056046-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056049+00:00",
+      "time_et": "2026-11-06T21:40:03.056051-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056054+00:00",
+      "time_et": "2026-11-06T21:40:03.056055-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056059+00:00",
+      "time_et": "2026-11-06T21:40:03.056060-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:40:03.056062+00:00",
+      "time_et": "2026-11-06T21:40:03.056064-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold16 exit stop liq 86458.87 mcap 988397.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846238+00:00",
+      "time_et": "2026-11-06T21:45:20.846250-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846271+00:00",
+      "time_et": "2026-11-06T21:45:20.846274-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846282+00:00",
+      "time_et": "2026-11-06T21:45:20.846284-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846289+00:00",
+      "time_et": "2026-11-06T21:45:20.846291-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846295+00:00",
+      "time_et": "2026-11-06T21:45:20.846296-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846300+00:00",
+      "time_et": "2026-11-06T21:45:20.846301-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846305+00:00",
+      "time_et": "2026-11-06T21:45:20.846306-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846310+00:00",
+      "time_et": "2026-11-06T21:45:20.846311-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.846315+00:00",
+      "time_et": "2026-11-06T21:45:20.846316-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-10.002 on dip_20_40_stop8_tp40_hold24 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923842+00:00",
+      "time_et": "2026-11-06T21:45:20.923847-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923859+00:00",
+      "time_et": "2026-11-06T21:45:20.923860-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-1.3563 on dip_20_40_stop12_tp15_hold8 exit time liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923865+00:00",
+      "time_et": "2026-11-06T21:45:20.923866-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923869+00:00",
+      "time_et": "2026-11-06T21:45:20.923871-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923874+00:00",
+      "time_et": "2026-11-06T21:45:20.923875-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923877+00:00",
+      "time_et": "2026-11-06T21:45:20.923878-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923882+00:00",
+      "time_et": "2026-11-06T21:45:20.923883-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923886+00:00",
+      "time_et": "2026-11-06T21:45:20.923887-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold8 exit stop liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T02:45:20.923890+00:00",
+      "time_et": "2026-11-06T21:45:20.923891-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-6.3078 on dip_20_40_stop12_tp15_hold8 exit time liq 87155.25 mcap 1005599.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920628+00:00",
+      "time_et": "2026-11-06T22:19:53.920645-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920674+00:00",
+      "time_et": "2026-11-06T22:19:53.920677-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920681+00:00",
+      "time_et": "2026-11-06T22:19:53.920683-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920686+00:00",
+      "time_et": "2026-11-06T22:19:53.920687-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920702+00:00",
+      "time_et": "2026-11-06T22:19:53.920704-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920715+00:00",
+      "time_et": "2026-11-06T22:19:53.920717-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920720+00:00",
+      "time_et": "2026-11-06T22:19:53.920721-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:53.920724+00:00",
+      "time_et": "2026-11-06T22:19:53.920725-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017375+00:00",
+      "time_et": "2026-11-06T22:19:54.017381-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017392+00:00",
+      "time_et": "2026-11-06T22:19:54.017393-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017397+00:00",
+      "time_et": "2026-11-06T22:19:54.017399-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017413+00:00",
+      "time_et": "2026-11-06T22:19:54.017415-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017418+00:00",
+      "time_et": "2026-11-06T22:19:54.017421-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017424+00:00",
+      "time_et": "2026-11-06T22:19:54.017425-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017428+00:00",
+      "time_et": "2026-11-06T22:19:54.017430-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T03:19:54.017432+00:00",
+      "time_et": "2026-11-06T22:19:54.017433-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+    },
+    {
+      "time": "2026-11-07T04:09:24.697572+00:00",
+      "time_et": "2026-11-06T23:09:24.697605-05:00",
       "kind": "rule_example",
       "source": "Bubble Map Analyst",
-      "text": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply \u2014 GLITCH top wallet 3.5852% (8DJHyX9scPUAdR3J7HRULqEiTNR8LHGkCgwnGopeEAq1)"
+      "text": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply \u2014 FLOAT top wallet 5.4635% (EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G)"
     },
     {
-      "time": "2026-11-07T01:29:31.564221+00:00",
-      "time_et": "2026-11-06T20:29:31.564225-05:00",
+      "time": "2026-11-07T04:09:36.606030+00:00",
+      "time_et": "2026-11-06T23:09:36.606032-05:00",
       "kind": "paper_loss",
       "source": "Backtester",
-      "text": "COGE paper loss $-10.002 on dip_20_40_stop8_tp15_hold8 exit stop liq 264988.6 mcap 9819816.0"
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
     },
     {
-      "time": "2026-11-07T01:29:31.564247+00:00",
-      "time_et": "2026-11-06T20:29:31.564248-05:00",
-      "kind": "rule",
-      "source": "Risk Manager",
-      "text": "skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book \u2014 COGE lost $-10.002 with liquidity/mcap 0.027"
-    },
-    {
-      "time": "2026-11-07T01:29:31.566953+00:00",
-      "time_et": "2026-11-06T20:29:31.566956-05:00",
+      "time": "2026-11-07T04:09:36.606043+00:00",
+      "time_et": "2026-11-06T23:09:36.606044-05:00",
       "kind": "paper_loss",
       "source": "Backtester",
-      "text": "COGE paper loss $-10.002 on dip_20_40_stop8_tp15_hold16 exit stop liq 264988.6 mcap 9819816.0"
+      "text": "jeff paper loss $-1.3563 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.606049+00:00",
+      "time_et": "2026-11-06T23:09:36.606051-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.606054+00:00",
+      "time_et": "2026-11-06T23:09:36.606055-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.606058+00:00",
+      "time_et": "2026-11-06T23:09:36.606060-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.606063+00:00",
+      "time_et": "2026-11-06T23:09:36.606064-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.606067+00:00",
+      "time_et": "2026-11-06T23:09:36.606068-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-6.3078 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663824+00:00",
+      "time_et": "2026-11-06T23:09:36.663826-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663834+00:00",
+      "time_et": "2026-11-06T23:09:36.663836-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663839+00:00",
+      "time_et": "2026-11-06T23:09:36.663841-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663843+00:00",
+      "time_et": "2026-11-06T23:09:36.663844-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663847+00:00",
+      "time_et": "2026-11-06T23:09:36.663848-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663851+00:00",
+      "time_et": "2026-11-06T23:09:36.663852-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663855+00:00",
+      "time_et": "2026-11-06T23:09:36.663856-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
+    },
+    {
+      "time": "2026-11-07T04:09:36.663858+00:00",
+      "time_et": "2026-11-06T23:09:36.663859-05:00",
+      "kind": "paper_loss",
+      "source": "Backtester",
+      "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
     }
   ],
   "variants": [
     {
       "id": "dip_20_40_stop8_tp15_hold8",
-      "status": "deferred",
-      "reason": "only 0 out-of-sample paper trades (need 5); not rejected",
+      "status": "champion",
+      "reason": "out-of-sample expectancy $0.4082 beat the previous champion",
       "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
       "params": {
         "zone_low": 0.2,
@@ -97,38 +658,43 @@
         "hold_bars": 8
       },
       "oos": {
-        "trades": 0,
-        "net_usd": 0.0,
-        "expectancy_usd": null,
-        "win_rate": null,
-        "profit_factor": null,
-        "wins": 0,
-        "losses": 0
+        "trades": 9,
+        "net_usd": 3.6742,
+        "expectancy_usd": 0.4082,
+        "win_rate": 0.4444,
+        "profit_factor": 1.0793,
+        "wins": 4,
+        "losses": 5
       },
       "ins": {
-        "trades": 1,
-        "net_usd": -10.002,
-        "expectancy_usd": -10.002,
-        "win_rate": 0.0,
-        "profit_factor": 0.0,
-        "wins": 0,
-        "losses": 1
+        "trades": 10,
+        "net_usd": -32.5215,
+        "expectancy_usd": -3.2522,
+        "win_rate": 0.3,
+        "profit_factor": 0.5355,
+        "wins": 3,
+        "losses": 7
       },
       "pools": [
         {
-          "symbol": "COGE",
-          "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-          "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe"
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
         }
       ],
-      "attempts": 1,
-      "time": "2026-11-07T01:29:31.565445+00:00",
-      "time_et": "2026-11-06T20:29:31.565449-05:00"
+      "attempts": 2,
+      "time": "2026-11-07T01:40:07.190837+00:00",
+      "time_et": "2026-11-06T20:40:07.190842-05:00"
     },
     {
       "id": "dip_20_40_stop8_tp15_hold16",
-      "status": "deferred",
-      "reason": "only 0 out-of-sample paper trades (need 5); not rejected",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-1.7793 over 9 trades",
       "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
       "params": {
         "zone_low": 0.2,
@@ -138,34 +704,706 @@
         "hold_bars": 16
       },
       "oos": {
-        "trades": 0,
-        "net_usd": 0.0,
-        "expectancy_usd": null,
-        "win_rate": null,
-        "profit_factor": null,
-        "wins": 0,
-        "losses": 0
+        "trades": 9,
+        "net_usd": -16.0133,
+        "expectancy_usd": -1.7793,
+        "win_rate": 0.3333,
+        "profit_factor": 0.7007,
+        "wins": 3,
+        "losses": 6
       },
       "ins": {
-        "trades": 1,
-        "net_usd": -10.002,
-        "expectancy_usd": -10.002,
-        "win_rate": 0.0,
-        "profit_factor": 0.0,
-        "wins": 0,
-        "losses": 1
+        "trades": 10,
+        "net_usd": -32.5215,
+        "expectancy_usd": -3.2522,
+        "win_rate": 0.3,
+        "profit_factor": 0.5355,
+        "wins": 3,
+        "losses": 7
       },
       "pools": [
         {
-          "symbol": "COGE",
-          "mint": "8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump",
-          "pool": "8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe"
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 2,
+      "time": "2026-11-07T01:40:07.216290+00:00",
+      "time_et": "2026-11-06T20:40:07.216295-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp15_hold24",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-2.9165 over 8 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 24 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.15,
+        "hold_bars": 24
+      },
+      "oos": {
+        "trades": 8,
+        "net_usd": -23.3321,
+        "expectancy_usd": -2.9165,
+        "win_rate": 0.375,
+        "profit_factor": 0.5335,
+        "wins": 3,
+        "losses": 5
+      },
+      "ins": {
+        "trades": 11,
+        "net_usd": -20.024,
+        "expectancy_usd": -1.8204,
+        "win_rate": 0.3636,
+        "profit_factor": 0.714,
+        "wins": 4,
+        "losses": 7
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
         }
       ],
       "attempts": 1,
-      "time": "2026-11-07T01:29:31.567513+00:00",
-      "time_et": "2026-11-06T20:29:31.567515-05:00"
+      "time": "2026-11-07T02:12:30.694488+00:00",
+      "time_et": "2026-11-06T21:12:30.694496-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp25_hold8",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-0.2509 over 7 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 25% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.25,
+        "hold_bars": 8
+      },
+      "oos": {
+        "trades": 7,
+        "net_usd": -1.756,
+        "expectancy_usd": -0.2509,
+        "win_rate": 0.2857,
+        "profit_factor": 0.9621,
+        "wins": 2,
+        "losses": 5
+      },
+      "ins": {
+        "trades": 10,
+        "net_usd": -2.4782,
+        "expectancy_usd": -0.2478,
+        "win_rate": 0.4,
+        "profit_factor": 0.9587,
+        "wins": 4,
+        "losses": 6
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T02:12:30.749208+00:00",
+      "time_et": "2026-11-06T21:12:30.749213-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp25_hold16",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-3.2919 over 7 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 25% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.25,
+        "hold_bars": 16
+      },
+      "oos": {
+        "trades": 7,
+        "net_usd": -23.0433,
+        "expectancy_usd": -3.2919,
+        "win_rate": 0.2857,
+        "profit_factor": 0.5392,
+        "wins": 2,
+        "losses": 5
+      },
+      "ins": {
+        "trades": 9,
+        "net_usd": -25.4542,
+        "expectancy_usd": -2.8282,
+        "win_rate": 0.2222,
+        "profit_factor": 0.6364,
+        "wins": 2,
+        "losses": 7
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T02:21:50.142855+00:00",
+      "time_et": "2026-11-06T21:21:50.142866-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp25_hold24",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-3.2919 over 7 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 25% above, time-stop after 24 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.25,
+        "hold_bars": 24
+      },
+      "oos": {
+        "trades": 7,
+        "net_usd": -23.0433,
+        "expectancy_usd": -3.2919,
+        "win_rate": 0.2857,
+        "profit_factor": 0.5392,
+        "wins": 2,
+        "losses": 5
+      },
+      "ins": {
+        "trades": 9,
+        "net_usd": -25.4542,
+        "expectancy_usd": -2.8282,
+        "win_rate": 0.2222,
+        "profit_factor": 0.6364,
+        "wins": 2,
+        "losses": 7
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T02:21:50.241664+00:00",
+      "time_et": "2026-11-06T21:21:50.241672-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp40_hold8",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-0.0333 over 6 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 40% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.4,
+        "hold_bars": 8
+      },
+      "oos": {
+        "trades": 6,
+        "net_usd": -0.1998,
+        "expectancy_usd": -0.0333,
+        "win_rate": 0.3333,
+        "profit_factor": 0.9929,
+        "wins": 2,
+        "losses": 4
+      },
+      "ins": {
+        "trades": 7,
+        "net_usd": 45.0966,
+        "expectancy_usd": 6.4424,
+        "win_rate": 0.4286,
+        "profit_factor": 2.1272,
+        "wins": 3,
+        "losses": 4
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 6,
+        "oos_window_days": 2.62,
+        "trades_per_month": 69.6,
+        "expectancy_usd": -0.0333,
+        "monthly_usd": -2.32,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T02:40:03.039544+00:00",
+      "time_et": "2026-11-06T21:40:03.039550-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp40_hold16",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-7.638 over 6 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 40% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.4,
+        "hold_bars": 16
+      },
+      "oos": {
+        "trades": 6,
+        "net_usd": -45.8282,
+        "expectancy_usd": -7.638,
+        "win_rate": 0.1667,
+        "profit_factor": 0.0836,
+        "wins": 1,
+        "losses": 5
+      },
+      "ins": {
+        "trades": 6,
+        "net_usd": 33.899,
+        "expectancy_usd": 5.6498,
+        "win_rate": 0.3333,
+        "profit_factor": 1.8473,
+        "wins": 2,
+        "losses": 4
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 6,
+        "oos_window_days": 2.62,
+        "trades_per_month": 69.6,
+        "expectancy_usd": -7.638,
+        "monthly_usd": -531.43,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T02:40:03.089739+00:00",
+      "time_et": "2026-11-06T21:40:03.089745-05:00"
+    },
+    {
+      "id": "dip_20_40_stop8_tp40_hold24",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-6.9554 over 6 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 40% above, time-stop after 24 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.08,
+        "target": 0.4,
+        "hold_bars": 24
+      },
+      "oos": {
+        "trades": 6,
+        "net_usd": -41.7321,
+        "expectancy_usd": -6.9554,
+        "win_rate": 0.1667,
+        "profit_factor": 0.1655,
+        "wins": 1,
+        "losses": 5
+      },
+      "ins": {
+        "trades": 6,
+        "net_usd": 33.899,
+        "expectancy_usd": 5.6498,
+        "win_rate": 0.3333,
+        "profit_factor": 1.8473,
+        "wins": 2,
+        "losses": 4
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 6,
+        "oos_window_days": 2.62,
+        "trades_per_month": 69.6,
+        "expectancy_usd": -6.9554,
+        "monthly_usd": -483.94,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T02:45:20.896822+00:00",
+      "time_et": "2026-11-06T21:45:20.896829-05:00"
+    },
+    {
+      "id": "dip_20_40_stop12_tp15_hold8",
+      "status": "tried",
+      "reason": "out-of-sample expectancy $0.1365 projects $9.5/mo at $100 tickets and did not beat the champion",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.12,
+        "target": 0.15,
+        "hold_bars": 8
+      },
+      "oos": {
+        "trades": 6,
+        "net_usd": 0.8188,
+        "expectancy_usd": 0.1365,
+        "win_rate": 0.5,
+        "profit_factor": 1.024,
+        "wins": 3,
+        "losses": 3
+      },
+      "ins": {
+        "trades": 11,
+        "net_usd": -8.4433,
+        "expectancy_usd": -0.7676,
+        "win_rate": 0.4545,
+        "profit_factor": 0.881,
+        "wins": 5,
+        "losses": 6
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 6,
+        "oos_window_days": 2.62,
+        "trades_per_month": 69.6,
+        "expectancy_usd": 0.1365,
+        "monthly_usd": 9.5,
+        "ticket_for_low_usd": 31588.0,
+        "ticket_for_high_usd": 52647.0,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T02:45:20.982630+00:00",
+      "time_et": "2026-11-06T21:45:20.982637-05:00"
+    },
+    {
+      "id": "dip_20_40_stop12_tp15_hold16",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-0.7087 over 6 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.12,
+        "target": 0.15,
+        "hold_bars": 16
+      },
+      "oos": {
+        "trades": 6,
+        "net_usd": -4.2522,
+        "expectancy_usd": -0.7087,
+        "win_rate": 0.5,
+        "profit_factor": 0.8981,
+        "wins": 3,
+        "losses": 3
+      },
+      "ins": {
+        "trades": 10,
+        "net_usd": -7.087,
+        "expectancy_usd": -0.7087,
+        "win_rate": 0.5,
+        "profit_factor": 0.8981,
+        "wins": 5,
+        "losses": 5
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 6,
+        "oos_window_days": 2.62,
+        "trades_per_month": 69.6,
+        "expectancy_usd": -0.7087,
+        "monthly_usd": -49.31,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T03:19:53.987451+00:00",
+      "time_et": "2026-11-06T22:19:53.987458-05:00"
+    },
+    {
+      "id": "dip_20_40_stop12_tp15_hold24",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-0.7087 over 6 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 24 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.12,
+        "target": 0.15,
+        "hold_bars": 24
+      },
+      "oos": {
+        "trades": 6,
+        "net_usd": -4.2522,
+        "expectancy_usd": -0.7087,
+        "win_rate": 0.5,
+        "profit_factor": 0.8981,
+        "wins": 3,
+        "losses": 3
+      },
+      "ins": {
+        "trades": 10,
+        "net_usd": -7.087,
+        "expectancy_usd": -0.7087,
+        "win_rate": 0.5,
+        "profit_factor": 0.8981,
+        "wins": 5,
+        "losses": 5
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 6,
+        "oos_window_days": 2.62,
+        "trades_per_month": 69.6,
+        "expectancy_usd": -0.7087,
+        "monthly_usd": -49.31,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T03:19:54.073178+00:00",
+      "time_et": "2026-11-06T22:19:54.073183-05:00"
+    },
+    {
+      "id": "dip_20_40_stop12_tp25_hold8",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-0.3793 over 5 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.12,
+        "target": 0.25,
+        "hold_bars": 8
+      },
+      "oos": {
+        "trades": 5,
+        "net_usd": -1.8963,
+        "expectancy_usd": -0.3793,
+        "win_rate": 0.4,
+        "profit_factor": 0.9445,
+        "wins": 2,
+        "losses": 3
+      },
+      "ins": {
+        "trades": 8,
+        "net_usd": 14.4328,
+        "expectancy_usd": 1.8041,
+        "win_rate": 0.5,
+        "profit_factor": 1.3349,
+        "wins": 4,
+        "losses": 4
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 5,
+        "oos_window_days": 2.54,
+        "trades_per_month": 59.9,
+        "expectancy_usd": -0.3793,
+        "monthly_usd": -22.71,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T04:09:36.636521+00:00",
+      "time_et": "2026-11-06T23:09:36.636528-05:00"
+    },
+    {
+      "id": "dip_20_40_stop12_tp25_hold16",
+      "status": "rejected",
+      "reason": "out-of-sample expectancy $-3.5759 over 5 trades",
+      "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
+      "params": {
+        "zone_low": 0.2,
+        "zone_high": 0.4,
+        "stop": 0.12,
+        "target": 0.25,
+        "hold_bars": 16
+      },
+      "oos": {
+        "trades": 5,
+        "net_usd": -17.8794,
+        "expectancy_usd": -3.5759,
+        "win_rate": 0.4,
+        "profit_factor": 0.5717,
+        "wins": 2,
+        "losses": 3
+      },
+      "ins": {
+        "trades": 8,
+        "net_usd": -2.7348,
+        "expectancy_usd": -0.3418,
+        "win_rate": 0.375,
+        "profit_factor": 0.9607,
+        "wins": 3,
+        "losses": 5
+      },
+      "goal": {
+        "notional_usd": 100.0,
+        "oos_trades": 5,
+        "oos_window_days": 2.54,
+        "trades_per_month": 59.9,
+        "expectancy_usd": -3.5759,
+        "monthly_usd": -214.13,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0
+      },
+      "pools": [
+        {
+          "symbol": "DONNA",
+          "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+          "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+        },
+        {
+          "symbol": "jeff",
+          "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+          "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+        }
+      ],
+      "attempts": 1,
+      "time": "2026-11-07T04:09:36.696882+00:00",
+      "time_et": "2026-11-06T23:09:36.696886-05:00"
     }
   ],
-  "champion_id": null
+  "champion_id": "dip_20_40_stop8_tp15_hold8",
+  "goal_status": {
+    "monthly_goal_low_usd": 3000.0,
+    "monthly_goal_high_usd": 5000.0,
+    "notional_usd": 100.0,
+    "best": null,
+    "progress_pct_of_low": null,
+    "candidates": [
+      {
+        "id": "dip_20_40_stop8_tp15_hold8",
+        "role": "champion",
+        "status": "champion",
+        "oos_trades": 9,
+        "expectancy_usd": 0.4082,
+        "qualifies": true
+      }
+    ],
+    "status_line": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
+    "method": "Projected monthly P&L = out-of-sample average $ per trade \u00d7 out-of-sample trades per month (pooled OOS trade count \u00f7 the OOS window length \u00d7 30.44 days). Ticket needed = $100 \u00d7 goal \u00f7 projected monthly. Promotion requires \u22655 OOS trades, a positive average, and a variant that is not rejected; among those, the higher projected monthly P&L wins."
+  }
 }

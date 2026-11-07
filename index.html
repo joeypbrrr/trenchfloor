@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Trenchfloor · Meme Research Floor</title>
 <meta name="description" content="Six paper-trading research agents, one team, one shared paper P&amp;L, on a Solana meme-coin floor. Simulation and research only. No wallet. No real trades.">
-<link rel="manifest" href="./manifest.webmanifest">
+
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <meta name="theme-color" content="#0b1114">
 <meta name="color-scheme" content="dark">
@@ -286,6 +286,10 @@ footer span:last-child{text-align:right;color:#e4a578}
 .shift-card{min-width:0;overflow-wrap:anywhere}
 @media(max-width:750px){.shift-grid{grid-template-columns:1fr}}
 .ok-dot{background:#4ade80!important}.bad-dot{background:var(--red)!important;box-shadow:0 0 10px #ff8d7d88!important}
+
+/* Live copy: entire scene fits phone width; no room-navigation tabs. */
+#scene{height:clamp(280px,45vh,560px)}
+@media(max-width:480px){#scene{height:250px}.feed-item p,.lesson{overflow-wrap:anywhere;word-break:normal}.feed-item{font-size:12px}.fh{gap:8px;flex-wrap:wrap}#liveChat{max-height:520px!important}}
 </style>
 </head>
 <body>
@@ -325,22 +329,19 @@ footer span:last-child{text-align:right;color:#e4a578}
         <div class="scene-vignette" aria-hidden="true"></div>
         <div class="scene-loading"><span class="loader" aria-hidden="true"></span><p>Bringing the research floor online…</p></div>
         <div class="scene-ui">
-          <div class="view-jump" id="viewJump" aria-label="Jump to an area">
-            <button type="button" data-view="desk" class="on">DESK</button>
-            <button type="button" data-view="kitchen">KITCHEN</button>
-            <button type="button" data-view="gym">TREADMILLS</button>
-            <button type="button" data-view="wc">BATHROOM</button>
-          </div>
           <div class="view-btns"><button type="button" id="resetView" aria-label="Reset the 3D view">⟲ RESET VIEW</button></div>
           <div class="scene-hint" id="sceneHint">☝ Drag to look around · pinch to zoom</div>
         </div>
       </div>
+      <p id="cosmeticStatus" class="method-note" style="padding:0 16px">COSMETIC BREAKS ONLY · 6 AT DESKS · OCCUPANCY RESERVATIONS ACTIVE</p>
       <ul class="roster" id="roster" aria-label="Agents at the desk, left to right"></ul>
       <div class="scene-foot">
         <span>DRAG TO ROTATE <span>·</span> PINCH / SCROLL TO ZOOM <span>·</span> TWO-FINGER PAN</span>
         <span class="desk-id"><b>TF–06</b> <span>PAPER / SIMULATED</span></span>
       </div>
     </section>
+<section class="panel" aria-labelledby="liveChatTitle"><div class="panel-heading"><h2 id="liveChatTitle">AGENT CHAT ROOM</h2><span class="pill">RULE-BASED · LIVE PUSH</span></div><p class="method-note">Messages come from actual research events, not autonomous conversation. Loss reviews use recorded forward-paper closes only; missing facts stay unknown.</p><div id="liveChat" style="max-height:480px;overflow:auto"><p class="empty">Waiting for live messages. No demo chat.</p></div></section>
+<section class="panel" aria-labelledby="liveChecklistTitle"><div class="panel-heading"><h2 id="liveChecklistTitle">SHARED LESSONS CHECKLIST</h2><span class="pill">SUGGESTIONS ONLY</span></div><div id="liveChecklist"><p class="empty">No live losses reviewed. Historical backtests are excluded.</p></div></section>
     <section class="pulse" aria-label="Research pulse">
       <span id="lastCycle">Waiting for the first cycle</span>
       <span>NEXT CYCLE <b id="countdown">--:--</b></span>
@@ -356,7 +357,6 @@ footer span:last-child{text-align:right;color:#e4a578}
         <div><span class="section-num">02</span><h2 id="stratHeading">GOAL &amp; BEST STRATEGY</h2></div>
         <span class="pill">OUT OF SAMPLE ONLY</span>
       </div>
-      <div id="dailyStop" class="goal-line">Daily $300 paper-profit stop: OFF · awaiting opt-in</div>
       <div id="goalLine" class="goal-line">Standing goal: $3,000–$5,000/mo extra · no projection yet</div>
       <div id="strategy"><p class="empty">Waiting for a real cycle. No numbers are filled in until one finishes.</p></div>
     </section>
@@ -386,6 +386,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <div class="equity"><small id="equityLabel">TEAM EQUITY CURVE · PAPER</small><svg id="equity" viewBox="0 0 300 64" preserveAspectRatio="none" aria-label="Cumulative team paper P and L"></svg></div>
       <p class="method-note">Days are America/New_York exit dates from <span class="mono">data/ledger/</span>. Tap a day for its paper trades: token, symbol, entry and exit in ET, dollar P&amp;L, who proposed it, the team vote, and DexScreener / GMGN links.</p>
     </section>
+    <p class="method-note" id="accountStatus">Paper account: waiting for current snapshot.</p>
     <section class="panel" aria-labelledby="ledgerHeading">
       <div class="panel-heading">
         <div><span class="section-num">05</span><h2 id="ledgerHeading">TEAM PAPER LEDGER</h2></div>
@@ -421,7 +422,7 @@ footer span:last-child{text-align:right;color:#e4a578}
       <p class="ops" id="opsText">Honest errors only. A failed source stays failed.</p>
     </section>
     <footer>
-      <span><strong>TRENCHFLOOR</strong> · Paper trading / research only. No wallet. No real trades. Not financial advice. <a href="./BEST_STRATEGY.md" style="color:#e4a578">BEST_STRATEGY.md</a> · <a href="./LESSONS.md" style="color:#e4a578">LESSONS.md</a> · <a href="./preview/" style="color:#e4a578">Design mockup</a></span>
+      <span><strong>TRENCHFLOOR</strong> · Paper trading / research only. No wallet. No real trades. Not financial advice. <a href="./BEST_STRATEGY.md" style="color:#e4a578">BEST_STRATEGY.md</a> · <a href="./LESSONS.md" style="color:#e4a578">LESSONS.md</a> · <a href="https://joeypbrrr.github.io/trenchfloor/preview/" style="color:#e4a578">Design mockup</a></span>
       <span>GitHub Pages can take about a minute to show a new push.</span>
     </footer>
   </main>
@@ -458,7 +459,7 @@ const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<
 const money = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); };
 const moneyShort = (v) => { const n = Number(v); const a = Math.abs(n); return (n > 0 ? '+' : n < 0 ? '−' : '') + '$' + (a >= 1000 ? (a / 1000).toFixed(1) + 'k' : a >= 100 ? Math.round(a) : a.toFixed(2)); };
 const price = (v) => { if (v == null || !Number.isFinite(Number(v))) return '—'; const n = Number(v); return '$' + n.toLocaleString('en-US', { maximumFractionDigits: Math.abs(n) >= 1 ? 4 : Math.abs(n) >= 0.01 ? 6 : 8 }); };
-const ET_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+const ET_FMT = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit' });
 const et = (v) => { if (!v) return '—'; const d = new Date(v); return Number.isNaN(d.getTime()) ? '—' : ET_FMT.format(d) + ' ET'; };
 const todayET = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -466,7 +467,8 @@ const LONG_MONTHS = ['January','February','March','April','May','June','July','A
 const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 function parts(iso){ const [y, m, d] = iso.split('-').map(Number); return { y, m, d, dow: new Date(Date.UTC(y, m - 1, d)).getUTCDay() }; }
 function longDate(iso){ const p = parts(iso); return WEEKDAYS[p.dow] + ', ' + MONTHS[p.m - 1] + ' ' + p.d + ', ' + p.y; }
-async function loadJSON(path){ const r = await fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); if (!r.ok) { const e = new Error(path + ' HTTP ' + r.status); e.status = r.status; throw e; } return r.json(); }
+const PAGES_HOST=location.hostname.endsWith('github.io');
+async function loadJSON(path){ if(PAGES_HOST&&path.startsWith('data/')&&/\/live\/(?:index.html)?$/.test(location.pathname))path='../'+path; const r = await fetch(path + (path.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' }); if (!r.ok) { const e = new Error(path + ' HTTP ' + r.status); e.status = r.status; throw e; } return r.json(); }
 
 let state = null, ledgerDays = [], calMonths = [], calIndex = 0, seenFeed = null;
 
@@ -518,16 +520,9 @@ function tokenCard(tk, failed){
 }
 function empty(text){ const p = document.createElement('p'); p.className = 'empty'; p.textContent = text; return p; }
 
-function renderDailyStop(d){
-  const s = d.daily_stop;
-  const el = $('dailyStop');
-  if (!s) { el.textContent = 'Daily $300 paper-profit stop: OFF · awaiting opt-in'; return; }
-  el.textContent = 'DAILY PROFIT STOP: ' + (s.halted ? 'HALTED — no new entries until ET midnight' : (s.enabled ? 'ARMED' : 'OFF'))
-    + ' · ' + money(s.realized_pnl_usd) + ' / ' + money(s.target_usd) + ' · ' + s.mode
-    + ' · ' + s.realized_fills + ' deduplicated closed simulations (not forward income; future exits excluded). Exits are not halted.';
-}
 function renderGoal(goal){
   const el = $('goalLine');
+  if(state&&state.daily_stop){const d=state.daily_stop;el.textContent='DAILY GOAL $300 · '+money(d.realized_pnl_usd)+' REALIZED TODAY · '+(d.halted?'HARD STOP UNTIL ET MIDNIGHT':'ENTRY GATE ARMED')+' · Max 1 new entry / rolling hour';return;}
   if (!goal) { el.textContent = 'Standing goal: $3,000–$5,000/mo extra · no projection yet (waiting for a cycle that writes one).'; return; }
   const head = 'GOAL $' + Number(goal.monthly_goal_low_usd).toLocaleString() + '–$' + Number(goal.monthly_goal_high_usd).toLocaleString() + '/MO';
   const b = goal.best;
@@ -580,6 +575,7 @@ function renderMetrics(d){
   $('winRate').textContent = w + l ? Math.round(w / (w + l) * 100) + '%' : '—';
   const v = votedTrades(d);
   $('avgVote').textContent = v.length ? (v.reduce((s, t) => s + (t.team.approve || 0), 0) / v.length).toFixed(1) + ' / 6' : '—';
+  if(d.paper_account){const a=d.paper_account;$('accountStatus').textContent='PAPER BALANCE '+money(a.balance_usd)+' · CASH '+money(a.cash_usd)+' · RESERVED '+money(a.reserved_usd)+' · STARTED '+et(a.started)+' · '+a.sizing;}
   $('fillSub').textContent = (days.length ? days.length + ' DAYS · ' : '') + 'SIMULATED FILLS';
 }
 function renderLedger(d){
@@ -609,9 +605,9 @@ function renderState(d){
   const stale = d.health && d.health.stale_agents && d.health.stale_agents.length;
   $('systemState').textContent = d.ok ? (stale ? 'STALE AGENT' : 'FLOOR ONLINE') : 'ATTENTION';
   $('liveDot').className = 'live-dot ' + (d.ok && !stale ? 'ok-dot' : 'bad-dot');
-  $('lastCycle').textContent = d.last_cycle ? 'Last cycle ' + et(d.last_cycle) + ' · ' + (d.data_status || '') : 'Waiting for the first cycle';
+  $('lastCycle').textContent = d.last_cycle ? 'Last updated ' + et(d.last_updated_et||d.last_cycle) + ' · ' + (d.data_status || '') : 'Waiting for the first cycle';
   $('sceneStatus').textContent = d.ok ? 'AGENTS SEATED · LIVE' : 'CHECK ERRORS';
-  renderDailyStop(d); renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
+  renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
   ledgerDays = (d.ledger && d.ledger.days) || ledgerDays;
   buildMonths(); renderCalendar(); renderEquity();
 }
@@ -706,11 +702,85 @@ async function loadState(){ try { renderState(await loadJSON('data/research.json
 async function loadFeed(){ try { renderFeed(await loadJSON('data/feed.json')); } catch (e) { $('feed').replaceChildren(empty('Feed unavailable: ' + e.message)); } }
 function tick(){ if (!state || !state.next_cycle) return; const left = Math.max(0, Math.floor((new Date(state.next_cycle) - Date.now()) / 1000)); $('countdown').textContent = String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0'); }
 renderRoster(); buildMonths(); renderCalendar(); renderEquity();
-loadState(); loadFeed();
-setInterval(loadState, 20000); setInterval(loadFeed, 12000); setInterval(tick, 1000);
+// Keep the calendar in the continuous page immediately under the scene.
+document.querySelector('.floor-card').after(document.getElementById('calendar'));
+// Live copy only: no static JSON polling. WebSockets work through quick tunnels;
+// the server also offers local SSE at /events for diagnostics.
+let liveSocket, liveLastId = null, liveHeartbeat = null, liveConnected = false, staticMode = PAGES_HOST, staticTimer = null;
+const liveBubbles = new Map();
+let liveCache=null;
+const liveBadge = document.createElement('div'); liveBadge.style.cssText='padding:8px 12px;color:#ffb04b;font:11px monospace;text-align:center;background:#1a1009';
+liveBadge.textContent='CONNECTING TO LIVE RESEARCH'; document.body.prepend(liveBadge);
+function liveHealth(){
+  if(staticMode){liveBadge.textContent='PAPER ONLY · PAGES SNAPSHOT · HOURLY PUBLICATION · POLLS EVERY 60s · Last updated '+(state?et(state.last_updated_et||state.last_cycle):'waiting');return;}
+  const age = liveHeartbeat ? (Date.now()-Date.parse(liveHeartbeat))/1000 : Infinity;
+  liveBadge.textContent = !liveConnected ? 'DISCONNECTED — RECONNECTING' : age < 20 ? '● LIVE PUSH · RESEARCH HEARTBEAT '+Math.max(0,Math.round(age))+'s AGO · PAPER ONLY' : 'DASHBOARD CONNECTED · RESEARCH HEARTBEAT MISSING / STALE';
+}
+function liveApply(s){
+  if(s.delta&&liveCache){
+    s={...liveCache,...s,research:s.research||{...liveCache.research,agents:s.agents,ledger:s.ledger},events:[...liveCache.events,...s.events].slice(-200),chat:[...liveCache.chat,...s.chat].slice(-200)};
+  }
+  liveCache=s;
+  liveHeartbeat=s.heartbeat;
+  renderState(s.research);
+  renderFeed({events:s.events.slice().reverse().map(e=>({...e,type:e.kind})),updated:s.server_time});
+  const fresh = liveLastId == null ? [] : s.events.filter(e=>e.id>liveLastId);
+  fresh.forEach(e=>{
+    const index=AGENTS.findIndex(a=>a.role===e.agent); if(index<0)return;
+    if(window.returnLiveAgentToDesk)window.returnLiveAgentToDesk(index);
+    let b=liveBubbles.get(index);
+    if(!b){b=document.createElement('div');b.style.cssText='position:absolute;pointer-events:none;z-index:8;max-width:130px;padding:7px;border:1px solid #ff8b30;border-radius:8px;background:#160d08ed;color:#ffd0a0;font:10px/1.3 monospace;transform:translate(-50%,-100%);box-shadow:0 3px 16px #0009';document.getElementById('scene').append(b);liveBubbles.set(index,b);}
+    b.textContent=e.text.replace(/https?:\S+/g,'').slice(0,120);b.dataset.until=Date.now()+12000;
+  });
+  const chat=document.getElementById('liveChat');
+  chat.replaceChildren(...(s.chat.length?s.chat.slice(-200).map(e=>{
+    const row=document.createElement('article');row.className='feed-item';
+    const color=(AGENTS.find(a=>a.role===e.agent)||{}).color||'#e4a578';
+    const title=document.createElement('div');title.className='fh';
+    const who=document.createElement('b');who.textContent='● '+e.agent;who.style.color=color;
+    const when=document.createElement('time');when.textContent=et(e.time);title.append(who,when);
+    const body=document.createElement('p');body.textContent=e.text;row.append(title,body);return row;
+  }):[empty('No live agent messages yet. No demo conversation is generated.')]));
+  const checklist=document.getElementById('liveChecklist');
+  checklist.replaceChildren(...(s.checklist.length?s.checklist.map(item=>{const row=document.createElement('div');row.className='lesson';const text=document.createElement('b');text.textContent=item.suggestion;const note=document.createElement('small');note.textContent=item.supporting_losses+' supporting live paper loss(es) · SUGGESTION ONLY — NOT APPLIED';row.append(text,note);return row}):[empty('No forward paper losses have closed since this dashboard started. Historical/backtest rows do not seed reviews. No checklist suggestions yet.')]));
+  liveLastId=s.sequence;liveHealth();
+}
+async function loadStaticSnapshot(){
+  try{
+    const [research,feed,chat,checklist,ledger]=await Promise.all([
+      loadJSON('data/research.json'),loadJSON('data/feed.json'),
+      loadJSON('data/live_chat.json').catch(()=>({messages:[]})),
+      loadJSON('data/checklist.json').catch(()=>({items:[]})),
+      loadJSON('data/ledger/index.json')]);
+    research.ledger=ledger;
+    liveApply({research,agents:research.agents||[],ledger,events:(feed.events||[]).slice().reverse().map(e=>({...e,kind:e.kind||e.type||'info'})),chat:chat.messages||[],checklist:checklist.items||[],heartbeat:null,server_time:feed.updated||research.generated,sequence:Date.now()});
+  }catch(err){$('systemState').textContent='PREVIEW DATA UNAVAILABLE';console.error('Static preview data',err);}
+  liveHealth();
+}
+function startStaticPolling(){
+  staticMode=true;liveConnected=false;liveHealth();
+  if(staticTimer)return;
+  loadStaticSnapshot();staticTimer=setInterval(loadStaticSnapshot,60000);
+  if(liveSocket)liveSocket.close();
+}
+function liveConnect(){
+  if(PAGES_HOST||staticMode){startStaticPolling();return;}
+  liveSocket=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws');
+  liveSocket.onopen=()=>{liveConnected=true;liveHealth()};
+  liveSocket.onmessage=e=>{try{liveApply(JSON.parse(e.data))}catch(err){console.error('Live state error',err)}};
+  liveSocket.onclose=()=>{liveConnected=false;startStaticPolling()};
+  liveSocket.onerror=()=>startStaticPolling();
+  setTimeout(()=>{if(!liveConnected)startStaticPolling()},5000);
+}
+liveConnect();setInterval(()=>{tick();liveHealth()},1000);
+setInterval(()=>{
+  if(!window.__seatNDC)return;const host=document.getElementById('scene'),coords=window.__seatNDC();
+  liveBubbles.forEach((b,i)=>{const p=coords.find(p=>p.i===i);b.hidden=Date.now()>Number(b.dataset.until)||!p||Math.abs(p.x)>1||Math.abs(p.y)>1;if(p){b.style.left=((p.x+1)/2*host.clientWidth)+'px';b.style.top=((1-p.y)/2*host.clientHeight)+'px'}});
+},100);
 // No service worker: retire any old one so a stale copy is never served.
 if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => { if (/\/trenchfloor\/(floor\/)?$/.test(new URL(r.scope).pathname)) r.unregister(); })).catch(() => {});
 </script>
+<script src="./live/occupancy.js"></script>
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -781,7 +851,7 @@ function boot(){
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#000000');
   scene.fog = new THREE.Fog('#000000', 38, 90);
-  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 160);
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 250);
 
   const neonMat = new THREE.MeshBasicMaterial({ color: '#ff7a18' });
   const baseNeon = new THREE.Color('#ff7a18');
@@ -899,9 +969,45 @@ function boot(){
     const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.7), new THREE.MeshBasicMaterial({ map: screenTexture(agent, i * 0.9) }));
     screen.position.set(0, 0.42, -0.034); screen.rotation.y = Math.PI; headRig.add(screen);
     box(1.12, 0.02, 0.02, accent, 0, 0.04, -0.04, headRig);
-    stations.push({ torso, arms, screen, keys });
+    const seated = person.children.filter(c=>c!==torso);
+    const standing = new THREE.Group(); standing.visible=false; person.add(standing);
+    const legs=[];
+    [-1,1].forEach(sign=>{const leg=new THREE.Group();leg.position.set(sign*0.1,0.65,0);standing.add(leg);box(0.12,0.52,0.13,blackMat,0,-0.25,0,leg);box(0.13,0.08,0.23,blackMat,0,-0.55,0.05,leg);legs.push(leg)});
+    stations.push({ person, torso, arms, screen, keys, seated, standing, legs, home:person.position.clone(), nextBreak:performance.now()+8000+Math.random()*70000, path:[], breakUntil:0, deskUntil:0 });
   });
 
+  // Decorative motion only: no telemetry, strategy, or trading side effects.
+  const occupancy=new window.FloorOccupancy();
+  const destinations={bathroom:new THREE.Vector3(-13,0,2.5),treadmill0:new THREE.Vector3(-12.7,0,-1.3),treadmill1:new THREE.Vector3(-12.7,0,-3.8),kitchen:new THREE.Vector3(12.5,0,-2.2)};
+  let lastMotion=performance.now();
+  function routeHome(i,now){
+    const s=stations[i];if(occupancy.agents[i].state==='home'){s.deskUntil=now+12000;return;}
+    occupancy.returnHome(i);
+    s.path=[new THREE.Vector3(s.person.position.x,0,-6),new THREE.Vector3(s.home.x,0,-6),s.home.clone()];
+    s.deskUntil=now+20000;
+  }
+  window.returnLiveAgentToDesk=(i)=>routeHome(i,performance.now());
+  function animateBreaks(now){
+    const dt=Math.min(0.1,Math.max(0,(now-lastMotion)/1000));lastMotion=now;
+    stations.forEach((s,i)=>{
+      let a=occupancy.agents[i];
+      if(a.state==='home'&&now>s.nextBreak&&now>s.deskUntil){
+        const options=Object.keys(destinations).sort(()=>Math.random()-0.5);
+        const spot=options.find(spot=>occupancy.depart(i,spot));
+        if(spot){let target=destinations[spot].clone();if(spot==='kitchen')target.z-=occupancy.agents[i].slot*1.3;s.path=[new THREE.Vector3(s.home.x,0,-6),new THREE.Vector3(target.x,0,-6),target];}
+        else s.nextBreak=now+3000+Math.random()*12000;
+        a=occupancy.agents[i];
+      }
+      const away=a.state!=='home';s.standing.visible=away;s.seated.forEach(m=>m.visible=!away);s.torso.rotation.x=away?0:0.2;
+      if(s.path.length){
+        const target=s.path[0],delta=target.clone().sub(s.person.position),distance=delta.length(),step=dt*3.8;
+        if(distance<=step){s.person.position.copy(target);s.path.shift();if(!s.path.length){if(a.state==='returning'){occupancy.home(i);s.person.rotation.y=0;s.nextBreak=now+15000+Math.random()*90000;}else{occupancy.arrive(i);s.breakUntil=now+7000+Math.random()*14000;}}}
+        else{s.person.position.addScaledVector(delta,step/distance);s.person.rotation.y=Math.atan2(delta.x,delta.z);}
+      }else if(a.state==='visiting'&&now>s.breakUntil)routeHome(i,now);
+      if(away){const running=a.state==='visiting'&&a.spot.startsWith('treadmill');s.legs.forEach((leg,k)=>leg.rotation.x=Math.sin(now*(running?0.015:0.009)+k*Math.PI)*(s.path.length||running?0.45:0));s.arms.forEach((arm,k)=>arm.rotation.x=Math.sin(now*0.009+k*Math.PI)*(s.path.length?0.4:0.1));}
+    });
+    const badge=document.getElementById('cosmeticStatus');if(badge)badge.textContent='COSMETIC BREAKS · '+occupancy.deskCount()+' AT DESKS · KITCHEN '+occupancy.used('kitchen')+'/2 · WC '+occupancy.used('bathroom')+'/1 · TREADMILLS '+(occupancy.used('treadmill0')+occupancy.used('treadmill1'))+'/2';
+  }
   // ---------- Kitchen (east side, +x) ----------
   const KX = 14.5;
   box(0.66, 0.88, 4.2, panelMat, KX, 0.44, 1.3);                 // base cabinets
@@ -1025,7 +1131,7 @@ function boot(){
   controls.panSpeed = 0.7;
   controls.screenSpacePanning = false;
   controls.minDistance = 3;
-  controls.maxDistance = 40;
+  controls.maxDistance = 110;
   controls.minPolarAngle = 0.08;
   controls.maxPolarAngle = Math.PI / 2 - 0.06;
   controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
@@ -1038,14 +1144,19 @@ function boot(){
   controls.addEventListener('change', clampTarget);
 
   function homeView(){
-    const w = host.clientWidth || 1, h = host.clientHeight || 1, aspect = w / h;
-    const narrow = w < 760;
-    const fov = narrow ? 56 : 38;
-    const fitW = narrow ? 14.6 : 21;
-    const half = Math.atan(Math.tan(THREE.MathUtils.degToRad(fov / 2)) * aspect);
-    const d = Math.min(controls.maxDistance - 2, (fitW / 2) / Math.tan(half) + (narrow ? 0.4 : 0.5));
-    const el = narrow ? 0.36 : 0.3;
-    return { fov, target: new THREE.Vector3(0, narrow ? 0.9 : 1.05, 0.1), pos: new THREE.Vector3(0, (narrow ? 0.9 : 1.05) + d * Math.sin(el), 0.1 - d * Math.cos(el)) };
+    const w=host.clientWidth||1,h=host.clientHeight||1,aspect=w/h;
+    const fov=52,vf=THREE.MathUtils.degToRad(fov/2),hf=Math.atan(Math.tan(vf)*aspect);
+    const target=new THREE.Vector3(0,0.7,-1.5),el=0.78;
+    // Fit actual room corners, not an oversized sphere: fills a phone canvas
+    // while preserving kitchen, bathroom and both treadmills at the edges.
+    let d=0;
+    for(const x of [-15.4,15.4])for(const y of [0,4.4])for(const z of [-8.4,4.9]){
+      const py=y-target.y,pz=z-target.z;
+      const near=py*Math.sin(el)-pz*Math.cos(el),up=py*Math.cos(el)+pz*Math.sin(el);
+      d=Math.max(d,near+Math.abs(x)/Math.tan(hf),near+Math.abs(up)/Math.tan(vf));
+    }
+    d*=1.04;
+    return {fov,target,pos:new THREE.Vector3(0,target.y+d*Math.sin(el),target.z-d*Math.cos(el))};
   }
   const SPOTS = {
     kitchen: () => ({ target: new THREE.Vector3(12.6, 0.9, 0.4), pos: new THREE.Vector3(6.4, 4.6, -6.2) }),
@@ -1055,7 +1166,8 @@ function boot(){
   let fly = null, touched = false, view = 'desk';
   function setFov(f){ if(camera.fov !== f){ camera.fov = f; camera.updateProjectionMatrix(); } }
   function goTo(name, instant){
-    const v = name === 'desk' ? homeView() : SPOTS[name]();
+    name = 'desk'; // One continuous floor; no individual-room jumps.
+    const v = homeView();
     view = name;
     document.querySelectorAll('#viewJump button').forEach(b => b.classList.toggle('on', b.dataset.view === name));
     setFov(homeView().fov);
@@ -1070,7 +1182,7 @@ function boot(){
     if(view){ view = null; document.querySelectorAll('#viewJump button').forEach(b => b.classList.remove('on')); }
   });
   document.getElementById('resetView')?.addEventListener('click', () => goTo('desk'));
-  document.getElementById('viewJump')?.addEventListener('click', e => { const b = e.target.closest('button[data-view]'); if(b) goTo(b.dataset.view); });
+
 
   function resize(){
     const w = host.clientWidth || 1, h = host.clientHeight || 1;
@@ -1097,6 +1209,7 @@ function boot(){
     requestAnimationFrame(frame);
     if(document.hidden) return;
     const t = now / 1000;
+    if(!reduceMotion) animateBreaks(now);
     if(fly){
       const k = Math.min(1, (now - fly.t0) / fly.dur), e = ease(k);
       camera.position.lerpVectors(fly.p0, fly.p1, e);
@@ -1110,7 +1223,7 @@ function boot(){
       beltTex.offset.y = (t * 0.9) % 1;
       stations.forEach((s, i) => {
         s.torso.position.y = s.torso.userData.baseY + Math.sin(t * 1.7 + i) * 0.012;
-        s.arms.forEach((arm, k) => { arm.rotation.x = arm.userData.baseX + Math.sin(t * 8.5 + i * 0.8 + k * 1.6) * 0.07; });
+        if(occupancy.agents[i].state==='home')s.arms.forEach((arm, k) => { arm.rotation.x = arm.userData.baseX + Math.sin(t * 8.5 + i * 0.8 + k * 1.6) * 0.07; });
         s.screen.material.color.setScalar(Math.sin(t * 19 + i * 4.1) > 0.985 ? 0.45 : 1);
       });
     }

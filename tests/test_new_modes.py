@@ -65,6 +65,7 @@ class DailyStopTests(unittest.TestCase):
         from backtest import variant_catalog
         cfg=json.loads((research.ROOT/'config.json').read_text())
         cfg.update(self.config)
+        cfg["forward_paper_enabled"] = False  # this test intentionally exercises the legacy backtest ledger
         cfg['limits']['variants_per_cycle']=1
         v=variant_catalog()[0]
         trades=[self.trade('a',300),self.trade('b',300)]

@@ -1,8 +1,7 @@
 """Persistent, mode-specific entry gate; never blocks closing a position.
 
-This project currently runs historical backtests, not a forward paper execution
-engine. Backtest P&L is explicitly segregated from any future forward_paper
-fills. No future-dated candle exit is realized. Duplicate strategy variants of
+Forward PAPER closes and historical backtests use separate modes.
+Only explicitly realized forward fills count in forward mode. No future-dated candle exit is realized. Duplicate strategy variants of
 the same economic fill count once. The latch survives P&L falling below target,
 restart, or disabling/re-enabling, and expires only at ET midnight.
 """
@@ -16,6 +15,8 @@ ET = ZoneInfo('America/New_York')
 
 
 def mode_for(config):
+    if config.get('forward_paper_enabled', False):
+        return 'forward:paper'
     source = config.get('candidate_source', 'legacy')
     proxy = ':fee_proxy' if source != 'legacy' and config.get('fee_proxy_enabled', False) else ''
     return source + proxy + ':backtest'
@@ -52,6 +53,8 @@ class DailyStop:
             for trade in doc.get('trades') or []:
                 if trade.get('mode', 'legacy:backtest') != mode:
                     continue
+                if mode == 'forward:paper' and trade.get('realized') is not True:
+                    continue
                 closed = close_time(trade)
                 pnl = num(trade.get('pnl_usd'))
                 if not closed or closed > now or closed.astimezone(ET).date() != today or pnl is None:
@@ -78,7 +81,7 @@ class DailyStop:
                   'date_et': str(today), 'target_usd': target, 'realized_pnl_usd': round(total, 4),
                   'realized_fills': len(fills), 'reset_at': reset.isoformat(),
                   'hit_at': previous.get('hit_at') if latched else crossed,
-                  'basis': 'deduplicated closed historical simulations, not forward income; future exits excluded',
+                  'basis': ('deduplicated realized forward paper closes only; no unrealized P&L' if mode == 'forward:paper' else 'deduplicated closed historical simulations, not forward income; future exits excluded'),
                   'blocks': 'new entries only; position exits are never gated'}
         if enabled:
             state.setdefault('modes', {})[mode] = result
