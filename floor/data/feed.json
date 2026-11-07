@@ -1,7 +1,49 @@
 {
-  "updated": "2026-11-07T02:38:36.272282+00:00",
-  "next_id": 215,
+  "updated": "2026-11-07T02:39:50.537236+00:00",
+  "next_id": 221,
   "events": [
+    {
+      "id": 220,
+      "time": "2026-11-07T02:39:50.537203+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PASS AMD: PASS mint, freeze, extensions, and holder concentration"
+    },
+    {
+      "id": 219,
+      "time": "2026-11-07T02:38:40.536308+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs."
+    },
+    {
+      "id": 218,
+      "time": "2026-11-07T02:38:40.529906+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "97 mints discovered, 30 enriched, 4 passed filters, 5 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 6, 'pair younger than minimum age': 4, 'liquidity unknown': 2, 'liquidity below minimum': 2}."
+    },
+    {
+      "id": 217,
+      "time": "2026-11-07T02:38:40.429802+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "57 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; FzmSx4 https://x.com/BustedMemeSol; 4AN9uw https://x.com/Machiavelli_HQ"
+    },
+    {
+      "id": 216,
+      "time": "2026-11-07T02:38:37.591686+00:00",
+      "agent": "Data Scout",
+      "type": "error",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
+    },
+    {
+      "id": 215,
+      "time": "2026-11-07T02:38:37.585935+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
+    },
     {
       "id": 214,
       "time": "2026-11-07T02:38:36.272268+00:00",
@@ -6061,48 +6103,6 @@
       "agent": "Backtester",
       "type": "error",
       "text": "AMD does not have enough hourly bars (24). "
-    },
-    {
-      "id": 40,
-      "time": "2026-11-07T01:39:56.832068+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "error",
-      "text": "FAIL SI276: FAIL non-LP non-program holder owns 4.74% (limit 3.5%) https://app.bubblemaps.io/sol/token/HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump"
-    },
-    {
-      "id": 39,
-      "time": "2026-11-07T01:39:56.830370+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "jeff is eligible for a paper dip test."
-    },
-    {
-      "id": 38,
-      "time": "2026-11-07T01:39:56.829456+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "jeff holder check passed. Top non-LP non-program wallet 3.3822%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k"
-    },
-    {
-      "id": 37,
-      "time": "2026-11-07T01:39:56.828514+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "PASS jeff: PASS mint, freeze, extensions, and holder concentration"
-    },
-    {
-      "id": 36,
-      "time": "2026-11-07T01:39:56.827439+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "DONNA is eligible for a paper dip test."
-    },
-    {
-      "id": 35,
-      "time": "2026-11-07T01:39:56.826528+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "DONNA holder check passed. Top non-LP non-program wallet 2.0897%. linked-wallet sample stopped early: getTransaction failed: https://public.rpc.solanavibestation.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://solana-rpc.publicnode.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'} https://app.bubblemaps.io/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump"
     }
   ]
 }
