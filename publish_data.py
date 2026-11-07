@@ -234,6 +234,8 @@ def copy_payload(root, dest, feed_only=False):
 
 
 def publish(root=None, feed_only=False, remote=None, branch="gh-pages", work=None, dry_run=False):
+    if os.environ.get("TRENCHFLOOR_SERVER_MODE") == "vps" or os.environ.get("TRENCHFLOOR_SKIP_PUBLISH") == "1":
+        return {"ok": True, "published": None, "disabled": True, "detail": "Publishing disabled in server mode; the box owns Pages publishing", "files": []}
     root = Path(root or ROOT)
     remote = remote or git(root, "remote", "get-url", "origin", check=True).stdout.strip()
     work = Path(work or (root / ".gh-pages"))

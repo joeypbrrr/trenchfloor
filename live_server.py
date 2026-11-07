@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import mimetypes
+import os
 import socket
 import struct
 import threading
@@ -187,7 +188,10 @@ class Ingest(Dashboard):
             self.plain(400, b'{}')
 
 if __name__ == "__main__":
-    private = ThreadingHTTPServer(("127.0.0.1", 8797), Ingest)
+    host = os.environ.get("TRENCHFLOOR_LIVE_HOST", "0.0.0.0" if os.environ.get("TRENCHFLOOR_SERVER_MODE") == "vps" else "127.0.0.1")
+    port = int(os.environ.get("TRENCHFLOOR_LIVE_PORT", "8796"))
+    ingest_port = int(os.environ.get("TRENCHFLOOR_EVENT_PORT", "8797"))
+    private = ThreadingHTTPServer(("127.0.0.1", ingest_port), Ingest)
     threading.Thread(target=private.serve_forever, daemon=True).start()
-    print("Read-only dashboard 127.0.0.1:8796; private ingest 127.0.0.1:8797", flush=True)
-    ThreadingHTTPServer(("127.0.0.1", 8796), Dashboard).serve_forever()
+    print(f"Read-only dashboard {host}:{port}; private ingest 127.0.0.1:{ingest_port}", flush=True)
+    ThreadingHTTPServer((host, port), Dashboard).serve_forever()
