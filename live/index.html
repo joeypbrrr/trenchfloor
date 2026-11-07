@@ -289,7 +289,7 @@ footer span:last-child{text-align:right;color:#e4a578}
 
 /* Live copy: entire scene fits phone width; no room-navigation tabs. */
 #scene{height:clamp(280px,45vh,560px)}
-@media(max-width:480px){.feed-item p,.lesson{overflow-wrap:anywhere;word-break:normal}.feed-item{font-size:12px}.fh{gap:8px;flex-wrap:wrap}#liveChat{max-height:520px!important}}
+@media(max-width:480px){#scene{height:250px}.feed-item p,.lesson{overflow-wrap:anywhere;word-break:normal}.feed-item{font-size:12px}.fh{gap:8px;flex-wrap:wrap}#liveChat{max-height:520px!important}}
 </style>
 </head>
 <body>
@@ -1142,9 +1142,17 @@ function boot(){
 
   function homeView(){
     const w=host.clientWidth||1,h=host.clientHeight||1,aspect=w/h;
-    const fov=52, vf=THREE.MathUtils.degToRad(fov/2),hf=Math.atan(Math.tan(vf)*aspect);
-    const d=(w<760?17.3:18.8)/Math.sin(Math.min(vf,hf));
-    const target=new THREE.Vector3(0,0.7,-1.5),el=0.66;
+    const fov=52,vf=THREE.MathUtils.degToRad(fov/2),hf=Math.atan(Math.tan(vf)*aspect);
+    const target=new THREE.Vector3(0,0.7,-1.5),el=0.78;
+    // Fit actual room corners, not an oversized sphere: fills a phone canvas
+    // while preserving kitchen, bathroom and both treadmills at the edges.
+    let d=0;
+    for(const x of [-15.4,15.4])for(const y of [0,4.4])for(const z of [-8.4,4.9]){
+      const py=y-target.y,pz=z-target.z;
+      const near=py*Math.sin(el)-pz*Math.cos(el),up=py*Math.cos(el)+pz*Math.sin(el);
+      d=Math.max(d,near+Math.abs(x)/Math.tan(hf),near+Math.abs(up)/Math.tan(vf));
+    }
+    d*=1.04;
     return {fov,target,pos:new THREE.Vector3(0,target.y+d*Math.sin(el),target.z-d*Math.cos(el))};
   }
   const SPOTS = {
