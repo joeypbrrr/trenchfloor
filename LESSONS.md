@@ -8,8 +8,8 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 
 - **2026-11-06T20:29:25.197404-05:00** — skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply
   - Source: Bubble Map Analyst
-  - Evidence: Leonida top wallet 4.3107% (FodHiggUGYku3MVHv6k14trHYk2V6nFi6qdHmcsKaQat)
-  - Examples: DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump, 8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump, HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump, 8THZ69JP2ErZuHVj4G5rcwkFfsQafp5mQsaoQReApump, BWJfBNeXpapG7uoqByp5KSwWgCQba8QcDmA2DQiEpump
+  - Evidence: FLOAT top wallet 5.4635% (EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G)
+  - Examples: DtcicPCKTKeAh7TDEzTym3hXeoHAoMiBdYJhMYxZpump, 8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump, HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump, 8THZ69JP2ErZuHVj4G5rcwkFfsQafp5mQsaoQReApump, BWJfBNeXpapG7uoqByp5KSwWgCQba8QcDmA2DQiEpump, Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr
 
 - **2026-11-06T20:29:31.564242-05:00** — skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book
   - Source: Risk Manager
@@ -18,22 +18,6 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 
 ## Observations
 
-- **2026-11-06T21:12:30.706750-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold8 exit stop liq 85693.47 mcap 971199.0
-- **2026-11-06T21:12:30.706755-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold8 exit stop liq 85693.47 mcap 971199.0
-- **2026-11-06T21:12:30.706760-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold8 exit stop liq 85693.47 mcap 971199.0
-- **2026-11-06T21:12:30.706765-05:00** (Backtester): jeff paper loss $-6.3078 on dip_20_40_stop8_tp25_hold8 exit time liq 85693.47 mcap 971199.0
-- **2026-11-06T21:21:39.520720-05:00** (Bubble Map Analyst): skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply — Leonida top wallet 4.3107% (FodHiggUGYku3MVHv6k14trHYk2V6nFi6qdHmcsKaQat)
-- **2026-11-06T21:21:50.072434-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072458-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072466-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072473-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072480-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072487-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072494-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072511-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072518-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072526-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
-- **2026-11-06T21:21:50.072533-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.072539-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.170993-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.171005-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
@@ -98,6 +82,22 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 - **2026-11-06T22:19:54.017425-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0
 - **2026-11-06T22:19:54.017430-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0
 - **2026-11-06T22:19:54.017433-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0
+- **2026-11-06T23:09:24.697605-05:00** (Bubble Map Analyst): skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply — FLOAT top wallet 5.4635% (EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G)
+- **2026-11-06T23:09:36.606032-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.606044-05:00** (Backtester): jeff paper loss $-1.3563 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.606051-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.606055-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.606060-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.606064-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.606068-05:00** (Backtester): jeff paper loss $-6.3078 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663826-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663836-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663841-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663844-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663848-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663852-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663856-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-06T23:09:36.663859-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
 
 ## Tried and rejected variants
 
@@ -113,6 +113,8 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 - `dip_20_40_stop12_tp15_hold8` — **tried** at 2026-11-06T21:45:20.982637-05:00. out-of-sample expectancy $0.1365 projects $9.5/mo at $100 tickets and did not beat the champion
 - `dip_20_40_stop12_tp15_hold16` — **rejected** at 2026-11-06T22:19:53.987458-05:00. out-of-sample expectancy $-0.7087 over 6 trades
 - `dip_20_40_stop12_tp15_hold24` — **rejected** at 2026-11-06T22:19:54.073183-05:00. out-of-sample expectancy $-0.7087 over 6 trades
+- `dip_20_40_stop12_tp25_hold8` — **rejected** at 2026-11-06T23:09:36.636528-05:00. out-of-sample expectancy $-0.3793 over 5 trades
+- `dip_20_40_stop12_tp25_hold16` — **rejected** at 2026-11-06T23:09:36.696886-05:00. out-of-sample expectancy $-3.5759 over 5 trades
 
 ## Rejected mints
 
@@ -121,3 +123,4 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 - `SI276` `HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump` — holder above 3.5% (2026-11-06T20:39:56.831802-05:00)
 - `NETWORK` `8THZ69JP2ErZuHVj4G5rcwkFfsQafp5mQsaoQReApump` — holder above 3.5% (2026-11-06T21:12:20.169472-05:00)
 - `Leonida` `BWJfBNeXpapG7uoqByp5KSwWgCQba8QcDmA2DQiEpump` — holder above 3.5% (2026-11-06T21:21:39.521179-05:00)
+- `FLOAT` `Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr` — holder above 3.5% (2026-11-06T23:09:24.698744-05:00)

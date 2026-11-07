@@ -356,6 +356,7 @@ footer span:last-child{text-align:right;color:#e4a578}
         <div><span class="section-num">02</span><h2 id="stratHeading">GOAL &amp; BEST STRATEGY</h2></div>
         <span class="pill">OUT OF SAMPLE ONLY</span>
       </div>
+      <div id="dailyStop" class="goal-line">Daily $300 paper-profit stop: OFF · awaiting opt-in</div>
       <div id="goalLine" class="goal-line">Standing goal: $3,000–$5,000/mo extra · no projection yet</div>
       <div id="strategy"><p class="empty">Waiting for a real cycle. No numbers are filled in until one finishes.</p></div>
     </section>
@@ -517,6 +518,14 @@ function tokenCard(tk, failed){
 }
 function empty(text){ const p = document.createElement('p'); p.className = 'empty'; p.textContent = text; return p; }
 
+function renderDailyStop(d){
+  const s = d.daily_stop;
+  const el = $('dailyStop');
+  if (!s) { el.textContent = 'Daily $300 paper-profit stop: OFF · awaiting opt-in'; return; }
+  el.textContent = 'DAILY PROFIT STOP: ' + (s.halted ? 'HALTED — no new entries until ET midnight' : (s.enabled ? 'ARMED' : 'OFF'))
+    + ' · ' + money(s.realized_pnl_usd) + ' / ' + money(s.target_usd) + ' · ' + s.mode
+    + ' · ' + s.realized_fills + ' deduplicated closed simulations (not forward income; future exits excluded). Exits are not halted.';
+}
 function renderGoal(goal){
   const el = $('goalLine');
   if (!goal) { el.textContent = 'Standing goal: $3,000–$5,000/mo extra · no projection yet (waiting for a cycle that writes one).'; return; }
@@ -602,7 +611,7 @@ function renderState(d){
   $('liveDot').className = 'live-dot ' + (d.ok && !stale ? 'ok-dot' : 'bad-dot');
   $('lastCycle').textContent = d.last_cycle ? 'Last cycle ' + et(d.last_cycle) + ' · ' + (d.data_status || '') : 'Waiting for the first cycle';
   $('sceneStatus').textContent = d.ok ? 'AGENTS SEATED · LIVE' : 'CHECK ERRORS';
-  renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
+  renderDailyStop(d); renderGoal(d.goal); renderStrategy(d); renderTeam(d); renderMetrics(d); renderLedger(d); renderWatch(d); renderLessons(d); renderOps(d);
   ledgerDays = (d.ledger && d.ledger.days) || ledgerDays;
   buildMonths(); renderCalendar(); renderEquity();
 }

@@ -3,11 +3,11 @@
   "disclaimer": "Paper trading / research only. No wallet. No real trades. Not financial advice.",
   "scope": "Solana meme-coin paper research",
   "ok": true,
-  "cycle_count": 8,
-  "last_cycle": "2026-11-07T04:01:02.448950+00:00",
-  "next_cycle": "2026-11-07T04:31:02.448959+00:00",
-  "generated": "2026-11-07T04:01:02.454932+00:00",
-  "data_status": "96 mints \u00b7 4 passed filters \u00b7 0 eligible \u00b7 0 new paper trades",
+  "cycle_count": 9,
+  "last_cycle": "2026-11-07T04:09:36.711407+00:00",
+  "next_cycle": "2026-11-07T04:39:36.711413+00:00",
+  "generated": "2026-11-07T04:09:36.717962+00:00",
+  "data_status": "94 mints \u00b7 4 passed filters \u00b7 3 eligible \u00b7 26 new paper trades",
   "errors": [],
   "agents": [
     {
@@ -15,20 +15,20 @@
       "initials": "RM",
       "color": "ff7a00",
       "status": "idle",
-      "task": "Reviewed 4 tokens. Safety fails 0. Incomplete 4. Eligible 0. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
+      "task": "Reviewed 4 tokens. Safety fails 1. Incomplete 0. Eligible 3. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
       "detail": "",
-      "latest_action": "jeff safety check incomplete: incomplete: Solana RPC disabled for the rest of this cycle after repeated failures. Not treated as a pass.",
-      "heartbeat": "2026-11-07T04:01:02.445683+00:00"
+      "latest_action": "Voting dip_20_40_stop12_tp25_hold16",
+      "heartbeat": "2026-11-07T04:09:36.706246+00:00"
     },
     {
       "role": "Bubble Map Analyst",
       "initials": "BA",
       "color": "ffb000",
       "status": "idle",
-      "task": "0 concentration or cluster fails this cycle. Links are https://app.bubblemaps.io/sol/token/<mint>.",
+      "task": "1 concentration or cluster fails this cycle. Links are https://app.bubblemaps.io/sol/token/<mint>.",
       "detail": "",
-      "latest_action": "Holders jeff",
-      "heartbeat": "2026-11-07T04:01:02.446875+00:00"
+      "latest_action": "jeff holder check passed. Top non-LP non-program wallet 3.3822%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/HAsTKXYvv",
+      "heartbeat": "2026-11-07T04:09:36.707228+00:00"
     },
     {
       "role": "X/Twitter Scout",
@@ -38,27 +38,27 @@
       "task": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
       "detail": "",
       "latest_action": "55 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; Ho7n9c https://x.com/Orpofun;",
-      "heartbeat": "2026-11-07T04:01:02.451211+00:00"
+      "heartbeat": "2026-11-07T04:09:36.714112+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "96 mints \u00b7 4 passed filters \u00b7 0 eligible \u00b7 0 new paper trades",
+      "task": "94 mints \u00b7 4 passed filters \u00b7 3 eligible \u00b7 26 new paper trades",
       "detail": "",
-      "latest_action": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs.",
-      "heartbeat": "2026-11-07T04:01:02.449741+00:00"
+      "latest_action": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T20:00:00-05:00 @ 0.0009186092600509723 exit 2026-11-07T00:00:00-05:00 @ 0.0009539305774187162 P&L $",
+      "heartbeat": "2026-11-07T04:09:36.712410+00:00"
     },
     {
       "role": "Backtester",
       "initials": "BT",
       "color": "ffc266",
       "status": "idle",
-      "task": "Ledger 194 paper trades, net $-247.1398.",
+      "task": "Ledger 220 paper trades, net $-255.2175.",
       "detail": "",
-      "latest_action": "No paper trades",
-      "heartbeat": "2026-11-07T04:01:02.450477+00:00"
+      "latest_action": "dip_20_40_stop12_tp25_hold16: 13 team-approved paper trades (0 turned down), 5 out of sample, net $-17.8794.",
+      "heartbeat": "2026-11-07T04:09:36.713228+00:00"
     },
     {
       "role": "Strategist",
@@ -67,11 +67,396 @@
       "status": "idle",
       "task": "Living champion dip_20_40_stop8_tp15_hold8. out-of-sample expectancy $0.4082 beat the previous champion Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
       "detail": "",
-      "latest_action": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency y",
-      "heartbeat": "2026-11-07T04:01:02.448965+00:00"
+      "latest_action": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). dip_20_40_stop12_tp25_hold8 projects $-22.71/mo (rejected, 5 OOS trades). dip_20_40_stop12_",
+      "heartbeat": "2026-11-07T04:09:36.711433+00:00"
     }
   ],
   "activity": [
+    {
+      "id": 458,
+      "time": "2026-11-07T04:09:36.715092+00:00",
+      "agent": "System",
+      "text": "Cycle 9 finished. 94 mints \u00b7 4 passed filters \u00b7 3 eligible \u00b7 26 new paper trades.",
+      "type": "info"
+    },
+    {
+      "id": 457,
+      "time": "2026-11-07T04:09:36.702582+00:00",
+      "agent": "Strategist",
+      "text": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). dip_20_40_stop12_tp25_hold8 projects $-22.71/mo (rejected, 5 OOS trades). dip_20_40_stop12_tp25_hold16 projects $-214.13/mo (rejected, 5 OOS trades). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
+      "type": "info"
+    },
+    {
+      "id": 456,
+      "time": "2026-11-07T04:09:36.700141+00:00",
+      "agent": "Backtester",
+      "text": "dip_20_40_stop12_tp25_hold16: 13 team-approved paper trades (0 turned down), 5 out of sample, net $-17.8794.",
+      "type": "info"
+    },
+    {
+      "id": 455,
+      "time": "2026-11-07T04:09:36.697510+00:00",
+      "agent": "Strategist",
+      "text": "Rejected dip_20_40_stop12_tp25_hold16: out-of-sample expectancy $-3.5759 over 5 trades. It will not be retested.",
+      "type": "error"
+    },
+    {
+      "id": 454,
+      "time": "2026-11-07T04:09:36.694337+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T20:00:00-05:00 @ 0.0009186092600509723 exit 2026-11-07T00:00:00-05:00 @ 0.0009539305774187162 P&L $1.59. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 453,
+      "time": "2026-11-07T04:09:36.691706+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T08:00:00-05:00 @ 0.0007533684433748518 exit 2026-11-06T19:00:00-05:00 @ 0.0006629642301698696 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 452,
+      "time": "2026-11-07T04:09:36.689277+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-06T04:00:00-05:00 @ 0.0008900736703143427 exit 2026-11-06T05:00:00-05:00 @ 0.0007832648298766215 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 451,
+      "time": "2026-11-07T04:09:36.686846+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-05T23:00:00-05:00 @ 0.0011688038838977885 exit 2026-11-06T00:00:00-05:00 @ 0.0010285474178300539 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 450,
+      "time": "2026-11-07T04:09:36.684168+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-05T12:00:00-05:00 @ 0.0008625004208229129 exit 2026-11-05T22:00:00-05:00 @ 0.001078125526028641 P&L $22.28. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 449,
+      "time": "2026-11-07T04:09:36.681620+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-04T18:00:00-05:00 @ 0.0013452468270809099 exit 2026-11-05T11:00:00-05:00 @ 0.0011838172078312006 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 448,
+      "time": "2026-11-07T04:09:36.679184+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T04:00:00-05:00 @ 0.0008039068557700406 exit 2026-11-04T17:00:00-05:00 @ 0.0010048835697125508 P&L $22.28. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 447,
+      "time": "2026-11-07T04:09:36.676499+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-04T00:00:00-05:00 @ 0.0008922546058071726 exit 2026-11-04T03:00:00-05:00 @ 0.0007851840531103119 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 446,
+      "time": "2026-11-07T04:09:36.673491+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-03T20:00:00-05:00 @ 0.0010576337295621519 exit 2026-11-03T22:00:00-05:00 @ 0.0009307176820146937 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 445,
+      "time": "2026-11-07T04:09:36.671311+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T12:00:00-05:00 @ 0.0011212556478299284 exit 2026-11-03T14:00:00-05:00 @ 0.0014015695597874105 P&L $22.28. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 444,
+      "time": "2026-11-07T04:09:36.668979+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-03T10:00:00-05:00 @ 0.0012041128943110966 exit 2026-11-03T11:00:00-05:00 @ 0.001059619346993765 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 443,
+      "time": "2026-11-07T04:09:36.666823+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T22:00:00-05:00 @ 0.0008781162542575265 exit 2026-11-03T09:00:00-05:00 @ 0.001097645317821908 P&L $22.28. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 442,
+      "time": "2026-11-07T04:09:36.664451+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T17:00:00-05:00 @ 0.0009402411985956885 exit 2026-11-02T21:00:00-05:00 @ 0.0008274122547642059 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 441,
+      "time": "2026-11-07T04:09:36.639272+00:00",
+      "agent": "Backtester",
+      "text": "dip_20_40_stop12_tp25_hold8: 13 team-approved paper trades (0 turned down), 5 out of sample, net $-1.8963.",
+      "type": "info"
+    },
+    {
+      "id": 440,
+      "time": "2026-11-07T04:09:36.637187+00:00",
+      "agent": "Strategist",
+      "text": "Rejected dip_20_40_stop12_tp25_hold8: out-of-sample expectancy $-0.3793 over 5 trades. It will not be retested.",
+      "type": "error"
+    },
+    {
+      "id": 439,
+      "time": "2026-11-07T04:09:36.634120+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T19:00:00-05:00 @ 0.0007853994934841007 exit 2026-11-06T22:00:00-05:00 @ 0.0009817493668551258 P&L $22.28. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 438,
+      "time": "2026-11-07T04:09:36.631968+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T08:00:00-05:00 @ 0.0007533684433748518 exit 2026-11-06T17:00:00-05:00 @ 0.0007215491610997679 P&L $-6.31. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 437,
+      "time": "2026-11-07T04:09:36.629909+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-06T04:00:00-05:00 @ 0.0008900736703143427 exit 2026-11-06T05:00:00-05:00 @ 0.0007832648298766215 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 436,
+      "time": "2026-11-07T04:09:36.627844+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-05T22:00:00-05:00 @ 0.0010561989765537005 exit 2026-11-06T02:00:00-05:00 @ 0.0009294550993672564 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 435,
+      "time": "2026-11-07T04:09:36.625470+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-05T12:00:00-05:00 @ 0.0008625004208229129 exit 2026-11-05T21:00:00-05:00 @ 0.0009695151408378839 P&L $9.96. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 434,
+      "time": "2026-11-07T04:09:36.623163+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-04T18:00:00-05:00 @ 0.0013452468270809099 exit 2026-11-05T03:00:00-05:00 @ 0.001399599341216688 P&L $1.78. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 433,
+      "time": "2026-11-07T04:09:36.620990+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T16:00:00-05:00 @ 0.0008387407632493224 exit 2026-11-04T17:00:00-05:00 @ 0.001048425954061653 P&L $22.28. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 432,
+      "time": "2026-11-07T04:09:36.618748+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T04:00:00-05:00 @ 0.0008039068557700406 exit 2026-11-04T13:00:00-05:00 @ 0.0009138102363164225 P&L $11.20. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 431,
+      "time": "2026-11-07T04:09:36.616581+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T00:00:00-05:00 @ 0.0008922546058071726 exit 2026-11-04T03:00:00-05:00 @ 0.0007851840531103119 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 430,
+      "time": "2026-11-07T04:09:36.613872+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-03T20:00:00-05:00 @ 0.0010576337295621519 exit 2026-11-03T22:00:00-05:00 @ 0.0009307176820146937 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 429,
+      "time": "2026-11-07T04:09:36.611731+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-03T08:00:00-05:00 @ 0.0009808073305000893 exit 2026-11-03T13:00:00-05:00 @ 0.0012260091631251116 P&L $22.28. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 428,
+      "time": "2026-11-07T04:09:36.609367+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T22:00:00-05:00 @ 0.0008781162542575265 exit 2026-11-03T07:00:00-05:00 @ 0.0008854747149842072 P&L $-1.36. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 427,
+      "time": "2026-11-07T04:09:36.606770+00:00",
+      "agent": "Data Scout",
+      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T17:00:00-05:00 @ 0.0009402411985956885 exit 2026-11-02T21:00:00-05:00 @ 0.0008274122547642059 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "trade"
+    },
+    {
+      "id": 426,
+      "time": "2026-11-07T04:09:36.572144+00:00",
+      "agent": "Strategist",
+      "text": "Proposing dip_20_40_stop12_tp25_hold8; dip_20_40_stop12_tp25_hold16. Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "type": "info"
+    },
+    {
+      "id": 425,
+      "time": "2026-11-07T04:09:36.565915+00:00",
+      "agent": "Data Scout",
+      "text": "jeff window ATH fraction now is 0.282 (inside the 20\u201345% zone).",
+      "type": "info"
+    },
+    {
+      "id": 424,
+      "time": "2026-11-07T04:09:32.447449+00:00",
+      "agent": "Data Scout",
+      "text": "DONNA window ATH fraction now is 0.974 (outside the 20\u201345% zone).",
+      "type": "info"
+    },
+    {
+      "id": 423,
+      "time": "2026-11-07T04:09:28.214944+00:00",
+      "agent": "Backtester",
+      "text": "AMD does not have enough hourly bars (27). ",
+      "type": "error"
+    },
+    {
+      "id": 422,
+      "time": "2026-11-07T04:09:26.092603+00:00",
+      "agent": "Strategist",
+      "text": "jeff is eligible for a paper dip test.",
+      "type": "info"
+    },
+    {
+      "id": 421,
+      "time": "2026-11-07T04:09:26.090082+00:00",
+      "agent": "Bubble Map Analyst",
+      "text": "jeff holder check passed. Top non-LP non-program wallet 3.3822%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "type": "info"
+    },
+    {
+      "id": 420,
+      "time": "2026-11-07T04:09:26.087823+00:00",
+      "agent": "Risk Manager",
+      "text": "PASS jeff: PASS mint, freeze, extensions, and holder concentration",
+      "type": "info"
+    },
+    {
+      "id": 419,
+      "time": "2026-11-07T04:09:26.084899+00:00",
+      "agent": "Strategist",
+      "text": "DONNA is eligible for a paper dip test.",
+      "type": "info"
+    },
+    {
+      "id": 418,
+      "time": "2026-11-07T04:09:26.082171+00:00",
+      "agent": "Bubble Map Analyst",
+      "text": "DONNA holder check passed. Top non-LP non-program wallet 2.0897%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+      "type": "info"
+    },
+    {
+      "id": 417,
+      "time": "2026-11-07T04:09:26.078985+00:00",
+      "agent": "Risk Manager",
+      "text": "PASS DONNA: PASS mint, freeze, extensions, and holder concentration",
+      "type": "info"
+    },
+    {
+      "id": 416,
+      "time": "2026-11-07T04:09:26.076076+00:00",
+      "agent": "Strategist",
+      "text": "AMD is eligible for a paper dip test.",
+      "type": "info"
+    },
+    {
+      "id": 415,
+      "time": "2026-11-07T04:09:26.072611+00:00",
+      "agent": "Bubble Map Analyst",
+      "text": "AMD holder check passed. Top non-LP non-program wallet 0.1296%. sampled 3 wallets, up to 8 recent signatures each; not a full funding history https://app.bubblemaps.io/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
+      "type": "info"
+    },
+    {
+      "id": 414,
+      "time": "2026-11-07T04:09:26.068560+00:00",
+      "agent": "Risk Manager",
+      "text": "PASS AMD: PASS mint, freeze, extensions, and holder concentration",
+      "type": "info"
+    },
+    {
+      "id": 413,
+      "time": "2026-11-07T04:09:24.699251+00:00",
+      "agent": "Bubble Map Analyst",
+      "text": "FAIL FLOAT: FAIL non-LP non-program holder owns 5.46% (limit 3.5%) https://app.bubblemaps.io/sol/token/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "type": "error"
+    },
+    {
+      "id": 412,
+      "time": "2026-11-07T04:08:17.394373+00:00",
+      "agent": "Data Scout",
+      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs.",
+      "type": "info"
+    },
+    {
+      "id": 411,
+      "time": "2026-11-07T04:08:17.390565+00:00",
+      "agent": "Data Scout",
+      "text": "94 mints discovered, 30 enriched, 4 passed filters, 5 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 6, 'liquidity unknown': 3, 'pair younger than minimum age': 4, 'liquidity below minimum': 1}.",
+      "type": "info"
+    },
+    {
+      "id": 410,
+      "time": "2026-11-07T04:08:17.228835+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "55 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; Ho7n9c https://x.com/Orpofun; FzmSx4 https://x.com/BustedMemeSol",
+      "type": "info"
+    },
+    {
+      "id": 409,
+      "time": "2026-11-07T04:08:14.393891+00:00",
+      "agent": "Data Scout",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}",
+      "type": "error"
+    },
+    {
+      "id": 408,
+      "time": "2026-11-07T04:08:14.389656+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
+      "type": "info"
+    },
+    {
+      "id": 407,
+      "time": "2026-11-07T04:08:13.074981+00:00",
+      "agent": "System",
+      "text": "Cycle 9 started. Read 2 standing rules and 12 variants that will not be retested. Standing goal: $3,000\u2013$5,000/mo extra (paper projection; OOS rules never loosened). Paper trading / research only. No wallet. No real trades. Not financial advice.",
+      "type": "info"
+    },
+    {
+      "id": 406,
+      "time": "2026-11-07T04:08:13.064884+00:00",
+      "agent": "Risk Manager",
+      "text": "Daily profit stop OFF: $-19.42 realized in legacy:backtest / $300. deduplicated closed historical simulations, not forward income; future exits excluded.",
+      "type": "info"
+    },
+    {
+      "id": 405,
+      "time": "2026-11-07T04:06:13.156355+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 19 new pools, 2 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 404,
+      "time": "2026-11-07T04:06:11.676451+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "Light scan found 2 new Solana rows with an X link. Not tweets. Bhe7zA https://x.com/Slingfolio; GaEbre https://x.com/cwz757338503/status/2118659593987555359?a=hStCJKOHaJELmAUCVHk&s=20",
+      "type": "info"
+    },
     {
       "id": 403,
       "time": "2026-11-07T04:01:02.451945+00:00",
@@ -246,453 +631,168 @@
       "agent": "Data Scout",
       "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-06T04:00:00-05:00 @ 0.0008900736703143427 exit 2026-11-06T05:00:00-05:00 @ 0.0007832648298766215 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
       "type": "trade"
-    },
-    {
-      "id": 378,
-      "time": "2026-11-07T03:19:54.060646+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-05T23:00:00-05:00 @ 0.0011688038838977885 exit 2026-11-06T00:00:00-05:00 @ 0.0010285474178300539 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 377,
-      "time": "2026-11-07T03:19:54.057538+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-05T12:00:00-05:00 @ 0.0008625004208229129 exit 2026-11-05T22:00:00-05:00 @ 0.0009918754839463497 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 376,
-      "time": "2026-11-07T03:19:54.054596+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-05T01:00:00-05:00 @ 0.0013054663373055773 exit 2026-11-05T10:00:00-05:00 @ 0.0015012862879014138 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 375,
-      "time": "2026-11-07T03:19:54.051745+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T18:00:00-05:00 @ 0.0013452468270809099 exit 2026-11-04T20:00:00-05:00 @ 0.0015470338511430462 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 374,
-      "time": "2026-11-07T03:19:54.048477+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T16:00:00-05:00 @ 0.0008387407632493224 exit 2026-11-04T17:00:00-05:00 @ 0.0009645518777367207 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 373,
-      "time": "2026-11-07T03:19:54.045186+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T13:00:00-05:00 @ 0.0009138102363164225 exit 2026-11-04T15:00:00-05:00 @ 0.0008041530079584519 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 372,
-      "time": "2026-11-07T03:19:54.042111+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T04:00:00-05:00 @ 0.0008039068557700406 exit 2026-11-04T11:00:00-05:00 @ 0.0009244928841355466 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 371,
-      "time": "2026-11-07T03:19:54.038385+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T00:00:00-05:00 @ 0.0008922546058071726 exit 2026-11-04T03:00:00-05:00 @ 0.0007851840531103119 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 370,
-      "time": "2026-11-07T03:19:54.034158+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T20:00:00-05:00 @ 0.0010576337295621519 exit 2026-11-03T22:00:00-05:00 @ 0.0009307176820146937 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 369,
-      "time": "2026-11-07T03:19:54.030387+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T12:00:00-05:00 @ 0.0011212556478299284 exit 2026-11-03T13:00:00-05:00 @ 0.0012894439950044175 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 368,
-      "time": "2026-11-07T03:19:54.025744+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-03T10:00:00-05:00 @ 0.0012041128943110966 exit 2026-11-03T11:00:00-05:00 @ 0.001059619346993765 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 367,
-      "time": "2026-11-07T03:19:54.021725+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T22:00:00-05:00 @ 0.0008781162542575265 exit 2026-11-03T09:00:00-05:00 @ 0.0010098336923961553 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 366,
-      "time": "2026-11-07T03:19:54.017903+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T17:00:00-05:00 @ 0.0009402411985956885 exit 2026-11-02T21:00:00-05:00 @ 0.0008274122547642059 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 365,
-      "time": "2026-11-07T03:19:53.991740+00:00",
-      "agent": "Backtester",
-      "text": "dip_20_40_stop12_tp15_hold16: 16 team-approved paper trades (0 turned down), 6 out of sample, net $-4.2522.",
-      "type": "info"
-    },
-    {
-      "id": 364,
-      "time": "2026-11-07T03:19:53.987898+00:00",
-      "agent": "Strategist",
-      "text": "Rejected dip_20_40_stop12_tp15_hold16: out-of-sample expectancy $-0.7087 over 6 trades. It will not be retested.",
-      "type": "error"
-    },
-    {
-      "id": 363,
-      "time": "2026-11-07T03:19:53.983440+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T20:00:00-05:00 @ 0.0009186092600509723 exit 2026-11-06T23:00:00-05:00 @ 0.0010564006490586181 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 362,
-      "time": "2026-11-07T03:19:53.979593+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-06T08:00:00-05:00 @ 0.0007533684433748518 exit 2026-11-06T19:00:00-05:00 @ 0.0006629642301698696 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 361,
-      "time": "2026-11-07T03:19:53.975227+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-06T04:00:00-05:00 @ 0.0008900736703143427 exit 2026-11-06T05:00:00-05:00 @ 0.0007832648298766215 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 360,
-      "time": "2026-11-07T03:19:53.971211+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-05T23:00:00-05:00 @ 0.0011688038838977885 exit 2026-11-06T00:00:00-05:00 @ 0.0010285474178300539 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 359,
-      "time": "2026-11-07T03:19:53.967184+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-05T12:00:00-05:00 @ 0.0008625004208229129 exit 2026-11-05T22:00:00-05:00 @ 0.0009918754839463497 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 358,
-      "time": "2026-11-07T03:19:53.963712+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-05T01:00:00-05:00 @ 0.0013054663373055773 exit 2026-11-05T10:00:00-05:00 @ 0.0015012862879014138 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 357,
-      "time": "2026-11-07T03:19:53.960051+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T18:00:00-05:00 @ 0.0013452468270809099 exit 2026-11-04T20:00:00-05:00 @ 0.0015470338511430462 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 356,
-      "time": "2026-11-07T03:19:53.955791+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T16:00:00-05:00 @ 0.0008387407632493224 exit 2026-11-04T17:00:00-05:00 @ 0.0009645518777367207 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 355,
-      "time": "2026-11-07T03:19:53.951599+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T13:00:00-05:00 @ 0.0009138102363164225 exit 2026-11-04T15:00:00-05:00 @ 0.0008041530079584519 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 354,
-      "time": "2026-11-07T03:19:53.947357+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T04:00:00-05:00 @ 0.0008039068557700406 exit 2026-11-04T11:00:00-05:00 @ 0.0009244928841355466 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 353,
-      "time": "2026-11-07T03:19:53.943657+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-04T00:00:00-05:00 @ 0.0008922546058071726 exit 2026-11-04T03:00:00-05:00 @ 0.0007851840531103119 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 352,
-      "time": "2026-11-07T03:19:53.939504+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T20:00:00-05:00 @ 0.0010576337295621519 exit 2026-11-03T22:00:00-05:00 @ 0.0009307176820146937 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 351,
-      "time": "2026-11-07T03:19:53.935672+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 4/6 approve (majority 4/5 of voting agents). entry 2026-11-03T12:00:00-05:00 @ 0.0011212556478299284 exit 2026-11-03T13:00:00-05:00 @ 0.0012894439950044175 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 350,
-      "time": "2026-11-07T03:19:53.932083+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-03T10:00:00-05:00 @ 0.0012041128943110966 exit 2026-11-03T11:00:00-05:00 @ 0.001059619346993765 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 349,
-      "time": "2026-11-07T03:19:53.926143+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T22:00:00-05:00 @ 0.0008781162542575265 exit 2026-11-03T09:00:00-05:00 @ 0.0010098336923961553 P&L $12.50. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 348,
-      "time": "2026-11-07T03:19:53.921446+00:00",
-      "agent": "Data Scout",
-      "text": "PAPER / SIMULATED jeff (jeff) proposed by Data Scout, team 5/6 approve (majority 5/5 of voting agents). entry 2026-11-02T17:00:00-05:00 @ 0.0009402411985956885 exit 2026-11-02T21:00:00-05:00 @ 0.0008274122547642059 P&L $-13.91. https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "trade"
-    },
-    {
-      "id": 347,
-      "time": "2026-11-07T03:19:53.886222+00:00",
-      "agent": "Strategist",
-      "text": "Proposing dip_20_40_stop12_tp15_hold16; dip_20_40_stop12_tp15_hold24. Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
-      "type": "info"
-    },
-    {
-      "id": 346,
-      "time": "2026-11-07T03:19:53.879841+00:00",
-      "agent": "Data Scout",
-      "text": "jeff window ATH fraction now is 0.298 (inside the 20\u201345% zone).",
-      "type": "info"
-    },
-    {
-      "id": 345,
-      "time": "2026-11-07T03:19:49.785754+00:00",
-      "agent": "Data Scout",
-      "text": "DONNA window ATH fraction now is 0.992 (outside the 20\u201345% zone).",
-      "type": "info"
-    },
-    {
-      "id": 344,
-      "time": "2026-11-07T03:19:45.535615+00:00",
-      "agent": "Backtester",
-      "text": "AMD does not have enough hourly bars (26). ",
-      "type": "error"
-    },
-    {
-      "id": 343,
-      "time": "2026-11-07T03:19:42.811197+00:00",
-      "agent": "Strategist",
-      "text": "coin is eligible for a paper dip test.",
-      "type": "info"
-    },
-    {
-      "id": 342,
-      "time": "2026-11-07T03:19:42.808112+00:00",
-      "agent": "Bubble Map Analyst",
-      "text": "coin holder check passed. Top non-LP non-program wallet 3.0944%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/GdY4Z6pYUcr3HFrABV5FEZay3J4GnjN1Uzsw6Dvxpump",
-      "type": "info"
-    },
-    {
-      "id": 341,
-      "time": "2026-11-07T03:19:42.805045+00:00",
-      "agent": "Risk Manager",
-      "text": "PASS coin: PASS mint, freeze, extensions, and holder concentration",
-      "type": "info"
-    },
-    {
-      "id": 340,
-      "time": "2026-11-07T03:19:42.802357+00:00",
-      "agent": "Strategist",
-      "text": "jeff is eligible for a paper dip test.",
-      "type": "info"
-    },
-    {
-      "id": 339,
-      "time": "2026-11-07T03:19:42.799524+00:00",
-      "agent": "Bubble Map Analyst",
-      "text": "jeff holder check passed. Top non-LP non-program wallet 3.3822%. linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks) https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "type": "info"
-    },
-    {
-      "id": 338,
-      "time": "2026-11-07T03:19:42.796178+00:00",
-      "agent": "Risk Manager",
-      "text": "PASS jeff: PASS mint, freeze, extensions, and holder concentration",
-      "type": "info"
-    },
-    {
-      "id": 337,
-      "time": "2026-11-07T03:19:42.793290+00:00",
-      "agent": "Strategist",
-      "text": "DONNA is eligible for a paper dip test.",
-      "type": "info"
-    },
-    {
-      "id": 336,
-      "time": "2026-11-07T03:19:42.790435+00:00",
-      "agent": "Bubble Map Analyst",
-      "text": "DONNA holder check passed. Top non-LP non-program wallet 2.0897%. linked-wallet sample stopped early: Solana RPC failed 5 times in a row; stopped. https://public.rpc.solanavibestation.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://solana-rpc.publicnode.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'} https://app.bubblemaps.io/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
-      "type": "info"
-    },
-    {
-      "id": 335,
-      "time": "2026-11-07T03:19:42.787533+00:00",
-      "agent": "Risk Manager",
-      "text": "PASS DONNA: PASS mint, freeze, extensions, and holder concentration",
-      "type": "info"
-    },
-    {
-      "id": 334,
-      "time": "2026-11-07T03:19:42.784409+00:00",
-      "agent": "Strategist",
-      "text": "AMD is eligible for a paper dip test.",
-      "type": "info"
-    },
-    {
-      "id": 333,
-      "time": "2026-11-07T03:19:42.781560+00:00",
-      "agent": "Bubble Map Analyst",
-      "text": "AMD holder check passed. Top non-LP non-program wallet 0.1294%. sampled 3 wallets, up to 8 recent signatures each; not a full funding history https://app.bubblemaps.io/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "type": "info"
-    },
-    {
-      "id": 332,
-      "time": "2026-11-07T03:19:42.777235+00:00",
-      "agent": "Risk Manager",
-      "text": "PASS AMD: PASS mint, freeze, extensions, and holder concentration",
-      "type": "info"
-    },
-    {
-      "id": 331,
-      "time": "2026-11-07T03:19:41.402646+00:00",
-      "agent": "Data Scout",
-      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs.",
-      "type": "info"
-    },
-    {
-      "id": 330,
-      "time": "2026-11-07T03:19:41.396326+00:00",
-      "agent": "Data Scout",
-      "text": "92 mints discovered, 30 enriched, 4 passed filters, 5 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 10, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'pair younger than minimum age': 5, 'quote is not SOL, USDC, or USDT': 6, 'liquidity unknown': 2, 'liquidity below minimum': 2}.",
-      "type": "info"
-    },
-    {
-      "id": 329,
-      "time": "2026-11-07T03:19:41.293995+00:00",
-      "agent": "X/Twitter Scout",
-      "text": "54 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; FzmSx4 https://x.com/BustedMemeSol; 4AN9uw https://x.com/Machiavelli_HQ",
-      "type": "info"
-    },
-    {
-      "id": 328,
-      "time": "2026-11-07T03:19:38.417633+00:00",
-      "agent": "Data Scout",
-      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}",
-      "type": "error"
-    },
-    {
-      "id": 327,
-      "time": "2026-11-07T03:19:38.412634+00:00",
-      "agent": "X/Twitter Scout",
-      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
-      "type": "info"
-    },
-    {
-      "id": 326,
-      "time": "2026-11-07T03:19:36.810024+00:00",
-      "agent": "System",
-      "text": "Cycle 7 started. Read 2 standing rules and 10 variants that will not be retested. Standing goal: $3,000\u2013$5,000/mo extra (paper projection; OOS rules never loosened). Paper trading / research only. No wallet. No real trades. Not financial advice.",
-      "type": "info"
-    },
-    {
-      "id": 325,
-      "time": "2026-11-07T02:50:24.902289+00:00",
-      "agent": "Data Scout",
-      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan.",
-      "type": "info"
-    },
-    {
-      "id": 324,
-      "time": "2026-11-07T02:50:23.405250+00:00",
-      "agent": "X/Twitter Scout",
-      "text": "Light scan found 2 new Solana rows with an X link. Not tweets. 4wn4hL https://x.com/DaliGambol/status/2118894997810327683; FhtLRw https://x.com/i/status/2118893153981968479",
-      "type": "info"
     }
   ],
-  "watchlist": [],
-  "rejected_review": [
+  "watchlist": [
     {
-      "mint": "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
-      "symbol": "FLOAT",
-      "name": "FLOAT",
-      "pool": "FJk9sajdc2Q4heRPPu3yLzkmf2ZByZkpiHQLv9e2bn5A",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "symbol": "jeff",
+      "name": "jeff",
+      "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
       "dex": "raydium",
       "quote_symbol": "SOL",
-      "price_usd": 0.006368,
-      "last_price": null,
-      "liquidity_usd": 495390.71,
-      "volume_24h_usd": 1764574.43,
-      "market_cap_usd": 6361846.0,
+      "price_usd": 0.0009628,
+      "last_price": 0.0009539305774187162,
+      "liquidity_usd": 85094.81,
+      "volume_24h_usd": 139087.55,
+      "market_cap_usd": 962801.0,
       "market_cap_from": null,
-      "liq_to_mcap": 0.07786901946384744,
-      "age_hours": 221.76,
+      "liq_to_mcap": 0.08838255257316932,
+      "age_hours": 243.16,
       "metrics_source": "dexscreener",
-      "twitter": [],
-      "dex_url": "https://dexscreener.com/solana/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
-      "gmgn_url": "https://gmgn.ai/sol/token/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
-      "eligible": false,
+      "twitter": [
+        "https://x.com/i/communities/1910124515570381076"
+      ],
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "eligible": true,
       "lesson_blocks": [],
       "filter_reason": null,
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
+      "in_entry_zone": true,
+      "ath_frac": 0.2815509442025599,
+      "window_ath": 0.0033881277866801163,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "hourly_bars": 168,
+      "daily_bars": 11,
       "history_error": null,
-      "description": "",
+      "description": "Born in the trenches. Launched directly on Raydium. No bonding curve. No launchpad games. Just a name, a meme, and a community that gets it.\n\nNow the community is writing the next chapter.\n\nNo grand promises. No complicated narratives. Just Jeff.",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": {
-        "status": "incomplete",
-        "summary": "incomplete: Solana RPC disabled for the rest of this cycle after repeated failures",
-        "hard_fails": [
-          "Solana RPC disabled for the rest of this cycle after repeated failures"
-        ],
+        "status": "pass",
+        "summary": "PASS mint, freeze, extensions, and holder concentration",
+        "hard_fails": [],
         "warnings": [],
-        "checks": [],
-        "top_human_pct": null,
-        "top_human": null,
-        "mint_authority_active": null,
-        "freeze_authority_active": null,
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 3.5%",
+            "pass": true,
+            "detail": "top wallet 3.38%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "matched a largest account within 25% of DexScreener base liquidity"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 3.3822,
+        "top_human": "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
         "risky_extensions": [],
-        "token2022": null,
-        "lp_matched": null,
-        "lp_locked": null,
-        "lp_burned": null,
-        "program_hold_pct": null,
-        "supply_burn_pct": null,
-        "holder_over_3_5": null,
+        "token2022": false,
+        "lp_matched": true,
+        "lp_locked": false,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
         "cluster": {
           "flags": [],
           "fail": false,
           "detail": "linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks)"
         },
         "extensions": [],
-        "humans": []
+        "humans": [
+          {
+            "owner": "J6TDXvarvpBdPXTaTU8eJbtso1PUCYKGkVtMKUUY8iEa",
+            "token_account": "51FSwp7tAFsJkbCJQJuAVgtutMzZYMcw7mQrMFJyRqFF",
+            "pct": 3.3822,
+            "ui_amount": 16429472.39501524,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "89moUGVa1p3Z5UnpvmHdspag8e3MFqytXDUDLmrBVkS7",
+            "token_account": "HWAoy4jmYeDNVdtcJgdgs44KvDCLY1YySUsgAT9y2nJa",
+            "pct": 2.9769,
+            "ui_amount": 14460652.41795162,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "62qAKNExGJBsyfptaT5De6DPREs9GTPCBXcePGaU3TT",
+            "token_account": "7DDXTDtywm6HNZgQDzVcKCa5ZhjBgEZNQJALTfRXVuki",
+            "pct": 2.7017,
+            "ui_amount": 13123609.124492863,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "4zeVXCXXr4dZ14GqKUZLPFj6adAKd844xGVM92QwfYJZ",
+            "token_account": "5FBwS3A6WtG558SoBL4NbGVxSscgNZmDaCXUGvmNzY2J",
+            "pct": 2.5575,
+            "ui_amount": 12423342.478689736,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "H3yxZNLPdqA8zaVe9inetdgoxAXAp55cvpf6ZC4Pt3zJ",
+            "token_account": "2jeYb7zimT5aKf78F1ehvvUi6e33WiSM4Mn9ihfeZx3D",
+            "pct": 2.3519,
+            "ui_amount": 11424368.606736999,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "DPu5ieUT6DdNhiea22cdyjTwJfxF7aAhC9iGnZWy7nsi",
+            "token_account": "6SfqBzt9ohHK1HJve5zXtRg6QE2sEfst9YUBCyK5Ao5d",
+            "pct": 2.3239,
+            "ui_amount": 11288697.826533115,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "ELgjfdthFSik2hBREipTdafzzh1qwCXPaBkpG9wSa572",
+            "token_account": "CcS3dtEPKaMCHzzvd5qj5C5zf5fyYrd5vNrGv9F2vPJd",
+            "pct": 2.3158,
+            "ui_amount": 11249131.20955398,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "J23qr98GjGJJqKq9CBEnyRhHbmkaVxtTJNNxKu597wsA",
+            "token_account": "6LrEpdMRkDnyDuVYtrpXbim9XePfgb8L7W2icBmoNz2i",
+            "pct": 2.2043,
+            "ui_amount": 10707820.006717557,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
       }
     },
     {
@@ -702,14 +802,14 @@
       "pool": "6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
       "dex": "pumpswap",
       "quote_symbol": "SOL",
-      "price_usd": 0.001684,
-      "last_price": null,
-      "liquidity_usd": 112197.5,
-      "volume_24h_usd": 3880531.91,
-      "market_cap_usd": 1662470.0,
+      "price_usd": 0.001747,
+      "last_price": 0.0017534295617439167,
+      "liquidity_usd": 114277.34,
+      "volume_24h_usd": 3879044.17,
+      "market_cap_usd": 1724260.0,
       "market_cap_from": null,
-      "liq_to_mcap": 0.06748843588154974,
-      "age_hours": 25.5,
+      "liq_to_mcap": 0.0662761648475288,
+      "age_hours": 25.62,
       "metrics_source": "dexscreener",
       "twitter": [
         "https://x.com/amemedacitysol"
@@ -717,44 +817,147 @@
       "dex_url": "https://dexscreener.com/solana/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
       "gmgn_url": "https://gmgn.ai/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
       "bubble_url": "https://app.bubblemaps.io/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "eligible": false,
+      "eligible": true,
       "lesson_blocks": [],
       "filter_reason": null,
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
+      "in_entry_zone": false,
+      "ath_frac": 0.48665817414829743,
+      "window_ath": 0.003603000329363832,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "hourly_bars": 27,
+      "daily_bars": 2,
       "history_error": null,
       "description": "THE SKYLINE HAS A MAIN CHARACTER.",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": {
-        "status": "incomplete",
-        "summary": "incomplete: Solana RPC disabled for the rest of this cycle after repeated failures",
-        "hard_fails": [
-          "Solana RPC disabled for the rest of this cycle after repeated failures"
-        ],
+        "status": "pass",
+        "summary": "PASS mint, freeze, extensions, and holder concentration",
+        "hard_fails": [],
         "warnings": [],
-        "checks": [],
-        "top_human_pct": null,
-        "top_human": null,
-        "mint_authority_active": null,
-        "freeze_authority_active": null,
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 3.5%",
+            "pass": true,
+            "detail": "top wallet 0.13%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "matched a largest account within 25% of DexScreener base liquidity"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 0.1296,
+        "top_human": "8xVvz1MLNJsbRejoorJgNQJ5j8KfSuWyGR5oBK5fMsUn",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
         "risky_extensions": [],
-        "token2022": null,
-        "lp_matched": null,
-        "lp_locked": null,
-        "lp_burned": null,
-        "program_hold_pct": null,
-        "supply_burn_pct": null,
-        "holder_over_3_5": null,
+        "token2022": true,
+        "lp_matched": true,
+        "lp_locked": false,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
         "cluster": {
           "flags": [],
           "fail": false,
-          "detail": "linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks)"
+          "sampled": 3,
+          "detail": "sampled 3 wallets, up to 8 recent signatures each; not a full funding history"
         },
-        "extensions": [],
-        "humans": []
+        "extensions": [
+          "metadataPointer",
+          "tokenMetadata"
+        ],
+        "humans": [
+          {
+            "owner": "8xVvz1MLNJsbRejoorJgNQJ5j8KfSuWyGR5oBK5fMsUn",
+            "token_account": "DqcohC9vWQmwjG994Wg8CicAqcmvvfo51bMi6RFmWdoM",
+            "pct": 0.1296,
+            "ui_amount": 1279022.373433,
+            "executable": null,
+            "excluded_as": null
+          },
+          {
+            "owner": "7T5MoC2t1GVaiiLW34GN65611S1b3NSENkuu6Lcihc3C",
+            "token_account": "DqNvG12Q9CPtB2p7XWZ6GKYFQvVGFCDTmcPmvMvCqFcw",
+            "pct": 0.0946,
+            "ui_amount": 934015.399032,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "9akLu82JYXbfop2B8tsYCNGCyat8aFDE3yWSFkfEQvST",
+            "token_account": "GivC17s7sehaYaSkJM6yvVK2hfRXgD6oDU8VNUkVic13",
+            "pct": 0.0946,
+            "ui_amount": 933961.583335,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "MapZ7kyjmwmtSGX7CxLE6Dp3zr8EnT8irL7pA9XECru",
+            "token_account": "CvD1aBRsASFL1uLz5GYJoDF3bF4SrgvyfdqxHXysRkeT",
+            "pct": 0.0945,
+            "ui_amount": 932626.691442,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "95AGvtdaa1Worem9T6yjtNoHDDqDUnFdvCM2fbC5QgeZ",
+            "token_account": "69Xnk4VWot3bnw8ddnGKkGLVBGQcvdCB4SfAzCnMSzKz",
+            "pct": 0.0945,
+            "ui_amount": 932430.238072,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "E8jgpQfq3HT7HuEMdAwfNUqYqUimMuAC5ySY7KZ2K2fw",
+            "token_account": "ERYQQguD6hQcAbPtLbT7wS24TewGLW3sjf4LtgyRh3y",
+            "pct": 0.0945,
+            "ui_amount": 932184.756459,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "GGQPcBCAM9ji3UwgEmuffe434fzpfUDt6TyAkCQ6hLoX",
+            "token_account": "BuKJ38W5NyT9wzkNYRzbkwEEMgFGDKyTqrehmwCWisUm",
+            "pct": 0.0942,
+            "ui_amount": 929226.999066,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "HJYXtLN2unnhxzhpFent8nKzEqKbTSAG9gUBadRPXhxM",
+            "token_account": "2CXCZUpxqUkEY35FFVZacwN25ukeTMhTvoR9aSDLxa18",
+            "pct": 0.0939,
+            "ui_amount": 927022.755538,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
       }
     },
     {
@@ -765,13 +968,13 @@
       "dex": "pumpswap",
       "quote_symbol": "SOL",
       "price_usd": 0.001517,
-      "last_price": null,
+      "last_price": 0.0015138481175377516,
       "liquidity_usd": 98846.52,
       "volume_24h_usd": 84796.57,
       "market_cap_usd": 1450519.0,
       "market_cap_from": null,
       "liq_to_mcap": 0.06814562235999666,
-      "age_hours": 341.19,
+      "age_hours": 341.32,
       "metrics_source": "dexscreener",
       "twitter": [
         "https://x.com/donnadollars365"
@@ -779,70 +982,175 @@
       "dex_url": "https://dexscreener.com/solana/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
       "gmgn_url": "https://gmgn.ai/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
       "bubble_url": "https://app.bubblemaps.io/sol/token/FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
-      "eligible": false,
+      "eligible": true,
       "lesson_blocks": [],
       "filter_reason": null,
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
+      "in_entry_zone": false,
+      "ath_frac": 0.9735669196261929,
+      "window_ath": 0.0015549502422689168,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "hourly_bars": 168,
+      "daily_bars": 16,
       "history_error": null,
       "description": "SHE\u2019S NOT A TREND. SHE\u2019S THE PLOT.\nTHE DONNA EFFECT\n\nThe internet has enough serious faces. Donna brings the attitude, the punchlines, and the kind of energy you can\u2019t scroll past. This is a corner of crypto for people who came for the memes and stayed for each other.\n\nNo suits. ",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": {
-        "status": "incomplete",
-        "summary": "incomplete: Solana RPC disabled for the rest of this cycle after repeated failures",
-        "hard_fails": [
-          "Solana RPC disabled for the rest of this cycle after repeated failures"
-        ],
+        "status": "pass",
+        "summary": "PASS mint, freeze, extensions, and holder concentration",
+        "hard_fails": [],
         "warnings": [],
-        "checks": [],
-        "top_human_pct": null,
-        "top_human": null,
-        "mint_authority_active": null,
-        "freeze_authority_active": null,
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 3.5%",
+            "pass": true,
+            "detail": "top wallet 2.09%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "matched a largest account within 25% of DexScreener base liquidity"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 2.0897,
+        "top_human": "653Kk961FuERAEtbV48vvmNSwPu1gJG4kMJCzQNvMMWX",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
         "risky_extensions": [],
-        "token2022": null,
-        "lp_matched": null,
-        "lp_locked": null,
-        "lp_burned": null,
-        "program_hold_pct": null,
-        "supply_burn_pct": null,
-        "holder_over_3_5": null,
+        "token2022": true,
+        "lp_matched": true,
+        "lp_locked": false,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": false,
         "cluster": {
           "flags": [],
           "fail": false,
           "detail": "linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks)"
         },
-        "extensions": [],
-        "humans": []
+        "extensions": [
+          "metadataPointer",
+          "tokenMetadata"
+        ],
+        "humans": [
+          {
+            "owner": "653Kk961FuERAEtbV48vvmNSwPu1gJG4kMJCzQNvMMWX",
+            "token_account": "7wgL812KfKWzSd8pB1okXFeENLkb7ehcZRoU6H6AABpA",
+            "pct": 2.0897,
+            "ui_amount": 19971293.157209,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "2rUruvMX7CJZ7Wte5Yk9g4kVRm7sFdYJ1zKkCPrdHv5P",
+            "token_account": "3awCobY8YPtQXc1qpe8R6NCTw1zBcxckmGLfn8qHAxBj",
+            "pct": 1.8275,
+            "ui_amount": 17465403.576228,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "DKPNjQYAFzt854vNQmJgCaXxXCVUyFb3dh72WqADGBKo",
+            "token_account": "2UQnJeK6CQo5xX5bVc8eXGrGRt5SPMUnzLmvHjGk1maa",
+            "pct": 0.678,
+            "ui_amount": 6479928.262233,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "A8Yfaev4rso2UqjNAzgM8jgvcgWA7kuvfKgR9PinSyb4",
+            "token_account": "A7ZSPx6K44e7NinYyv2J3GrThdA7GyCSnR62yxyi2JX5",
+            "pct": 0.3788,
+            "ui_amount": 3620053.552986,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "AkQy6AvYMhZs9U1PTMQTUb48P1nxp84dfEpaKaQsY4io",
+            "token_account": "6m1x5k6Gi8SZz4vQSWD7zEiDMqjuYcgfy31AutYsRLkN",
+            "pct": 0.3437,
+            "ui_amount": 3284842.209402,
+            "executable": null,
+            "excluded_as": null
+          },
+          {
+            "owner": "4eznM5KUFpBStrNbRpk7R4o1iiAEwUbqy2KiEAx9VCgu",
+            "token_account": "DCnJkrN8xmqHPhyi7sHsG1GfYptcwsJpuVwU8t9AWM3n",
+            "pct": 0.3066,
+            "ui_amount": 2929952.585758,
+            "executable": null,
+            "excluded_as": null
+          },
+          {
+            "owner": "6YfpuTHxbhc2mWi6C3Y64gqSa1nDtwg3ddx6YLhTvxAB",
+            "token_account": "6H3VH5jFbQGVagDXMucLjU5nPBYx3dVhBwZQrEMKMmeE",
+            "pct": 0.2806,
+            "ui_amount": 2681805.408735,
+            "executable": null,
+            "excluded_as": null
+          },
+          {
+            "owner": "BwFecis4eDjJKcJrRcGzLUh5ZxfyBeC8ATqCMMQqijcC",
+            "token_account": "GBgpMVjN1kxPPzwdbTBu6EWT2WKpr3emrjdyXtKBNKxw",
+            "pct": 0.2784,
+            "ui_amount": 2660451.60375,
+            "executable": null,
+            "excluded_as": null
+          }
+        ]
       }
-    },
+    }
+  ],
+  "rejected_review": [
     {
-      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "symbol": "jeff",
-      "name": "jeff",
-      "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "mint": "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "symbol": "FLOAT",
+      "name": "FLOAT",
+      "pool": "FJk9sajdc2Q4heRPPu3yLzkmf2ZByZkpiHQLv9e2bn5A",
       "dex": "raydium",
       "quote_symbol": "SOL",
-      "price_usd": 0.0009626,
+      "price_usd": 0.006335,
       "last_price": null,
-      "liquidity_usd": 85083.51,
-      "volume_24h_usd": 139152.14,
-      "market_cap_usd": 962653.0,
+      "liquidity_usd": 494001.38,
+      "volume_24h_usd": 1764230.87,
+      "market_cap_usd": 6329114.0,
       "market_cap_from": null,
-      "liq_to_mcap": 0.08838440227163889,
-      "age_hours": 243.04,
+      "liq_to_mcap": 0.0780522171033734,
+      "age_hours": 221.88,
       "metrics_source": "dexscreener",
-      "twitter": [
-        "https://x.com/i/communities/1910124515570381076"
-      ],
-      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "twitter": [],
+      "dex_url": "https://dexscreener.com/solana/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "gmgn_url": "https://gmgn.ai/sol/token/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
       "eligible": false,
-      "lesson_blocks": [],
+      "lesson_blocks": [
+        "holder above 3.5%",
+        "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply"
+      ],
       "filter_reason": null,
       "in_entry_zone": null,
       "ath_frac": null,
@@ -851,34 +1159,136 @@
       "hourly_bars": null,
       "daily_bars": null,
       "history_error": null,
-      "description": "Born in the trenches. Launched directly on Raydium. No bonding curve. No launchpad games. Just a name, a meme, and a community that gets it.\n\nNow the community is writing the next chapter.\n\nNo grand promises. No complicated narratives. Just Jeff.",
+      "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": {
-        "status": "incomplete",
-        "summary": "incomplete: Solana RPC disabled for the rest of this cycle after repeated failures",
+        "status": "fail",
+        "summary": "FAIL non-LP non-program holder owns 5.46% (limit 3.5%)",
         "hard_fails": [
-          "Solana RPC disabled for the rest of this cycle after repeated failures"
+          "non-LP non-program holder owns 5.46% (limit 3.5%)"
         ],
         "warnings": [],
-        "checks": [],
-        "top_human_pct": null,
-        "top_human": null,
-        "mint_authority_active": null,
-        "freeze_authority_active": null,
+        "checks": [
+          {
+            "name": "Mint authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Freeze authority revoked",
+            "pass": true,
+            "detail": "null"
+          },
+          {
+            "name": "Token-2022 risky extensions",
+            "pass": true,
+            "detail": "none of permanentDelegate, transferHook, nonTransferable, transferFeeConfig, defaultAccountState"
+          },
+          {
+            "name": "No single wallet above 3.5%",
+            "pass": false,
+            "detail": "top wallet 5.46%"
+          },
+          {
+            "name": "LP locked or burned",
+            "pass": null,
+            "detail": "matched a largest account within 25% of DexScreener base liquidity"
+          },
+          {
+            "name": "Creator or dev wallet",
+            "pass": null,
+            "detail": "not identifiable from the free mint account. The largest non-LP non-program holder is reported, but the RPC mint data does not label a creator."
+          }
+        ],
+        "top_human_pct": 5.4635,
+        "top_human": "EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G",
+        "mint_authority_active": false,
+        "freeze_authority_active": false,
         "risky_extensions": [],
-        "token2022": null,
-        "lp_matched": null,
-        "lp_locked": null,
-        "lp_burned": null,
-        "program_hold_pct": null,
-        "supply_burn_pct": null,
-        "holder_over_3_5": null,
+        "token2022": false,
+        "lp_matched": true,
+        "lp_locked": false,
+        "lp_burned": false,
+        "program_hold_pct": 0.0,
+        "supply_burn_pct": 0.0,
+        "holder_over_3_5": true,
         "cluster": {
           "flags": [],
           "fail": false,
-          "detail": "linked-wallet sample not run (incomplete review, no human holder, or RPC budget reserved for the mint checks)"
+          "sampled": 3,
+          "detail": "sampled 3 wallets, up to 8 recent signatures each; not a full funding history"
         },
         "extensions": [],
-        "humans": []
+        "humans": [
+          {
+            "owner": "EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G",
+            "token_account": "EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G",
+            "pct": 5.4635,
+            "ui_amount": 49893683.978906,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "BHREKFkPQgAtDs8Vb1UfLkUpjG6ScidTjHaCWFuG2AtX",
+            "token_account": "DQeQgJUt88PC16KSLYGY9NQuYiNZu9TdPNgktrj1rYVp",
+            "pct": 2.8636,
+            "ui_amount": 26150289.047938,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "8B3KyNP6QWnvbuHAz4CCMLQmWhcXJ3KvcX2GHCEs6yNS",
+            "token_account": "HuseTz9sg8N6g7BeMXjG2dtL6pfSemv9AhfXBteLP13u",
+            "pct": 2.5572,
+            "ui_amount": 23352846.746638,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "95ddWCEqs7bX1vAPFXgAxNKmYkCvpQFiurCk4KWg2AST",
+            "token_account": "AhQpSUWGUwEpyYueQDBewYWnF45srebu9odaLJQJopKY",
+            "pct": 2.2001,
+            "ui_amount": 20091630.568571,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "AH75Bn6QHSt5K2Ad4p1otns3JTwpSJWZTwiwKWNhmnKx",
+            "token_account": "HET8hvawFLZxFknrY6NbKmDZ8XhWbCsKG9FhDbc19LqA",
+            "pct": 2.0081,
+            "ui_amount": 18338603.901404,
+            "executable": null,
+            "excluded_as": null
+          },
+          {
+            "owner": "8k1sAmVUjzaZkxqexeYkCPphjcQobYugQeGmCyvKtHNG",
+            "token_account": "J7xpaYkF83CztZz3DfktoDYujocgurFMmb3vSBE1eryN",
+            "pct": 1.5294,
+            "ui_amount": 13966710.793572,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "Bztk4ZLBVUaMr2zhgoTCTTs86LvLrx97NbRvErs1GDNK",
+            "token_account": "FrW58YjytpE4ykVubvV7PGJTcETthXwz2soBx2zpG8XA",
+            "pct": 1.2097,
+            "ui_amount": 11047028.761842,
+            "executable": false,
+            "excluded_as": null
+          },
+          {
+            "owner": "G3gZWqrYkNmYFKYCyfRCNtGuxdyuE2wiYKkZpiZn4WSS",
+            "token_account": "ESixbHs1m5SmuMcSyLZ6sUBMnE8ynKQC79Cnr9nZ6mox",
+            "pct": 1.1983,
+            "ui_amount": 10942908.839627,
+            "executable": false,
+            "excluded_as": null
+          }
+        ]
       }
     }
   ],
@@ -890,14 +1300,14 @@
       "pool": "2TAgfogn8JRwwTnsGKUa6WUT5Xdv1iMEzfEDMor68X9C",
       "dex": "orca",
       "quote_symbol": "SOL",
-      "price_usd": 1325.038,
+      "price_usd": 1330.016,
       "last_price": null,
-      "liquidity_usd": 4043533.44,
-      "volume_24h_usd": 6939254.68,
-      "market_cap_usd": 32724.0,
+      "liquidity_usd": 4042891.49,
+      "volume_24h_usd": 6875258.65,
+      "market_cap_usd": 32847.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 9216.57,
+      "age_hours": 9216.69,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
@@ -914,6 +1324,11 @@
       "daily_bars": null,
       "history_error": null,
       "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": null
     },
     {
@@ -923,14 +1338,14 @@
       "pool": "HnhpJPJgBG2KwniMTNW8cVBHvk1hFog3RC3kjnyc23tD",
       "dex": "raydium",
       "quote_symbol": "USDC",
-      "price_usd": 0.2283,
+      "price_usd": 0.2272,
       "last_price": null,
-      "liquidity_usd": 3589430.7,
-      "volume_24h_usd": 5919689.26,
-      "market_cap_usd": 203429235.0,
+      "liquidity_usd": 3580129.91,
+      "volume_24h_usd": 5892966.65,
+      "market_cap_usd": 202434742.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 10425.1,
+      "age_hours": 10425.23,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
@@ -947,6 +1362,49 @@
       "daily_bars": null,
       "history_error": null,
       "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
+      "safety": null
+    },
+    {
+      "mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "pool": "FAqh648xeeaTqL7du49sztp9nfj5PjRQrfvaMccyd9cz",
+      "dex": "orca",
+      "quote_symbol": "SOL",
+      "price_usd": 0.006552,
+      "last_price": null,
+      "liquidity_usd": 2990542.63,
+      "volume_24h_usd": 254423.81,
+      "market_cap_usd": 411916065.0,
+      "market_cap_from": null,
+      "liq_to_mcap": null,
+      "age_hours": 16551.13,
+      "metrics_source": "dexscreener",
+      "twitter": [],
+      "dex_url": "https://dexscreener.com/solana/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "gmgn_url": "https://gmgn.ai/sol/token/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+      "eligible": null,
+      "lesson_blocks": null,
+      "filter_reason": "pair older than maximum age",
+      "in_entry_zone": null,
+      "ath_frac": null,
+      "window_ath": null,
+      "ath_note": null,
+      "hourly_bars": null,
+      "daily_bars": null,
+      "history_error": null,
+      "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": null
     },
     {
@@ -956,14 +1414,14 @@
       "pool": "BofA2ViUSudPBTUms2KRuG6AHNeMawjNfwqTJDgx5BKW",
       "dex": "orca",
       "quote_symbol": "SOL",
-      "price_usd": 0.003919,
+      "price_usd": 0.003905,
       "last_price": null,
-      "liquidity_usd": 2564816.81,
-      "volume_24h_usd": 6607543.36,
-      "market_cap_usd": 1799620885.0,
+      "liquidity_usd": 2558749.44,
+      "volume_24h_usd": 6576648.45,
+      "market_cap_usd": 1793110615.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 10020.45,
+      "age_hours": 10020.57,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
@@ -980,6 +1438,11 @@
       "daily_bars": null,
       "history_error": null,
       "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": null
     },
     {
@@ -991,12 +1454,12 @@
       "quote_symbol": "SOL",
       "price_usd": 1.78,
       "last_price": null,
-      "liquidity_usd": 2049417.11,
-      "volume_24h_usd": 3112191.69,
-      "market_cap_usd": 481519349.0,
+      "liquidity_usd": 2048502.47,
+      "volume_24h_usd": 3107683.34,
+      "market_cap_usd": 481457866.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 19534.66,
+      "age_hours": 19534.78,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
@@ -1013,6 +1476,11 @@
       "daily_bars": null,
       "history_error": null,
       "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": null
     },
     {
@@ -1022,14 +1490,14 @@
       "pool": "zxTpi4BtaWX3mgdAPoezkMD1hxx8CdeCfrqXMWvSCLX",
       "dex": "meteora",
       "quote_symbol": "SOL",
-      "price_usd": 0.1003,
+      "price_usd": 0.09953,
       "last_price": null,
-      "liquidity_usd": 1918145.81,
-      "volume_24h_usd": 2491442.23,
-      "market_cap_usd": 100397868.0,
+      "liquidity_usd": 1909058.49,
+      "volume_24h_usd": 2505574.77,
+      "market_cap_usd": 99539140.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 2081.16,
+      "age_hours": 2081.28,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
@@ -1046,6 +1514,11 @@
       "daily_bars": null,
       "history_error": null,
       "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": null
     },
     {
@@ -1055,14 +1528,14 @@
       "pool": "GUWFT7bbLphGrcpAPnnEnBbe1uErv9e6LLC2qPx2wZy1",
       "dex": "raydium",
       "quote_symbol": "USDC",
-      "price_usd": 0.09639,
+      "price_usd": 0.09744,
       "last_price": null,
-      "liquidity_usd": 1698980.4,
-      "volume_24h_usd": 9523919.69,
-      "market_cap_usd": 27472451.0,
+      "liquidity_usd": 1703869.12,
+      "volume_24h_usd": 9480469.87,
+      "market_cap_usd": 27771661.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 6785.14,
+      "age_hours": 6785.26,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
@@ -1079,39 +1552,11 @@
       "daily_bars": null,
       "history_error": null,
       "description": "",
-      "safety": null
-    },
-    {
-      "mint": "usAvXEpQ5AQoW3YQkd5gnm6PDnUKHBQr3xbbhAYsLu5",
-      "symbol": "CATE",
-      "name": "Cate",
-      "pool": "9sPb71sHyUcsu2dftqvRjUKiUH6UEbQMZGePZFKxj8XN",
-      "dex": "meteoradbc",
-      "quote_symbol": "SOL",
-      "price_usd": 0.001765,
-      "last_price": null,
-      "liquidity_usd": 1609535.7099,
-      "volume_24h_usd": 925.75,
-      "market_cap_usd": 1765892.81,
-      "market_cap_from": null,
-      "liq_to_mcap": null,
-      "age_hours": 0.04,
-      "metrics_source": "dexscreener",
-      "twitter": [],
-      "dex_url": "https://dexscreener.com/solana/usAvXEpQ5AQoW3YQkd5gnm6PDnUKHBQr3xbbhAYsLu5",
-      "gmgn_url": "https://gmgn.ai/sol/token/usAvXEpQ5AQoW3YQkd5gnm6PDnUKHBQr3xbbhAYsLu5",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/usAvXEpQ5AQoW3YQkd5gnm6PDnUKHBQr3xbbhAYsLu5",
-      "eligible": null,
-      "lesson_blocks": null,
-      "filter_reason": "pair younger than minimum age",
-      "in_entry_zone": null,
-      "ath_frac": null,
-      "window_ath": null,
-      "ath_note": null,
-      "hourly_bars": null,
-      "daily_bars": null,
-      "history_error": null,
-      "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": null
     },
     {
@@ -1121,14 +1566,14 @@
       "pool": "FnzKY6x7entQ1eR3D225dQyT7ybfka4PskBMQhb8L3CC",
       "dex": "pumpswap",
       "quote_symbol": "SOL",
-      "price_usd": 0.04631,
+      "price_usd": 0.04637,
       "last_price": null,
-      "liquidity_usd": 1258818.22,
-      "volume_24h_usd": 1574578.97,
-      "market_cap_usd": 46187698.0,
+      "liquidity_usd": 1259391.79,
+      "volume_24h_usd": 1578163.92,
+      "market_cap_usd": 46256817.0,
       "market_cap_from": null,
       "liq_to_mcap": null,
-      "age_hours": 3438.92,
+      "age_hours": 3439.04,
       "metrics_source": "dexscreener",
       "twitter": [],
       "dex_url": "https://dexscreener.com/solana/9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
@@ -1145,6 +1590,11 @@
       "daily_bars": null,
       "history_error": null,
       "description": "",
+      "global_fees_sol": null,
+      "global_fees_basis": null,
+      "fees_proxy_sol": null,
+      "fees_proxy_basis": null,
+      "fee_filter_basis": null,
       "safety": null
     }
   ],
@@ -1164,16 +1614,16 @@
     "principle": "Buy dips. Never top-tick."
   },
   "strategist_note": "Living champion dip_20_40_stop8_tp15_hold8. out-of-sample expectancy $0.4082 beat the previous champion Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
-  "risk_note": "Reviewed 4 tokens. Safety fails 0. Incomplete 4. Eligible 0. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
+  "risk_note": "Reviewed 4 tokens. Safety fails 1. Incomplete 0. Eligible 3. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
   "summary": {
-    "discovered": 96,
+    "discovered": 94,
     "enriched": 30,
     "passed_filters": 4,
     "reviewed": 4,
-    "eligible": 0,
-    "paper_trades_total": 194,
-    "paper_pnl_usd": -247.1398,
-    "new_paper_trades": 0,
+    "eligible": 3,
+    "paper_trades_total": 220,
+    "paper_pnl_usd": -255.2175,
+    "new_paper_trades": 26,
     "team_rejected": 0
   },
   "sources": {
@@ -1203,17 +1653,14 @@
       "errors": []
     },
     "solana_rpc": {
-      "ok": false,
-      "calls": 47,
+      "ok": true,
+      "calls": 46,
       "endpoints": [
         "https://public.rpc.solanavibestation.com",
         "https://api.mainnet-beta.solana.com",
         "https://solana-rpc.publicnode.com"
       ],
-      "errors": [
-        "getTransaction: https://public.rpc.solanavibestation.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://solana-rpc.publicnode.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}",
-        "https://public.rpc.solanavibestation.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://solana-rpc.publicnode.com {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}"
-      ],
+      "errors": [],
       "detail": "public RPC only, no key"
     },
     "geckoterminal": {
@@ -1248,38 +1695,114 @@
       "skipped_rejected": 5,
       "rows": 0,
       "x_linked": 55,
-      "discovered": 96,
+      "discovered": 94,
       "enriched": 30,
       "dex_pairs": 30
     },
     "filter_counts": {
-      "pair older than maximum age": 10,
-      "pair younger than minimum age": 5,
+      "pair older than maximum age": 11,
       "lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book": 1,
       "quote is not SOL, USDC, or USDT": 6,
       "liquidity unknown": 3,
+      "pair younger than minimum age": 4,
       "liquidity below minimum": 1
     },
     "passed_filters": 4,
     "reviewed": 4,
-    "eligible": 0,
-    "histories": 0,
+    "eligible": 3,
+    "histories": 2,
     "variants": {
       "proposed": [
         "dip_20_40_stop12_tp25_hold8",
         "dip_20_40_stop12_tp25_hold16"
       ],
-      "results": [],
-      "skipped": "no eligible history"
+      "results": [
+        {
+          "id": "dip_20_40_stop12_tp25_hold8",
+          "status": "rejected",
+          "reason": "out-of-sample expectancy $-0.3793 over 5 trades",
+          "oos": {
+            "trades": 5,
+            "net_usd": -1.8963,
+            "expectancy_usd": -0.3793,
+            "win_rate": 0.4,
+            "profit_factor": 0.9445,
+            "wins": 2,
+            "losses": 3
+          },
+          "in_sample": {
+            "trades": 8,
+            "net_usd": 14.4328,
+            "expectancy_usd": 1.8041,
+            "win_rate": 0.5,
+            "profit_factor": 1.3349,
+            "wins": 4,
+            "losses": 4
+          },
+          "goal": {
+            "notional_usd": 100.0,
+            "oos_trades": 5,
+            "oos_window_days": 2.54,
+            "trades_per_month": 59.9,
+            "expectancy_usd": -0.3793,
+            "monthly_usd": -22.71,
+            "ticket_for_low_usd": null,
+            "ticket_for_high_usd": null,
+            "goal_low_usd": 3000.0,
+            "goal_high_usd": 5000.0
+          },
+          "new_trades": 13,
+          "team_rejected": 0
+        },
+        {
+          "id": "dip_20_40_stop12_tp25_hold16",
+          "status": "rejected",
+          "reason": "out-of-sample expectancy $-3.5759 over 5 trades",
+          "oos": {
+            "trades": 5,
+            "net_usd": -17.8794,
+            "expectancy_usd": -3.5759,
+            "win_rate": 0.4,
+            "profit_factor": 0.5717,
+            "wins": 2,
+            "losses": 3
+          },
+          "in_sample": {
+            "trades": 8,
+            "net_usd": -2.7348,
+            "expectancy_usd": -0.3418,
+            "win_rate": 0.375,
+            "profit_factor": 0.9607,
+            "wins": 3,
+            "losses": 5
+          },
+          "goal": {
+            "notional_usd": 100.0,
+            "oos_trades": 5,
+            "oos_window_days": 2.54,
+            "trades_per_month": 59.9,
+            "expectancy_usd": -3.5759,
+            "monthly_usd": -214.13,
+            "ticket_for_low_usd": null,
+            "ticket_for_high_usd": null,
+            "goal_low_usd": 3000.0,
+            "goal_high_usd": 5000.0
+          },
+          "new_trades": 13,
+          "team_rejected": 0
+        }
+      ],
+      "team_taken": 26,
+      "team_rejected": 0
     },
-    "safety_fail": 0,
-    "safety_incomplete": 4,
-    "holder_or_cluster_fails": 0,
+    "safety_fail": 1,
+    "safety_incomplete": 0,
+    "holder_or_cluster_fails": 1,
     "x_linked": 55,
-    "rpc_calls": 47,
-    "new_paper_trades": 0,
-    "ledger_trades": 194,
-    "ledger_pnl_usd": -247.1398
+    "rpc_calls": 46,
+    "new_paper_trades": 26,
+    "ledger_trades": 220,
+    "ledger_pnl_usd": -255.2175
   },
   "health": {
     "local": true,
@@ -1287,55 +1810,137 @@
     "site_reachable": true,
     "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T03:42:44.930846+00:00",
+    "checked_at": "2026-11-07T04:07:14.677207+00:00",
     "stale_agents": [],
-    "last_published": "2026-11-07T04:01:09.426555+00:00"
+    "last_published": "2026-11-07T04:09:36.892244+00:00"
   },
   "ledger": {
     "timezone": "America/New_York",
     "label": "PAPER / SIMULATED",
-    "updated": "2026-11-07T03:19:54.017094+00:00",
-    "total_pnl_usd": -247.1398,
-    "trade_count": 194,
+    "updated": "2026-11-07T04:09:36.663522+00:00",
+    "total_pnl_usd": -255.2175,
+    "trade_count": 220,
     "days": [
       {
         "date": "2026-11-02",
-        "pnl_usd": -131.7627,
-        "trade_count": 12,
+        "pnl_usd": -159.5925,
+        "trade_count": 14,
         "wins": 0,
-        "losses": 12
+        "losses": 14
       },
       {
         "date": "2026-11-03",
-        "pnl_usd": -94.728,
-        "trade_count": 52,
-        "wins": 15,
-        "losses": 37
+        "pnl_usd": -70.9893,
+        "trade_count": 59,
+        "wins": 18,
+        "losses": 41
       },
       {
         "date": "2026-11-04",
-        "pnl_usd": 221.537,
-        "trade_count": 44,
-        "wins": 26,
-        "losses": 18
+        "pnl_usd": 249.4646,
+        "trade_count": 49,
+        "wins": 29,
+        "losses": 20
       },
       {
         "date": "2026-11-05",
-        "pnl_usd": -17.8348,
-        "trade_count": 41,
-        "wins": 17,
-        "losses": 24
+        "pnl_usd": 2.268,
+        "trade_count": 45,
+        "wins": 20,
+        "losses": 25
       },
       {
         "date": "2026-11-06",
-        "pnl_usd": -224.3513,
-        "trade_count": 45,
-        "wins": 11,
-        "losses": 34
+        "pnl_usd": -277.9537,
+        "trade_count": 52,
+        "wins": 12,
+        "losses": 40
+      },
+      {
+        "date": "2026-11-07",
+        "pnl_usd": 1.5854,
+        "trade_count": 1,
+        "wins": 1,
+        "losses": 0
       }
     ]
   },
   "recent_trades": [
+    {
+      "id": "273bdd459a091e04",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-06T20:00:00-05:00",
+      "exit_time": "2026-11-07T00:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1794013200,
+      "exit_ts": 1794024000,
+      "entry_price": 0.0009186092600509723,
+      "exit_price": 0.0009539305774187162,
+      "notional_usd": 100.0,
+      "pnl_usd": 1.5854,
+      "pnl_pct": 1.5854,
+      "side": "long",
+      "exit_reason": "time",
+      "strategy_id": "dip_20_40_stop12_tp25_hold16",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "out_of_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 85094.81,
+      "market_cap_usd": 962801.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.271126,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 27% of window ATH, liq $85,095, vol $139,088."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "12 earlier fills on this pool net $-22.20."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop12_tp25_hold16 (stop 12%, target 25%)."
+          }
+        ]
+      }
+    },
     {
       "id": "e09a17a355e1600c",
       "label": "PAPER / SIMULATED",
@@ -1482,6 +2087,81 @@
             "agent": "Strategist",
             "vote": "approve",
             "reason": "Dip entry under dip_20_40_stop12_tp15_hold16 (stop 12%, target 15%)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "a316a61d6661ce80",
+      "label": "PAPER / SIMULATED",
+      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "name": "jeff",
+      "symbol": "jeff",
+      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
+      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+      "entry_time": "2026-11-06T19:00:00-05:00",
+      "exit_time": "2026-11-06T22:00:00-05:00",
+      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
+      "entry_ts": 1794009600,
+      "exit_ts": 1794016800,
+      "entry_price": 0.0007853994934841007,
+      "exit_price": 0.0009817493668551258,
+      "notional_usd": 100.0,
+      "pnl_usd": 22.2799,
+      "pnl_pct": 22.2799,
+      "side": "long",
+      "exit_reason": "target",
+      "strategy_id": "dip_20_40_stop12_tp25_hold8",
+      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "sample": "out_of_sample",
+      "fees_bps_per_side": 30,
+      "slippage_bps_per_side": 80,
+      "liquidity_usd": 85094.81,
+      "market_cap_usd": 962801.0,
+      "ath_price": 0.0033881277866801163,
+      "entry_frac_of_ath": 0.231809,
+      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
+      "proposed_by": "Data Scout",
+      "team": {
+        "approved": true,
+        "approve": 4,
+        "reject": 1,
+        "abstain": 1,
+        "tally": "4/6 approve",
+        "rule": "majority 4/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Safety pass: mint authority revoked, freeze revoked."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Entry at 23% of window ATH, liq $85,095, vol $139,088."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "reject",
+            "reason": "12 earlier fills on this pool net $-9.74."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under dip_20_40_stop12_tp25_hold8 (stop 12%, target 25%)."
           }
         ]
       }
@@ -1959,114 +2639,6 @@
       "ath_price": 0.0033881277866801163,
       "entry_frac_of_ath": 0.271126,
       "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
-    },
-    {
-      "id": "e295a4fa351f0333",
-      "label": "PAPER / SIMULATED",
-      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "name": "jeff",
-      "symbol": "jeff",
-      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
-      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "entry_time": "2026-11-06T19:00:00-05:00",
-      "exit_time": "2026-11-06T20:00:00-05:00",
-      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
-      "entry_ts": 1794009600,
-      "exit_ts": 1794009600,
-      "entry_price": 0.0007853994934841007,
-      "exit_price": 0.0009032094175067157,
-      "notional_usd": 100.0,
-      "pnl_usd": 12.4975,
-      "pnl_pct": 12.4975,
-      "side": "long",
-      "exit_reason": "target",
-      "strategy_id": "dip_20_40_stop12_tp15_hold8",
-      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
-      "sample": "out_of_sample",
-      "fees_bps_per_side": 30,
-      "slippage_bps_per_side": 80,
-      "liquidity_usd": 87155.25,
-      "market_cap_usd": 1005599.0,
-      "ath_price": 0.0033881277866801163,
-      "entry_frac_of_ath": 0.231809,
-      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only.",
-      "proposed_by": "Data Scout",
-      "team": {
-        "approved": true,
-        "approve": 4,
-        "reject": 1,
-        "abstain": 1,
-        "tally": "4/6 approve",
-        "rule": "majority 4/5 of voting agents",
-        "vetoes": [],
-        "votes": [
-          {
-            "agent": "Risk Manager",
-            "vote": "approve",
-            "reason": "Safety pass: mint authority revoked, freeze revoked."
-          },
-          {
-            "agent": "Bubble Map Analyst",
-            "vote": "approve",
-            "reason": "Top non-LP wallet 3.3822% (\u2264 3.5%), no linked-wallet fail."
-          },
-          {
-            "agent": "X/Twitter Scout",
-            "vote": "abstain",
-            "reason": "X API unavailable (401); token has an X link. No tweets read, abstaining."
-          },
-          {
-            "agent": "Data Scout",
-            "vote": "approve",
-            "reason": "Entry at 23% of window ATH, liq $87,155, vol $143,110."
-          },
-          {
-            "agent": "Backtester",
-            "vote": "reject",
-            "reason": "16 earlier fills on this pool net $-20.12."
-          },
-          {
-            "agent": "Strategist",
-            "vote": "approve",
-            "reason": "Dip entry under dip_20_40_stop12_tp15_hold8 (stop 12%, target 15%)."
-          }
-        ]
-      }
-    },
-    {
-      "id": "0f3e178a9ed4a319",
-      "label": "PAPER / SIMULATED",
-      "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "name": "jeff",
-      "symbol": "jeff",
-      "pair": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY",
-      "dex_url": "https://dexscreener.com/solana/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "gmgn_url": "https://gmgn.ai/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "bubble_url": "https://app.bubblemaps.io/sol/token/HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
-      "entry_time": "2026-11-06T19:00:00-05:00",
-      "exit_time": "2026-11-06T20:00:00-05:00",
-      "time_basis": "Entry is the next candle open. Exit is that candle's end (open plus the bar size). Free OHLCV has no intrabar fill time.",
-      "entry_ts": 1794009600,
-      "exit_ts": 1794009600,
-      "entry_price": 0.0007853994934841007,
-      "exit_price": 0.0009032094175067157,
-      "notional_usd": 100.0,
-      "pnl_usd": 12.4975,
-      "pnl_pct": 12.4975,
-      "side": "long",
-      "exit_reason": "target",
-      "strategy_id": "dip_20_40_stop8_tp15_hold8",
-      "strategy_name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
-      "sample": "out_of_sample",
-      "fees_bps_per_side": 30,
-      "slippage_bps_per_side": 80,
-      "liquidity_usd": 83077.49,
-      "market_cap_usd": 915018.0,
-      "ath_price": 0.0033881277866801163,
-      "entry_frac_of_ath": 0.231809,
-      "ath_note": "ATH is the max high across fetched GeckoTerminal daily candles (up to the configured limit) and hourly candles. When the free endpoint returns a shorter window, this is not a lifetime ATH. The backtest seeds its running high with daily highs that printed before the first hourly bar only."
     }
   ],
   "lessons_preview": {
@@ -2075,7 +2647,7 @@
         "id": "R1",
         "code": "holder_over_3_5",
         "rule": "skip tokens where a single non-LP, non-program holder owns more than 3.5% of supply",
-        "evidence": "Leonida top wallet 4.3107% (FodHiggUGYku3MVHv6k14trHYk2V6nFi6qdHmcsKaQat)",
+        "evidence": "FLOAT top wallet 5.4635% (EEABWyb6xFFDq6Vc7ZprJynTnv1RzCKVk19uoPnHT52G)",
         "source": "Bubble Map Analyst",
         "time": "2026-11-07T01:29:25.197399+00:00",
         "time_et": "2026-11-06T20:29:25.197404-05:00",
@@ -2084,7 +2656,8 @@
           "8Xg89xT8Ve34sKiYqYuMs46mycREsCA2F362UscRpump",
           "HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump",
           "8THZ69JP2ErZuHVj4G5rcwkFfsQafp5mQsaoQReApump",
-          "BWJfBNeXpapG7uoqByp5KSwWgCQba8QcDmA2DQiEpump"
+          "BWJfBNeXpapG7uoqByp5KSwWgCQba8QcDmA2DQiEpump",
+          "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr"
         ],
         "active": true
       },
@@ -2104,88 +2677,88 @@
     ],
     "observations": [
       {
-        "time": "2026-11-07T03:19:54.017432+00:00",
-        "time_et": "2026-11-06T22:19:54.017433-05:00",
+        "time": "2026-11-07T04:09:36.663858+00:00",
+        "time_et": "2026-11-06T23:09:36.663859-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:54.017428+00:00",
-        "time_et": "2026-11-06T22:19:54.017430-05:00",
+        "time": "2026-11-07T04:09:36.663855+00:00",
+        "time_et": "2026-11-06T23:09:36.663856-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:54.017424+00:00",
-        "time_et": "2026-11-06T22:19:54.017425-05:00",
+        "time": "2026-11-07T04:09:36.663851+00:00",
+        "time_et": "2026-11-06T23:09:36.663852-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:54.017418+00:00",
-        "time_et": "2026-11-06T22:19:54.017421-05:00",
+        "time": "2026-11-07T04:09:36.663847+00:00",
+        "time_et": "2026-11-06T23:09:36.663848-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:54.017413+00:00",
-        "time_et": "2026-11-06T22:19:54.017415-05:00",
+        "time": "2026-11-07T04:09:36.663843+00:00",
+        "time_et": "2026-11-06T23:09:36.663844-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:54.017397+00:00",
-        "time_et": "2026-11-06T22:19:54.017399-05:00",
+        "time": "2026-11-07T04:09:36.663839+00:00",
+        "time_et": "2026-11-06T23:09:36.663841-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:54.017392+00:00",
-        "time_et": "2026-11-06T22:19:54.017393-05:00",
+        "time": "2026-11-07T04:09:36.663834+00:00",
+        "time_et": "2026-11-06T23:09:36.663836-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:54.017375+00:00",
-        "time_et": "2026-11-06T22:19:54.017381-05:00",
+        "time": "2026-11-07T04:09:36.663824+00:00",
+        "time_et": "2026-11-06T23:09:36.663826-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold24 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:53.920724+00:00",
-        "time_et": "2026-11-06T22:19:53.920725-05:00",
+        "time": "2026-11-07T04:09:36.606067+00:00",
+        "time_et": "2026-11-06T23:09:36.606068-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-6.3078 on dip_20_40_stop12_tp25_hold8 exit time liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:53.920720+00:00",
-        "time_et": "2026-11-06T22:19:53.920721-05:00",
+        "time": "2026-11-07T04:09:36.606063+00:00",
+        "time_et": "2026-11-06T23:09:36.606064-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:53.920715+00:00",
-        "time_et": "2026-11-06T22:19:53.920717-05:00",
+        "time": "2026-11-07T04:09:36.606058+00:00",
+        "time_et": "2026-11-06T23:09:36.606060-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
       },
       {
-        "time": "2026-11-07T03:19:53.920702+00:00",
-        "time_et": "2026-11-06T22:19:53.920704-05:00",
+        "time": "2026-11-07T04:09:36.606054+00:00",
+        "time_et": "2026-11-06T23:09:36.606055-05:00",
         "kind": "paper_loss",
         "source": "Backtester",
-        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp15_hold16 exit stop liq 86690.11 mcap 997963.0"
+        "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold8 exit stop liq 85094.81 mcap 962801.0"
       }
     ],
     "variants": [
@@ -2812,6 +3385,122 @@
         "attempts": 1,
         "time": "2026-11-07T03:19:54.073178+00:00",
         "time_et": "2026-11-06T22:19:54.073183-05:00"
+      },
+      {
+        "id": "dip_20_40_stop12_tp25_hold8",
+        "status": "rejected",
+        "reason": "out-of-sample expectancy $-0.3793 over 5 trades",
+        "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+        "params": {
+          "zone_low": 0.2,
+          "zone_high": 0.4,
+          "stop": 0.12,
+          "target": 0.25,
+          "hold_bars": 8
+        },
+        "oos": {
+          "trades": 5,
+          "net_usd": -1.8963,
+          "expectancy_usd": -0.3793,
+          "win_rate": 0.4,
+          "profit_factor": 0.9445,
+          "wins": 2,
+          "losses": 3
+        },
+        "ins": {
+          "trades": 8,
+          "net_usd": 14.4328,
+          "expectancy_usd": 1.8041,
+          "win_rate": 0.5,
+          "profit_factor": 1.3349,
+          "wins": 4,
+          "losses": 4
+        },
+        "goal": {
+          "notional_usd": 100.0,
+          "oos_trades": 5,
+          "oos_window_days": 2.54,
+          "trades_per_month": 59.9,
+          "expectancy_usd": -0.3793,
+          "monthly_usd": -22.71,
+          "ticket_for_low_usd": null,
+          "ticket_for_high_usd": null,
+          "goal_low_usd": 3000.0,
+          "goal_high_usd": 5000.0
+        },
+        "pools": [
+          {
+            "symbol": "DONNA",
+            "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+            "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+          },
+          {
+            "symbol": "jeff",
+            "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+            "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+          }
+        ],
+        "attempts": 1,
+        "time": "2026-11-07T04:09:36.636521+00:00",
+        "time_et": "2026-11-06T23:09:36.636528-05:00"
+      },
+      {
+        "id": "dip_20_40_stop12_tp25_hold16",
+        "status": "rejected",
+        "reason": "out-of-sample expectancy $-3.5759 over 5 trades",
+        "name": "Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 12% below the next open, target 25% above, time-stop after 16 hourly bars. Stop is filled first if a bar touches both.",
+        "params": {
+          "zone_low": 0.2,
+          "zone_high": 0.4,
+          "stop": 0.12,
+          "target": 0.25,
+          "hold_bars": 16
+        },
+        "oos": {
+          "trades": 5,
+          "net_usd": -17.8794,
+          "expectancy_usd": -3.5759,
+          "win_rate": 0.4,
+          "profit_factor": 0.5717,
+          "wins": 2,
+          "losses": 3
+        },
+        "ins": {
+          "trades": 8,
+          "net_usd": -2.7348,
+          "expectancy_usd": -0.3418,
+          "win_rate": 0.375,
+          "profit_factor": 0.9607,
+          "wins": 3,
+          "losses": 5
+        },
+        "goal": {
+          "notional_usd": 100.0,
+          "oos_trades": 5,
+          "oos_window_days": 2.54,
+          "trades_per_month": 59.9,
+          "expectancy_usd": -3.5759,
+          "monthly_usd": -214.13,
+          "ticket_for_low_usd": null,
+          "ticket_for_high_usd": null,
+          "goal_low_usd": 3000.0,
+          "goal_high_usd": 5000.0
+        },
+        "pools": [
+          {
+            "symbol": "DONNA",
+            "mint": "FMqWsXKaAe41Kxfji7v5cpzQmr2gKAteAi9wREmkpump",
+            "pool": "7vURUpBXG3Z5qJTCSTvG3VxumXEnQfnUPJDZ3Cgw2tkT"
+          },
+          {
+            "symbol": "jeff",
+            "mint": "HAsTKXYvv65zM7J6Cu5o5PcZsiKMQYo5oz4WPjgqwP6k",
+            "pool": "JCXWfcZGjgJC8NZa5Qb6JP3cgvqW4vGUg4Tqj87G5ZnY"
+          }
+        ],
+        "attempts": 1,
+        "time": "2026-11-07T04:09:36.696882+00:00",
+        "time_et": "2026-11-06T23:09:36.696886-05:00"
       }
     ],
     "rejected_mints": [
@@ -2854,8 +3543,29 @@
         "code": "holder_over_3_5",
         "time": "2026-11-07T02:21:39.521174+00:00",
         "time_et": "2026-11-06T21:21:39.521179-05:00"
+      },
+      {
+        "mint": "Bv1a7cEj5aRnJQhMw4kRQqAFesMSd5LwcDnUzq52BMmr",
+        "symbol": "FLOAT",
+        "reason": "holder above 3.5%",
+        "code": "holder_over_3_5",
+        "time": "2026-11-07T04:09:24.698737+00:00",
+        "time_et": "2026-11-06T23:09:24.698744-05:00"
       }
     ]
+  },
+  "daily_stop": {
+    "enabled": false,
+    "halted": false,
+    "mode": "legacy:backtest",
+    "date_et": "2026-11-06",
+    "target_usd": 300.0,
+    "realized_pnl_usd": -19.4181,
+    "realized_fills": 19,
+    "reset_at": "2026-11-07T00:00:00-05:00",
+    "hit_at": null,
+    "basis": "deduplicated closed historical simulations, not forward income; future exits excluded",
+    "blocks": "new entries only; position exits are never gated"
   },
   "goal": {
     "monthly_goal_low_usd": 3000.0,
@@ -2865,6 +3575,38 @@
     "progress_pct_of_low": null,
     "candidates": [
       {
+        "id": "dip_20_40_stop12_tp25_hold8",
+        "role": "candidate",
+        "status": "rejected",
+        "notional_usd": 100.0,
+        "oos_trades": 5,
+        "oos_window_days": 2.54,
+        "trades_per_month": 59.9,
+        "expectancy_usd": -0.3793,
+        "monthly_usd": -22.71,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0,
+        "qualifies": false
+      },
+      {
+        "id": "dip_20_40_stop12_tp25_hold16",
+        "role": "candidate",
+        "status": "rejected",
+        "notional_usd": 100.0,
+        "oos_trades": 5,
+        "oos_window_days": 2.54,
+        "trades_per_month": 59.9,
+        "expectancy_usd": -3.5759,
+        "monthly_usd": -214.13,
+        "ticket_for_low_usd": null,
+        "ticket_for_high_usd": null,
+        "goal_low_usd": 3000.0,
+        "goal_high_usd": 5000.0,
+        "qualifies": false
+      },
+      {
         "id": "dip_20_40_stop8_tp15_hold8",
         "role": "champion",
         "status": "champion",
@@ -2873,7 +3615,7 @@
         "qualifies": true
       }
     ],
-    "status_line": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
+    "status_line": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). dip_20_40_stop12_tp25_hold8 projects $-22.71/mo (rejected, 5 OOS trades). dip_20_40_stop12_tp25_hold16 projects $-214.13/mo (rejected, 5 OOS trades). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
     "method": "Projected monthly P&L = out-of-sample average $ per trade \u00d7 out-of-sample trades per month (pooled OOS trade count \u00f7 the OOS window length \u00d7 30.44 days). Ticket needed = $100 \u00d7 goal \u00f7 projected monthly. Promotion requires \u22655 OOS trades, a positive average, and a variant that is not rejected; among those, the higher projected monthly P&L wins."
   },
   "team": {
@@ -2890,9 +3632,10 @@
       "Risk Manager",
       "Bubble Map Analyst"
     ],
-    "team_pnl_usd": -247.1398,
-    "team_trades": 194,
-    "last_cycle_taken": 0,
+    "team_pnl_usd": -255.2175,
+    "team_trades": 220,
+    "last_cycle_taken": 26,
     "last_cycle_rejected": 0
-  }
+  },
+  "cycle_duration_seconds": 83.647
 }
