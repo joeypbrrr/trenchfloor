@@ -536,6 +536,10 @@ class ResilientRpcClient(RpcClient):
                                         timeout=8, attempts=1)
                     if not isinstance(data, dict) or data.get('error') or 'result' not in data or data['result'] is None:
                         raise SourceError(f'{method}: missing result or RPC error {data.get("error") if isinstance(data, dict) else "malformed"}')
+                    if method == 'getMultipleAccounts':
+                        values = data['result'].get('value') if isinstance(data['result'], dict) else None
+                        if not isinstance(values, list) or len(values) != len(params[0]):
+                            raise SourceError('getMultipleAccounts truncated/malformed batch; retry next endpoint')
                     if url not in self.used:
                         self.used.append(url)
                     self.cache[key] = data['result']

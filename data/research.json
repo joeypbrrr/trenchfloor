@@ -2,12 +2,12 @@
   "name": "Trenchfloor",
   "disclaimer": "Paper trading / research only. No wallet. No real trades. Not financial advice.",
   "scope": "Solana meme-coin paper research",
-  "ok": true,
+  "ok": false,
   "cycle_count": 1,
   "last_cycle": "2026-11-07T04:35:20.243170+00:00",
   "next_cycle": "2026-11-07T05:35:20.243179+00:00",
-  "generated": "2026-11-07T04:35:57.116051+00:00",
-  "data_status": "93 mints \u00b7 3 passed filters \u00b7 0 eligible \u00b7 0 new paper trades",
+  "generated": "2026-11-07T04:52:23.258525+00:00",
+  "data_status": "Starting",
   "errors": [],
   "agents": [
     {
@@ -15,63 +15,98 @@
       "initials": "RM",
       "color": "ff7a00",
       "status": "idle",
-      "task": "Reviewed 3 tokens. Safety fails 0. Incomplete 3. Eligible 0. LP lock or burn is reported only when it is visible on the largest accounts. Creator wallets are not labeled by the free mint account.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "jeff safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass.",
-      "heartbeat": "2026-11-07T04:35:21.977044+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T04:51:38.207204+00:00"
     },
     {
       "role": "Bubble Map Analyst",
       "initials": "BA",
       "color": "ffb000",
       "status": "idle",
-      "task": "0 concentration or cluster fails this cycle. Links are https://app.bubblemaps.io/sol/token/<mint>.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "Holders jeff",
-      "heartbeat": "2026-11-07T04:35:21.977048+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T04:51:38.207219+00:00"
     },
     {
       "role": "X/Twitter Scout",
       "initials": "XS",
       "color": "ff5a1f",
       "status": "idle",
-      "task": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
+      "task": "Light scan of DexScreener boost and profile links.",
       "detail": "",
-      "latest_action": "54 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; DtcicP https://x.com/cartoonm",
-      "heartbeat": "2026-11-07T04:35:21.977050+00:00"
+      "latest_action": "Light scan found 1 new Solana rows with an X link. Not tweets. CXRT8b https://x.com/rockstargames?s=11",
+      "heartbeat": "2026-11-07T04:51:38.207221+00:00"
     },
     {
       "role": "Data Scout",
       "initials": "DS",
       "color": "ff9a3c",
       "status": "idle",
-      "task": "93 mints \u00b7 3 passed filters \u00b7 0 eligible \u00b7 0 new paper trades",
+      "task": "Light scan of new GeckoTerminal pools. No safety review on this pass.",
       "detail": "",
-      "latest_action": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs.",
-      "heartbeat": "2026-11-07T04:35:21.977052+00:00"
+      "latest_action": "Light scan: 20 new pools, 0 already at the liquidity filter. No paper trades on a light scan.",
+      "heartbeat": "2026-11-07T04:51:38.207223+00:00"
     },
     {
       "role": "Backtester",
       "initials": "BT",
       "color": "ffc266",
       "status": "idle",
-      "task": "Ledger 0 paper trades, net $0.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "Read lessons",
-      "heartbeat": "2026-11-07T04:35:21.977053+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T04:51:38.207224+00:00"
     },
     {
       "role": "Strategist",
       "initials": "ST",
       "color": "ff6a00",
       "status": "idle",
-      "task": "Living champion dip_20_40_stop8_tp15_hold8. out-of-sample expectancy $0.4082 beat the previous champion Buy the dip when price is 60\u201380% off the window high (trading at 20\u201340% of that high), only after a green bar that does not set the high. Never top-tick. Stop 8% below the next open, target 15% above, time-stop after 8 hourly bars. Stop is filled first if a bar touches both.",
+      "task": "Reading lessons before the first cycle.",
       "detail": "",
-      "latest_action": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency y",
-      "heartbeat": "2026-11-07T04:35:21.977055+00:00"
+      "latest_action": "",
+      "heartbeat": "2026-11-07T04:51:38.207226+00:00"
     }
   ],
   "activity": [
+    {
+      "id": 19,
+      "time": "2026-11-07T04:51:23.203154+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 0 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 18,
+      "time": "2026-11-07T04:51:23.153977+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. CXRT8b https://x.com/rockstargames?s=11",
+      "type": "info"
+    },
+    {
+      "id": 17,
+      "time": "2026-11-07T04:46:22.231536+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
+    {
+      "id": 16,
+      "time": "2026-11-07T04:46:22.157664+00:00",
+      "agent": "X/Twitter Scout",
+      "text": "Light scan found 4 new Solana rows with an X link. Not tweets. EbZ3Kf https://x.com/cookdbot; Fmu6yk https://x.com/twizter_privacy; G77jG5 https://x.com/early404/status/2118924545146970457; 2SquPK https://x.com/mutape_xyz",
+      "type": "info"
+    },
+    {
+      "id": 15,
+      "time": "2026-11-07T04:41:21.107012+00:00",
+      "agent": "Data Scout",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "type": "info"
+    },
     {
       "id": 14,
       "time": "2026-11-07T04:35:20.245828+00:00",
@@ -906,7 +941,7 @@
     "site_reachable": true,
     "site_error": null,
     "public_url": "https://joeypbrrr.github.io/trenchfloor/",
-    "checked_at": "2026-11-07T04:35:22.110902+00:00",
+    "checked_at": "2026-11-07T04:51:38.251032+00:00",
     "stale_agents": [],
     "last_published": "2026-11-06T23:35:20.425704-05:00 ET"
   },
@@ -1855,55 +1890,5 @@
     "hit_at": null,
     "basis": "deduplicated realized forward paper closes only; no unrealized P&L",
     "blocks": "new entries only; position exits are never gated"
-  },
-  "goal": {
-    "monthly_goal_low_usd": 3000.0,
-    "monthly_goal_high_usd": 5000.0,
-    "notional_usd": 100.0,
-    "best": null,
-    "progress_pct_of_low": null,
-    "candidates": [
-      {
-        "id": "dip_20_40_stop8_tp15_hold8",
-        "role": "champion",
-        "status": "champion",
-        "oos_trades": 9,
-        "expectancy_usd": 0.4082,
-        "qualifies": true
-      }
-    ],
-    "status_line": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
-    "method": "Projected monthly P&L = out-of-sample average $ per trade \u00d7 out-of-sample trades per month (pooled OOS trade count \u00f7 the OOS window length \u00d7 30.44 days). Ticket needed = $100 \u00d7 goal \u00f7 projected monthly. Promotion requires \u22655 OOS trades, a positive average, and a variant that is not rejected; among those, the higher projected monthly P&L wins."
-  },
-  "team": {
-    "model": "One team, one shared paper P&L. Each trade is proposed by one agent; all six vote. Majority of voting agents approves; a Risk Manager or Bubble Map Analyst reject is a veto. X/Twitter Scout abstains while the X API is unavailable.",
-    "members": [
-      "Risk Manager",
-      "Bubble Map Analyst",
-      "X/Twitter Scout",
-      "Data Scout",
-      "Backtester",
-      "Strategist"
-    ],
-    "veto": [
-      "Risk Manager",
-      "Bubble Map Analyst"
-    ],
-    "team_pnl_usd": 0,
-    "team_trades": 0,
-    "last_cycle_taken": 0,
-    "last_cycle_rejected": 0
-  },
-  "cycle_duration_seconds": 28.054,
-  "last_updated_et": "2026-11-06T23:35:20.243173-05:00",
-  "configuration": {
-    "candidate_source": "legacy",
-    "cycle_seconds": 3600,
-    "entry_interval_seconds": 3600,
-    "daily_stop_enabled": true,
-    "daily_profit_stop_usd": 300,
-    "rpc_resilience_enabled": true,
-    "forward_paper_enabled": true,
-    "global_fees_filter": "SKIPPED: unavailable on DexScreener; no proxy"
   }
 }

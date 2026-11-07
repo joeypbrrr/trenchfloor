@@ -54,7 +54,7 @@ class LiveChat:
         def suggest(key, text):
             suggestions.append((key, text))
         say("Risk Manager", f"{t.get('symbol', '?')} closed for ${t['pnl_usd']:.2f}. Exit reason: {t.get('exit_reason') or 'not recorded'}. This describes recorded facts, not a proven cause.")
-        say("Strategist", "Entry rationale: current dip plus closed green confirmation, measured chain/holder safety, and recorded team majority. " + ((t.get("team") or {}).get("rule") or "Full entry vote was not recorded.") + " A passing entry check is not a guarantee; suggestions below require testing, not automatic changes.")
+        say("Strategist", ("Entry rationale: ranked "+t["tier"]+" candidate with common hard rug blocks and recorded team majority. Green-candle confirmation optional; fallback ATH optional. " if t.get("tier") else "Entry rationale: current dip plus closed green confirmation, measured chain/holder safety, and recorded team majority. ") + ((t.get("team") or {}).get("rule") or "Full entry vote was not recorded.") + " A passing entry check is not a guarantee; suggestions below require testing, not automatic changes.")
         frac = t.get("entry_frac_of_ath")
         say("Data Scout", f"Entry was {float(frac)*100:.1f}% of recorded window ATH ({(1-float(frac))*100:.1f}% below it)." if frac is not None else "Entry depth vs ATH was not recorded; cannot assess.")
         for name in ("liquidity", "volume"):

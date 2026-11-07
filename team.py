@@ -67,6 +67,10 @@ def x_vote(token, x_status):
 
 
 def data_vote(trade, token, config):
+    if config.get("tiered_selection_enabled"):
+        if token.get("tier_eligible") is True and token.get("safety",{}).get("hard_rug_pass") is True:
+            return _vote("Data Scout", APPROVE, f"Ranked {trade.get('tier')} candidate, score {token.get('score')}; configured tier criteria and common hard blocks passed. ATH may be optional in fallback.")
+        return _vote("Data Scout", REJECT, "Tier qualification or hard rug evidence missing.")
     filters = config.get("filters") or {}
     zone = config.get("entry_zone") or {}
     lo = float(zone.get("min_frac_of_ath", 0.2))

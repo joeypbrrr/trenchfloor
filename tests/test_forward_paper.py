@@ -15,6 +15,7 @@ class ForwardPaperTests(unittest.TestCase):
         self.temp=tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
         self.root=Path(self.temp.name)
         self.config=json.loads((Path(__file__).resolve().parents[1]/'config.json').read_text())
+        self.config['tiered_selection_enabled']=False  # legacy single-slot tests
         self.now=time.time()
         self.mem=Memory(self.root)
         self.messages=[]

@@ -40,7 +40,7 @@ def _ext_name(ext):
     return str(ext.get("extension") or "").replace("_", "").lower()
 
 
-def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity_base, holder_fail_pct=3.5, excluded_owners=None, aggregate_holders=False):
+def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity_base, holder_fail_pct=3.5, excluded_owners=None, aggregate_holders=False, conservative_tail=True):
     """Pure assessment. `owner_meta` maps wallet -> {'executable': bool|None}."""
     checks = []
     hard = []
@@ -190,6 +190,7 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
         "holder_over_3_5": holder_fail,
         "top_human_pct": round(top, 4),
         "top_human_pct_upper": top_upper,
+        "top10_measured_pct": sum(h["pct"] for h in humans[:10]),
         "top10_pct_upper": min(100, sum(h["pct"] for h in humans[:10]) + unaccounted),
         "unaccounted_sample_pct": round(unaccounted, 4),
         "top_human": humans[0]["owner"] if humans else None,
@@ -203,7 +204,7 @@ def assess_mint(mint_value, largest, owner_meta, supply_raw, decimals, liquidity
         "holder_fail_pct": holder_fail_pct,
         "extensions": [ext.get("extension") for ext in extensions if isinstance(ext, dict)],
     }
-    if aggregate_holders and not hard and top_upper > float(holder_fail_pct):
+    if aggregate_holders and conservative_tail and not hard and top_upper > float(holder_fail_pct):
         return _result("incomplete", [f"largest-account sample leaves a wallet upper bound of {top_upper:.2f}% (limit {holder_fail_pct}%); full concentration unknown"], checks, warnings, extra)
     return _result(status, hard, checks, warnings, extra)
 
@@ -315,7 +316,7 @@ def extract_funders(tx, holder):
     return found
 
 
-def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5, require_complete=False, excluded_owners=None, aggregate_holders=False):
+def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5, require_complete=False, excluded_owners=None, aggregate_holders=False, conservative_tail=True):
     """Networked review. Raises SourceError only for unexpected bugs; RPC errors become incomplete."""
     try:
         mint_result = rpc.call("getAccountInfo", [mint, {"encoding": "jsonParsed"}])
@@ -363,22 +364,29 @@ def review_token(rpc, mint, liquidity_base, holder_fail_pct=3.5, require_complet
                 owner_ids.append(owner)
         if require_complete and (len(parsed_rows) != len(accounts) or len(owner_ids) != len(accounts)):
             return _result("incomplete", ["one or more holder accounts could not be parsed"], [], [], {"mint": mint})
+        owner_ids = list(dict.fromkeys(owner_ids))
         owner_meta = {owner: {"executable": None} for owner in owner_ids}
         if owner_ids:
             try:
                 owned = rpc.call("getMultipleAccounts", [owner_ids, {"encoding": "base64"}])
                 ovalues = (owned or {}).get("value") if isinstance(owned, dict) else None
-                if isinstance(ovalues, list):
+                if isinstance(ovalues, list) and len(ovalues) == len(owner_ids):
                     for owner, value in zip(owner_ids, ovalues):
-                        if isinstance(value, dict):
-                            owner_meta[owner] = {"executable": bool(value.get("executable"))}
+                        if value is None:
+                            # Successful, full-length RPC batch explicitly attests no
+                            # native account at this address. It can still own SPL
+                            # accounts; count it as a NON-program wallet, never exclude.
+                            owner_meta[owner] = {"executable": False, "exists": False, "basis": "RPC confirmed absent native account"}
+                        elif isinstance(value, dict) and isinstance(value.get("executable"), bool):
+                            owner_meta[owner] = {"executable": value["executable"], "exists": True}
             except SourceError as exc:
                 return _result("incomplete", [f"holder owners unreadable: {exc}"], [], [], {"mint": mint})
         if require_complete and any(meta["executable"] is None for meta in owner_meta.values()):
             return _result("incomplete", ["one or more holder owners could not be read"], [], [], {"mint": mint})
-        assessed = assess_mint(mint_value, parsed_rows, owner_meta, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct, excluded_owners, aggregate_holders)
+        assessed = assess_mint(mint_value, parsed_rows, owner_meta, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct, excluded_owners, aggregate_holders, conservative_tail)
     else:
-        assessed = assess_mint(mint_value, [], {}, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct, excluded_owners, aggregate_holders)
+        assessed = assess_mint(mint_value, [], {}, supply_value.get("amount"), decimals, num(liquidity_base), holder_fail_pct, excluded_owners, aggregate_holders, conservative_tail)
+    assessed["owner_lookup"] = {"unique_owners": len(owner_ids) if accounts else 0, "confirmed_absent_native_accounts": sum(m.get("exists") is False for m in owner_meta.values()) if accounts else 0, "basis": "full-length batched RPC; absent owners counted as wallets"}
     assessed["mint"] = mint
     assessed["decimals"] = decimals
     assessed["supply_ui"] = supply_value.get("uiAmountString") or supply_value.get("uiAmount")

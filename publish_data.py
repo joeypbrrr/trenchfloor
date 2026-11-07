@@ -40,6 +40,7 @@ SITE_FILES = [
     "data/live_chat.json",
     "data/checklist.json",
     "data/paper_account.json",
+    "data/traded_mints.json",
     "data/daily_stop.json",
     "floor/index.html",
 ]

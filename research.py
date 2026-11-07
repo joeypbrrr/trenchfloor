@@ -21,6 +21,7 @@ from safety import review_token, sample_links
 from team import review_trades
 from forward_paper import PaperAccount
 from live_chat import LiveChat
+from traded_mints import TradedMints
 from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num, ResilientRpcClient
 from candidate_sources import candidates as source_candidates, fee_filter_reason
 from daily_stop import DailyStop, mode_for, close_time, fill_key
@@ -275,7 +276,7 @@ def discover(config):
         for row in rows:
             if row["mint"] in SKIP_MINTS:
                 continue
-            if MEMORY.mint_rejection(row["mint"]):
+            if not config.get("tiered_selection_enabled") and MEMORY.mint_rejection(row["mint"]):
                 report["skipped_rejected"] += 1
                 continue
             row = {**blank(row["mint"]), **row}
@@ -343,13 +344,19 @@ def discover(config):
         post("X/Twitter Scout", "No X links on the DexScreener rows returned this cycle. No tweets invented.")
     update("X/Twitter Scout", "working", x_status.get("detail") or "X API unavailable", detail=f"{report['x_linked']} X links", action=AGENTS["X/Twitter Scout"]["latest_action"])
 
+    if config.get("tiered_selection_enabled"):
+        registry = TradedMints(ROOT)
+        excluded = sum(m in registry for m in by_mint)
+        by_mint = {m:c for m,c in by_mint.items() if m not in registry}
+        report["excluded_already_traded"] = excluded
+        post("Data Scout", f"{excluded} excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier.")
     ranked = sorted(by_mint.values(), key=_priority, reverse=True)
     limit = int((config.get("limits") or {}).get("enrich_mints", 30))
     queue = []
     for cand in ranked:
         if cand["mint"] in SKIP_MINTS or (cand.get("symbol") or "").upper() in SKIP_SYMBOLS:
             continue
-        if MEMORY.mint_rejection(cand["mint"]):
+        if not config.get("tiered_selection_enabled") and MEMORY.mint_rejection(cand["mint"]):
             report["skipped_rejected"] += 1
             continue
         queue.append(cand)
@@ -908,10 +915,78 @@ def manage_paper(config):
     account.manage(MARKET, MEMORY, post, paper_close_event)
     STATE["paper_account"] = account.snapshot()
     STATE["daily_stop"] = DailyStop(ROOT).status(config)
+    STATE["ledger"] = MEMORY.index
+    STATE["recent_trades"] = MEMORY.recent_trades(12)
     save_state()
 
 
+def tiered_cycle(config):
+    from tiers import evaluate
+    started = time.monotonic()
+    anchor = STATE.get("next_cycle")
+    MARKET.rpc = ResilientRpcClient(config["rpc_urls"], config.get("rpc_min_interval_seconds",0.4), config["limits"]["rpc_budget"])
+    manage_paper(config)
+    STATE["errors"] = []
+    STATE["cycle_count"] = int(STATE.get("cycle_count") or 0)+1
+    log(f"tiered cycle {STATE['cycle_count']} start")
+    for role in ROLE_NAMES:update(role,"working","Selecting one forward PAPER entry using approved tiers.")
+    post("System",f"Cycle {STATE['cycle_count']} started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum.")
+    daily_stop_status(config,announce=True)
+    checklist = PAPER_CHAT.data.get("checklist",[]) if PAPER_CHAT else []
+    post("Strategist",f"CHECKLIST CONSULT: {len(checklist)} shared lesson suggestion(s) read before selection. SUGGESTION ONLY; none automatically changes filters or sizing.")
+    for item in checklist:
+        post("Strategist","CHECKLIST CONSULT / "+item.get("key","?")+": "+item.get("suggestion","")+" — reviewed, not automatically applied.")
+    queue,found=discover(config)
+    post("Risk Manager","Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks.")
+    selection=evaluate(queue,MARKET,config,post,load_history,ROOT)
+    reviewed=selection.pop("reviewed")
+    candidates=selection.pop("candidates")
+    for c in reviewed:
+        c["eligible"]=c in candidates
+    account=PaperAccount(ROOT,config)
+    entry=account.try_entry(candidates,MARKET,MEMORY,post)
+    STATE["paper_account"]=account.snapshot()
+    STATE["daily_stop"]=DailyStop(ROOT).status(config)
+    STATE["ledger"]=MEMORY.index
+    STATE["recent_trades"]=MEMORY.recent_trades(12)
+    STATE["watchlist"]=[public_token(c) for c in candidates]
+    STATE["rejected_review"]=[public_token(c) for c in reviewed if c not in candidates]
+    STATE["filter_rejects_sample"]=[]
+    STATE["lessons_preview"]={k:MEMORY.data.get(k,[]) for k in ("rules","observations","variants","rejected_mints")}
+    STATE["summary"]={"discovered":found.get("discovered",0),"enriched":len(queue),"passed_filters":selection["primary_market"],
+        "reviewed":len(reviewed),"eligible":len(candidates),"new_paper_trades":int(entry is not None),
+        "paper_trades_total":MEMORY.index.get("trade_count",0),"paper_pnl_usd":MEMORY.index.get("total_pnl_usd",0)}
+    STATE["tier_selection"]={**selection,"selected_trade":entry,"excluded_already_traded":found.get("excluded_already_traded",0)+selection["excluded_traded"]}
+    STATE["report"]={"discovered":found,"tiers":STATE["tier_selection"],"reviewed":len(reviewed),"rpc_calls":MARKET.rpc.calls,
+        "new_paper_trades":int(entry is not None),"hard_pass":sum(c.get("safety",{}).get("hard_rug_pass") is True for c in reviewed),
+        "hard_blocks":[{"mint":c["mint"],"symbol":c.get("symbol"),"reasons":c["safety"].get("hard_reasons",[])} for c in reviewed if c["safety"].get("hard_rug_pass") is not True]}
+    STATE["configuration"]={k:config.get(k) for k in ("candidate_source","cycle_seconds","entry_interval_seconds","daily_stop_enabled","daily_profit_stop_usd","rpc_resilience_enabled","forward_paper_enabled","tiered_selection_enabled","minimum_entries_per_hour","tiers")}
+    STATE["configuration"]["global_fees_filter"]="SKIPPED: unavailable on DexScreener; no proxy"
+    STATE["best"]={"id":"forward_ranked_primary_fallback","name":"One fresh mint per rolling hour; primary $100 cap, fallback $50 cap; common hard rug blocks; no repeat mints.","status":"forward_paper","oos":None}
+    STATE["strategist_note"]="Current paper selection uses scored primary candidates; only if primary is empty, scored fallback. Minimum yields to daily halt, rolling-hour limit, unavailable cash, or failed/unknown hard blocks. Checklist is advisory."
+    STATE["risk_note"]="Hard blocks: unsellable/honeypot, mint/freeze authority, LP burn/lock unknown or failing, single non-pool holder >20%; all unknowns reject. No wallet, no execution."
+    STATE["goal"]={"status_line":"$300/day realized paper profit hard stop. Not a guarantee of profit."}
+    STATE["team"]={"model":"Six factual rule-based votes on highest ranked hard-safe candidates; Risk Manager and Bubble Map Analyst can veto.","last_cycle_taken":int(entry is not None),"last_cycle_rejected":0}
+    STATE["sources"]=MARKET.source_status
+    STATE["sources"]["solana_rpc"]={"ok":bool(MARKET.rpc.used),"calls":MARKET.rpc.calls,"endpoints":MARKET.rpc.used,"errors":MARKET.rpc.errors[-3:]}
+    STATE["ok"]=bool(found.get("discovered"))
+    STATE["data_status"]=f"{found.get('discovered',0)} mints · {selection['primary']} primary · {selection['fallback']} fallback · {int(entry is not None)} new paper entry"
+    STATE["cycle_duration_seconds"]=round(time.monotonic()-started,3)
+    STATE["last_cycle"]=now_iso();STATE["last_updated_et"]=et_now()
+    # A manual demo intentionally re-anchors to completion + 3600s so the
+    # previous anchor cannot force a skipped entry inside the rolling-hour cap.
+    next_ts=time.time()+config["cycle_seconds"]
+    STATE["next_cycle"]=datetime.fromtimestamp(next_ts,timezone.utc).isoformat()
+    for role in ROLE_NAMES:update(role,"idle",STATE["data_status"])
+    post("System",f"Cycle {STATE['cycle_count']} finished. {STATE['data_status']}. Next scheduled cycle {datetime.fromtimestamp(next_ts).strftime('%Y-%m-%d %H:%M:%S')} ET; rolling-hour entry cap remains authoritative.")
+    save_state();maybe_publish_full(force=True)
+    log("tiered cycle done "+STATE["data_status"])
+    return STATE
+
+
 def cycle(config):
+    if config.get("tiered_selection_enabled"):
+        return tiered_cycle(config)
     started = time.monotonic()
     if config.get("rpc_resilience_enabled", False):
         MARKET.rpc = ResilientRpcClient(config.get("rpc_urls") or [], config.get("rpc_min_interval_seconds", 1.25), (config.get("limits") or {}).get("rpc_budget", 64))
@@ -1194,6 +1269,8 @@ def cycle_due(config):
         then = datetime.fromisoformat(STATE["last_cycle"]).timestamp()
     except ValueError:
         return True
+    if config.get("tiered_selection_enabled") and STATE.get("next_cycle"):
+        return time.time() >= datetime.fromisoformat(STATE["next_cycle"]).timestamp()
     return time.time() - then >= float(config.get("cycle_seconds", 3600))
 
 
