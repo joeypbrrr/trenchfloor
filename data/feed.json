@@ -1,7 +1,42 @@
 {
-  "updated": "2026-11-07T11:16:50.129521+00:00",
-  "next_id": 445,
+  "updated": "2026-11-07T12:42:25.629449+00:00",
+  "next_id": 450,
   "events": [
+    {
+      "id": 449,
+      "time": "2026-11-07T12:42:25.629383+00:00",
+      "agent": "Backtester",
+      "type": "trade_review",
+      "text": "POST-LOSS REVIEW / HODL / $-21.81 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.12%; top-10 1.23%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: FAILED failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026\n- linked_wallet_cluster: FAILED failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026\n- bundle_sniper_share: FAILED failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026\n- dev_creator: CLEAN creator wallets 2QRJuvWpQZa9twTahzCX4htcKyg9cdqCvUey3xkaGcV8, 9NkVW544fKy2kkU5ZxJFa1xy6C7LssPKZAW5XWbK5XG5; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 5 sampled pool fills\n- liquidity: CLEAN liquidity $164,650.47 at entry \u2192 $142,856.56 at exit (-13.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $2,171,989.76 at entry \u2192 $2,752,271.10 at exit (26.7%). wash no wash round-trip in 5 sampled pool fills\n- price_mcap_path: CLEAN price 0.003965 \u2192 0.002962 (-25.3%) over 338.8 minutes; entry was 86.1% of the recorded window ATH; market cap at review $2,949,640.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.002962.\nImprove entries: do not add a filter from HODL; these checks failed after retry: fresh_wallet_cluster (failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026); linked_wallet_cluster (failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missin\u2026"
+    },
+    {
+      "id": 448,
+      "time": "2026-11-07T11:52:16.727939+00:00",
+      "agent": "System",
+      "type": "error",
+      "text": "Stale agents before this health refresh: Risk Manager, Bubble Map Analyst, Backtester, Strategist"
+    },
+    {
+      "id": 447,
+      "time": "2026-11-07T11:52:16.650263+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 446,
+      "time": "2026-11-07T11:52:16.605951+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "Light scan found 5 new Solana rows with an X link. Not tweets. iW4XP2 https://x.com/dugepf; FHCntF https://x.com/nermalicious2/status/2117459387090649133; HF6ykZ https://x.com/search?q=W%20chews&src=recent_search_click; 4LHAeH https://x.com/humanevolvd/status/2119025475251290466?a=JGCyXnrHtvO_9-Fw6t8&s=46; 7PcgFR https://twitter.com/blknoiz06/status/2119025883172196639"
+    },
+    {
+      "id": 445,
+      "time": "2026-11-07T11:21:53.256746+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan."
+    },
     {
       "id": 444,
       "time": "2026-11-07T11:16:50.129511+00:00",
@@ -1544,41 +1579,6 @@
       "agent": "Risk Manager",
       "type": "info",
       "text": "Alice: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 269,
-      "time": "2026-11-07T09:05:30.654366+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE GLITCH: base 15.54537 minus [] = 15.54537; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 268,
-      "time": "2026-11-07T09:05:28.415385+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "GLITCH: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 267,
-      "time": "2026-11-07T09:05:24.663637+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE Diamond: base 15.410423 minus [{'reason': 'fallback_market:unknown/nonstandard quote', 'points': 2}] = 13.410423; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 266,
-      "time": "2026-11-07T09:05:24.661058+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Diamond: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 265,
-      "time": "2026-11-07T09:05:19.890052+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE Rocco: base 15.741959 minus [{'reason': 'fallback_market:unknown/nonstandard quote', 'points': 2}] = 13.741959; concentration/LP/extensions/checklist are penalties, not hard vetoes."
     }
   ]
 }

@@ -637,11 +637,11 @@
       "text": "jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0"
     },
     {
-      "time": "2026-11-07T10:33:50.843868+00:00",
-      "time_et": "2026-11-07T05:33:50.843883-05:00",
+      "time": "2026-11-07T12:42:25.620857+00:00",
+      "time_et": "2026-11-07T07:42:25.620872-05:00",
       "kind": "loss_review",
       "source": "Backtester",
-      "text": "AMD post-loss review. Improve entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close."
+      "text": "HODL post-loss review. Improve entries: do not add a filter from HODL; these checks failed after retry: fresh_wallet_cluster (failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\":"
     }
   ],
   "variants": [
@@ -1389,62 +1389,62 @@
   "champion_id": "dip_20_40_stop8_tp15_hold8",
   "loss_reviews": [
     {
-      "trade_id": "paper-278e35c1222548f0b825bd22197c6181",
-      "mint": "oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-      "symbol": "AMD",
-      "pnl_usd": -10.934017,
-      "checked_at": "2026-11-07T10:33:50.839179+00:00",
-      "attempts": 1,
+      "trade_id": "paper-7def2ee2dd1c4fe6939f0537097a4ece",
+      "mint": "DKtofLM6bhb54GQy5YFSWQjQmGiZqAkjzkQJ1LTopump",
+      "symbol": "HODL",
+      "pnl_usd": -21.806773,
+      "checked_at": "2026-11-07T12:42:25.619991+00:00",
+      "attempts": 2,
       "factors": [],
       "checks": [
         {
           "name": "holder_distribution",
           "result": "clean",
-          "detail": "top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%"
+          "detail": "top-1 0.12%; top-10 1.23%; excluding pool and burn; entry snapshot top non-LP holder 0.15%"
         },
         {
           "name": "fresh_wallet_cluster",
-          "result": "clean",
-          "detail": "2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)"
+          "result": "failed",
+          "detail": "failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026"
         },
         {
           "name": "linked_wallet_cluster",
-          "result": "clean",
-          "detail": "no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)"
+          "result": "failed",
+          "detail": "failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026"
         },
         {
           "name": "bundle_sniper_share",
-          "result": "clean",
-          "detail": "no same-slot bundle and no sniper share at the cap in 4 known acquisition slots"
+          "result": "failed",
+          "detail": "failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026"
         },
         {
           "name": "dev_creator",
           "result": "clean",
-          "detail": "creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills"
+          "detail": "creator wallets 2QRJuvWpQZa9twTahzCX4htcKyg9cdqCvUey3xkaGcV8, 9NkVW544fKy2kkU5ZxJFa1xy6C7LssPKZAW5XWbK5XG5; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 5 sampled pool fills"
         },
         {
           "name": "liquidity",
           "result": "clean",
-          "detail": "liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
+          "detail": "liquidity $164,650.47 at entry \u2192 $142,856.56 at exit (-13.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
         },
         {
           "name": "volume_profile",
           "result": "clean",
-          "detail": "volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills"
+          "detail": "volume $2,171,989.76 at entry \u2192 $2,752,271.10 at exit (26.7%). wash no wash round-trip in 5 sampled pool fills"
         },
         {
           "name": "price_mcap_path",
           "result": "clean",
-          "detail": "price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%"
+          "detail": "price 0.003965 \u2192 0.002962 (-25.3%) over 338.8 minutes; entry was 86.1% of the recorded window ATH; market cap at review $2,949,640.00; recorded stop 12%"
         },
         {
           "name": "on_chain_anomalies",
           "result": "clean",
-          "detail": "mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233."
+          "detail": "mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.002962."
         }
       ],
-      "improve_entries": "Improve entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.",
-      "text": "POST-LOSS REVIEW / AMD / $-10.93 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: CLEAN 2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 4 known acquisition slots\n- dev_creator: CLEAN creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills\n- liquidity: CLEAN liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills\n- price_mcap_path: CLEAN price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233.\nImprove entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close."
+      "improve_entries": "Improve entries: do not add a filter from HODL; these checks failed after retry: fresh_wallet_cluster (failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026); linked_wallet_cluster (failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missin\u2026",
+      "text": "POST-LOSS REVIEW / HODL / $-21.81 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.12%; top-10 1.23%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: FAILED failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026\n- linked_wallet_cluster: FAILED failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026\n- bundle_sniper_share: FAILED failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026\n- dev_creator: CLEAN creator wallets 2QRJuvWpQZa9twTahzCX4htcKyg9cdqCvUey3xkaGcV8, 9NkVW544fKy2kkU5ZxJFa1xy6C7LssPKZAW5XWbK5XG5; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 5 sampled pool fills\n- liquidity: CLEAN liquidity $164,650.47 at entry \u2192 $142,856.56 at exit (-13.2%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $2,171,989.76 at entry \u2192 $2,752,271.10 at exit (26.7%). wash no wash round-trip in 5 sampled pool fills\n- price_mcap_path: CLEAN price 0.003965 \u2192 0.002962 (-25.3%) over 338.8 minutes; entry was 86.1% of the recorded window ATH; market cap at review $2,949,640.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.002962.\nImprove entries: do not add a filter from HODL; these checks failed after retry: fresh_wallet_cluster (failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 1'}; https://api.mainnet-beta.solana.com: ge\u2026); linked_wallet_cluster (failed after 2 attempts: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missin\u2026"
     }
   ]
 }
