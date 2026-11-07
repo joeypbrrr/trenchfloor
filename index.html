@@ -1,100 +1,811 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Trenchfloor · Meme Research</title>
-  <meta name="description" content="Six paper-trading research agents on a Solana meme-coin floor. No wallet. No real trades.">
-  <meta name="theme-color" content="#070605">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Trenchfloor">
-  <base href="./">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <link rel="icon" href="./icons/icon-192.png">
-  <link rel="stylesheet" href="./style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trenchfloor · Design Preview</title>
+<meta name="description" content="Design preview of the Trenchfloor research floor. Mock data only. Six agents, one desk. Simulation and research only.">
+<meta name="theme-color" content="#0b1114">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Trenchfloor">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2371e6bd'/%3E%3Ctext x='3' y='23' font-size='15' font-family='Arial' font-weight='700' fill='%23092319'%3ETF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
+<style>
+:root{--bg:#0b1114;--surface:#111a1e;--surface2:#172226;--line:#263238;--muted:#8b9a9e;--text:#eef5f3;--teal:#71e6bd;--orange:#e4a578;--red:#ff8d7d;--mono:'IBM Plex Mono',ui-monospace,monospace;--display:'Manrope',sans-serif;--sans:'DM Sans',sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 var(--sans)}
+body{background-image:radial-gradient(ellipse at 50% -10%,#1a303233,transparent 60%);min-height:100%}
+button,a{font:inherit;color:inherit}
+button{cursor:pointer}
+a{text-decoration:none}
+.preview-banner{position:sticky;top:0;z-index:8;margin:0;padding:calc(11px + env(safe-area-inset-top)) 16px 11px;background:#29231d;color:#e4a578;border-bottom:1px solid #493d2f;font:500 12px/1.45 var(--mono);letter-spacing:.2px;text-align:center}
+.top{height:74px;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1200px;margin:auto;padding:0 28px;border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:12px;align-items:center;font:700 16px var(--display);letter-spacing:2.4px;min-width:0}
+.brand small{display:block;color:var(--muted);font:8px var(--mono);letter-spacing:1.8px;margin-top:4px}
+.brand-mark{width:36px;height:36px;flex:0 0 auto;background:var(--teal);clip-path:polygon(0 0,100% 0,100% 65%,68% 100%,0 100%);color:#092319;font:800 16px var(--display);display:flex;align-items:center;justify-content:center;letter-spacing:-.5px}
+.brand-mark span{font-size:13px;transform:translate(1px,3px)}
+.header-status{font:10px var(--mono);letter-spacing:.8px;display:flex;align-items:center;gap:8px;color:var(--teal);flex:0 0 auto}
+.live-dot{width:6px;height:6px;display:inline-block;border-radius:50%;background:var(--teal);box-shadow:0 0 10px #71e6bd88;flex-shrink:0}
+.divider{height:18px;width:1px;background:var(--line)}
+.research-badge{border:1px solid #35504a;padding:7px 10px;border-radius:3px;color:#b3c5c1;font-size:9px}
+main{max-width:1200px;margin:auto;padding:0 28px 28px}
+.intro{padding:36px 2px 22px;display:flex;justify-content:space-between;align-items:end;gap:24px}
+.eyebrow{font:10px var(--mono);color:var(--teal);letter-spacing:1.6px}
+.eyebrow span{color:#657578;margin-left:8px}
+h1{font:600 42px/1.12 var(--display);letter-spacing:-1.5px;margin:12px 0 0}
+h1 span{color:#8c9d9f}
+.intro p{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 4px;max-width:460px}
+.intro strong{color:#c3d0cf;font-weight:500}
+.best-link{display:flex;align-items:center;gap:14px;margin:0 0 16px;padding:14px 16px;border-radius:8px;background:linear-gradient(90deg,#1d2b22,#2a2414);border:1px solid #e6cf7799;color:#e6edf3;box-shadow:0 0 24px #e6cf7722}
+.best-link span{color:#e6cf77;font-weight:800;letter-spacing:.06em;font-size:12px;white-space:nowrap}
+.best-link b{flex:1;font-weight:600;font-size:14px}
+.best-link i{font-style:normal;font-size:22px;color:#74dfb0}
+.floor-card{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#0a1012}
+.scene-head,.scene-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 16px;font:10px var(--mono);letter-spacing:1px}
+.scene-head{height:48px;border-bottom:1px solid var(--line);color:var(--text)}
+.section-num{font:10px var(--mono);color:#597175;margin-right:12px}
+.scene-tools{display:flex;gap:12px;align-items:center;color:var(--teal);font-size:9px}
+#scene{height:560px;position:relative;background:#000;touch-action:pan-y}
+#scene canvas{display:block;width:100%;height:100%}
+.scene-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 118%,rgba(255,122,24,.22),transparent 42%),radial-gradient(ellipse at 50% 40%,transparent 46%,rgba(0,0,0,.55) 100%)}
+.scene-loading{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--muted);background:#050607;text-align:center;padding:20px}
+.loader{width:18px;height:18px;border:1px solid #35444a;border-top-color:var(--orange);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.roster{list-style:none;display:flex;gap:8px;margin:0;padding:10px 12px;overflow-x:auto;border-top:1px solid var(--line);background:#0d1518;-webkit-overflow-scrolling:touch}
+.roster li{flex:0 0 auto;display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 10px;border:1px solid var(--line);border-radius:99px;background:#10181c;font:600 12px var(--display);white-space:nowrap}
+.roster i{width:8px;height:8px;border-radius:50%;display:block}
+.scene-foot{height:36px;border-top:1px solid var(--line);color:#7c9194;font-size:8px}
+.scene-foot b{color:#a9babb;font-weight:500}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin:18px 0}
+.metrics article{background:var(--surface);padding:18px 18px 16px}
+.metrics article>span{font:9px var(--mono);color:var(--muted);letter-spacing:1px;display:block}
+.metrics strong{display:block;font:500 28px var(--display);margin:8px 0 4px;letter-spacing:-.5px}
+.metrics small{font-size:11px;color:#6e8184}
+.metrics .teal-metric{background:#102420}
+.teal-metric strong{color:var(--teal)}
+.panel{border:1px solid var(--line);border-radius:5px;background:var(--surface);margin:0 0 18px;overflow:hidden}
+.panel-heading{min-height:52px;padding:0 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+.panel-heading h2{display:inline;margin:0;font:500 11px var(--mono);letter-spacing:1.1px}
+.small-muted{font:8px var(--mono);color:var(--muted);letter-spacing:.4px;text-align:right}
+.pill{font:8px var(--mono);letter-spacing:.4px;color:#c5ab90;background:#29241e;border:1px solid #493d2f;border-radius:3px;padding:5px 7px;white-space:nowrap}
+.shift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px}
+.shift-card{border:1px solid var(--line);border-radius:5px;background:#0e171a;padding:12px 12px 13px;min-height:44px}
+.shift-top{display:flex;align-items:center;gap:8px}
+.shift-ico{width:28px;height:28px;border-radius:5px;display:flex;align-items:center;justify-content:center;font:10px var(--mono);border:1px solid;flex:0 0 auto}
+.shift-card strong{font:600 13px var(--display);display:block}
+.shift-card p{margin:8px 0 0;color:var(--muted);font-size:12px;line-height:1.45}
+.cal-wrap{padding:14px 14px 8px}
+.dow,.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.dow{margin-bottom:6px}
+.dow span{text-align:center;font:8px var(--mono);letter-spacing:.6px;color:#72878a;padding:4px 0}
+.day{appearance:none;border:1px solid #203038;background:#0e171a;color:var(--text);border-radius:4px;min-height:52px;padding:6px 2px 5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.day .n{font:600 13px var(--display);line-height:1}
+.day .p{font:500 9px/1 var(--mono);letter-spacing:-.2px;white-space:nowrap}
+.day.pos{background:#12332c;border-color:#1e5a4a}
+.day.pos .p{color:var(--teal)}
+.day.neg{background:#3a2422;border-color:#6a3a34}
+.day.neg .p{color:var(--red)}
+.day.hot{box-shadow:inset 0 0 0 1px var(--teal)}
+.day.today .n::after{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--teal);margin:3px auto 0}
+.day:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+.day:active{transform:scale(.98)}
+.day.pad{background:transparent;border-color:transparent;min-height:0;padding:0}
+.legend{display:flex;flex-wrap:wrap;gap:12px 16px;padding:4px 4px 12px;color:#7c9194;font:10px var(--mono)}
+.legend b{font-weight:500}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.sw.pos{background:#12332c;box-shadow:inset 0 0 0 1px #1e5a4a}
+.sw.neg{background:#3a2422;box-shadow:inset 0 0 0 1px #6a3a34}
+.sw.today{background:transparent;box-shadow:inset 0 0 0 1px var(--teal)}
+.method-note{border-top:1px solid var(--line);padding:12px 16px;font-size:11px;line-height:1.5;color:var(--muted);background:#0e171a}
+.method-note .mono{font-family:var(--mono);color:#9aada9}
+.trade-list{display:grid;grid-template-columns:1fr}
+.trade{padding:14px 16px 16px}
+.trade-list .trade{border-bottom:1px solid #202c30}
+.trade-list .trade:last-child{border-bottom:0}
+.trade-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.trade-id{display:flex;align-items:center;gap:8px;min-width:0}
+.trade-id strong{font:600 16px var(--display);letter-spacing:-.2px}
+.sym{font:10px var(--mono);letter-spacing:.5px;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:3px 6px}
+.pnl{font:600 18px var(--display);letter-spacing:-.3px;white-space:nowrap}
+.positive{color:var(--teal)!important}
+.negative{color:var(--red)!important}
+.trade-when{margin:6px 0 4px;color:#b7c7c4;font-size:13px}
+.mint{margin:0 0 10px;font:10px/1.45 var(--mono);color:#6d8084;word-break:break-all}
+.trade-links{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trade-links a{min-height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:4px;background:#0e171a;color:var(--teal);font:11px var(--mono);letter-spacing:.4px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.trade-links a:active{background:#14302a}
+.trade-links a:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+.sheet[hidden]{display:none!important}
+.sheet{position:fixed;inset:0;z-index:30}
+.sheet-backdrop{position:absolute;inset:0;width:100%;height:100%;border:0;background:rgba(0,0,0,.66);padding:0}
+.sheet-panel{position:absolute;left:0;right:0;bottom:0;max-height:min(82vh,680px);overflow:auto;background:var(--surface);border-top:1px solid var(--line);border-radius:16px 16px 0 0;padding:8px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -20px 60px #000a}
+.sheet-handle{width:40px;height:4px;border-radius:4px;background:#355057;margin:6px auto 10px}
+.sheet-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+.sheet-head h3{margin:4px 0 0;font:600 22px var(--display);letter-spacing:-.4px}
+.sheet-sub{margin:4px 0 0;font:12px var(--mono)}
+.sheet-close{min-width:44px;min-height:44px;padding:0 14px;border-radius:4px;border:1px solid var(--line);background:#0e171a;color:var(--text);font:11px var(--mono);letter-spacing:.5px;touch-action:manipulation}
+.sheet-panel .trade{padding:14px 0}
+.sheet-panel .trade+.trade{border-top:1px solid var(--line)}
+.empty-day{padding:12px 0 20px}
+footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;padding:22px 0 32px;color:#63767a;font-size:11px;line-height:1.6}
+footer strong{color:#a0b1b1;font:10px var(--mono);letter-spacing:1px}
+footer span:last-child{text-align:right;color:#e4a578}
+@media(min-width:900px){
+  .trade-list{grid-template-columns:1fr 1fr}
+  .trade-list .trade:nth-child(odd){border-right:1px solid #202c30}
+}
+@media(min-width:800px){
+  .sheet-panel{left:50%;right:auto;bottom:auto;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100% - 40px));max-height:min(80vh,720px);border-radius:10px;border:1px solid var(--line);padding:18px 18px 20px}
+  .sheet-handle{display:none}
+}
+@media(max-width:750px){
+  .top{height:64px;padding:0 14px}
+  .brand{font-size:13px;letter-spacing:1px;gap:8px}
+  .brand small{font-size:6.5px;letter-spacing:1px}
+  .brand-mark{width:30px;height:30px;font-size:14px}
+  .header-status{font-size:8px}
+  .research-badge,.divider{display:none}
+  main{padding:0 14px 20px}
+  .intro{display:block;padding:20px 0 14px}
+  h1{font-size:32px;letter-spacing:-1.1px}
+  .intro p{font-size:13px;margin-top:12px}
+  .best-link{flex-wrap:wrap;gap:6px;padding:12px}
+  .best-link span{width:100%}
+  .best-link b{font-size:13px}
+  #scene{height:460px}
+  .scene-head{height:42px;padding:0 12px;font-size:8px}
+  .scene-foot{padding:0 10px;font-size:7px}
+  .scene-foot .desk-id{display:none}
+  .metrics{grid-template-columns:1fr 1fr}
+  .metrics article{padding:14px}
+  .metrics strong{font-size:24px}
+  .shift-grid{grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+  .shift-card p{font-size:11px}
+  .panel-heading{min-height:48px;padding:0 12px}
+  .panel-heading h2{font-size:10px}
+  .cal-wrap{padding:10px 10px 4px}
+  .dow,.cal-grid{gap:4px}
+  .day{min-height:50px;padding:5px 1px 4px}
+  .day .n{font-size:12px}
+  .day .p{font-size:8px}
+  .trade{padding:14px 12px 14px}
+  footer{display:block;padding:18px 0 28px}
+  footer span{display:block}
+  footer span:last-child{text-align:left;margin-top:10px}
+}
+@media(max-width:360px){
+  h1{font-size:28px}
+  .shift-grid{grid-template-columns:1fr}
+  #scene{height:420px}
+}
+@media(prefers-reduced-motion:reduce){
+  .loader,.live-dot{animation:none}
+  .day:active{transform:none}
+}
+</style>
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="./" aria-label="Trenchfloor home"><span class="brand-mark">TF</span><span>TRENCHFLOOR<small>MEME RESEARCH FLOOR</small></span></a>
-  <div class="header-status"><span class="live-dot"></span><span id="systemState">STARTING</span><span class="divider"></span><span class="research-badge">PAPER ONLY</span></div>
-</header>
-<main>
-  <section class="intro">
-    <div>
-      <div class="eyebrow">SIX AGENTS / ONE DESK</div>
-      <h1>Buy the dip.<br><span>Never top-tick.</span></h1>
+<div id="app">
+  <p class="preview-banner">DESIGN PREVIEW — mock data, no real trades, simulation and research only</p>
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Trenchfloor design preview">
+      <span class="brand-mark">T<span>F</span></span>
+      <span>TRENCHFLOOR<small>MEME RESEARCH FLOOR</small></span>
+    </a>
+    <div class="header-status">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span>PREVIEW</span>
+      <span class="divider" aria-hidden="true"></span>
+      <span class="research-badge">MOCK DATA</span>
     </div>
-    <p>A research floor for Solana meme coins. The agents read public data, reject rugs, and log <strong>paper</strong> trades. No wallet. No keys. No orders.</p>
-  </section>
-  <a class="token" href="./BEST_STRATEGY.md" style="text-decoration:none;margin-bottom:16px;display:block;border:1px solid #5a3518;border-radius:8px;background:#1a100b">
-    <div class="token-top"><span class="tag">BEST STRATEGY</span><b id="bestLinkText">Standing dip rule</b></div>
-    <small>Replaced only when a variant wins out of sample.</small>
-  </a>
-  <section class="floor-card" aria-label="Research floor">
-    <div class="scene-head"><div><span class="section-num">01</span><span>LIVE RESEARCH FLOOR</span></div><div><span class="live-dot"></span> <span id="sceneStatus">INITIALIZING</span></div></div>
-    <div id="scene"><div class="scene-loading"><p>Bringing the desk online…</p></div></div>
-    <div class="scene-foot"><span>FIXED CAMERA</span><span>TF–06 · PAPER / SIMULATED</span></div>
-  </section>
-  <section class="pulse">
-    <div><span class="eyebrow">RESEARCH PULSE</span><span id="lastCycle">Awaiting the first cycle</span></div>
-    <div class="cycle-readout"><span class="ring"><b id="countdown">30:00</b></span><span>NEXT CYCLE<small style="display:block;color:#8d7768">EVERY 30 MINUTES</small></span></div>
-  </section>
-  <section class="metrics" aria-label="Research totals">
-    <article><span>MINTS SEEN</span><strong id="discovered">—</strong><small>free public lists</small></article>
-    <article><span>ELIGIBLE</span><strong id="eligible">—</strong><small>passed safety and lessons</small></article>
-    <article><span>PAPER P&amp;L</span><strong id="pnl">—</strong><small>simulated dollars</small></article>
-    <article class="hot"><span>FLOOR HEALTH</span><strong id="healthMetric">—</strong><small>heartbeats and Pages</small></article>
-  </section>
-  <div class="content-grid">
-    <div>
-      <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">02</span><h2>BEST STRATEGY</h2></div><span class="pill">OUT OF SAMPLE ONLY</span></div>
-        <div id="strategyContent" class="loading-content">Waiting for a real cycle…</div>
-      </section>
-      <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">03</span><h2>RANKED WATCHLIST</h2></div><span class="small-muted">DEXSCREENER LINKS · NOT BUYS</span></div>
-        <div id="watchlist"></div>
-        <div id="rejected"></div>
-      </section>
-      <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">04</span><h2>PAPER LEDGER</h2></div><span class="small-muted" id="tradeCount">PAPER / SIMULATED</span></div>
-        <div id="ledger"></div>
-      </section>
-      <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">05</span><h2>P&amp;L CALENDAR</h2></div><span class="small-muted">AMERICA/NEW_YORK</span></div>
-        <div class="cal-head"><button type="button" id="prevMonth" aria-label="Previous month">←</button><div class="month-label" id="monthLabel">Month</div><button type="button" id="nextMonth" aria-label="Next month">→</button></div>
-        <div class="dow"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
-        <div class="cal-grid" id="calendar"></div>
-        <div id="dayDetail" class="day-detail hidden"></div>
-      </section>
-      <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">06</span><h2>LESSONS</h2></div><a href="./LESSONS.md">LESSONS.md</a></div>
-        <div id="lessons"></div>
-      </section>
+  </header>
+  <main id="top">
+    <section class="intro">
+      <div>
+        <div class="eyebrow">THE COLLECTIVE <span>/ 06 SEATS</span></div>
+        <h1>Better filters.<br><span>Sharper entries.</span></h1>
+      </div>
+      <p>Six agents. One desk. One market: <strong>Solana meme coins.</strong><br>Rugs, clusters, and scouts, then a paper ledger. <strong>Buys dips. Never top-ticks.</strong></p>
+    </section>
+    <a class="best-link" href="#calendar">
+      <span>★ NOVEMBER PAPER LEDGER</span>
+      <b>Mock dollars only. Tap a day. No wallet, no orders, no live fills.</b>
+      <i aria-hidden="true">→</i>
+    </a>
+    <section class="floor-card" aria-label="Fixed 3D view of the research desk">
+      <div class="scene-head">
+        <div><span class="section-num">01</span><span>LIVE RESEARCH FLOOR</span></div>
+        <div class="scene-tools"><span class="live-dot" aria-hidden="true"></span><span id="sceneStatus">BRINGING DESK ONLINE</span></div>
+      </div>
+      <div id="scene">
+        <div class="scene-vignette" aria-hidden="true"></div>
+        <div class="scene-loading"><span class="loader" aria-hidden="true"></span><p>Bringing the research floor online…</p></div>
+      </div>
+      <ul class="roster" id="roster" aria-label="Agents at the desk, left to right"></ul>
+      <div class="scene-foot">
+        <span>FIXED CAMERA <span>·</span> NO DRAG <span>·</span> NO ZOOM</span>
+        <span class="desk-id"><b>TF–06</b> <span>SIMULATED ENVIRONMENT</span></span>
+      </div>
+    </section>
+    <section class="metrics" aria-label="Mock November statistics">
+      <article><span>NET PAPER P&amp;L</span><strong id="netPnl">—</strong><small>NOV 2026 · ET</small></article>
+      <article><span>MOCK FILLS</span><strong id="fillCount">—</strong><small>OBVIOUSLY FAKE TOKENS</small></article>
+      <article><span>WIN RATE</span><strong id="winRate">—</strong><small>PAPER LEDGER ONLY</small></article>
+      <article class="teal-metric"><span>FLOOR HEALTH</span><strong>100%</strong><small>PREVIEW HEARTBEAT</small></article>
+    </section>
+    <section class="panel" aria-labelledby="shiftHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">02</span><h2 id="shiftHeading">THE SHIFT</h2></div>
+        <span class="pill" id="shiftCount">6 / 6 SEATED</span>
+      </div>
+      <div class="shift-grid" id="shift"></div>
+    </section>
+    <section class="panel" id="calendar" aria-labelledby="calHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">03</span><h2 id="calHeading">PAPER P&amp;L CALENDAR</h2></div>
+        <span class="small-muted" id="calMeta">NOVEMBER 2026 · ET · MOCK</span>
+      </div>
+      <div class="cal-wrap">
+        <div class="dow" aria-hidden="true"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
+        <div class="cal-grid" id="cal" role="grid" aria-label="November 2026 mock daily paper P and L"></div>
+        <div class="legend">
+          <span><i class="sw pos"></i><b class="positive">Profit day</b></span>
+          <span><i class="sw neg"></i><b class="negative">Loss day</b></span>
+          <span><i class="sw today"></i>Today · Nov 7</span>
+        </div>
+      </div>
+      <p class="method-note">Tap a day for that session’s mock trades: token, symbol, entry and exit in ET, dollar P&amp;L, and placeholder DexScreener / GMGN links. Dollars are paper, not bankable.</p>
+    </section>
+    <section class="panel" id="feedSection" aria-labelledby="feedHeading">
+      <div class="panel-heading">
+        <div><span class="section-num">04</span><h2 id="feedHeading">FLOOR TRANSMISSIONS</h2></div>
+        <span class="small-muted">10 MOCK FILLS · NEWEST FIRST</span>
+      </div>
+      <div class="trade-list" id="feed"></div>
+      <p class="method-note">Each link is a placeholder: <span class="mono">dexscreener.com/solana/&lt;mint&gt;</span> and <span class="mono">gmgn.ai/sol/token/&lt;mint&gt;</span>. Mints start with FAKE. Nothing here is a position.</p>
+    </section>
+    <footer>
+      <span><strong>TRENCHFLOOR</strong> · A design preview of the meme-coin research floor. One desk, six seats, paper ledger only.</span>
+      <span>DESIGN PREVIEW — mock data, no real trades, simulation and research only</span>
+    </footer>
+  </main>
+</div>
+<div class="sheet" id="sheet" hidden>
+  <button class="sheet-backdrop" id="sheetBackdrop" type="button" aria-label="Close day detail"></button>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="sheet-head">
+      <div>
+        <div class="eyebrow">PAPER SESSION <span>/ MOCK</span></div>
+        <h3 id="sheetTitle">Day</h3>
+        <p class="sheet-sub" id="sheetSub"></p>
+      </div>
+      <button class="sheet-close" id="sheetClose" type="button">Close</button>
     </div>
-    <aside>
-      <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">07</span><h2>THE DESK</h2></div><span id="agentCount" class="pill">0 / 6</span></div>
-        <div id="agents"></div>
-      </section>
-      <section class="panel">
-        <div class="panel-heading"><div><span class="section-num">08</span><h2>ACTIVITY</h2></div><span class="small-muted" id="feedUpdated">LIVE</span></div>
-        <div id="feed" class="feed"><p class="pad muted">Waiting for the feed…</p></div>
-      </section>
-      <section class="ops-note"><span>◎</span><div><strong>SOURCES</strong><p id="opsText">Honest errors only. A failed source stays failed.</p></div></section>
-    </aside>
+    <div id="sheetBody"></div>
   </div>
-  <footer>
-    <span><strong>TRENCHFLOOR</strong><br>Paper trading / research only. No wallet. No real trades. Not financial advice.</span>
-    <span><a href="./BEST_STRATEGY.md">BEST_STRATEGY.md</a> · <a href="./LESSONS.md">LESSONS.md</a><br>GitHub Pages can take about a minute to show a new feed push.</span>
-  </footer>
-</main>
-<script src="./config.js"></script>
-<script src="./three.min.js"></script>
-<script src="./scene.js"></script>
-<script src="./app.js"></script>
+</div>
+<script>
+const AGENTS = [
+  { initials:'RM', role:'Risk Manager', short:'RISK MGR', roleLine:'RUGS · HOLDERS', readout:['TOP HOLDER 2.1%','TOKENOMICS OK'], task:'Rug-pull research, holder concentration, and tokenomics.', color:'#ed8d80' },
+  { initials:'BM', role:'Bubble Map Analyst', short:'BUBBLE', roleLine:'CLUSTERS', readout:['MAX HOLDER 2.8%','FAILS ABOVE 3.5%'], task:'Maps holder clusters. Fails any holder above 3.5%.', color:'#a798f3' },
+  { initials:'XS', role:'X/Twitter Scout', short:'X SCOUT', roleLine:'TWITTER / X', readout:['64 MENTIONS','NO CABAL FLAG'], task:'Scans X for coordinated posts and fresh launch chatter.', color:'#e6cf77' },
+  { initials:'DS', role:'Data Scout', short:'DATA', roleLine:'DEX · BIRDEYE', readout:['LIQ $86k','5m VOL $12k'], task:'DexScreener and Birdeye filters: liquidity, volume, pair age.', color:'#75cfee' },
+  { initials:'BT', role:'Backtester', short:'LEDGER', roleLine:'PAPER · ET', readout:['10 FILLS','LAST 19:09 ET'], task:'Paper ledger with entry and exit timestamps in ET.', color:'#e3ab70' },
+  { initials:'ST', role:'Strategist', short:'STRAT', roleLine:'DIPS ONLY', readout:['NOT A TOP-TICK','BEST_STRATEGY'], task:'Buys dips, never top-ticks. Rules live in BEST_STRATEGY.md.', color:'#74dfb0' }
+];
+const TRADES = [
+  { token:'Moonbork', symbol:'MBORK', mint:'FAKEmoonbork111111111111111111111111111', date:'2026-11-03', entry:'09:14', exit:'09:41', pnl:186 },
+  { token:'GigaWagmi', symbol:'GWAG', mint:'FAKEgigawagmi22222222222222222222222222', date:'2026-11-03', entry:'11:02', exit:'11:28', pnl:-42 },
+  { token:'SolSnort', symbol:'SNORT', mint:'FAKEsolsnort3333333333333333333333333333', date:'2026-11-05', entry:'14:06', exit:'15:12', pnl:310 },
+  { token:'PaperPepe', symbol:'PPEPE', mint:'FAKEpaperpepe44444444444444444444444444', date:'2026-11-06', entry:'08:22', exit:'08:55', pnl:74 },
+  { token:'RugGoblin', symbol:'RGOB', mint:'FAKEruggoblin55555555555555555555555555', date:'2026-11-07', entry:'10:18', exit:'10:21', pnl:-128 },
+  { token:'DipDonkey', symbol:'DIPD', mint:'FAKEdipdonkey66666666666666666666666666', date:'2026-11-10', entry:'13:40', exit:'16:05', pnl:540 },
+  { token:'NeonNoodle', symbol:'NOOD', mint:'FAKEneonnoodle7777777777777777777777777', date:'2026-11-12', entry:'09:05', exit:'09:48', pnl:-63 },
+  { token:'ChartChonk', symbol:'CHONK', mint:'FAKEchartchonk8888888888888888888888888', date:'2026-11-14', entry:'15:33', exit:'17:02', pnl:221 },
+  { token:'FakeBonk', symbol:'FBONK', mint:'FAKEfakebonk999999999999999999999999999', date:'2026-11-18', entry:'11:11', exit:'12:44', pnl:95 },
+  { token:'TopTickTom', symbol:'TTICK', mint:'FAKEtopticktom0000000000000000000000000', date:'2026-11-18', entry:'19:02', exit:'19:09', pnl:-210 }
+];
+window.FLOOR_AGENTS = AGENTS;
+
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+function money(n){return (n<0?'−':'+')+'$'+Math.abs(n).toLocaleString('en-US')}
+function parts(iso){const [y,m,d]=iso.split('-').map(Number);return {y,m,d,dow:new Date(Date.UTC(y,m-1,d)).getUTCDay()}}
+function longDate(iso){const p=parts(iso);return WEEKDAYS[p.dow]+', '+MONTHS[p.m-1]+' '+p.d+', '+p.y}
+function shortWhen(t){const p=parts(t.date);return MONTHS[p.m-1]+' '+p.d+', '+p.y+' · '+t.entry+' ET → '+t.exit+' ET'}
+
+function tradeCard(t){
+  const art=document.createElement('article');
+  art.className='trade';
+  const dex='https://dexscreener.com/solana/'+t.mint;
+  const gmgn='https://gmgn.ai/sol/token/'+t.mint;
+  art.innerHTML='<div class="trade-top"><div class="trade-id"><strong></strong><span class="sym"></span></div><b class="pnl"></b></div><p class="trade-when"></p><p class="mint"></p><div class="trade-links"><a target="_blank" rel="noopener noreferrer">DexScreener</a><a target="_blank" rel="noopener noreferrer">GMGN</a></div>';
+  art.querySelector('strong').textContent=t.token;
+  art.querySelector('.sym').textContent=t.symbol;
+  const pnl=art.querySelector('.pnl');
+  pnl.textContent=money(t.pnl);
+  pnl.classList.add(t.pnl<0?'negative':'positive');
+  art.querySelector('.trade-when').textContent=shortWhen(t);
+  const mint=art.querySelector('.mint');
+  mint.textContent=t.mint;
+  const links=art.querySelectorAll('a');
+  links[0].href=dex;
+  links[1].href=gmgn;
+  links[0].setAttribute('aria-label','DexScreener placeholder for '+t.token);
+  links[1].setAttribute('aria-label','GMGN placeholder for '+t.token);
+  return art;
+}
+
+function renderBoard(){
+  const net=TRADES.reduce((s,t)=>s+t.pnl,0);
+  const wins=TRADES.filter(t=>t.pnl>0).length;
+  const netEl=document.getElementById('netPnl');
+  netEl.textContent=money(net);
+  netEl.classList.add(net<0?'negative':'positive');
+  document.getElementById('fillCount').textContent=String(TRADES.length);
+  document.getElementById('winRate').textContent=Math.round(wins/TRADES.length*100)+'%';
+
+  const roster=document.getElementById('roster');
+  const shift=document.getElementById('shift');
+  AGENTS.forEach(a=>{
+    const li=document.createElement('li');
+    const sw=document.createElement('i');
+    sw.style.background=a.color;
+    const name=document.createElement('span');
+    name.textContent=a.role;
+    li.append(sw,name);
+    roster.appendChild(li);
+
+    const card=document.createElement('article');
+    card.className='shift-card';
+    card.innerHTML='<div class="shift-top"><span class="shift-ico"></span><strong></strong></div><p></p>';
+    const ico=card.querySelector('.shift-ico');
+    ico.textContent=a.initials;
+    ico.style.color=a.color;
+    ico.style.borderColor=a.color+'66';
+    ico.style.background=a.color+'18';
+    card.querySelector('strong').textContent=a.role;
+    card.querySelector('p').textContent=a.task;
+    shift.appendChild(card);
+  });
+
+  const byDay={};
+  TRADES.forEach(t=>{(byDay[t.date]||=[]).push(t)});
+  const cal=document.getElementById('cal');
+  const first=parts('2026-11-01').dow;
+  for(let i=0;i<first;i++){
+    const pad=document.createElement('div');
+    pad.className='day pad';
+    pad.setAttribute('aria-hidden','true');
+    cal.appendChild(pad);
+  }
+  for(let d=1;d<=30;d++){
+    const iso='2026-11-'+String(d).padStart(2,'0');
+    const list=byDay[iso]||[];
+    const total=list.reduce((s,t)=>s+t.pnl,0);
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='day'+(list.length?(total<0?' neg':' pos'):'')+(iso==='2026-11-07'?' today':'');
+    btn.dataset.date=iso;
+    btn.setAttribute('role','gridcell');
+    const label=list.length?longDate(iso)+', paper P and L '+money(total)+', '+list.length+' trade'+(list.length>1?'s':''):longDate(iso)+', no mock trades';
+    btn.setAttribute('aria-label',label);
+    const n=document.createElement('span');
+    n.className='n';
+    n.textContent=String(d);
+    btn.appendChild(n);
+    if(list.length){
+      const p=document.createElement('span');
+      p.className='p';
+      p.textContent=money(total);
+      btn.appendChild(p);
+    }
+    cal.appendChild(btn);
+  }
+  const used=first+30;
+  const tail=(7-used%7)%7;
+  for(let i=0;i<tail;i++){
+    const pad=document.createElement('div');
+    pad.className='day pad';
+    pad.setAttribute('aria-hidden','true');
+    cal.appendChild(pad);
+  }
+
+  const feed=document.getElementById('feed');
+  [...TRADES].sort((a,b)=>(b.date+b.entry).localeCompare(a.date+a.entry)).forEach(t=>feed.appendChild(tradeCard(t)));
+}
+
+const sheet=document.getElementById('sheet');
+let lastFocus=null;
+function openDay(iso){
+  const trades=TRADES.filter(t=>t.date===iso).sort((a,b)=>a.entry.localeCompare(b.entry));
+  const total=trades.reduce((s,t)=>s+t.pnl,0);
+  document.getElementById('sheetTitle').textContent=longDate(iso);
+  const sub=document.getElementById('sheetSub');
+  sub.className='sheet-sub';
+  if(!trades.length){
+    sub.textContent='No mock trades';
+  }else{
+    sub.textContent=trades.length+' paper trade'+(trades.length>1?'s':'')+' · '+money(total);
+    sub.classList.add(total<0?'negative':'positive');
+  }
+  const body=document.getElementById('sheetBody');
+  body.replaceChildren();
+  if(!trades.length){
+    const p=document.createElement('p');
+    p.className='muted empty-day';
+    p.textContent='No mock trades on this day. The desk was quiet.';
+    body.appendChild(p);
+  }else trades.forEach(t=>body.appendChild(tradeCard(t)));
+  lastFocus=document.activeElement;
+  sheet.hidden=false;
+  document.getElementById('app').setAttribute('inert','');
+  document.body.style.overflow='hidden';
+  document.getElementById('sheetClose').focus();
+}
+function closeSheet(){
+  if(sheet.hidden)return;
+  sheet.hidden=true;
+  document.getElementById('app').removeAttribute('inert');
+  document.body.style.overflow='';
+  if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus();
+}
+document.getElementById('cal').addEventListener('click',e=>{
+  const btn=e.target.closest('button[data-date]');
+  if(btn)openDay(btn.dataset.date);
+});
+document.getElementById('sheetClose').addEventListener('click',closeSheet);
+document.getElementById('sheetBackdrop').addEventListener('click',closeSheet);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+renderBoard();
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+const host = document.getElementById('scene');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FRAMING = {
+  wide: { fov: 30, pos: [0.15, 3.7, -12.4], look: [0, 1.12, 0.28] },
+  narrow: { fov: 52, pos: [-8.6, 3.15, -5.4], look: [1.4, 1.05, 0.25] }
+};
+const DESK_TOP = 0.78;
+const DESK_Z = 0.22;
+const SPACING = 2.5;
+
+function showSceneError(text){
+  const el = document.querySelector('.scene-loading');
+  if(!el) return;
+  const loader = el.querySelector('.loader');
+  if(loader) loader.remove();
+  const p = el.querySelector('p');
+  if(p) p.textContent = text;
+}
+
+function screenTexture(agent, phase){
+  const c = document.createElement('canvas');
+  c.width = 512; c.height = 320;
+  const g = c.getContext('2d');
+  g.fillStyle = '#07090b';
+  g.fillRect(0, 0, 512, 320);
+  g.fillStyle = agent.color;
+  g.fillRect(0, 0, 512, 8);
+  g.font = '700 62px "IBM Plex Mono", ui-monospace, monospace';
+  g.textAlign = 'center';
+  g.textBaseline = 'middle';
+  g.fillStyle = '#f4faf8';
+  g.fillText(agent.short, 256, 78);
+  g.font = '500 26px "IBM Plex Mono", ui-monospace, monospace';
+  g.fillStyle = agent.color;
+  g.fillText(agent.roleLine, 256, 128);
+  g.font = '500 24px "IBM Plex Mono", ui-monospace, monospace';
+  g.fillStyle = '#d5e4df';
+  g.fillText(agent.readout[0], 256, 186);
+  g.fillText(agent.readout[1], 256, 222);
+  g.strokeStyle = agent.color;
+  g.lineWidth = 3;
+  g.beginPath();
+  for(let i = 0; i <= 18; i++){
+    const x = 36 + i * 24;
+    const y = 286 - Math.sin(i * 0.62 + phase) * 14 - (i % 5) * 1.4;
+    if(i) g.lineTo(x, y); else g.moveTo(x, y);
+  }
+  g.stroke();
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 4;
+  return tex;
+}
+
+function signTexture(){
+  const c = document.createElement('canvas');
+  c.width = 1024; c.height = 220;
+  const g = c.getContext('2d');
+  g.clearRect(0, 0, 1024, 220);
+  g.textAlign = 'center';
+  g.textBaseline = 'middle';
+  g.font = '800 108px Manrope, sans-serif';
+  g.shadowColor = '#ff7a18';
+  g.shadowBlur = 28;
+  g.fillStyle = '#ffb56a';
+  g.fillText('TRENCHFLOOR', 512, 100);
+  g.shadowBlur = 0;
+  g.font = '500 28px "IBM Plex Mono", ui-monospace, monospace';
+  g.fillStyle = '#ff7a18';
+  g.fillText('SIMULATION ONLY', 512, 168);
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+function boot(){
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.NoToneMapping;
+  renderer.setClearColor(0x000000, 1);
+  renderer.domElement.setAttribute('aria-hidden', 'true');
+  host.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color('#000000');
+  scene.fog = new THREE.Fog('#000000', 26, 52);
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 50);
+
+  const neonMat = new THREE.MeshBasicMaterial({ color: '#ff7a18' });
+  const baseNeon = new THREE.Color('#ff7a18');
+  const underMat = new THREE.MeshStandardMaterial({ color: '#2a1208', emissive: '#ff6a18', emissiveIntensity: 0.55, roughness: 0.45, metalness: 0.2 });
+  const wallMat = new THREE.MeshStandardMaterial({ color: '#050505', roughness: 0.92, metalness: 0.12 });
+  const floorMat = new THREE.MeshStandardMaterial({ color: '#0a0a0a', roughness: 0.68, metalness: 0.28 });
+  const deskMat = new THREE.MeshStandardMaterial({ color: '#141414', roughness: 0.3, metalness: 0.7 });
+  const metalMat = new THREE.MeshStandardMaterial({ color: '#3c464a', roughness: 0.35, metalness: 0.78 });
+  const blackMat = new THREE.MeshStandardMaterial({ color: '#0c1012', roughness: 0.55, metalness: 0.35 });
+  const chairMat = new THREE.MeshStandardMaterial({ color: '#171d21', roughness: 0.62, metalness: 0.28 });
+  const skinMat = new THREE.MeshStandardMaterial({ color: '#d7bea4', roughness: 0.6, metalness: 0.02 });
+
+  function box(w, h, d, mat, x, y, z, parent = scene){
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    m.position.set(x, y, z);
+    parent.add(m);
+    return m;
+  }
+  function cyl(rt, rb, h, mat, x, y, z, parent = scene){
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, 12), mat);
+    m.position.set(x, y, z);
+    parent.add(m);
+    return m;
+  }
+
+  box(18.4, 0.08, 9.2, floorMat, 0, -0.04, 0.35);
+  box(18.4, 4.2, 0.12, wallMat, 0, 2.1, 4.55);
+  box(0.12, 4.2, 9.2, wallMat, -9.15, 2.1, 0.35);
+  box(0.12, 4.2, 9.2, wallMat, 9.15, 2.1, 0.35);
+  box(18.4, 0.1, 9.2, wallMat, 0, 4.2, 0.35);
+
+  const strip = (w, h, d, x, y, z) => box(w, h, d, neonMat, x, y, z);
+  strip(17.6, 0.045, 0.045, 0, 4.02, 4.42);
+  strip(17.6, 0.045, 0.045, 0, 0.04, 4.42);
+  strip(0.045, 0.045, 8.5, -9.02, 4.02, 0.35);
+  strip(0.045, 0.045, 8.5, 9.02, 4.02, 0.35);
+  strip(0.045, 0.045, 8.5, -9.02, 0.04, 0.35);
+  strip(0.045, 0.045, 8.5, 9.02, 0.04, 0.35);
+  [[-8.95, -3.7], [8.95, -3.7], [-8.95, 4.35], [8.95, 4.35]].forEach(([x, z]) => strip(0.05, 4.05, 0.05, x, 2.02, z));
+  strip(17.4, 0.04, 0.04, 0, 0.04, -3.85);
+  strip(17.4, 0.04, 0.04, 0, 3.95, -3.85);
+  strip(14.2, 0.035, 0.08, 0, 3.42, DESK_Z);
+
+  const sign = new THREE.Mesh(new THREE.PlaneGeometry(7.4, 1.55), new THREE.MeshBasicMaterial({ map: signTexture(), transparent: true }));
+  sign.position.set(0, 3.05, 4.4);
+  scene.add(sign);
+
+  scene.add(new THREE.HemisphereLight('#ffd2b4', '#100c0a', 1.65));
+  const key = new THREE.DirectionalLight('#fff0e2', 2.15);
+  key.position.set(-4, 9, -7);
+  scene.add(key);
+  const fill = new THREE.DirectionalLight('#ffb27a', 0.55);
+  fill.position.set(4, 3, 6);
+  scene.add(fill);
+  [[-5.2, 3.25, 0.2], [0, 3.35, 0.1], [5.2, 3.25, 0.2]].forEach(([x, y, z]) => {
+    const l = new THREE.PointLight('#ff7a18', 9, 11, 2);
+    l.position.set(x, y, z);
+    scene.add(l);
+  });
+
+  box(15.5, 0.07, 1.92, deskMat, 0, DESK_TOP - 0.035, DESK_Z);
+  box(15.35, 0.045, 0.5, blackMat, 0, 0.36, DESK_Z);
+  [-7.2, -2.4, 2.4, 7.2].forEach(x => box(0.1, DESK_TOP - 0.08, 0.1, metalMat, x, (DESK_TOP - 0.08) / 2, DESK_Z));
+  box(15.2, 0.025, 0.06, underMat, 0, DESK_TOP - 0.09, DESK_Z - 0.9);
+
+  const grid = new THREE.GridHelper(16, 16, '#3a2418', '#1c120e');
+  grid.position.set(0, 0.012, 0.35);
+  const gmats = Array.isArray(grid.material) ? grid.material : [grid.material];
+  gmats.forEach(m => { m.transparent = true; m.opacity = 0.35; });
+  scene.add(grid);
+
+  const stations = [];
+  const agents = window.FLOOR_AGENTS || [];
+  agents.forEach((agent, i) => {
+    const x = (i - 2.5) * SPACING;
+    const cloth = new THREE.MeshStandardMaterial({ color: agent.color, roughness: 0.66, metalness: 0.08, emissive: agent.color, emissiveIntensity: 0.16 });
+    const accent = new THREE.MeshBasicMaterial({ color: agent.color });
+
+    const chair = new THREE.Group();
+    chair.position.set(x, 0, -0.82);
+    scene.add(chair);
+    cyl(0.22, 0.24, 0.05, metalMat, 0, 0.06, 0, chair);
+    cyl(0.045, 0.045, 0.26, metalMat, 0, 0.2, 0, chair);
+    box(0.48, 0.07, 0.46, chairMat, 0, 0.4, 0.02, chair);
+    box(0.44, 0.58, 0.07, chairMat, 0, 0.78, -0.2, chair);
+    box(0.16, 0.08, 0.12, cloth, 0, 1.1, -0.2, chair);
+    box(0.07, 0.14, 0.28, chairMat, -0.26, 0.52, 0.02, chair);
+    box(0.07, 0.14, 0.28, chairMat, 0.26, 0.52, 0.02, chair);
+
+    const person = new THREE.Group();
+    person.position.set(x, 0, -0.78);
+    scene.add(person);
+    const torso = new THREE.Group();
+    torso.position.set(0, 0.72, 0.04);
+    torso.rotation.x = 0.2;
+    torso.userData.baseY = 0.72;
+    person.add(torso);
+    box(0.4, 0.46, 0.24, cloth, 0, 0.22, 0, torso);
+    box(0.48, 0.1, 0.26, cloth, 0, 0.42, 0, torso);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.145, 16, 12), skinMat);
+    head.position.set(0, 0.64, 0.02);
+    torso.add(head);
+    box(0.32, 0.09, 0.26, cloth, 0, 0.75, -0.01, torso);
+    box(0.28, 0.035, 0.12, cloth, 0, 0.69, 0.12, torso);
+    const arms = [];
+    [-1, 1].forEach(s => {
+      const pivot = new THREE.Group();
+      pivot.position.set(s * 0.26, 0.4, 0.02);
+      pivot.rotation.x = -1.12;
+      pivot.rotation.z = s * -0.12;
+      pivot.userData.baseX = -1.12;
+      torso.add(pivot);
+      box(0.1, 0.36, 0.1, cloth, 0, -0.16, 0, pivot);
+      box(0.09, 0.08, 0.1, skinMat, 0, -0.36, 0.02, pivot);
+      arms.push(pivot);
+      const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.045, 12), cloth);
+      cup.rotation.z = Math.PI / 2;
+      cup.position.set(s * 0.15, 0.64, 0);
+      torso.add(cup);
+    });
+    const band = new THREE.Mesh(new THREE.TorusGeometry(0.15, 0.016, 8, 18, Math.PI), blackMat);
+    band.rotation.z = Math.PI;
+    band.position.set(0, 0.66, 0);
+    torso.add(band);
+    [-1, 1].forEach(s => {
+      box(0.12, 0.12, 0.28, blackMat, s * 0.1, 0.5, 0.28, person);
+      box(0.11, 0.26, 0.12, blackMat, s * 0.1, 0.32, 0.46, person);
+      box(0.12, 0.06, 0.18, blackMat, s * 0.1, 0.16, 0.54, person);
+    });
+
+    box(0.5, 0.02, 0.2, blackMat, x, DESK_TOP + 0.012, -0.22);
+    const keys = box(0.46, 0.025, 0.16, blackMat, x, DESK_TOP + 0.03, -0.22);
+    box(0.42, 0.008, 0.008, accent, x, DESK_TOP + 0.046, -0.22);
+    box(0.08, 0.03, 0.12, blackMat, x + 0.34, DESK_TOP + 0.02, -0.18);
+
+    const rig = new THREE.Group();
+    rig.position.set(x, DESK_TOP, 0.48);
+    scene.add(rig);
+    cyl(0.04, 0.04, 0.22, metalMat, 0, 0.12, 0, rig);
+    box(0.22, 0.02, 0.16, metalMat, 0, 0.02, 0, rig);
+    const headRig = new THREE.Group();
+    headRig.position.set(0, 0.28, 0);
+    headRig.rotation.x = 0.48;
+    rig.add(headRig);
+    box(1.34, 0.84, 0.06, blackMat, 0, 0.42, 0, headRig);
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.7), new THREE.MeshBasicMaterial({ map: screenTexture(agent, i * 0.9) }));
+    screen.position.set(0, 0.42, -0.034);
+    screen.rotation.y = Math.PI;
+    headRig.add(screen);
+    box(1.12, 0.02, 0.02, accent, 0, 0.04, -0.04, headRig);
+
+    stations.push({ torso, arms, screen, keys });
+  });
+
+  let composer = null;
+  try {
+    composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloom = new UnrealBloomPass(new THREE.Vector2(host.clientWidth || 2, host.clientHeight || 2), 0.34, 0.36, 0.72);
+    composer.addPass(bloom);
+    composer.addPass(new OutputPass());
+  } catch (_) {
+    composer = null;
+  }
+
+  function resize(){
+    const w = host.clientWidth || 1;
+    const h = host.clientHeight || 1;
+    const f = w < 760 ? FRAMING.narrow : FRAMING.wide;
+    camera.fov = f.fov;
+    camera.aspect = w / h;
+    camera.position.set(f.pos[0], f.pos[1], f.pos[2]);
+    camera.lookAt(f.look[0], f.look[1], f.look[2]);
+    camera.updateProjectionMatrix();
+    const pr = Math.min(window.devicePixelRatio || 1, w < 760 ? 1.5 : 1.75);
+    renderer.setPixelRatio(pr);
+    renderer.setSize(w, h, false);
+    if(composer){
+      composer.setPixelRatio(pr);
+      composer.setSize(w, h);
+    }
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+  }
+  new ResizeObserver(resize).observe(host);
+  resize();
+
+  const status = document.getElementById('sceneStatus');
+  if(status) status.textContent = 'AGENTS SEATED';
+  document.querySelector('.scene-loading')?.remove();
+
+  let bloomOk = !!composer;
+  function frame(now){
+    requestAnimationFrame(frame);
+    if(document.hidden) return;
+    const t = now / 1000;
+    if(!reduceMotion){
+      neonMat.color.copy(baseNeon).multiplyScalar(0.86 + 0.14 * Math.sin(t * 1.6));
+      stations.forEach((s, i) => {
+        s.torso.position.y = s.torso.userData.baseY + Math.sin(t * 1.7 + i) * 0.012;
+        s.arms.forEach((arm, k) => {
+          arm.rotation.x = arm.userData.baseX + Math.sin(t * 8.5 + i * 0.8 + k * 1.6) * 0.07;
+        });
+        const flick = Math.sin(t * 19 + i * 4.1) > 0.985;
+        s.screen.material.color.setScalar(flick ? 0.45 : 1);
+      });
+    }
+    try {
+      if(bloomOk && composer) composer.render();
+      else renderer.render(scene, camera);
+    } catch (_) {
+      bloomOk = false;
+      composer = null;
+      try { renderer.render(scene, camera); } catch (__) {}
+    }
+  }
+  window.__seatNDC = () => {
+    const out = [];
+    for (let i = 0; i < 6; i++) {
+      const x = (i - 2.5) * SPACING;
+      for (const [y, z] of [[1.55, 0.2], [0.7, -0.8], [1.35, 0.55]]) {
+        const v = new THREE.Vector3(x, y, z).project(camera);
+        out.push({ i, x: +v.x.toFixed(3), y: +v.y.toFixed(3) });
+      }
+    }
+    return out;
+  };
+  requestAnimationFrame(frame);
+}
+
+(async function start(){
+  try {
+    await Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1800))]);
+    if(!host) return;
+    boot();
+  } catch (_) {
+    showSceneError('3D view could not start on this device. The mock ledger below still works.');
+  }
+})();
+</script>
 </body>
 </html>
