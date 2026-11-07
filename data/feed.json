@@ -1,7 +1,511 @@
 {
-  "updated": "2026-11-07T10:53:28.560373+00:00",
-  "next_id": 373,
+  "updated": "2026-11-07T11:16:50.129521+00:00",
+  "next_id": 445,
   "events": [
+    {
+      "id": 444,
+      "time": "2026-11-07T11:16:50.129511+00:00",
+      "agent": "System",
+      "type": "info",
+      "text": "Cycle 8 finished. 80 mints \u00b7 0 primary \u00b7 0 fallback \u00b7 0 new paper entry. Next scheduled cycle 2026-11-07 07:16:50 ET; rolling-hour entry cap remains authoritative."
+    },
+    {
+      "id": 443,
+      "time": "2026-11-07T11:16:50.115839+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "NO TRADE: no funded, untraded, team-approved candidate with every hard rug check known/pass; minimum never overrides hard blocks."
+    },
+    {
+      "id": 442,
+      "time": "2026-11-07T11:16:50.111323+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "After hard blocks and entry criteria: primary 0, fallback-eligible 0. NO TRADE: every reviewed candidate failed/unknown hard checks or tier criteria; minimum never overrides hard blocks."
+    },
+    {
+      "id": 441,
+      "time": "2026-11-07T11:16:50.107559+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Diamond: global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total"
+    },
+    {
+      "id": 440,
+      "time": "2026-11-07T11:16:50.104288+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Diamond: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 439,
+      "time": "2026-11-07T11:16:50.099760+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Diamond: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 438,
+      "time": "2026-11-07T11:16:36.721216+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 437,
+      "time": "2026-11-07T11:16:36.718210+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 436,
+      "time": "2026-11-07T11:16:36.715266+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 435,
+      "time": "2026-11-07T11:16:36.712289+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 434,
+      "time": "2026-11-07T11:16:36.709189+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: fresh_wallet_cluster: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 433,
+      "time": "2026-11-07T11:16:36.705340+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "STANK: fresh_wallet_cluster: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 5, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 432,
+      "time": "2026-11-07T11:16:17.196149+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK TRUMP: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 431,
+      "time": "2026-11-07T11:16:17.193238+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK TRUMP: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 430,
+      "time": "2026-11-07T11:16:17.189675+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK TRUMP: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 429,
+      "time": "2026-11-07T11:16:17.185640+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK TRUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 88.45% (cap 40%)"
+    },
+    {
+      "id": 428,
+      "time": "2026-11-07T11:16:17.180485+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "TRUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 88.45% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 427,
+      "time": "2026-11-07T11:16:00.053143+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Rocco: global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total"
+    },
+    {
+      "id": 426,
+      "time": "2026-11-07T11:16:00.049994+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Rocco: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 425,
+      "time": "2026-11-07T11:16:00.046290+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Rocco: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 424,
+      "time": "2026-11-07T11:15:44.699775+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK NIO: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.032648 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
+    },
+    {
+      "id": 423,
+      "time": "2026-11-07T11:15:44.696738+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK NIO: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 422,
+      "time": "2026-11-07T11:15:44.692893+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "NIO: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.032648 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 421,
+      "time": "2026-11-07T11:15:28.808908+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK FLOAT: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 420,
+      "time": "2026-11-07T11:15:28.806168+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK FLOAT: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 419,
+      "time": "2026-11-07T11:15:28.802205+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK FLOAT: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 418,
+      "time": "2026-11-07T11:15:28.798693+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK FLOAT: fresh_wallet_cluster: FAIL 2 fresh wallets in the top-holder sample (block at 3) holding 8.03% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h"
+    },
+    {
+      "id": 417,
+      "time": "2026-11-07T11:15:28.795298+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "FLOAT: fresh_wallet_cluster: FAIL 2 fresh wallets in the top-holder sample (block at 3) holding 8.03% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 416,
+      "time": "2026-11-07T11:15:13.894073+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Busted: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.002137 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
+    },
+    {
+      "id": 415,
+      "time": "2026-11-07T11:15:13.891238+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Busted: bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 414,
+      "time": "2026-11-07T11:15:13.888433+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Busted: fresh_wallet_cluster: FAIL 5 fresh wallets in the top-holder sample (block at 3) holding 6.63% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h"
+    },
+    {
+      "id": 413,
+      "time": "2026-11-07T11:15:13.884612+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Busted: fresh_wallet_cluster: FAIL 5 fresh wallets in the top-holder sample (block at 3) holding 6.63% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.002137 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 412,
+      "time": "2026-11-07T11:14:56.141664+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 411,
+      "time": "2026-11-07T11:14:56.133177+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 410,
+      "time": "2026-11-07T11:14:56.129878+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 409,
+      "time": "2026-11-07T11:14:56.125236+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 45.12% (cap 40%)"
+    },
+    {
+      "id": 408,
+      "time": "2026-11-07T11:14:56.117234+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PENGU: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 45.12% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 407,
+      "time": "2026-11-07T11:14:40.048622+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.005124 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
+    },
+    {
+      "id": 406,
+      "time": "2026-11-07T11:14:40.046123+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: lp_locked_or_burned: FAIL LP mint CevNeicTXqL1oAjqZ3FNmexftzKD4ozqev5DgX2sAgFq still has supply 26780512735"
+    },
+    {
+      "id": 405,
+      "time": "2026-11-07T11:14:40.043675+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 404,
+      "time": "2026-11-07T11:14:40.041236+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 65.49% (cap 40%)"
+    },
+    {
+      "id": 403,
+      "time": "2026-11-07T11:14:40.037923+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "ANSEM: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 65.49% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: FAIL LP mint CevNeicTXqL1oAjqZ3FNmexftzKD4ozqev5DgX2sAgFq still has supply 26780512735; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.005124 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 402,
+      "time": "2026-11-07T11:14:25.436515+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 401,
+      "time": "2026-11-07T11:14:25.434139+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 400,
+      "time": "2026-11-07T11:14:25.431076+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 399,
+      "time": "2026-11-07T11:14:25.427105+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 398,
+      "time": "2026-11-07T11:14:25.424510+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: fresh_wallet_cluster: FAIL 3 fresh wallets in the top-holder sample (block at 3) holding 9.86% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h"
+    },
+    {
+      "id": 397,
+      "time": "2026-11-07T11:14:25.416907+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "STONK: fresh_wallet_cluster: FAIL 3 fresh wallets in the top-holder sample (block at 3) holding 9.86% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 396,
+      "time": "2026-11-07T11:14:02.670650+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK BIRB: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 395,
+      "time": "2026-11-07T11:14:02.668240+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK BIRB: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 394,
+      "time": "2026-11-07T11:14:02.665725+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK BIRB: wash_trade: FAIL signer AD9wB1oFV5HCXXmZqMnu6EJTEcjU3m9jhF5HytqA8dvt round-tripped 42% of the sampled pool flow (cap 30%)"
+    },
+    {
+      "id": 393,
+      "time": "2026-11-07T11:14:02.662952+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK BIRB: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 88.80% (cap 40%)"
+    },
+    {
+      "id": 392,
+      "time": "2026-11-07T11:14:02.659586+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "BIRB: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 88.80% (cap 40%); wash_trade: FAIL signer AD9wB1oFV5HCXXmZqMnu6EJTEcjU3m9jhF5HytqA8dvt round-tripped 42% of the sampled pool flow (cap 30%); lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 391,
+      "time": "2026-11-07T11:13:47.624647+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 390,
+      "time": "2026-11-07T11:13:47.622474+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 389,
+      "time": "2026-11-07T11:13:47.620256+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 388,
+      "time": "2026-11-07T11:13:47.617949+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 59.41% (cap 40%)"
+    },
+    {
+      "id": 387,
+      "time": "2026-11-07T11:13:47.615103+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 59.41% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 386,
+      "time": "2026-11-07T11:13:33.363009+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Tier market candidates: primary 17, fallback market pool 58; 0 excluded: already traded (before scoring)."
+    },
+    {
+      "id": 385,
+      "time": "2026-11-07T11:13:33.359553+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Global fees are a hard entry gate on both tiers. ENFORCED fail-closed: need verified cumulative global fees >= 1.5 SOL, or an on-chain PumpSwap unclaimed protocol+creator lower bound already >= 1.5 SOL. Unreadable or unproven lifetime fees block entry. No DexScreener volume proxy."
+    },
+    {
+      "id": 384,
+      "time": "2026-11-07T11:13:32.880918+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "5 excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier."
+    },
+    {
+      "id": 383,
+      "time": "2026-11-07T11:13:32.875370+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "41 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; HODL https://x.com/hodlonsolvip; GATO https://x.com/TheGTA6cat; SCGBBn https://x.com/mamesukeshow; 55cJN7 https://x.com/labsbtd"
+    },
+    {
+      "id": 382,
+      "time": "2026-11-07T11:13:29.734825+00:00",
+      "agent": "Data Scout",
+      "type": "error",
+      "text": "Birdeye keyless probe still failing from 2026-11-07T08:03:23.855985+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
+    },
+    {
+      "id": 381,
+      "time": "2026-11-07T11:13:29.730225+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T08:03:23.727003+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
+    },
+    {
+      "id": 380,
+      "time": "2026-11-07T11:13:29.725496+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "CHECKLIST CONSULT / stop_confirmation: [{'field': 'green_confirmation', 'op': 'eq', 'value': True, 'missing_violation': True}] \u2014 ACTIVE primary reject / fallback score penalty."
+    },
+    {
+      "id": 379,
+      "time": "2026-11-07T11:13:29.723289+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "CHECKLIST CONSULT + APPLY: 1 structured rule item(s) loaded before selection. Violations REJECT PRIMARY and PENALIZE FALLBACK; unknown required observations count as violations."
+    },
+    {
+      "id": 378,
+      "time": "2026-11-07T11:13:29.720994+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Daily profit stop armed: $21.93 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L."
+    },
+    {
+      "id": 377,
+      "time": "2026-11-07T11:13:29.718406+00:00",
+      "agent": "System",
+      "type": "info",
+      "text": "Cycle 8 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum."
+    },
+    {
+      "id": 376,
+      "time": "2026-11-07T11:09:49.286012+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 2 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 375,
+      "time": "2026-11-07T11:04:47.497538+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 374,
+      "time": "2026-11-07T10:58:30.009853+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 2 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 373,
+      "time": "2026-11-07T10:58:29.936742+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "Light scan found 2 new Solana rows with an X link. Not tweets. SCGBBn https://x.com/mamesukeshow; BNJm3T https://x.com/mintonblue"
+    },
     {
       "id": 372,
       "time": "2026-11-07T10:53:28.560307+00:00",
@@ -1075,602 +1579,6 @@
       "agent": "Bubble Map Analyst",
       "type": "info",
       "text": "FALLBACK SCORE Rocco: base 15.741959 minus [{'reason': 'fallback_market:unknown/nonstandard quote', 'points': 2}] = 13.741959; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 264,
-      "time": "2026-11-07T09:05:19.867476+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Rocco: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 263,
-      "time": "2026-11-07T09:05:16.146495+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE TRUMP: base 12.326744 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 4.326744; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 262,
-      "time": "2026-11-07T09:05:16.139465+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "TRUMP: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 261,
-      "time": "2026-11-07T09:05:12.534107+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE FLOAT: base 17.334139 minus [{'reason': 'holder_observations_complete', 'points': 3}] = 14.334139; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 260,
-      "time": "2026-11-07T09:05:10.148347+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "FLOAT: PASS three hard checks; soft flags ['holder_observations_complete']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 259,
-      "time": "2026-11-07T09:05:06.233259+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE ACT: base 16.204155 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 5.204155; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 258,
-      "time": "2026-11-07T09:05:06.227300+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "ACT: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 257,
-      "time": "2026-11-07T09:05:02.973020+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE ANSEM: base 15.98603 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 7.98603; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 256,
-      "time": "2026-11-07T09:05:00.302798+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "ANSEM: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 255,
-      "time": "2026-11-07T09:04:54.486113+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE STONK: base 18.720097 minus [{'reason': 'LP_locked_or_burned', 'points': 3}] = 15.720097; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 254,
-      "time": "2026-11-07T09:04:52.245560+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "STONK: PASS three hard checks; soft flags ['LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 253,
-      "time": "2026-11-07T09:04:49.083173+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE BIRB: base 18.115845 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 7.115845; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 252,
-      "time": "2026-11-07T09:04:46.850648+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "BIRB: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 251,
-      "time": "2026-11-07T09:04:43.309138+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE PUMP: base 18.187292 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'Token_2022_extensions', 'points': 3}] = 9.187292; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 250,
-      "time": "2026-11-07T09:04:43.305239+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "PUMP: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned', 'Token_2022_extensions']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 249,
-      "time": "2026-11-07T09:04:39.839912+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Tier market candidates: primary 21, fallback market pool 58; 0 excluded: already traded (before scoring)."
-    },
-    {
-      "id": 248,
-      "time": "2026-11-07T09:04:39.834441+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks."
-    },
-    {
-      "id": 247,
-      "time": "2026-11-07T09:04:39.337805+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "4 excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier."
-    },
-    {
-      "id": 246,
-      "time": "2026-11-07T09:04:39.333108+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "47 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; HODL https://x.com/hodlonsolvip; GATO https://x.com/TheGTA6cat; CLcZdL https://x.com/MonsterNfts; 7SM67H https://x.com/coinftfun"
-    },
-    {
-      "id": 245,
-      "time": "2026-11-07T09:04:36.312210+00:00",
-      "agent": "Data Scout",
-      "type": "error",
-      "text": "Birdeye keyless probe still failing from 2026-11-07T08:03:23.855985+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
-    },
-    {
-      "id": 244,
-      "time": "2026-11-07T09:04:36.282806+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T08:03:23.727003+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
-    },
-    {
-      "id": 243,
-      "time": "2026-11-07T09:04:36.262716+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "CHECKLIST CONSULT + APPLY: 0 structured rule item(s) loaded before selection. Violations REJECT PRIMARY and PENALIZE FALLBACK; unknown required observations count as violations."
-    },
-    {
-      "id": 242,
-      "time": "2026-11-07T09:04:36.254904+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L."
-    },
-    {
-      "id": 241,
-      "time": "2026-11-07T09:04:36.246025+00:00",
-      "agent": "System",
-      "type": "info",
-      "text": "Cycle 6 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum."
-    },
-    {
-      "id": 240,
-      "time": "2026-11-07T09:00:00.638780+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 239,
-      "time": "2026-11-07T08:54:59.271135+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 238,
-      "time": "2026-11-07T08:49:57.885555+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 237,
-      "time": "2026-11-07T08:49:57.848332+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 2 new Solana rows with an X link. Not tweets. 7i628f https://x.com/AlphaHunterXo/status/2118987978077000031; 7jpQyy https://x.com/_provisionalll/status/2118309955786739847"
-    },
-    {
-      "id": 236,
-      "time": "2026-11-07T08:44:56.669044+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 6 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 235,
-      "time": "2026-11-07T08:44:56.624866+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. CXJB3A https://x.com/usemoatpad"
-    },
-    {
-      "id": 234,
-      "time": "2026-11-07T08:39:54.399021+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 2 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 233,
-      "time": "2026-11-07T08:39:54.354983+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. CLcZdL https://x.com/MonsterNfts"
-    },
-    {
-      "id": 232,
-      "time": "2026-11-07T08:34:53.029935+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 5 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 231,
-      "time": "2026-11-07T08:29:52.145602+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 19 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 230,
-      "time": "2026-11-07T08:29:52.103707+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. 6hkqtz https://x.com/Indiced_"
-    },
-    {
-      "id": 229,
-      "time": "2026-11-07T08:24:48.942035+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 228,
-      "time": "2026-11-07T08:19:46.210871+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 227,
-      "time": "2026-11-07T08:19:46.163418+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. GGntxx https://x.com/notrespassdotio"
-    },
-    {
-      "id": 226,
-      "time": "2026-11-07T08:14:43.912733+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 225,
-      "time": "2026-11-07T08:09:41.876199+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 224,
-      "time": "2026-11-07T08:09:41.831058+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 2 new Solana rows with an X link. Not tweets. jTUbWr https://x.com/BaggyWorks/status/2118965301186642130?a=nqvz9Es--BJToGfmzRo&s=20; DFq4aB https://x.com/hairicorn"
-    },
-    {
-      "id": 223,
-      "time": "2026-11-07T08:04:35.362701+00:00",
-      "agent": "System",
-      "type": "info",
-      "text": "Cycle 5 finished. 82 mints \u00b7 1 primary \u00b7 12 fallback \u00b7 1 new paper entry. Next scheduled cycle 2026-11-07 04:04:35 ET; rolling-hour entry cap remains authoritative."
-    },
-    {
-      "id": 222,
-      "time": "2026-11-07T08:04:35.351783+00:00",
-      "agent": "Data Scout",
-      "type": "trade",
-      "text": "PRIMARY FORWARD PAPER entry A Meme Dacity / AMD (oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump) @ 0.001419; size $72.90; score 16.524261; 12% stop / 35% target / 16h time stop. ONE TRADE PER COIN EVER: mint permanently excluded after this entry. https://dexscreener.com/solana/6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
-      "trade": {
-        "id": "paper-278e35c1222548f0b825bd22197c6181",
-        "mode": "forward:paper",
-        "realized": false,
-        "tier": "primary",
-        "selection_score": 16.524261,
-        "mint": "oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-        "pool": "6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
-        "symbol": "AMD",
-        "name": "A Meme Dacity",
-        "entry_ts": 1794038675.3338163,
-        "entry_time": "2026-11-07T08:04:35.333816+00:00",
-        "entry_price": 0.001419,
-        "entry_frac_of_ath": 0.3938384319411226,
-        "notional_usd": 72.9,
-        "slippage_bps_per_side": 80,
-        "cost_rate": 0.011,
-        "entry_liquidity_usd": 103830.28,
-        "entry_volume_usd": 3155033.57,
-        "top_human_pct": 0.148,
-        "stop_fraction": 0.12,
-        "target_fraction": 0.35,
-        "max_hold_seconds": 57600,
-        "dex_url": "https://dexscreener.com/solana/6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
-        "gmgn_url": "https://gmgn.ai/sol/token/oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump",
-        "strategy_id": "forward_ranked_primary",
-        "hard_rug_checks": [
-          {
-            "name": "mint_authority_revoked",
-            "pass": true,
-            "detail": "explicitly revoked"
-          },
-          {
-            "name": "freeze_authority_revoked",
-            "pass": true,
-            "detail": "explicitly revoked"
-          },
-          {
-            "name": "sellable_not_honeypot",
-            "pass": true,
-            "detail": "read-only positive sell route required; known paused/nontransferable rejects; unknown route/paused state rejects; no execution"
-          }
-        ],
-        "checklist_audit": {
-          "active_rule_keys": [],
-          "violations": []
-        },
-        "fallback_penalties": [],
-        "team": {
-          "approved": true,
-          "approve": 5,
-          "reject": 0,
-          "abstain": 1,
-          "tally": "5/6 approve",
-          "rule": "majority 5/5 of voting agents",
-          "vetoes": [],
-          "votes": [
-            {
-              "agent": "Risk Manager",
-              "vote": "approve",
-              "reason": "Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties."
-            },
-            {
-              "agent": "Bubble Map Analyst",
-              "vote": "approve",
-              "reason": "Top non-LP wallet 0.148% (\u2264 20.0%), no linked-wallet fail."
-            },
-            {
-              "agent": "X/Twitter Scout",
-              "vote": "abstain",
-              "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
-            },
-            {
-              "agent": "Data Scout",
-              "vote": "approve",
-              "reason": "Ranked primary candidate, score 16.524261; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
-            },
-            {
-              "agent": "Backtester",
-              "vote": "approve",
-              "reason": "0 earlier simulated fills on this pool; no evidence against."
-            },
-            {
-              "agent": "Strategist",
-              "vote": "approve",
-              "reason": "Dip entry under forward_ranked_primary (stop 12%, target 35%)."
-            }
-          ],
-          "proposed_by": "Data Scout"
-        },
-        "proposed_by": "Data Scout"
-      }
-    },
-    {
-      "id": 221,
-      "time": "2026-11-07T08:04:35.348987+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "PRIMARY PAPER AMD vote approve: Dip entry under forward_ranked_primary (stop 12%, target 35%)."
-    },
-    {
-      "id": 220,
-      "time": "2026-11-07T08:04:35.345230+00:00",
-      "agent": "Backtester",
-      "type": "info",
-      "text": "PRIMARY PAPER AMD vote approve: 0 earlier simulated fills on this pool; no evidence against."
-    },
-    {
-      "id": 219,
-      "time": "2026-11-07T08:04:35.343146+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "PRIMARY PAPER AMD vote approve: Ranked primary candidate, score 16.524261; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
-    },
-    {
-      "id": 218,
-      "time": "2026-11-07T08:04:35.340865+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "PRIMARY PAPER AMD vote abstain: X API unavailable (401); token has no X link. No tweets read, abstaining."
-    },
-    {
-      "id": 217,
-      "time": "2026-11-07T08:04:35.338527+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "PRIMARY PAPER AMD vote approve: Top non-LP wallet 0.148% (\u2264 20.0%), no linked-wallet fail."
-    },
-    {
-      "id": 216,
-      "time": "2026-11-07T08:04:35.335351+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "PRIMARY PAPER AMD vote approve: Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties."
-    },
-    {
-      "id": 215,
-      "time": "2026-11-07T08:04:35.331237+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "After hard blocks and entry criteria: primary 1, fallback-eligible 12. Using primary; team ranks by 2*log10(1+liquidity)+log10(1+volume)-topHolder/20."
-    },
-    {
-      "id": 214,
-      "time": "2026-11-07T08:04:35.325275+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE Diamond: base 15.618844 minus [{'reason': 'fallback_market:unknown/nonstandard quote', 'points': 2}] = 13.618844; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 213,
-      "time": "2026-11-07T08:04:35.321124+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Diamond: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 4, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 212,
-      "time": "2026-11-07T08:04:31.656289+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE TRUMP: base 12.338285 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 4.338285; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 211,
-      "time": "2026-11-07T08:04:31.651565+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "TRUMP: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 210,
-      "time": "2026-11-07T08:04:27.975346+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE AMD: base 16.524261 minus [] = 16.524261; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 209,
-      "time": "2026-11-07T08:04:25.847657+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "AMD: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 208,
-      "time": "2026-11-07T08:04:22.506191+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE FLOAT: base 17.338164 minus [{'reason': 'holder_observations_complete', 'points': 3}] = 14.338164; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 207,
-      "time": "2026-11-07T08:04:20.186700+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "FLOAT: PASS three hard checks; soft flags ['holder_observations_complete']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 206,
-      "time": "2026-11-07T08:04:16.352770+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE ACT: base 16.120501 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 5.120501; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 205,
-      "time": "2026-11-07T08:04:16.348919+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "ACT: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 204,
-      "time": "2026-11-07T08:04:12.981498+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE CATE: base 18.079934 minus [{'reason': 'LP_locked_or_burned', 'points': 3}] = 15.079934; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 203,
-      "time": "2026-11-07T08:04:10.863622+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "CATE: PASS three hard checks; soft flags ['LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 202,
-      "time": "2026-11-07T08:04:06.813077+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE ANSEM: base 15.985647 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 7.985647; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 201,
-      "time": "2026-11-07T08:04:04.493391+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "ANSEM: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 200,
-      "time": "2026-11-07T08:04:01.044185+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE STONK: base 18.71926 minus [{'reason': 'LP_locked_or_burned', 'points': 3}] = 15.71926; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 199,
-      "time": "2026-11-07T08:03:58.745113+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "STONK: PASS three hard checks; soft flags ['LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 198,
-      "time": "2026-11-07T08:03:52.243983+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE RAY: base 16.551381 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 5.551381; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 197,
-      "time": "2026-11-07T08:03:52.237851+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "RAY: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 13, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 196,
-      "time": "2026-11-07T08:03:45.939664+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE BIRB: base 18.151191 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 7.151191; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 195,
-      "time": "2026-11-07T08:03:43.715961+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "BIRB: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 194,
-      "time": "2026-11-07T08:03:40.602967+00:00",
-      "agent": "Bubble Map Analyst",
-      "type": "info",
-      "text": "FALLBACK SCORE PUMP: base 18.188941 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'Token_2022_extensions', 'points': 3}] = 9.188941; concentration/LP/extensions/checklist are penalties, not hard vetoes."
-    },
-    {
-      "id": 193,
-      "time": "2026-11-07T08:03:40.597514+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "PUMP: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned', 'Token_2022_extensions']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
     }
   ]
 }
