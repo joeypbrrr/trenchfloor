@@ -1,36 +1,6 @@
 {
-  "updated": "2026-11-07T10:13:28.909461+00:00",
+  "updated": "2026-11-07T10:33:51.033206+00:00",
   "messages": [
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Light scan: 19 new pools, 4 already at the liquidity filter. No paper trades on a light scan.",
-      "time": "2026-11-07T02:44:05.505267-05:00"
-    },
-    {
-      "agent": "X/Twitter Scout",
-      "kind": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. 7SM67H https://x.com/coinftfun",
-      "time": "2026-11-07T02:49:07.346556-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
-      "time": "2026-11-07T02:49:07.385846-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan.",
-      "time": "2026-11-07T02:54:48.837297-05:00"
-    },
-    {
-      "agent": "X/Twitter Scout",
-      "kind": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. rts8kJ https://x.com/CardsTradeOrg",
-      "time": "2026-11-07T02:59:50.564770-05:00"
-    },
     {
       "agent": "Data Scout",
       "kind": "info",
@@ -775,7 +745,7 @@
     {
       "agent": "Backtester",
       "kind": "trade_review",
-      "text": "TRADE REVIEW / AMD / loss / P&L $-10.93 / exit stop.\nWhat went right: Recorded hard checks passed: mint_authority_revoked, freeze_authority_revoked, sellable_not_honeypot.\nWhat went wrong: Recorded P&L $-10.93 after modeled fees and slippage. Exit reason recorded as stop.\nRed flags: No failed hard check was recorded. Checklist audit recorded no violations. Recorded top non-LP holder 0.148%. No later holder change was recorded. Entry was 39.4% of the recorded window ATH. Recorded liquidity $103,830.28 at entry \u2192 $96,877.24 at exit. Recorded volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit.\nHow to improve future entries: The recorded stop was hit and no failed hard check, checklist violation, or 20% liquidity/volume drop was stored. No new entry filter is identified from this close alone.\nHow to avoid similar losses: Recorded loss of $10.93 on exit stop. Fields that were not recorded stay unknown. No missed red flag was recorded. Do not invent one. The recorded stop fraction was 12%. This review does not change that exit rule.",
+      "text": "TRADE REVIEW / AMD / loss / P&L $-10.93 / exit stop.\nWhat went right: Recorded hard checks passed: mint_authority_revoked, freeze_authority_revoked, sellable_not_honeypot.\nWhat went wrong: Recorded P&L $-10.93 after modeled fees and slippage. Exit reason recorded as stop.\nRed flags: No failed hard check was recorded. Checklist audit recorded no violations. Recorded top non-LP holder 0.148%. No later holder change was recorded. Entry was 39.4% of the recorded window ATH. Recorded liquidity $103,830.28 at entry \u2192 $96,877.24 at exit. Recorded volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit.\nHow to improve future entries: The recorded stop was hit and no failed hard check, checklist violation, or 20% liquidity/volume drop was stored. No new entry filter is identified from this close alone. Improve entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.\nHow to avoid similar losses: Recorded loss of $10.93 on exit stop. Fields that were not recorded stay unknown. No missed red flag was recorded. Do not invent one. The recorded stop fraction was 12%. This review does not change that exit rule.\nPOST-LOSS REVIEW / AMD / $-10.93 / exit stop.\nContributing factors: none. Every check is listed with its result.\nChecks:\n- holder_distribution: CLEAN top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15%\n- fresh_wallet_cluster: CLEAN 2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 4 known acquisition slots\n- dev_creator: CLEAN creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills\n- liquidity: CLEAN liquidity $103,830.28 at entry \u2192 $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $3,155,033.57 at entry \u2192 $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills\n- price_mcap_path: CLEAN price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233.\nImprove entries: no red flag was measured on AMD. price 0.001419 \u2192 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.",
       "time": "2026-11-07T04:46:05.280635-05:00",
       "trade_id": "paper-278e35c1222548f0b825bd22197c6181"
     },
@@ -1210,6 +1180,37 @@
       "kind": "info",
       "text": "Cycle 7 finished. 83 mints \u00b7 0 primary \u00b7 0 fallback \u00b7 0 new paper entry. Next scheduled cycle 2026-11-07 06:13:28 ET; rolling-hour entry cap remains authoritative.",
       "time": "2026-11-07T05:13:28.708326-05:00"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "trade_close",
+      "text": "Forward paper realized close COGE: $32.87",
+      "time": "2026-11-07T05:33:08.154877-05:00"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "trade_review",
+      "text": "TRADE REVIEW / COGE / win / P&L +$32.87 / exit target.\nWhat went right: Recorded P&L +$32.87 after modeled fees and slippage. Exit reason recorded as target. Recorded hard checks passed: verified_pool_vault, complete_chain_read, mint_authority_revoked, freeze_authority_revoked, single_non_pool_holder_20pct, LP_locked_or_burned, sellable_not_honeypot. Exit price $0.02127 was above entry price $0.01566.\nWhat went wrong: No negative P&L, stop, time exit, failed hard check, or checklist violation was recorded.\nRed flags: No failed hard check was recorded. Checklist audit was not recorded. Recorded top non-LP holder 0.8971%. No later holder change was recorded. Entry was 79.5% of the recorded window ATH. Recorded liquidity $334,915.41 at entry \u2192 $391,283.96 at exit. Recorded volume $2,234,503.22 at entry \u2192 $2,485,522.73 at exit.\nHow to improve future entries: No missed flag was recorded. This close does not justify a tighter entry filter.",
+      "time": "2026-11-07T05:33:08.154877-05:00",
+      "trade_id": "paper-7e3d8a997aff4e5bb3d183dcc3ff7b81"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "trade",
+      "text": "FORWARD PAPER close COGE (8UQdy5sHMVWUWSHeA5B3ZuuAVNumjSLPXdf19MXcpump): target, $32.87 net after modeled fees/slippage. https://dexscreener.com/solana/8GjMy6ipYsXfMWwRPu9C7ATssorjg6AL88d9xtTZsLqe",
+      "time": "2026-11-07T05:33:08.188060-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "Light scan found 6 new Solana rows with an X link. Not tweets. 61x1Lz https://x.com/keepsolx/status/2118860181865984064; EYQ6cN https://x.com/kuro_inu_onsol; D1daGW https://x.com/souvenirfinance?s=11&t=GxjUo2-PKtxd_pf_ZhwwiA; Bxw3zJ https://x.com/nypost/status/2118847514178695371; AwqdTC https://x.com/nonanon124/status/2119001623888576531",
+      "time": "2026-11-07T05:33:09.049651-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 6 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T05:33:09.112414-05:00"
     }
   ]
 }

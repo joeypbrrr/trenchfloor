@@ -18,7 +18,6 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 
 ## Observations
 
-- **2026-11-06T21:21:50.072539-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold16 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.170993-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.171005-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.171012-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
@@ -98,6 +97,12 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 - **2026-11-06T23:09:36.663852-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
 - **2026-11-06T23:09:36.663856-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
 - **2026-11-06T23:09:36.663859-05:00** (Backtester): jeff paper loss $-13.9149 on dip_20_40_stop12_tp25_hold16 exit stop liq 85094.81 mcap 962801.0
+- **2026-11-07T05:33:50.843883-05:00** (Backtester): AMD post-loss review. Improve entries: no red flag was measured on AMD. price 0.001419 → 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.
+
+## Post-loss reviews
+
+- **2026-11-07T10:33:50.839179+00:00** AMD: POST-LOSS REVIEW / AMD / $-10.93 / exit stop. Contributing factors: none. Every check is listed with its result. Checks: - holder_distribution: CLEAN top-1 0.13%; top-10 0.91%; excluding pool and burn; entry snapshot top non-LP holder 0.15% - fresh_wallet_cluster: CLEAN 2 fresh wallets in 5 sampled top holders holding 0.17% combined (block at 3 wallets, or 2+ wallets at 8%) - linked_wallet_cluster: CLEAN no shared funder in the sample; 4 of 5 holders had a known funder (funder reads run on complete short histories) - bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 4 known acquisition slots - dev_creator: CLEAN creator wallets AZ6M1cCexe9r5DqPUwiAsNEdRbbi7nhwaYfwqXpanspT, F8fd7TUcwiHz5w9PdeoLoc2SeMHzpyjKxNHmchJwM3go; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 6 sampled pool fills - liquidity: CLEAN liquidity $103,830.28 at entry → $96,877.24 at exit (-6.7%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked - volume_profile: CLEAN volume $3,155,033.57 at entry → $3,157,705.10 at exit (0.1%). wash no wash round-trip in 6 sampled pool fills - price_mcap_path: CLEAN price 0.001419 → 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12% - on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.001233. Improve entries: no red flag was measured on AMD. price 0.001419 → 0.001233 (-13.1%) over 101.5 minutes; entry was 39.4% of the recorded window ATH; market cap at review $1,146,084.00; recorded stop 12%. Holder, cluster, bundle, creator, liquidity, volume, and authority checks were clean. Do not add an entry filter from this close.
+
 
 ## Tried and rejected variants
 
