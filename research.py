@@ -16,6 +16,7 @@ from pathlib import Path
 from backtest import beats_goal, describe_variant, goal_projection, metrics, oos_window_seconds, simulate, split_samples, variant_catalog
 from memory import DISCLAIMER, Memory, atomic_json, et_now, now_iso
 from publish_data import publish
+from events import emit, start_heartbeat
 from safety import review_token, sample_links
 from team import review_trades
 from sources import SKIP_MINTS, SKIP_SYMBOLS, MarketData, SourceError, num, ResilientRpcClient
@@ -66,6 +67,7 @@ def load_prior():
 
 def boot(config):
     global MEMORY, MARKET
+    start_heartbeat()
     MEMORY = Memory(ROOT)
     if not MEMORY.path.exists():
         MEMORY.save()
@@ -129,6 +131,7 @@ def save_state():
 
 def update(role, status, task, detail="", action=None):
     agent = AGENTS[role]
+    emit(role, "status", task, status=status, action=action or task)
     agent["status"] = status
     agent["task"] = task
     agent["detail"] = detail
@@ -141,6 +144,7 @@ def update(role, status, task, detail="", action=None):
 
 def post(agent, text, kind="info", trade=None, publish_feed=True):
     global FEED_DIRTY
+    emit(agent, kind, text)
     event = MEMORY.add_feed(agent, text, kind, trade)
     STATE["activity"].insert(0, {"id": event["id"], "time": event["time"], "agent": agent, "text": text, "type": kind})
     del STATE["activity"][80:]
@@ -379,6 +383,7 @@ def screen(candidates, config):
     rejected = []
     counts = {}
     for cand in candidates:
+        emit("Data Scout", "candidate", f"Screening {cand.get('symbol') or cand['mint'][:8]}", mint=cand["mint"])
         reason = (fee_filter_reason(cand, config) if new_source else None) or _filter_reason(cand, filters, now)
         if reason is None:
             blocks = MEMORY.blocks(cand)
@@ -459,6 +464,7 @@ def review_candidates(candidates, config):
             note_error("Risk Manager", f"{label} safety review crashed: {exc}")
             log(traceback.format_exc())
             safety = {"status": "incomplete", "summary": str(exc), "hard_fails": [str(exc)], "warnings": [], "checks": []}
+        emit("Risk Manager", "safety", f"{label}: {safety.get('status')} — {safety.get('summary')}", mint=cand["mint"])
         cand["safety"] = safety
         reviewed.append(cand)
     # Link samples run after every mint review so a signature lookup cannot
@@ -661,6 +667,9 @@ def run_variants(tokens, config):
         else:
             approved, vetoed = review_trades(unseen, tokens_by_mint, variant, config, x_status, MEMORY.can_test(variant["id"]))
             fresh = MEMORY.record_trades(approved)
+        for fill in fresh:
+            emit(fill.get("proposed_by") or "Backtester", "trade_open", f"Historical simulated entry recorded: {fill.get('symbol')} at {fill.get('entry_time')}; not a current live buy", trade_id=fill["id"])
+            emit("Backtester", "trade_close", f"Historical simulated exit recorded: {fill.get('symbol')} at {fill.get('exit_time')}; P&L ${fill.get('pnl_usd', 0):.2f}", trade_id=fill["id"])
         MEMORY.learn_from_losses(fresh)
         team_taken += len(fresh)
         team_rejected += len(vetoed)
@@ -836,6 +845,7 @@ def cycle(config):
     if config.get("rpc_resilience_enabled", False):
         MARKET.rpc = ResilientRpcClient(config.get("rpc_urls") or [], config.get("rpc_min_interval_seconds", 1.25), (config.get("limits") or {}).get("rpc_budget", 64))
     daily_stop_status(config, announce=True)
+    emit("System", "cycle_start", "Research cycle starting")
     STATE["errors"] = []
     STATE["cycle_count"] = int(STATE.get("cycle_count") or 0) + 1
     log(f"cycle {STATE['cycle_count']} start")
@@ -975,6 +985,7 @@ def cycle(config):
     post("System", f"Cycle {STATE['cycle_count']} finished. {STATE['data_status']}.")
     save_state()
     maybe_publish_full(force=True)
+    emit("System", "cycle_end", STATE["data_status"])
     log("cycle done " + STATE["data_status"])
     return STATE
 

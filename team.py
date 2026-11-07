@@ -15,12 +15,15 @@ Paper trading / research only. No wallet. No real trades.
 """
 from __future__ import annotations
 
+from events import emit
+
 ROLES = ["Risk Manager", "Bubble Map Analyst", "X/Twitter Scout", "Data Scout", "Backtester", "Strategist"]
 VETO_ROLES = {"Risk Manager", "Bubble Map Analyst"}
 APPROVE, REJECT, ABSTAIN = "approve", "reject", "abstain"
 
 
 def _vote(agent, vote, reason):
+    emit(agent, "vote", f"{vote}: {reason[:200]}")
     return {"agent": agent, "vote": vote, "reason": reason[:200]}
 
 
