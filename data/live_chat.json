@@ -1,144 +1,6 @@
 {
-  "updated": "2026-11-07T07:03:19.225996+00:00",
+  "updated": "2026-11-07T08:04:35.598641+00:00",
   "messages": [
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L.",
-      "time": "2026-11-06T23:34:52.189606-05:00"
-    },
-    {
-      "agent": "System",
-      "kind": "info",
-      "text": "Cycle 1 started. Read 2 standing rules and 14 variants that will not be retested. Standing goal: $3,000\u2013$5,000/mo extra (paper projection; OOS rules never loosened). Paper trading / research only. No wallet. No real trades. Not financial advice.",
-      "time": "2026-11-06T23:34:52.190545-05:00"
-    },
-    {
-      "agent": "X/Twitter Scout",
-      "kind": "info",
-      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
-      "time": "2026-11-06T23:34:52.191006-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "error",
-      "text": "Birdeye keyless probe still failing from 2026-11-07T01:38:42.283201+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}",
-      "time": "2026-11-06T23:34:52.191453-05:00"
-    },
-    {
-      "agent": "X/Twitter Scout",
-      "kind": "info",
-      "text": "54 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; AMD https://x.com/amemedacitysol; GATO https://x.com/TheGTA6cat; DtcicP https://x.com/cartoonmoney_ai; Ho7n9c https://x.com/Orpofun",
-      "time": "2026-11-06T23:34:55.026522-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "Global fees filter SKIPPED: DexScreener does not supply verified 1.5 SOL global fees. No proxy used; unavailable fees are not a rejection. Market cap floor $6,000 and all scam checks remain enforced.",
-      "time": "2026-11-06T23:34:55.159887-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "93 mints discovered, 30 enriched, 3 passed filters, 6 skipped because a lesson already rejected the mint. Reject reasons: {'pair older than maximum age': 11, 'pair younger than minimum age': 5, 'lesson: skip tokens whose liquidity is under 5% of market cap after a losing paper trade with that thin book': 1, 'quote is not SOL, USDC, or USDT': 6, 'liquidity unknown': 3, 'liquidity below minimum': 1}.",
-      "time": "2026-11-06T23:34:55.161692-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Preferred entry zone remains 20\u201345% of the window ATH (55\u201380% off). That zone is the buy rule, not a reason to invent pairs.",
-      "time": "2026-11-06T23:34:55.162102-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "error",
-      "text": "AMD safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass.",
-      "time": "2026-11-06T23:35:20.237644-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "error",
-      "text": "DONNA safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass.",
-      "time": "2026-11-06T23:35:20.238822-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "error",
-      "text": "jeff safety check incomplete: incomplete: one or more holder owners could not be read. Not treated as a pass.",
-      "time": "2026-11-06T23:35:20.239242-05:00"
-    },
-    {
-      "agent": "Strategist",
-      "kind": "info",
-      "text": "No forward paper entry: no fully scam-filtered current dip with a recent closed green confirmation. No trade minimum; no forced trade.",
-      "time": "2026-11-06T23:35:20.240301-05:00"
-    },
-    {
-      "agent": "Strategist",
-      "kind": "info",
-      "text": "Goal $3k\u20135k/mo: no version qualifies with a monthly projection this cycle (need \u22655 out-of-sample trades and a positive average). Champion dip_20_40_stop8_tp15_hold8 predates the goal and has no measured trade frequency yet. Not loosening the out-of-sample rule to chase the goal.",
-      "time": "2026-11-06T23:35:20.240851-05:00"
-    },
-    {
-      "agent": "System",
-      "kind": "info",
-      "text": "Cycle 1 finished. 93 mints \u00b7 3 passed filters \u00b7 0 eligible \u00b7 0 new paper trades.",
-      "time": "2026-11-06T23:35:20.245718-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
-      "time": "2026-11-06T23:41:21.106218-05:00"
-    },
-    {
-      "agent": "X/Twitter Scout",
-      "kind": "info",
-      "text": "Light scan found 4 new Solana rows with an X link. Not tweets. EbZ3Kf https://x.com/cookdbot; Fmu6yk https://x.com/twizter_privacy; G77jG5 https://x.com/early404/status/2118924545146970457; 2SquPK https://x.com/mutape_xyz",
-      "time": "2026-11-06T23:46:22.157009-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
-      "time": "2026-11-06T23:46:22.231093-05:00"
-    },
-    {
-      "agent": "X/Twitter Scout",
-      "kind": "info",
-      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. CXRT8b https://x.com/rockstargames?s=11",
-      "time": "2026-11-06T23:51:23.152885-05:00"
-    },
-    {
-      "agent": "Data Scout",
-      "kind": "info",
-      "text": "Light scan: 20 new pools, 0 already at the liquidity filter. No paper trades on a light scan.",
-      "time": "2026-11-06T23:51:23.202727-05:00"
-    },
-    {
-      "agent": "System",
-      "kind": "info",
-      "text": "Cycle 2 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum.",
-      "time": "2026-11-06T23:59:06.048954-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L.",
-      "time": "2026-11-06T23:59:06.050982-05:00"
-    },
-    {
-      "agent": "Strategist",
-      "kind": "info",
-      "text": "CHECKLIST CONSULT: 0 shared lesson suggestion(s) read before selection. SUGGESTION ONLY; none automatically changes filters or sizing.",
-      "time": "2026-11-06T23:59:06.051773-05:00"
-    },
-    {
-      "agent": "X/Twitter Scout",
-      "kind": "info",
-      "text": "No free X/Twitter API is reachable. Last check 2026-11-07T01:38:42.153610+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets.",
-      "time": "2026-11-06T23:59:06.053532-05:00"
-    },
     {
       "agent": "Data Scout",
       "kind": "error",
@@ -990,6 +852,354 @@
       "kind": "info",
       "text": "Cycle 4 finished. 85 mints \u00b7 2 primary \u00b7 11 fallback \u00b7 1 new paper entry. Next scheduled cycle 2026-11-07 03:03:18 ET; rolling-hour entry cap remains authoritative.",
       "time": "2026-11-07T02:03:19.009353-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "Light scan found 4 new Solana rows with an X link. Not tweets. E41AUf https://x.com/baibaimiaocat?s=11&t=5ylJ6uR1a7XC3RVfSqRPgA; 6psruu https://x.com/SanAntonioZoo/status/2118887410289512820?a=LX_ueePcRc6ZZvEhRF0&s=20; SMsXhe https://x.com/search?q=quoted_tweet_id%3A2117459387090649133&src=typed_query&f=top; ARDTsg https://x.com/remusofmars/status/2118816866214859124",
+      "time": "2026-11-07T02:08:22.268970-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 2 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:08:22.328338-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "Light scan found 2 new Solana rows with an X link. Not tweets. E5uKc6 https://x.com/Tailerpf/status/2118964523000324252; Ef8veC https://x.com/ddddddd8a/status/2118963466161508581",
+      "time": "2026-11-07T02:13:26.208307-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 6 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:13:26.250951-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. FFgnd8 https://x.com/nermalicious2/status/2117459387090649133",
+      "time": "2026-11-07T02:18:27.520216-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:18:27.562242-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:23:34.867244-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. BBUAtK https://x.com/lockinucoin/status/2118968162503061743?a=-BJ-3tdlNi7StjwmN_k&s=20",
+      "time": "2026-11-07T02:28:37.636607-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:28:37.692168-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 2 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:33:39.235890-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 19 new pools, 4 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:44:05.505267-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. 7SM67H https://x.com/coinftfun",
+      "time": "2026-11-07T02:49:07.346556-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:49:07.385846-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:54:48.837297-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "Light scan found 1 new Solana rows with an X link. Not tweets. rts8kJ https://x.com/CardsTradeOrg",
+      "time": "2026-11-07T02:59:50.564770-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Light scan: 20 new pools, 5 already at the liquidity filter. No paper trades on a light scan.",
+      "time": "2026-11-07T02:59:50.602622-05:00"
+    },
+    {
+      "agent": "System",
+      "kind": "info",
+      "text": "Cycle 5 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum.",
+      "time": "2026-11-07T03:03:23.621989-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L.",
+      "time": "2026-11-07T03:03:23.625586-05:00"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "info",
+      "text": "CHECKLIST CONSULT + APPLY: 0 structured rule item(s) loaded before selection. Violations REJECT PRIMARY and PENALIZE FALLBACK; unknown required observations count as violations.",
+      "time": "2026-11-07T03:03:23.629106-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "No free X/Twitter API is reachable (HTTP 401). Not inventing tweets.",
+      "time": "2026-11-07T03:03:23.728659-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "error",
+      "text": "Birdeye free endpoint refused a keyless request: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}. Not used.",
+      "time": "2026-11-07T03:03:23.856326-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "45 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: SI276 https://x.com/si276_xyz; HODL https://x.com/hodlonsolvip; GATO https://x.com/TheGTA6cat; 7SM67H https://x.com/coinftfun; 4AN9uw https://x.com/Machiavelli_HQ",
+      "time": "2026-11-07T03:03:26.719515-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "3 excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier.",
+      "time": "2026-11-07T03:03:26.728460-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "Global fees filter SKIPPED: unavailable on DexScreener; no fee proxy. Both tiers retain all fail-closed hard rug blocks.",
+      "time": "2026-11-07T03:03:27.171609-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "Tier market candidates: primary 23, fallback market pool 59; 0 excluded: already traded (before scoring).",
+      "time": "2026-11-07T03:03:27.175602-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "CARDS: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:03:30.515951-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE CARDS: base 16.945712 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 5.945712; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:03:30.521258-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "PUMP: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned', 'Token_2022_extensions']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:03:40.594483-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE PUMP: base 18.188941 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'Token_2022_extensions', 'points': 3}] = 9.188941; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:03:40.602304-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "BIRB: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:03:43.714931-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE BIRB: base 18.151191 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 7.151191; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:03:45.938613-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "RAY: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 13, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:03:52.235712-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE RAY: base 16.551381 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 5.551381; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:03:52.243134-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "STONK: PASS three hard checks; soft flags ['LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:03:58.744327-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE STONK: base 18.71926 minus [{'reason': 'LP_locked_or_burned', 'points': 3}] = 15.71926; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:01.042881-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "ANSEM: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:04:04.492502-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE ANSEM: base 15.985647 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 7.985647; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:06.811633-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "CATE: PASS three hard checks; soft flags ['LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:04:10.862546-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE CATE: base 18.079934 minus [{'reason': 'LP_locked_or_burned', 'points': 3}] = 15.079934; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:12.979927-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "ACT: PASS three hard checks; soft flags ['holder_observations_complete', 'single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:04:16.347818-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE ACT: base 16.120501 minus [{'reason': 'holder_observations_complete', 'points': 3}, {'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 5.120501; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:16.352172-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "FLOAT: PASS three hard checks; soft flags ['holder_observations_complete']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:04:20.185731-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE FLOAT: base 17.338164 minus [{'reason': 'holder_observations_complete', 'points': 3}] = 14.338164; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:22.505022-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "AMD: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:04:25.846495-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE AMD: base 16.524261 minus [] = 16.524261; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:27.974306-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "TRUMP: PASS three hard checks; soft flags ['single_non_pool_holder_20pct', 'LP_locked_or_burned']; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:04:31.650275-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE TRUMP: base 12.338285 minus [{'reason': 'single_non_pool_holder_20pct', 'points': 3}, {'reason': 'LP_locked_or_burned', 'points': 3}, {'reason': 'top10_concentration', 'points': 2}] = 4.338285; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:31.655691-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "Diamond: PASS three hard checks; soft flags []; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 4, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
+      "time": "2026-11-07T03:04:35.319712-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "FALLBACK SCORE Diamond: base 15.618844 minus [{'reason': 'fallback_market:unknown/nonstandard quote', 'points': 2}] = 13.618844; concentration/LP/extensions/checklist are penalties, not hard vetoes.",
+      "time": "2026-11-07T03:04:35.324126-05:00"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "info",
+      "text": "After hard blocks and entry criteria: primary 1, fallback-eligible 12. Using primary; team ranks by 2*log10(1+liquidity)+log10(1+volume)-topHolder/20.",
+      "time": "2026-11-07T03:04:35.330428-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "info",
+      "text": "PRIMARY PAPER AMD vote approve: Three hard checks passed: sell route, mint revoked, freeze revoked. Soft risks use tier rejects/penalties.",
+      "time": "2026-11-07T03:04:35.334778-05:00"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "info",
+      "text": "PRIMARY PAPER AMD vote approve: Top non-LP wallet 0.148% (\u2264 20.0%), no linked-wallet fail.",
+      "time": "2026-11-07T03:04:35.337972-05:00"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "info",
+      "text": "PRIMARY PAPER AMD vote abstain: X API unavailable (401); token has no X link. No tweets read, abstaining.",
+      "time": "2026-11-07T03:04:35.340498-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "info",
+      "text": "PRIMARY PAPER AMD vote approve: Ranked primary candidate, score 16.524261; configured tier criteria and common hard blocks passed. ATH may be optional in fallback.",
+      "time": "2026-11-07T03:04:35.342625-05:00"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "info",
+      "text": "PRIMARY PAPER AMD vote approve: 0 earlier simulated fills on this pool; no evidence against.",
+      "time": "2026-11-07T03:04:35.344774-05:00"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "info",
+      "text": "PRIMARY PAPER AMD vote approve: Dip entry under forward_ranked_primary (stop 12%, target 35%).",
+      "time": "2026-11-07T03:04:35.347067-05:00"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "trade",
+      "text": "PRIMARY FORWARD PAPER entry A Meme Dacity / AMD (oCZHH8HnEBCPipEGdEcP3f45pQAaM7nh7P6EkRPpump) @ 0.001419; size $72.90; score 16.524261; 12% stop / 35% target / 16h time stop. ONE TRADE PER COIN EVER: mint permanently excluded after this entry. https://dexscreener.com/solana/6ZV8dyRdxH56Au2EbhpZZBMKpRP5ixBKPRJ7hB2pJ3rr",
+      "time": "2026-11-07T03:04:35.351430-05:00"
+    },
+    {
+      "agent": "System",
+      "kind": "info",
+      "text": "Cycle 5 finished. 82 mints \u00b7 1 primary \u00b7 12 fallback \u00b7 1 new paper entry. Next scheduled cycle 2026-11-07 04:04:35 ET; rolling-hour entry cap remains authoritative.",
+      "time": "2026-11-07T03:04:35.362186-05:00"
     }
   ]
 }
