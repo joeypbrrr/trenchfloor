@@ -1,14 +1,15 @@
 {
-  "updated": "2026-11-08T16:38:49.233091+00:00",
+  "updated": "2026-11-08T18:30:35.901821+00:00",
   "items": [
     {
       "key": "stop_confirmation",
       "suggestion": "Require a recently closed green hourly candle after a stop-out loss.",
-      "supporting_losses": 3,
+      "supporting_losses": 4,
       "trade_ids": [
         "paper-278e35c1222548f0b825bd22197c6181",
         "paper-7def2ee2dd1c4fe6939f0537097a4ece",
-        "paper-45c7f772ff9441ad9dc47bd207cca0ef"
+        "paper-45c7f772ff9441ad9dc47bd207cca0ef",
+        "paper-089b2b13e3994a93abbc2b1b3d512e79"
       ],
       "status": "ACTIVE \u2014 primary violation rejects; fallback violation penalizes score",
       "rules": [
@@ -39,6 +40,25 @@
         }
       ],
       "rule_text": "Require complete entry market and holder evidence after a time-exit loss; 16h time limit unchanged.",
+      "enabled": true
+    },
+    {
+      "key": "liquidity_drop",
+      "suggestion": "Require liquidity not to deteriorate by more than 20% vs preceding observed snapshot.",
+      "supporting_losses": 1,
+      "trade_ids": [
+        "paper-089b2b13e3994a93abbc2b1b3d512e79"
+      ],
+      "status": "ACTIVE \u2014 primary violation rejects; fallback violation penalizes score",
+      "rules": [
+        {
+          "field": "liquidity_change_pct",
+          "op": "gte",
+          "value": -20,
+          "missing_violation": true
+        }
+      ],
+      "rule_text": "Require liquidity not to deteriorate by more than 20% vs preceding observed snapshot.",
       "enabled": true
     }
   ],

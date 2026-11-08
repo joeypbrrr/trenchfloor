@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-08",
+  "timezone": "America/New_York",
+  "label": "PAPER / SIMULATED",
+  "pnl_usd": -49.0774,
+  "trade_count": 1,
+  "trades": [
+    {
+      "id": "paper-089b2b13e3994a93abbc2b1b3d512e79",
+      "mode": "forward:paper",
+      "realized": true,
+      "tier": "primary",
+      "selection_score": 16.376382,
+      "mint": "8rHoAfpdE89bi1SRRKaYUWfng3YpntoxZQyEQy9GPmZV",
+      "pool": "Hs5n9VP5obCAeyyBcTrV1T6LQrFLUPqaXZtSDkkRu7rw",
+      "symbol": "MAGGIE",
+      "name": "Gargantuan Cat",
+      "entry_ts": 1794155928.9813623,
+      "entry_time": "2026-11-08T16:38:48.981362+00:00",
+      "entry_price": 0.0006722,
+      "entry_frac_of_ath": 0.5279647383996355,
+      "notional_usd": 98.1616,
+      "slippage_bps_per_side": 80,
+      "cost_rate": 0.011,
+      "entry_liquidity_usd": 78961.48,
+      "entry_volume_usd": 4962666.05,
+      "top_human_pct": 2.2835,
+      "stop_fraction": 0.12,
+      "target_fraction": 0.35,
+      "max_hold_seconds": 57600,
+      "dex_url": "https://dexscreener.com/solana/Hs5n9VP5obCAeyyBcTrV1T6LQrFLUPqaXZtSDkkRu7rw",
+      "gmgn_url": "https://gmgn.ai/sol/token/8rHoAfpdE89bi1SRRKaYUWfng3YpntoxZQyEQy9GPmZV",
+      "strategy_id": "forward_ranked_primary",
+      "hard_rug_checks": [
+        {
+          "name": "mint_authority_revoked",
+          "pass": true,
+          "detail": "explicitly revoked"
+        },
+        {
+          "name": "freeze_authority_revoked",
+          "pass": true,
+          "detail": "explicitly revoked"
+        },
+        {
+          "name": "sellable_not_honeypot",
+          "pass": true,
+          "detail": "read-only positive sell route required; known paused/nontransferable rejects; unknown route/paused state rejects; no execution"
+        },
+        {
+          "name": "min_pair_age",
+          "pass": true,
+          "detail": "pair age 16.60h >= 0.25h"
+        },
+        {
+          "name": "top10_ex_pool_burn",
+          "pass": true,
+          "detail": "top-10 non-pool non-burn holders are 15.20% (cap 40%)"
+        },
+        {
+          "name": "fresh_wallet_cluster",
+          "pass": true,
+          "detail": "no fresh-wallet cluster in 5 sampled top holders; 0 fresh, 0.00% combined"
+        },
+        {
+          "name": "bundle_sniper_share",
+          "pass": true,
+          "detail": "no same-slot bundle and no sniper share at the cap in 2 known acquisition slots"
+        },
+        {
+          "name": "wash_trade",
+          "pass": true,
+          "detail": "no wash round-trip in 0 sampled pool fills"
+        },
+        {
+          "name": "lp_locked_or_burned",
+          "pass": true,
+          "detail": "chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
+        },
+        {
+          "name": "global_fees_sol",
+          "pass": true,
+          "detail": "unclaimed on-chain protocol+creator fees 3.37919 SOL already meet 1.5 SOL (lower bound)"
+        }
+      ],
+      "checklist_audit": {
+        "active_rule_keys": [
+          "stop_confirmation",
+          "time_exit"
+        ],
+        "violations": []
+      },
+      "fallback_penalties": [],
+      "team": {
+        "approved": true,
+        "approve": 5,
+        "reject": 0,
+        "abstain": 1,
+        "tally": "5/6 approve",
+        "rule": "majority 5/5 of voting agents",
+        "vetoes": [],
+        "votes": [
+          {
+            "agent": "Risk Manager",
+            "vote": "approve",
+            "reason": "Hard entry gates passed: sell route, revoked mint and freeze, pair age, top-10, fresh-wallet cluster, bundle/sniper, wash, LP lock/burn, global fees."
+          },
+          {
+            "agent": "Bubble Map Analyst",
+            "vote": "approve",
+            "reason": "Top non-LP wallet 2.2835% (\u2264 20.0%), no linked-wallet fail."
+          },
+          {
+            "agent": "X/Twitter Scout",
+            "vote": "abstain",
+            "reason": "X API unavailable (401); token has no X link. No tweets read, abstaining."
+          },
+          {
+            "agent": "Data Scout",
+            "vote": "approve",
+            "reason": "Ranked primary candidate, score 16.376382; configured tier criteria and common hard blocks passed. ATH may be optional in fallback."
+          },
+          {
+            "agent": "Backtester",
+            "vote": "approve",
+            "reason": "0 earlier simulated fills on this pool; no evidence against."
+          },
+          {
+            "agent": "Strategist",
+            "vote": "approve",
+            "reason": "Dip entry under forward_ranked_primary (stop 12%, target 35%)."
+          }
+        ],
+        "proposed_by": "Data Scout"
+      },
+      "proposed_by": "Data Scout",
+      "mark_price_usd": 0.0003436,
+      "mark_time": "2026-11-08T18:30:34.571348+00:00",
+      "exit_ts": 1794162634.571348,
+      "exit_time": "2026-11-08T18:30:34.571348+00:00",
+      "exit_price": 0.0003436,
+      "exit_reason": "stop",
+      "pnl_usd": -49.077435,
+      "exit_liquidity_usd": 56755.74,
+      "exit_volume_usd": 5398069.98,
+      "post_loss_review": {
+        "version": 1,
+        "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79",
+        "mint": "8rHoAfpdE89bi1SRRKaYUWfng3YpntoxZQyEQy9GPmZV",
+        "symbol": "MAGGIE",
+        "pnl_usd": -49.077435,
+        "checked_at": "2026-11-08T18:30:35.121628+00:00",
+        "attempts": 1,
+        "factors": [
+          {
+            "check": "liquidity",
+            "text": "liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
+          }
+        ],
+        "checks": [
+          {
+            "name": "holder_distribution",
+            "result": "clean",
+            "detail": "top-1 2.28%; top-10 15.20%; excluding pool and burn; entry snapshot top non-LP holder 2.28%"
+          },
+          {
+            "name": "fresh_wallet_cluster",
+            "result": "clean",
+            "detail": "0 fresh wallets in 5 sampled top holders holding 0.00% combined (block at 3 wallets, or 2+ wallets at 8%)"
+          },
+          {
+            "name": "linked_wallet_cluster",
+            "result": "clean",
+            "detail": "no shared funder in the sample; 0 of 5 holders had a known funder (funder reads run on complete short histories)"
+          },
+          {
+            "name": "bundle_sniper_share",
+            "result": "clean",
+            "detail": "no same-slot bundle and no sniper share at the cap in 2 known acquisition slots"
+          },
+          {
+            "name": "dev_creator",
+            "result": "clean",
+            "detail": "creator wallets CK896YSefTonX5Yff6azHiF7T52x5bgEmqmnRU2wP6c1, 4V2jDkT2skdk23qSryjxJCmB14tY86BBws25Jm5pr9C3; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 0 sampled pool fills"
+          },
+          {
+            "name": "liquidity",
+            "result": "flag",
+            "detail": "liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked"
+          },
+          {
+            "name": "volume_profile",
+            "result": "clean",
+            "detail": "volume $4,962,666.05 at entry \u2192 $5,398,069.98 at exit (8.8%). wash no wash round-trip in 0 sampled pool fills"
+          },
+          {
+            "name": "price_mcap_path",
+            "result": "clean",
+            "detail": "price 0.0006722 \u2192 0.0003436 (-48.9%) over 111.8 minutes; entry was 52.8% of the recorded window ATH; market cap at review $334,438.00; recorded stop 12%"
+          },
+          {
+            "name": "on_chain_anomalies",
+            "result": "clean",
+            "detail": "mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0003436."
+          }
+        ],
+        "improve_entries": "Improve entries: MAGGIE showed liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked. This does not change entry gates or config thresholds.",
+        "text": "POST-LOSS REVIEW / MAGGIE / $-49.08 / exit stop.\nContributing factors:\n- liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\nChecks:\n- holder_distribution: CLEAN top-1 2.28%; top-10 15.20%; excluding pool and burn; entry snapshot top non-LP holder 2.28%\n- fresh_wallet_cluster: CLEAN 0 fresh wallets in 5 sampled top holders holding 0.00% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 0 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 2 known acquisition slots\n- dev_creator: CLEAN creator wallets CK896YSefTonX5Yff6azHiF7T52x5bgEmqmnRU2wP6c1, 4V2jDkT2skdk23qSryjxJCmB14tY86BBws25Jm5pr9C3; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 0 sampled pool fills\n- liquidity: FLAG liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $4,962,666.05 at entry \u2192 $5,398,069.98 at exit (8.8%). wash no wash round-trip in 0 sampled pool fills\n- price_mcap_path: CLEAN price 0.0006722 \u2192 0.0003436 (-48.9%) over 111.8 minutes; entry was 52.8% of the recorded window ATH; market cap at review $334,438.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0003436.\nImprove entries: MAGGIE showed liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked. This does not change entry gates or config thresholds."
+      },
+      "loss_lesson_stored": true
+    }
+  ]
+}

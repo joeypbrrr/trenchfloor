@@ -1,78 +1,6 @@
 {
-  "updated": "2026-11-08T16:38:49.233091+00:00",
+  "updated": "2026-11-08T18:30:35.901821+00:00",
   "messages": [
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK FLOAT: fresh_wallet_cluster: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien",
-      "time": "2026-11-08T08:13:33.570130-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK FLOAT: bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien",
-      "time": "2026-11-08T08:13:33.579540-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK FLOAT: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien",
-      "time": "2026-11-08T08:13:33.589091-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK FLOAT: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint",
-      "time": "2026-11-08T08:13:33.598319-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK FLOAT: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint",
-      "time": "2026-11-08T08:13:33.605415-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "CATE: fresh_wallet_cluster: FAIL 4 fresh wallets in the top-holder sample (block at 3) holding 8.51% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: FAIL LP mint 6MaxqXYizZuiHCBgyyCmzZu3MnTdVKambp49fagb7VQw still has supply 15039026; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.010634 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
-      "time": "2026-11-08T08:13:53.011356-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK CATE: fresh_wallet_cluster: FAIL 4 fresh wallets in the top-holder sample (block at 3) holding 8.51% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h",
-      "time": "2026-11-08T08:13:53.020217-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK CATE: bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien",
-      "time": "2026-11-08T08:13:53.027481-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK CATE: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien",
-      "time": "2026-11-08T08:13:53.034372-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK CATE: lp_locked_or_burned: FAIL LP mint 6MaxqXYizZuiHCBgyyCmzZu3MnTdVKambp49fagb7VQw still has supply 15039026",
-      "time": "2026-11-08T08:13:53.040340-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "HARD BLOCK CATE: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.010634 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL",
-      "time": "2026-11-08T08:13:53.045637-05:00"
-    },
-    {
-      "agent": "Risk Manager",
-      "kind": "info",
-      "text": "CLAUDIA: fresh_wallet_cluster: FAIL 3 fresh wallets in the top-holder sample (block at 3) holding 6.11% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 1.331219 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 19, 'confirmed_absent_native_accounts': 4, 'basis': 'full-length batched RPC; absent owners counted as wallets'}",
-      "time": "2026-11-08T08:14:07.780441-05:00"
-    },
     {
       "agent": "Risk Manager",
       "kind": "info",
@@ -1200,6 +1128,89 @@
       "kind": "info",
       "text": "Cycle 19 finished. 76 mints \u00b7 1 primary \u00b7 1 fallback \u00b7 1 new paper entry. Next scheduled cycle 2026-11-08 12:38:49 ET; rolling-hour entry cap remains authoritative.",
       "time": "2026-11-08T11:38:49.026535-05:00"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "trade_close",
+      "text": "Forward paper realized close MAGGIE: $-49.08",
+      "time": "2026-11-08T13:30:35.154289-05:00"
+    },
+    {
+      "agent": "Risk Manager",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / MAGGIE closed for $-49.08. Exit reason: stop. This describes recorded facts, not a proven cause.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Entry rationale: ranked primary candidate with common hard rug blocks and recorded team majority. Green-candle confirmation optional; fallback ATH optional. majority 5/5 of voting agents A passing entry check is not a guarantee; the approved checklist policy applies structured rules to subsequent selections, not proof of causation.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Entry was 52.8% of recorded window ATH (47.2% below it).",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Recorded liquidity: $78,961.48 at entry \u2192 $56,755.74 at exit.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Data Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Recorded volume: $4,962,666.05 at entry \u2192 $5,398,069.98 at exit.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Bubble Map Analyst",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Recorded top non-LP holder: 2.2835%. Linked-wallet changes were not recorded.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / Held 111.8 minutes; modeled slippage per side: 80 bps. Actual execution slippage is unavailable in paper research.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "X/Twitter Scout",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / No time-aligned, verified X data supplied with this close; no social explanation inferred.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / CHECKLIST RULE ADDED/UPDATED (1 supporting loss(es), not causal proof): Require liquidity not to deteriorate by more than 20% vs preceding observed snapshot. Rules [{'field': 'liquidity_change_pct', 'op': 'gte', 'value': -20, 'missing_violation': True}]. Applied before selection: PRIMARY violation rejects; FALLBACK violation penalizes score.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Strategist",
+      "kind": "loss_review",
+      "text": "RULE-BASED LOSS REVIEW / CHECKLIST RULE ADDED/UPDATED (4 supporting loss(es), not causal proof): Require a recently closed green hourly candle after a stop-out loss. Rules [{'field': 'green_confirmation', 'op': 'eq', 'value': True, 'missing_violation': True}]. Applied before selection: PRIMARY violation rejects; FALLBACK violation penalizes score.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
+    },
+    {
+      "agent": "Backtester",
+      "kind": "trade_review",
+      "text": "TRADE REVIEW / MAGGIE / loss / P&L $-49.08 / exit stop.\nWhat went right: Recorded hard checks passed: mint_authority_revoked, freeze_authority_revoked, sellable_not_honeypot, min_pair_age, top10_ex_pool_burn, fresh_wallet_cluster, bundle_sniper_share, wash_trade, lp_locked_or_burned, global_fees_sol.\nWhat went wrong: Recorded P&L $-49.08 after modeled fees and slippage. Exit reason recorded as stop.\nRed flags: No failed hard check was recorded. Checklist audit recorded no violations. Recorded top non-LP holder 2.2835%. No later holder change was recorded. Entry was 52.8% of the recorded window ATH. Recorded liquidity $78,961.48 at entry \u2192 $56,755.74 at exit. Present: liquidity at exit was more than 20% below the entry snapshot. Recorded volume $4,962,666.05 at entry \u2192 $5,398,069.98 at exit.\nHow to improve future entries: Weigh the recorded deterioration before a similar entry: liquidity $78,961.48 at entry \u2192 $56,755.74 at exit. Improve entries: MAGGIE showed liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked. This does not change entry gates or config thresholds.\nHow to avoid similar losses: Recorded loss of $49.08 on exit stop. Fields that were not recorded stay unknown. The present flags above are the only recorded warnings available for avoiding a repeat. The recorded stop fraction was 12%. This review does not change that exit rule.\nPOST-LOSS REVIEW / MAGGIE / $-49.08 / exit stop.\nContributing factors:\n- liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\nChecks:\n- holder_distribution: CLEAN top-1 2.28%; top-10 15.20%; excluding pool and burn; entry snapshot top non-LP holder 2.28%\n- fresh_wallet_cluster: CLEAN 0 fresh wallets in 5 sampled top holders holding 0.00% combined (block at 3 wallets, or 2+ wallets at 8%)\n- linked_wallet_cluster: CLEAN no shared funder in the sample; 0 of 5 holders had a known funder (funder reads run on complete short histories)\n- bundle_sniper_share: CLEAN no same-slot bundle and no sniper share at the cap in 2 known acquisition slots\n- dev_creator: CLEAN creator wallets CK896YSefTonX5Yff6azHiF7T52x5bgEmqmnRU2wP6c1, 4V2jDkT2skdk23qSryjxJCmB14tY86BBws25Jm5pr9C3; holding not in the top holder sample; 0 creator sell(s) totaling 0 tokens in 0 sampled pool fills\n- liquidity: FLAG liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked\n- volume_profile: CLEAN volume $4,962,666.05 at entry \u2192 $5,398,069.98 at exit (8.8%). wash no wash round-trip in 0 sampled pool fills\n- price_mcap_path: CLEAN price 0.0006722 \u2192 0.0003436 (-48.9%) over 111.8 minutes; entry was 52.8% of the recorded window ATH; market cap at review $334,438.00; recorded stop 12%\n- on_chain_anomalies: CLEAN mint authority is not active; freeze authority is not active; no extra on-chain warning Recorded exit price 0.0003436.\nImprove entries: MAGGIE showed liquidity $78,961.48 at entry \u2192 $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked. This does not change entry gates or config thresholds.",
+      "time": "2026-11-08T13:30:35.154289-05:00",
+      "trade_id": "paper-089b2b13e3994a93abbc2b1b3d512e79"
     }
   ]
 }
