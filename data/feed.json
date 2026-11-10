@@ -1,7 +1,469 @@
 {
-  "updated": "2026-11-10T14:54:35.223036+00:00",
-  "next_id": 2330,
+  "updated": "2026-11-10T19:28:02.441721+00:00",
+  "next_id": 2396,
   "events": [
+    {
+      "id": 2395,
+      "time": "2026-11-10T19:28:02.441708+00:00",
+      "agent": "System",
+      "type": "info",
+      "text": "Cycle 36 finished. 81 mints \u00b7 0 primary \u00b7 0 fallback \u00b7 0 new paper entry. Next scheduled cycle 2026-11-10 15:28:02 ET; rolling-hour entry cap remains authoritative."
+    },
+    {
+      "id": 2394,
+      "time": "2026-11-10T19:28:02.407225+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "NO TRADE: no funded, untraded, team-approved candidate with every hard rug check known/pass; minimum never overrides hard blocks."
+    },
+    {
+      "id": 2393,
+      "time": "2026-11-10T19:28:02.391458+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "After hard blocks and entry criteria: primary 0, fallback-eligible 0. NO TRADE: every reviewed candidate failed/unknown hard checks or tier criteria; minimum never overrides hard blocks."
+    },
+    {
+      "id": 2392,
+      "time": "2026-11-10T19:28:02.384709+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2391,
+      "time": "2026-11-10T19:28:02.380332+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2390,
+      "time": "2026-11-10T19:28:02.375904+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2389,
+      "time": "2026-11-10T19:28:02.370965+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: bundle_sniper_share: FAIL 3 top holders acquired in slot 467764506 (7.51% combined); same-slot buys are a bundle"
+    },
+    {
+      "id": 2388,
+      "time": "2026-11-10T19:28:02.364398+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STANK: fresh_wallet_cluster: FAIL 3 fresh wallets in the top-holder sample (block at 3) holding 7.71% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h"
+    },
+    {
+      "id": 2387,
+      "time": "2026-11-10T19:28:02.356309+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "STANK: fresh_wallet_cluster: FAIL 3 fresh wallets in the top-holder sample (block at 3) holding 7.71% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; bundle_sniper_share: FAIL 3 top holders acquired in slot 467764506 (7.51% combined); same-slot buys are a bundle; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 4, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2386,
+      "time": "2026-11-10T19:27:44.015548+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK JEANPHIL: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.018985 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
+    },
+    {
+      "id": 2385,
+      "time": "2026-11-10T19:27:44.008455+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK JEANPHIL: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2384,
+      "time": "2026-11-10T19:27:43.998647+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "JEANPHIL: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.018985 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 2, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2383,
+      "time": "2026-11-10T19:27:29.870218+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CBUCKS: global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total"
+    },
+    {
+      "id": 2382,
+      "time": "2026-11-10T19:27:29.865059+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CBUCKS: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2381,
+      "time": "2026-11-10T19:27:29.856938+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "CBUCKS: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2380,
+      "time": "2026-11-10T19:27:16.760037+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CLAUDIA: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.077451 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
+    },
+    {
+      "id": 2379,
+      "time": "2026-11-10T19:27:16.754479+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "CLAUDIA: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.077451 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 19, 'confirmed_absent_native_accounts': 5, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2378,
+      "time": "2026-11-10T19:27:03.231489+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Dacity: global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total"
+    },
+    {
+      "id": 2377,
+      "time": "2026-11-10T19:27:03.221009+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK Dacity: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2376,
+      "time": "2026-11-10T19:27:03.211939+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Dacity: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2375,
+      "time": "2026-11-10T19:26:48.289274+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK FLOAT: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2374,
+      "time": "2026-11-10T19:26:48.282075+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK FLOAT: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2373,
+      "time": "2026-11-10T19:26:48.276539+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK FLOAT: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2372,
+      "time": "2026-11-10T19:26:48.269409+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "FLOAT: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2371,
+      "time": "2026-11-10T19:26:34.827481+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.018877 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
+    },
+    {
+      "id": 2370,
+      "time": "2026-11-10T19:26:34.813513+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: lp_locked_or_burned: FAIL LP mint CevNeicTXqL1oAjqZ3FNmexftzKD4ozqev5DgX2sAgFq still has supply 26645413858"
+    },
+    {
+      "id": 2369,
+      "time": "2026-11-10T19:26:34.802257+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2368,
+      "time": "2026-11-10T19:26:34.773280+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK ANSEM: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 66.01% (cap 40%)"
+    },
+    {
+      "id": 2367,
+      "time": "2026-11-10T19:26:34.733201+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "ANSEM: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 66.01% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: FAIL LP mint CevNeicTXqL1oAjqZ3FNmexftzKD4ozqev5DgX2sAgFq still has supply 26645413858; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.018877 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2366,
+      "time": "2026-11-10T16:35:54.024113+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CATE: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.012444 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
+    },
+    {
+      "id": 2365,
+      "time": "2026-11-10T16:35:54.019417+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CATE: lp_locked_or_burned: FAIL LP mint 6MaxqXYizZuiHCBgyyCmzZu3MnTdVKambp49fagb7VQw still has supply 15039026"
+    },
+    {
+      "id": 2364,
+      "time": "2026-11-10T16:35:54.013778+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CATE: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2363,
+      "time": "2026-11-10T16:35:54.007898+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "CATE: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: FAIL LP mint 6MaxqXYizZuiHCBgyyCmzZu3MnTdVKambp49fagb7VQw still has supply 15039026; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.012444 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2362,
+      "time": "2026-11-10T16:29:47.466631+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2361,
+      "time": "2026-11-10T16:29:47.462209+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2360,
+      "time": "2026-11-10T16:29:47.457962+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2359,
+      "time": "2026-11-10T16:29:47.452990+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PENGU: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 45.19% (cap 40%)"
+    },
+    {
+      "id": 2358,
+      "time": "2026-11-10T16:29:47.446415+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PENGU: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 45.19% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2357,
+      "time": "2026-11-10T16:29:24.750030+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2356,
+      "time": "2026-11-10T16:29:24.743294+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2355,
+      "time": "2026-11-10T16:29:24.736161+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK STONK: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2354,
+      "time": "2026-11-10T16:29:24.728072+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "STONK: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2353,
+      "time": "2026-11-10T16:28:50.185204+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2352,
+      "time": "2026-11-10T16:28:50.178924+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2351,
+      "time": "2026-11-10T16:28:50.165862+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2350,
+      "time": "2026-11-10T16:28:50.155501+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK PUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 59.44% (cap 40%)"
+    },
+    {
+      "id": 2349,
+      "time": "2026-11-10T16:28:50.149873+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "PUMP: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 59.44% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2348,
+      "time": "2026-11-10T16:28:20.573222+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CARDS: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2347,
+      "time": "2026-11-10T16:28:20.548792+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CARDS: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
+    },
+    {
+      "id": 2346,
+      "time": "2026-11-10T16:28:20.536125+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CARDS: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
+    },
+    {
+      "id": 2345,
+      "time": "2026-11-10T16:28:20.512435+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "HARD BLOCK CARDS: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 72.57% (cap 40%)"
+    },
+    {
+      "id": 2344,
+      "time": "2026-11-10T16:28:20.497194+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "CARDS: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 72.57% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
+    },
+    {
+      "id": 2343,
+      "time": "2026-11-10T16:27:52.717668+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Tier market candidates: primary 25, fallback market pool 56; 0 excluded: already traded (before scoring)."
+    },
+    {
+      "id": 2342,
+      "time": "2026-11-10T16:27:52.710404+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Global fees are a hard entry gate on both tiers. ENFORCED fail-closed: need verified cumulative global fees >= 1.5 SOL, or an on-chain PumpSwap unclaimed protocol+creator lower bound already >= 1.5 SOL. Unreadable or unproven lifetime fees block entry. No DexScreener volume proxy."
+    },
+    {
+      "id": 2341,
+      "time": "2026-11-10T16:27:52.246159+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "1 excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier."
+    },
+    {
+      "id": 2340,
+      "time": "2026-11-10T16:27:52.237079+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "43 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: GATO https://x.com/TheGTA6cat; 8Rs3ta https://x.com/hiddenshadow10x; wbcE7i https://x.com/heymike777; DtcicP https://x.com/cartoonmoney_ai; AmoPNK https://x.com/dogi_inu_sol_"
+    },
+    {
+      "id": 2339,
+      "time": "2026-11-10T16:27:49.345002+00:00",
+      "agent": "Data Scout",
+      "type": "error",
+      "text": "Birdeye free endpoint refused a keyless request: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}. Not used."
+    },
+    {
+      "id": 2338,
+      "time": "2026-11-10T16:27:49.134515+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "No free X/Twitter API is reachable (HTTP 401). Not inventing tweets."
+    },
+    {
+      "id": 2337,
+      "time": "2026-11-10T16:27:49.015673+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "CHECKLIST CONSULT / liquidity_drop: [{'field': 'liquidity_change_pct', 'op': 'gte', 'value': -20, 'missing_violation': True}] \u2014 ACTIVE primary reject / fallback score penalty."
+    },
+    {
+      "id": 2336,
+      "time": "2026-11-10T16:27:48.999408+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "CHECKLIST CONSULT / time_exit: [{'field': 'evidence_complete', 'op': 'eq', 'value': True, 'missing_violation': True}] \u2014 ACTIVE primary reject / fallback score penalty."
+    },
+    {
+      "id": 2335,
+      "time": "2026-11-10T16:27:48.985309+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "CHECKLIST CONSULT / stop_confirmation: [{'field': 'green_confirmation', 'op': 'eq', 'value': True, 'missing_violation': True}] \u2014 ACTIVE primary reject / fallback score penalty."
+    },
+    {
+      "id": 2334,
+      "time": "2026-11-10T16:27:48.972695+00:00",
+      "agent": "Strategist",
+      "type": "info",
+      "text": "CHECKLIST CONSULT + APPLY: 3 structured rule item(s) loaded before selection. Violations REJECT PRIMARY and PENALIZE FALLBACK; unknown required observations count as violations."
+    },
+    {
+      "id": 2333,
+      "time": "2026-11-10T16:27:48.958747+00:00",
+      "agent": "Risk Manager",
+      "type": "info",
+      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L."
+    },
+    {
+      "id": 2332,
+      "time": "2026-11-10T16:27:48.943526+00:00",
+      "agent": "System",
+      "type": "info",
+      "text": "Cycle 36 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum."
+    },
+    {
+      "id": 2331,
+      "time": "2026-11-10T14:59:52.845089+00:00",
+      "agent": "Data Scout",
+      "type": "info",
+      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
+    },
+    {
+      "id": 2330,
+      "time": "2026-11-10T14:59:52.781833+00:00",
+      "agent": "X/Twitter Scout",
+      "type": "info",
+      "text": "Light scan found 22 new Solana rows with an X link. Not tweets. EZBcgd https://x.com/fyredomeleonida?s=11; 12XbVd https://x.com/i/communities/2008228705727115506; 3RJ8Mm https://x.com/Wintalt/status/2120091613003407732; 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11"
+    },
     {
       "id": 2329,
       "time": "2026-11-10T14:54:35.223012+00:00",
@@ -799,468 +1261,6 @@
       "agent": "Risk Manager",
       "type": "info",
       "text": "HARD BLOCK STONK: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
-    },
-    {
-      "id": 2215,
-      "time": "2026-11-10T10:50:36.069414+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK STONK: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
-    },
-    {
-      "id": 2214,
-      "time": "2026-11-10T10:50:36.064911+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK STONK: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2213,
-      "time": "2026-11-10T10:50:36.057475+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "STONK: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2212,
-      "time": "2026-11-10T10:50:22.118737+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK CARDS: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
-    },
-    {
-      "id": 2211,
-      "time": "2026-11-10T10:50:22.113368+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK CARDS: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
-    },
-    {
-      "id": 2210,
-      "time": "2026-11-10T10:50:22.108179+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK CARDS: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 72.61% (cap 40%)"
-    },
-    {
-      "id": 2209,
-      "time": "2026-11-10T10:50:22.100495+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "CARDS: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 72.61% (cap 40%); lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2208,
-      "time": "2026-11-10T10:50:08.490865+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Tier market candidates: primary 23, fallback market pool 59; 0 excluded: already traded (before scoring)."
-    },
-    {
-      "id": 2207,
-      "time": "2026-11-10T10:50:08.484242+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Global fees are a hard entry gate on both tiers. ENFORCED fail-closed: need verified cumulative global fees >= 1.5 SOL, or an on-chain PumpSwap unclaimed protocol+creator lower bound already >= 1.5 SOL. Unreadable or unproven lifetime fees block entry. No DexScreener volume proxy."
-    },
-    {
-      "id": 2206,
-      "time": "2026-11-10T10:50:07.974148+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "1 excluded: already traded; one forward entry per mint EVER, before ranking/scoring in either tier."
-    },
-    {
-      "id": 2205,
-      "time": "2026-11-10T10:50:07.962029+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "43 discovered Solana mints have an X link on DexScreener. No tweet text was fetched. Examples: GATO https://x.com/TheGTA6cat; DESSA https://x.com/DessaOnSOL; MERLYN https://x.com/WizzardWeb3; 7mq84U https://x.com/elonmusk/status/2120093699048870138; 3RJ8Mm https://x.com/Wintalt/status/2120091613003407732?a=843Nmn89xJ0_X0Qq0_w&s=20"
-    },
-    {
-      "id": 2204,
-      "time": "2026-11-10T10:50:05.132316+00:00",
-      "agent": "Data Scout",
-      "type": "error",
-      "text": "Birdeye keyless probe still failing from 2026-11-10T09:42:24.837943+00:00: HTTP 401 Unauthorized {\"success\":false,\"message\":\"Unauthorized\"}"
-    },
-    {
-      "id": 2203,
-      "time": "2026-11-10T10:50:05.123176+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "No free X/Twitter API is reachable. Last check 2026-11-10T09:42:24.681926+00:00: HTTP 401 Unauthorized {\n  \"title\": \"Unauthorized\",\n  \"type\": \"about:blank\",\n  \"status\": 401,\n  \"detail\": \"Unauthorized\"\n} Not inventing tweets."
-    },
-    {
-      "id": 2202,
-      "time": "2026-11-10T10:50:05.115717+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "CHECKLIST CONSULT / liquidity_drop: [{'field': 'liquidity_change_pct', 'op': 'gte', 'value': -20, 'missing_violation': True}] \u2014 ACTIVE primary reject / fallback score penalty."
-    },
-    {
-      "id": 2201,
-      "time": "2026-11-10T10:50:05.109085+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "CHECKLIST CONSULT / time_exit: [{'field': 'evidence_complete', 'op': 'eq', 'value': True, 'missing_violation': True}] \u2014 ACTIVE primary reject / fallback score penalty."
-    },
-    {
-      "id": 2200,
-      "time": "2026-11-10T10:50:05.101607+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "CHECKLIST CONSULT / stop_confirmation: [{'field': 'green_confirmation', 'op': 'eq', 'value': True, 'missing_violation': True}] \u2014 ACTIVE primary reject / fallback score penalty."
-    },
-    {
-      "id": 2199,
-      "time": "2026-11-10T10:50:05.094089+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "CHECKLIST CONSULT + APPLY: 3 structured rule item(s) loaded before selection. Violations REJECT PRIMARY and PENALIZE FALLBACK; unknown required observations count as violations."
-    },
-    {
-      "id": 2198,
-      "time": "2026-11-10T10:50:05.088733+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "Daily profit stop armed: $0.00 realized in forward:paper / $300. deduplicated realized forward paper closes only; no unrealized P&L."
-    },
-    {
-      "id": 2197,
-      "time": "2026-11-10T10:50:05.077792+00:00",
-      "agent": "System",
-      "type": "info",
-      "text": "Cycle 34 started. Primary/fallback active; target one paper entry if a hard-safe candidate exists. $300 ET daily halt and rolling-hour cap override entry minimum."
-    },
-    {
-      "id": 2196,
-      "time": "2026-11-10T10:32:34.188666+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 2 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2195,
-      "time": "2026-11-10T10:32:34.139328+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 11 new Solana rows with an X link. Not tweets. 3RJ8Mm https://x.com/Wintalt/status/2120091613003407732?a=843Nmn89xJ0_X0Qq0_w&s=20; 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta"
-    },
-    {
-      "id": 2194,
-      "time": "2026-11-10T10:27:30.965811+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 19 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2193,
-      "time": "2026-11-10T10:27:30.924027+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 11 new Solana rows with an X link. Not tweets. 3RJ8Mm https://x.com/Wintalt/status/2120091613003407732?a=843Nmn89xJ0_X0Qq0_w&s=20; 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta"
-    },
-    {
-      "id": 2192,
-      "time": "2026-11-10T10:22:29.810162+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2191,
-      "time": "2026-11-10T10:22:29.748499+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 9 new Solana rows with an X link. Not tweets. 3RJ8Mm https://x.com/Wintalt/status/2120091613003407732?a=843Nmn89xJ0_X0Qq0_w&s=20; 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta"
-    },
-    {
-      "id": 2190,
-      "time": "2026-11-10T10:16:46.087367+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2189,
-      "time": "2026-11-10T10:16:46.046912+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 9 new Solana rows with an X link. Not tweets. 3RJ8Mm https://x.com/Wintalt/status/2120091613003407732?a=843Nmn89xJ0_X0Qq0_w&s=20; 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta"
-    },
-    {
-      "id": 2188,
-      "time": "2026-11-10T10:11:44.750110+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2187,
-      "time": "2026-11-10T10:11:44.562773+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 9 new Solana rows with an X link. Not tweets. 3RJ8Mm https://x.com/Wintalt/status/2120091613003407732?a=843Nmn89xJ0_X0Qq0_w&s=20; 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta"
-    },
-    {
-      "id": 2186,
-      "time": "2026-11-10T10:05:43.378585+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 5 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2185,
-      "time": "2026-11-10T10:05:43.325272+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 12 new Solana rows with an X link. Not tweets. 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta; 3jXB2M https://x.com/alx/status/2118947797655314938?a=HkhbmKTSNPuVg45WVnw&s=20"
-    },
-    {
-      "id": 2184,
-      "time": "2026-11-10T10:00:42.357590+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 4 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2183,
-      "time": "2026-11-10T10:00:42.322288+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 10 new Solana rows with an X link. Not tweets. 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta; 3jXB2M https://x.com/alx/status/2118947797655314938?a=HkhbmKTSNPuVg45WVnw&s=20"
-    },
-    {
-      "id": 2182,
-      "time": "2026-11-10T09:55:41.428441+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 1 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2181,
-      "time": "2026-11-10T09:55:41.387949+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 9 new Solana rows with an X link. Not tweets. 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta; 3jXB2M https://x.com/alx/status/2118947797655314938?a=HkhbmKTSNPuVg45WVnw&s=20"
-    },
-    {
-      "id": 2180,
-      "time": "2026-11-10T09:50:40.428223+00:00",
-      "agent": "Data Scout",
-      "type": "info",
-      "text": "Light scan: 20 new pools, 3 already at the liquidity filter. No paper trades on a light scan."
-    },
-    {
-      "id": 2179,
-      "time": "2026-11-10T09:50:40.390601+00:00",
-      "agent": "X/Twitter Scout",
-      "type": "info",
-      "text": "Light scan found 14 new Solana rows with an X link. Not tweets. 5JHHcu https://x.com/SteveTheFishy; 4VE9sy https://x.com/playmememon?s=11; Cx3onE https://x.com/Butny_Wolf; 3uc2mx https://x.com/BPG2/status/2120025727156490243; 34DXEU https://x.com/bigguygta"
-    },
-    {
-      "id": 2178,
-      "time": "2026-11-10T09:45:37.498033+00:00",
-      "agent": "System",
-      "type": "info",
-      "text": "Cycle 33 finished. 82 mints \u00b7 0 primary \u00b7 0 fallback \u00b7 0 new paper entry. Next scheduled cycle 2026-11-10 05:45:37 ET; rolling-hour entry cap remains authoritative."
-    },
-    {
-      "id": 2177,
-      "time": "2026-11-10T09:45:37.482017+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "NO TRADE: no funded, untraded, team-approved candidate with every hard rug check known/pass; minimum never overrides hard blocks."
-    },
-    {
-      "id": 2176,
-      "time": "2026-11-10T09:45:37.475288+00:00",
-      "agent": "Strategist",
-      "type": "info",
-      "text": "After hard blocks and entry criteria: primary 0, fallback-eligible 0. NO TRADE: every reviewed candidate failed/unknown hard checks or tier criteria; minimum never overrides hard blocks."
-    },
-    {
-      "id": 2175,
-      "time": "2026-11-10T09:45:37.469725+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK JEANPHIL: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.000176 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
-    },
-    {
-      "id": 2174,
-      "time": "2026-11-10T09:45:37.465062+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK JEANPHIL: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2173,
-      "time": "2026-11-10T09:45:37.459069+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "JEANPHIL: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.000176 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 3, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2172,
-      "time": "2026-11-10T09:45:22.798988+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK HODLER: global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total"
-    },
-    {
-      "id": 2171,
-      "time": "2026-11-10T09:45:22.794742+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK HODLER: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2170,
-      "time": "2026-11-10T09:45:22.790225+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK HODLER: fresh_wallet_cluster: FAIL 2 fresh wallets in the top-holder sample (block at 3) holding 77.96% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h"
-    },
-    {
-      "id": 2169,
-      "time": "2026-11-10T09:45:22.785322+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK HODLER: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 84.20% (cap 40%)"
-    },
-    {
-      "id": 2168,
-      "time": "2026-11-10T09:45:22.778834+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HODLER: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 84.20% (cap 40%); fresh_wallet_cluster: FAIL 2 fresh wallets in the top-holder sample (block at 3) holding 77.96% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h; wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: pool quote is not SOL, so unclaimed fees are not a SOL global-fee total; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2167,
-      "time": "2026-11-10T09:45:09.839671+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK HODL: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.046226 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
-    },
-    {
-      "id": 2166,
-      "time": "2026-11-10T09:45:09.832944+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK HODL: bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2165,
-      "time": "2026-11-10T09:45:09.826222+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK HODL: fresh_wallet_cluster: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2164,
-      "time": "2026-11-10T09:45:09.818602+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HODL: fresh_wallet_cluster: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; bundle_sniper_share: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.046226 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2163,
-      "time": "2026-11-10T09:44:53.430220+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK CLAUDIA: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.011241 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
-    },
-    {
-      "id": 2162,
-      "time": "2026-11-10T09:44:53.425863+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK CLAUDIA: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2161,
-      "time": "2026-11-10T09:44:53.419475+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "CLAUDIA: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.011241 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 19, 'confirmed_absent_native_accounts': 5, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2160,
-      "time": "2026-11-10T09:44:38.815597+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK FLOAT: global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
-    },
-    {
-      "id": 2159,
-      "time": "2026-11-10T09:44:38.810762+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK FLOAT: lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint"
-    },
-    {
-      "id": 2158,
-      "time": "2026-11-10T09:44:38.805756+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK FLOAT: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2157,
-      "time": "2026-11-10T09:44:38.798803+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "FLOAT: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; global_fees_sol: UNKNOWN / FAIL CLOSED: LP lock/burn is not visible: chosen pool is not a decoded PumpSwap pool for this mint; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 0, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2156,
-      "time": "2026-11-10T09:44:26.066014+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK ANSEM: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.004807 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
-    },
-    {
-      "id": 2155,
-      "time": "2026-11-10T09:44:26.062526+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK ANSEM: lp_locked_or_burned: FAIL LP mint CevNeicTXqL1oAjqZ3FNmexftzKD4ozqev5DgX2sAgFq still has supply 26645413858"
-    },
-    {
-      "id": 2154,
-      "time": "2026-11-10T09:44:26.058711+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK ANSEM: wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien"
-    },
-    {
-      "id": 2153,
-      "time": "2026-11-10T09:44:26.054352+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK ANSEM: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 66.01% (cap 40%)"
-    },
-    {
-      "id": 2152,
-      "time": "2026-11-10T09:44:26.048403+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "ANSEM: top10_ex_pool_burn: FAIL top-10 non-pool non-burn holders are 66.01% (cap 40%); wash_trade: UNKNOWN / FAIL CLOSED: getTransaction failed on all public endpoints after backoff: https://public.rpc.solanavibestation.com: getTransaction: missing result or RPC error {'code': -32015, 'message': 'Transaction version (1) is not supported by the requesting clien; lp_locked_or_burned: FAIL LP mint CevNeicTXqL1oAjqZ3FNmexftzKD4ozqev5DgX2sAgFq still has supply 26645413858; global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.004807 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL; owner lookup {'unique_owners': 20, 'confirmed_absent_native_accounts': 1, 'basis': 'full-length batched RPC; absent owners counted as wallets'}"
-    },
-    {
-      "id": 2151,
-      "time": "2026-11-10T09:44:03.184896+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK DESSA: global_fees_sol: UNKNOWN / FAIL CLOSED: unclaimed on-chain protocol+creator fees are 0.002092 SOL. Sweeps remove them, so this is not proof of lifetime global fees >= 1.5 SOL"
-    },
-    {
-      "id": 2150,
-      "time": "2026-11-10T09:44:03.176066+00:00",
-      "agent": "Risk Manager",
-      "type": "info",
-      "text": "HARD BLOCK DESSA: fresh_wallet_cluster: FAIL 3 fresh wallets in the top-holder sample (block at 3) holding 1.37% combined (block 2+ wallets at 8%); fresh means a complete signature page whose oldest transaction is under 24h"
     }
   ]
 }
