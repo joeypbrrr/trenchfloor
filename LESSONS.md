@@ -18,7 +18,6 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 
 ## Observations
 
-- **2026-11-06T21:21:50.171042-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.171048-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.171054-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
 - **2026-11-06T21:21:50.171060-05:00** (Backtester): jeff paper loss $-10.002 on dip_20_40_stop8_tp25_hold24 exit stop liq 86674.09 mcap 992799.0
@@ -98,6 +97,7 @@ Persistent memory. Every agent reads the rules before acting. Tried and rejected
 - **2026-11-08T13:30:35.126983-05:00** (Backtester): MAGGIE post-loss review. Improve entries: MAGGIE showed liquidity $78,961.48 at entry → $56,755.74 at exit (-28.1%). LP chosen pool LP mint supply is 0 and mint authority is the pool or revoked. This does not change entry gates or config thresholds.
 - **2026-11-08T18:38:59.701189-05:00** (System): Loop error: The read operation timed out
 - **2026-11-11T11:49:27.825655-05:00** (System): Loop error: The read operation timed out
+- **2026-11-12T22:55:03.902335-05:00** (System): Loop error: The read operation timed out
 
 ## Post-loss reviews
 
